@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Python学习笔记——基本语法 | tonglin0325的个人主页</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.程序输出&amp;mdash;&amp;mdash;print语句 12345&gt;&gt;&gt; myString &#x3D; &#39;Hello World!&#39;&gt;&gt;&gt; print myStringHello World!&gt;&gt;&gt; myString&#39;Hello World!&#39;  1234&gt;&gt;&gt; print type(u&amp;qu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python学习笔记——基本语法">
+<meta property="og:url" content="http://tonglin0325.github.io/2016/07/24/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/index.html">
+<meta property="og:site_name" content="tonglin0325的个人主页">
+<meta property="og:description" content="1.程序输出&amp;mdash;&amp;mdash;print语句 12345&gt;&gt;&gt; myString &#x3D; &#39;Hello World!&#39;&gt;&gt;&gt; print myStringHello World!&gt;&gt;&gt; myString&#39;Hello World!&#39;  1234&gt;&gt;&gt; print type(u&amp;qu">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-07-23T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-07-12T14:28:45.526Z">
+<meta property="article:author" content="tonglin0325">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="tonglin0325的个人主页" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://tonglin0325.github.io/images/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+
+  
+<link rel="stylesheet" href="/css/styles.css">
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-166238833-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-menu-navbar">
+      <ul class="nav navbar-nav">
+        
+          <li><a class=""
+                 href="/index.html">主页</a></li>
+        
+          <li><a class=""
+                 href="/archives/">所有文章</a></li>
+        
+          <li><a class=""
+                 href="http://www.cnblogs.com/tonglin0325/">博客园</a></li>
+        
+          <li><a class=""
+                 href="https://github.com/tonglin0325">Github</a></li>
+        
+      </ul>
+
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        
+          <li><a href="/atom.xml" title="RSS Feed"><i class="fa fa-rss"></i></a></li>
+        
+      </ul>
+      -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="container">
+    <div class="blog-header">
+  <h1 class="blog-title">tonglin0325的个人主页</h1>
+  
+</div>
+
+    <div class="row">
+        <div class="col-sm-9 blog-main">
+          <article id="post-Python学习笔记——基本语法" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 class="article-title" itemprop="name">
+      Python学习笔记——基本语法
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2016/07/24/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="article-date"><time datetime="2016-07-23T16:00:00.000Z" itemprop="datePublished">2016-07-24</time></a>
+</div>
+
+    <div class="article-author">tonglin0325</div>
+    
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>1.程序输出&mdash;&mdash;print语句</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; myString &#x3D; &#39;Hello World!&#39;</span><br><span class="line">&gt;&gt;&gt; print myString</span><br><span class="line">Hello World!</span><br><span class="line">&gt;&gt;&gt; myString</span><br><span class="line">&#39;Hello World!&#39;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print type(u&quot;你&quot;)    #都能输出汉字，但是输出的类型不一样</span><br><span class="line">&lt;type &#39;unicode&#39;&gt;</span><br><span class="line">&gt;&gt;&gt; print type(&quot;你&quot;)</span><br><span class="line">&lt;type &#39;str&#39;&gt;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+<p>&nbsp;注意：在仅用变量名的时候，输出的字符串是用单引号括起来的</p>
+<p>&nbsp;</p>
+<p><strong>2.程序输入&mdash;&mdash;raw_input()内建函数</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; user &#x3D; raw_input(&#39;Enter your name:&#39;)</span><br><span class="line">Enter your name:root</span><br><span class="line">&gt;&gt;&gt; print &#39;Your name is:&#39;,user</span><br><span class="line">Your name is: root</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p><strong>3.注释&mdash;&mdash;使用#</strong></p>
+<p>&nbsp;</p>
+<p><strong>4.操作符&mdash;&mdash;</strong></p>
+<p><strong>&lt;1&gt;两种除法&mdash;&mdash;单斜杠/用于传统的除法，双斜杠//用作浮点除法（对结果进行四舍五入）</strong></p>
+<p><strong>&lt;2&gt;乘方操作符&mdash;&mdash;双星号**</strong></p>
+<p><strong>&lt;3&gt;标准比较操作符&mdash;&mdash;&lt; &lt;= &gt; &gt;= == != &lt;&gt;</strong></p>
+<p><strong>&lt;4&gt;逻辑操作符&mdash;&mdash;and or not</strong></p>
+<p>&nbsp;</p>
+<p><strong>5.变量和赋值&mdash;&mdash;Python是动态类型语言，不需要预先声明变量的类型</strong></p>
+<p>**　　Python不支持C语言中的自增1和自减1操作符**</p>
+<p>&nbsp;</p>
+<p><strong>6.数字&mdash;&mdash;</strong></p>
+<p><strong>&lt;1&gt;有符号整型 长整型 布尔值</strong></p>
+<p><strong>&lt;2&gt;浮点值</strong></p>
+<p><strong>&lt;3&gt;复数</strong></p>
+<p>&nbsp;</p>
+<p><strong>7.字符串&mdash;&mdash;</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; myString &#x3D; &quot;Hello&quot;</span><br><span class="line">&gt;&gt;&gt; myString[0]</span><br><span class="line">&#39;H&#39;</span><br><span class="line">&gt;&gt;&gt; myString[2:4]</span><br><span class="line">&#39;ll&#39;</span><br><span class="line">&gt;&gt;&gt; myString[1:]</span><br><span class="line">&#39;ello&#39;</span><br><span class="line">&gt;&gt;&gt; myString[:4]</span><br><span class="line">&#39;Hell&#39;</span><br><span class="line">&gt;&gt;&gt; myString[-1]</span><br><span class="line">&#39;o&#39;</span><br><span class="line">&gt;&gt;&gt; myString * 2</span><br><span class="line">&#39;HelloHello&#39;</span><br><span class="line">&gt;&gt;&gt; myString + myString</span><br><span class="line">&#39;HelloHello&#39;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; myString &#x3D; &#39;&#39;&#39;python</span><br><span class="line">... is cool&#39;&#39;&#39;</span><br><span class="line">&gt;&gt;&gt; myString</span><br><span class="line">&#39;python\nis cool&#39;</span><br><span class="line">&gt;&gt;&gt; print myString</span><br><span class="line">python</span><br><span class="line">is cool</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p><strong>8.if语句</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; if x&gt;1:</span><br><span class="line">...     x -&#x3D; 1</span><br><span class="line">...     print &#39;#%d&#39; % (x)</span><br><span class="line">... </span><br><span class="line">#2</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p><strong>9.while循环</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; x &#x3D; 0</span><br><span class="line">&gt;&gt;&gt; while x&lt;3:</span><br><span class="line">...     print x</span><br><span class="line">...     x +&#x3D; 1</span><br><span class="line">... </span><br><span class="line">0</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p><strong>10.for循环和range()内建函数</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; for x in [&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;]:</span><br><span class="line">...     print x</span><br><span class="line">... </span><br><span class="line">A</span><br><span class="line">B</span><br><span class="line">C</span><br><span class="line">D</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; for x in [&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;]:</span><br><span class="line">...     print x,</span><br><span class="line">... </span><br><span class="line">A B C D</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用range()内建函数</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; for x in range(3):　　#循环从0到2</span><br><span class="line">...     print x,</span><br><span class="line">... </span><br><span class="line">0 1 2</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; myString &#x3D; &#39;ABCD&#39;　　#循环字符串中的每一个字母</span><br><span class="line">&gt;&gt;&gt; for x in myString:</span><br><span class="line">...     print x,</span><br><span class="line">... </span><br><span class="line">A B C D</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用len()内建函数</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; myString</span><br><span class="line">&#39;ABCD&#39;</span><br><span class="line">&gt;&gt;&gt; for i in range(len(myString)):</span><br><span class="line">...     print myString[i],i</span><br><span class="line">... </span><br><span class="line">A 0</span><br><span class="line">B 1</span><br><span class="line">C 2</span><br><span class="line">D 3</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p><strong>11.列表解析</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; square &#x3D; [x ** 2 for x in range(4)]</span><br><span class="line">&gt;&gt;&gt; for i in square:</span><br><span class="line">...     print i</span><br><span class="line">... </span><br><span class="line">0</span><br><span class="line">1</span><br><span class="line">4</span><br><span class="line">9</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; square &#x3D; [x ** 2 for x in range(4) if not x % 2]    #如果整除2</span><br><span class="line">&gt;&gt;&gt; for i in square:</span><br><span class="line">...     print i</span><br><span class="line">... </span><br><span class="line">0</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p><strong>12.文件和内建函数open()、file()</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; filename &#x3D; raw_input(&#39;Enter file name:&#39;)</span><br><span class="line">Enter file name:&#x2F;home&#x2F;common&#x2F;software&#x2F;hexo&#x2F;source&#x2F;_posts&#x2F;book_2016.md</span><br><span class="line">&gt;&gt;&gt; fobj &#x3D; open(filename,&#39;r&#39;)</span><br><span class="line">&gt;&gt;&gt; for eachLine in fobj:</span><br><span class="line">...     print eachLine,</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; fobj.close()</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p><strong>13.函数</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; def addMe2Me(x):</span><br><span class="line">...     return (x+x)</span><br><span class="line">... </span><br><span class="line">&gt;&gt;&gt; addMe2Me(2.5)</span><br><span class="line">5.0</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p><strong>14.类</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; class myClass(object):</span><br><span class="line">...     def _init_(self,nm&#x3D;&#39;123&#39;):</span><br><span class="line">...             self.name &#x3D; nm</span><br><span class="line">...             print &#39;Constructor&#39;</span><br><span class="line">...     def showname(self):</span><br><span class="line">...             print &#39;My name is&#39;,self.name</span><br><span class="line">... </span><br><span class="line">&gt;&gt;&gt; newClass &#x3D; myClass()</span><br><span class="line">&gt;&gt;&gt; newClass._init_()</span><br><span class="line">Constructor</span><br><span class="line">&gt;&gt;&gt; newClass.showname()</span><br><span class="line">My name is 123</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p><strong>15.模块</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import sys</span><br><span class="line">&gt;&gt;&gt; sys.stdout.write(&#39;Hello Word!\n&#39;)</span><br><span class="line">Hello Word!</span><br><span class="line">&gt;&gt;&gt; sys.platform</span><br><span class="line">&#39;linux2&#39;</span><br><span class="line">&gt;&gt;&gt; sys.version</span><br><span class="line">&#39;2.7.6 (default, Jun 22 2015, 18:00:18) \n[GCC 4.8.2]&#39;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p><strong>16.基本规则和特殊字符</strong></p>
+<p>&lt;1&gt;# &mdash;&mdash; 注释</p>
+<p>&lt;2&gt;\n &mdash;&mdash; 行分隔符</p>
+<p>&lt;3&gt;\ &mdash;&mdash; <strong>继续上一行</strong></p>
+<p>&lt;4&gt;; &mdash;&mdash; 将两个语句连接到一行中</p>
+<p>&lt;5&gt;: &mdash;&mdash; 将代码块的头和体分开</p>
+<p>&nbsp;</p>
+<p><strong>17.Python对象</strong></p>
+<p>**　　&lt;1&gt;标准类型**</p>
+<p>**　　　　　　数字&mdash;&mdash;Integer整型 Boolean布尔型 Long integer 长整型 Floating point number 浮点型 Complex number复数型**</p>
+<p>**　　　　　　字符串&mdash;&mdash;String**</p>
+<p>**　　　　　　列表&mdash;&mdash;List []<br />**</p>
+<p>**　　　　　　元组&mdash;&mdash;Tuple ()<br />**</p>
+<p>**　　　　　　字典&mdash;&mdash;Dictionary**</p>
+<p>**　　&lt;2&gt;其他内建类型**</p>
+<p>**　　　　　　类型&mdash;&mdash;type(1)&mdash;&mdash;&gt;&lt;type,’int’&gt; 得到特定对象的类型信息**</p>
+<p>**　　　　　　Null对象（None）&mdash;&mdash;不支持任何运算，也没有任何内建方法**</p>
+<p>**　　　　　　文件**</p>
+<p>**　　　　　　集合/固定集合**</p>
+<p>**　　　　　　函数/方法**</p>
+<p>**　　　　　　模块**</p>
+<p>**　　　　　　类**</p>
+<p>&nbsp;</p>
+<p><strong>18.标准类型操作符</strong></p>
+<p>**　　&lt;1&gt;对象值的比较** &lt; &gt; &lt;= &gt;= == !=<strong><br /></strong></p>
+<p>**　　&lt;2&gt;对象身份比较** is　　is not　　比较是否指向同一个对象 <strong>注意：Python中整型对象和字符串对象是不可变对象</strong></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>19.字符串和操作符</strong></p>
+<p><strong>&lt;1&gt;格式化操作符（%）</strong></p>
+<p>**　　P115页　　**</p>
+<p><strong>&lt;2&gt;字符串模板&mdash;&mdash;字符串Template对象</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from string import Template</span><br><span class="line">&gt;&gt;&gt; s &#x3D; Template(&quot;This is $&#123;name&#125; $&#123;num&#125;&quot;)</span><br><span class="line">&gt;&gt;&gt; print s.substitute(name&#x3D;&quot;Python&quot;,num&#x3D;3)</span><br><span class="line">This is Python 3</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>**　　**</p>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="http://tonglin0325.github.io/2016/07/24/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" data-id="ckca3uy0r0081w20lhgh0dptg" class="article-share-link">
+        <i class="fa fa-share"></i> 分享
+      </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/2016/07/15/LCZD/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">读《浪潮之巅》有感</span>
+    </a>
+  </li>
+  
+  
+  <li role="presentation">
+    <a href="/2016/07/26/ubuntu%E4%B8%8Bgedit%E5%92%8Cvim%E8%BE%93%E5%85%A5%E4%B8%AD%E6%96%87%E5%92%8C%E4%B8%AD%E6%96%87%E6%98%BE%E7%A4%BA/" id="article-nav-newer" class="article-nav-link-wrap">
+      <span class="article-nav-link-title">ubuntu下gedit和vim输入中文和中文显示</span>
+      <i class="fa fa-chevron-right pull-right"></i>
+    </a>
+  </li>
+  
+</ul>
+
+
+  
+</article>
+
+
+
+
+        </div>
+        <div class="col-sm-3 col-sm-offset-0 blog-sidebar">
+          
+  <div class="sidebar-module sidebar-module-inset">
+  <h4>tonglin0325</h4>
+  <div style="text-align:center;"><img src="/images/WechatIMG1.jpeg" width="150" height="150" style="vertical-align:middle;"/></div>
+</div>
+
+
+  
+
+
+  
+  <div class="sidebar-module">
+    <h4>标签</h4>
+    <ul class="sidebar-module-list" itemprop="keywords"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Airbnb/" rel="tag">Airbnb</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Ajax/" rel="tag">Ajax</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Android/" rel="tag">Android</a><span class="sidebar-module-list-count">18</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Bootstrap/" rel="tag">Bootstrap</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ELK/" rel="tag">ELK</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Flink/" rel="tag">Flink</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Git/" rel="tag">Git</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/HTML-CSS-JS/" rel="tag">HTML/CSS/JS</a><span class="sidebar-module-list-count">32</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hbase/" rel="tag">Hbase</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hive/" rel="tag">Hive</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JSON/" rel="tag">JSON</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JVM/" rel="tag">JVM</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a><span class="sidebar-module-list-count">72</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a><span class="sidebar-module-list-count">38</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E5%85%B3%E9%94%AE%E5%AD%97/" rel="tag">Java关键字</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">Java多线程</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">Java数据库</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E7%95%8C%E9%9D%A2/" rel="tag">Java界面</a><span class="sidebar-module-list-count">16</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="sidebar-module-list-count">50</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Maven/" rel="tag">Maven</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Nexus/" rel="tag">Nexus</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/NoSQL/" rel="tag">NoSQL</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Python/" rel="tag">Python</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Reading/" rel="tag">Reading</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Ruby/" rel="tag">Ruby</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SQL/" rel="tag">SQL</a><span class="sidebar-module-list-count">21</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Scala/" rel="tag">Scala</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Solr/" rel="tag">Solr</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Spark/" rel="tag">Spark</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/TCP-IP/" rel="tag">TCP/IP</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Thrift/" rel="tag">Thrift</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/antlr/" rel="tag">antlr</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/cdh/" rel="tag">cdh</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/docker/" rel="tag">docker</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/filebeat/" rel="tag">filebeat</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/flume/" rel="tag">flume</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/go/" rel="tag">go</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/jquery/" rel="tag">jquery</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/kafka/" rel="tag">kafka</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/kerberos/" rel="tag">kerberos</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/mac/" rel="tag">mac</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nlp/" rel="tag">nlp</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/open-falcon/" rel="tag">open-falcon</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/redis/" rel="tag">redis</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/yarn/" rel="tag">yarn</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/zookeeper/" rel="tag">zookeeper</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%9B%BE%E5%AD%98%E5%82%A8%E5%8F%8A%E8%AE%A1%E7%AE%97/" rel="tag">图存储及计算</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="tag">开发工具</a><span class="sidebar-module-list-count">15</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="sidebar-module-list-count">22</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a><span class="sidebar-module-list-count">28</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="sidebar-module-list-count">27</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/" rel="tag">面试准备</a><span class="sidebar-module-list-count">27</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>标签云</h4>
+    <p class="tagcloud">
+      <a href="/tags/Airbnb/" style="font-size: 12.27px;">Airbnb</a> <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Android/" style="font-size: 15.91px;">Android</a> <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/ELK/" style="font-size: 13.18px;">ELK</a> <a href="/tags/Flink/" style="font-size: 12.27px;">Flink</a> <a href="/tags/Git/" style="font-size: 10.91px;">Git</a> <a href="/tags/HTML-CSS-JS/" style="font-size: 18.64px;">HTML/CSS/JS</a> <a href="/tags/Hadoop/" style="font-size: 11.82px;">Hadoop</a> <a href="/tags/Hbase/" style="font-size: 10.91px;">Hbase</a> <a href="/tags/Hive/" style="font-size: 11.36px;">Hive</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/JavaSE/" style="font-size: 20px;">JavaSE</a> <a href="/tags/JavaWeb/" style="font-size: 19.09px;">JavaWeb</a> <a href="/tags/Java%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 12.73px;">Java关键字</a> <a href="/tags/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 14.09px;">Java多线程</a> <a href="/tags/Java%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 13.64px;">Java数据库</a> <a href="/tags/Java%E7%95%8C%E9%9D%A2/" style="font-size: 15.45px;">Java界面</a> <a href="/tags/Linux/" style="font-size: 19.55px;">Linux</a> <a href="/tags/Maven/" style="font-size: 10.45px;">Maven</a> <a href="/tags/Nexus/" style="font-size: 10.91px;">Nexus</a> <a href="/tags/NoSQL/" style="font-size: 10px;">NoSQL</a> <a href="/tags/Python/" style="font-size: 16.36px;">Python</a> <a href="/tags/Reading/" style="font-size: 10.91px;">Reading</a> <a href="/tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="/tags/SQL/" style="font-size: 16.82px;">SQL</a> <a href="/tags/Scala/" style="font-size: 13.64px;">Scala</a> <a href="/tags/Solr/" style="font-size: 10.91px;">Solr</a> <a href="/tags/Spark/" style="font-size: 16.36px;">Spark</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/SpringMVC/" style="font-size: 14.55px;">SpringMVC</a> <a href="/tags/TCP-IP/" style="font-size: 10.91px;">TCP/IP</a> <a href="/tags/Thrift/" style="font-size: 10.45px;">Thrift</a> <a href="/tags/antlr/" style="font-size: 10.45px;">antlr</a> <a href="/tags/cdh/" style="font-size: 10.91px;">cdh</a> <a href="/tags/docker/" style="font-size: 10.45px;">docker</a> <a href="/tags/filebeat/" style="font-size: 10.45px;">filebeat</a> <a href="/tags/flume/" style="font-size: 10.45px;">flume</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/kafka/" style="font-size: 11.36px;">kafka</a> <a href="/tags/kerberos/" style="font-size: 10px;">kerberos</a> <a href="/tags/mac/" style="font-size: 10.91px;">mac</a> <a href="/tags/nginx/" style="font-size: 12.27px;">nginx</a> <a href="/tags/nlp/" style="font-size: 10.45px;">nlp</a> <a href="/tags/open-falcon/" style="font-size: 10.91px;">open-falcon</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/yarn/" style="font-size: 10.45px;">yarn</a> <a href="/tags/zookeeper/" style="font-size: 13.64px;">zookeeper</a> <a href="/tags/%E5%9B%BE%E5%AD%98%E5%82%A8%E5%8F%8A%E8%AE%A1%E7%AE%97/" style="font-size: 10.45px;">图存储及计算</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" style="font-size: 15px;">开发工具</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 17.27px;">数据结构</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 18.18px;">机器学习</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 12.27px;">杂谈</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.73px;">算法</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 12.73px;">设计模式</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/" style="font-size: 17.73px;">面试准备</a>
+    </p>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>文章归档</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/07/">七月 2020</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/06/">六月 2020</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/05/">五月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/04/">四月 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/03/">三月 2020</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/02/">二月 2020</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/01/">一月 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/10/">十月 2019</a><span class="sidebar-module-list-count">12</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/09/">九月 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/08/">八月 2019</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/07/">七月 2019</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/04/">四月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/03/">三月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/01/">一月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/12/">十二月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/11/">十一月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/09/">九月 2018</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/06/">六月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">五月 2018</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">四月 2018</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/11/">十一月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/09/">九月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/05/">五月 2017</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/04/">四月 2017</a><span class="sidebar-module-list-count">23</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/03/">三月 2017</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/01/">一月 2017</a><span class="sidebar-module-list-count">24</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/12/">十二月 2016</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/11/">十一月 2016</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">12</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">15</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/08/">八月 2016</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/07/">七月 2016</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/06/">六月 2016</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/05/">五月 2016</a><span class="sidebar-module-list-count">32</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/04/">四月 2016</a><span class="sidebar-module-list-count">26</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/03/">三月 2016</a><span class="sidebar-module-list-count">133</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/02/">二月 2016</a><span class="sidebar-module-list-count">22</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/09/">九月 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/08/">八月 2015</a><span class="sidebar-module-list-count">14</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/07/">七月 2015</a><span class="sidebar-module-list-count">31</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/06/">六月 2015</a><span class="sidebar-module-list-count">25</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/04/">四月 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2013/04/">四月 2013</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>最近文章</h4>
+    <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/2020/07/12/Zk%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/">Zk学习笔记——应用场景</a>
+        </li>
+      
+        <li>
+          <a href="/2020/07/11/Zk%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94ZkClient/">Zk学习笔记——ZkClient</a>
+        </li>
+      
+        <li>
+          <a href="/2020/07/11/Zk%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E4%BF%AE%E6%94%B9%E8%8A%82%E7%82%B9/">Zk学习笔记——修改节点</a>
+        </li>
+      
+        <li>
+          <a href="/2020/07/11/Zk%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%A3%80%E6%B5%8B%E8%8A%82%E7%82%B9%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8/">Zk学习笔记——检测节点是否存在</a>
+        </li>
+      
+        <li>
+          <a href="/2020/07/09/Pac%E4%BB%A3%E7%90%86%E6%96%87%E4%BB%B6/">Pac代理文件</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+
+
+        </div>
+    </div>
+  </div>
+  <footer class="blog-footer">
+  <div class="container">
+    <div id="footer-info" class="inner">
+      &copy; 2020 tonglin0325<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+  
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" integrity="sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+<script src="/js/jquery.qrcode.min.js"></script>
+
+
+
+<script src="/js/jquery-1.6.2.min.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>机器学习——非均衡分类问题 | tonglin0325的个人主页</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在机器学习的分类问题中，我们都假设所有类别的分类代价是一样的。但是事实上，不同分类的代价是不一样的，比如我们通过一个用于检测患病的系统来检测马匹是否能继续存活，如果我们把能存活的马匹检测成患病，那么这匹马可能就会被执行安乐死；如果我们把不能存活的马匹检测成健康，那么就会继续喂养这匹马。一个代价是错杀一只昂贵的动物，一个代价是继续喂养，很明显这两个代价是不一样的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习——非均衡分类问题">
+<meta property="og:url" content="http://tonglin0325.github.io/2016/12/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E9%9D%9E%E5%9D%87%E8%A1%A1%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="tonglin0325的个人主页">
+<meta property="og:description" content="在机器学习的分类问题中，我们都假设所有类别的分类代价是一样的。但是事实上，不同分类的代价是不一样的，比如我们通过一个用于检测患病的系统来检测马匹是否能继续存活，如果我们把能存活的马匹检测成患病，那么这匹马可能就会被执行安乐死；如果我们把不能存活的马匹检测成健康，那么就会继续喂养这匹马。一个代价是错杀一只昂贵的动物，一个代价是继续喂养，很明显这两个代价是不一样的。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://tonglin0325.github.io/images/517519-20161221171100307-1558715339.png">
+<meta property="og:image" content="http://tonglin0325.github.io/images/517519-20161221171346948-1136185734.png">
+<meta property="og:image" content="http://tonglin0325.github.io/images/517519-20161221200027948-1498850195.png">
+<meta property="og:image" content="http://tonglin0325.github.io/images/517519-20161221210648932-1909790489.png">
+<meta property="og:image" content="http://tonglin0325.github.io/images/517519-20161221211346964-1308357773.png">
+<meta property="article:published_time" content="2016-12-18T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-07-12T14:28:45.305Z">
+<meta property="article:author" content="tonglin0325">
+<meta property="article:tag" content="机器学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tonglin0325.github.io/images/517519-20161221171100307-1558715339.png">
+  
+    <link rel="alternate" href="/atom.xml" title="tonglin0325的个人主页" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://tonglin0325.github.io/images/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+
+  
+<link rel="stylesheet" href="/css/styles.css">
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-166238833-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-menu-navbar">
+      <ul class="nav navbar-nav">
+        
+          <li><a class=""
+                 href="/index.html">主页</a></li>
+        
+          <li><a class=""
+                 href="/archives/">所有文章</a></li>
+        
+          <li><a class=""
+                 href="http://www.cnblogs.com/tonglin0325/">博客园</a></li>
+        
+          <li><a class=""
+                 href="https://github.com/tonglin0325">Github</a></li>
+        
+      </ul>
+
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        
+          <li><a href="/atom.xml" title="RSS Feed"><i class="fa fa-rss"></i></a></li>
+        
+      </ul>
+      -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="container">
+    <div class="blog-header">
+  <h1 class="blog-title">tonglin0325的个人主页</h1>
+  
+</div>
+
+    <div class="row">
+        <div class="col-sm-9 blog-main">
+          <article id="post-机器学习——非均衡分类问题" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 class="article-title" itemprop="name">
+      机器学习——非均衡分类问题
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2016/12/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E9%9D%9E%E5%9D%87%E8%A1%A1%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98/" class="article-date"><time datetime="2016-12-18T16:00:00.000Z" itemprop="datePublished">2016-12-19</time></a>
+</div>
+
+    <div class="article-author">tonglin0325</div>
+    
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在机器学习的分类问题中，我们都假设所有类别的<strong>分类代价</strong>是一样的。但是事实上，不同分类的代价是不一样的，比如我们通过一个用于检测患病的系统来检测马匹是否能继续存活，如果我们把能存活的马匹检测成患病，那么这匹马可能就会被执行安乐死；如果我们把不能存活的马匹检测成健康，那么就会继续喂养这匹马。一个代价是错杀一只昂贵的动物，一个代价是继续喂养，很明显这<strong>两个代价是不一样的</strong>。</p>
+<a id="more"></a>
+<p>&nbsp;</p>
+<p><strong>性能度量</strong></p>
+<p>衡量模型泛化能力的评价标准，就是<strong>性能度量</strong>。除了基于<strong>错误率</strong>来衡量分类器任务的成功程度的。<strong>错误率</strong>指的是在所有测试样例中错分的样例比例。但是，这样却掩盖了样例<strong>如何被错分的事实</strong>。在机器学习中，有一个普遍试用的称为<strong>混淆矩阵（confusion matrix）</strong>的工具，可以帮助人们更好地了解分类的错误。</p>
+<img src="/images/517519-20161221171100307-1558715339.png" alt="" width="573" height="131" />
+
+<p>利用混淆矩阵就可以更好地理解分类中的错误了。如果矩阵中的<strong>非对角元素均为0</strong>，就会得到一个<strong>完美的分类器</strong>。</p>
+<p>&nbsp;</p>
+<p><strong>正确率（Precision）、召回率（Recall）</strong></p>
+<img src="/images/517519-20161221171346948-1136185734.png" alt="" width="603" height="115" />
+
+<p><strong>正确率P</strong> = TP/（TP+FP），给出的是<strong>预测为正例</strong>的样本中的<strong>真正正例</strong>的比例。</p>
+<p><strong>召回率R</strong> = TP/（TP+FN），给出的是<strong>预测为正例的真实正例</strong>占<strong>所有真实正例</strong>的比例。</p>
+<p>&nbsp;</p>
+<p>另一个用于度量分类中的非均衡性的工具是<strong>ROC曲线</strong>（ROC curve），ROC代表<strong>接收者操作特征”Receiver Operating Characteristic”</strong></p>
+<p><strong><img src="/images/517519-20161221200027948-1498850195.png" alt="" width="329" height="294" /></strong></p>
+<p>ROC曲线的<strong>纵轴</strong>是&ldquo;<strong>真正例率</strong>&rdquo;，TPR=TP/（TP+FN）</p>
+<p><strong>横轴</strong>是&ldquo;<strong>假正例率</strong>&rdquo;，FPR=FP/（TN+FP）</p>
+<p>在理想的情况下，最佳的分类器应该尽可能地处于左上角，这就意味着分类器在<strong>假正例率很低</strong>的同时，获得了<strong>很高的真正例率</strong>。</p>
+<p>对不同的ROC曲线进行比较的一个指标就是<strong>曲线下的面积（AUC）</strong>，AUC给出的是分类器的平均性能值。一个完美的分类器的AUC是1，而随机猜测的AUC则为0.5。</p>
+<p>若一个学习器的ROC曲线能把另一个学习器的ROC曲线完全包住，则这个学习器的性能比较好。</p>
+<p>&nbsp;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">def plotROC(predStrengths, classLabels):		#ROC曲线的绘制及AUC计算函数</span><br><span class="line">    import matplotlib.pyplot as plt</span><br><span class="line">    cur &#x3D; (1.0,1.0) #cursor</span><br><span class="line">    ySum &#x3D; 0.0 #variable to calculate AUC</span><br><span class="line">    numPosClas &#x3D; sum(array(classLabels)&#x3D;&#x3D;1.0)</span><br><span class="line">    yStep &#x3D; 1&#x2F;float(numPosClas); xStep &#x3D; 1&#x2F;float(len(classLabels)-numPosClas)</span><br><span class="line">    sortedIndicies &#x3D; predStrengths.argsort()#get sorted index, it&#39;s reverse</span><br><span class="line">    fig &#x3D; plt.figure()</span><br><span class="line">    fig.clf()</span><br><span class="line">    ax &#x3D; plt.subplot(111)</span><br><span class="line">    #loop through all the values, drawing a line segment at each point</span><br><span class="line">    for index in sortedIndicies.tolist()[0]:</span><br><span class="line">        if classLabels[index] &#x3D;&#x3D; 1.0:</span><br><span class="line">            delX &#x3D; 0; delY &#x3D; yStep;</span><br><span class="line">        else:</span><br><span class="line">            delX &#x3D; xStep; delY &#x3D; 0;</span><br><span class="line">            ySum +&#x3D; cur[1]</span><br><span class="line">        #draw line from cur to (cur[0]-delX,cur[1]-delY)</span><br><span class="line">        ax.plot([cur[0],cur[0]-delX],[cur[1],cur[1]-delY], c&#x3D;&#39;b&#39;)</span><br><span class="line">        cur &#x3D; (cur[0]-delX,cur[1]-delY)</span><br><span class="line">    ax.plot([0,1],[0,1],&#39;b--&#39;)</span><br><span class="line">    plt.xlabel(&#39;False positive rate&#39;); plt.ylabel(&#39;True positive rate&#39;)</span><br><span class="line">    plt.title(&#39;ROC curve for AdaBoost horse colic detection system&#39;)</span><br><span class="line">    ax.axis([0,1,0,1])</span><br><span class="line">    plt.show()</span><br><span class="line">    print &quot;the Area Under the Curve is: &quot;,ySum*xStep</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;mian.py</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># coding:utf-8</span><br><span class="line"># !&#x2F;usr&#x2F;bin&#x2F;env python</span><br><span class="line"></span><br><span class="line">import adaboost</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">	datMat,classLabels &#x3D; adaboost.loadDataSet(&quot;horseColicTraining2.txt&quot;)</span><br><span class="line">	weakClassArr,aggClassEst &#x3D; adaboost.adaBoostTrainDS(datMat,classLabels,40)</span><br><span class="line">#	datMat1,classLabels1 &#x3D; adaboost.loadDataSet(&quot;horseColicTest2.txt&quot;)</span><br><span class="line">	aggClassEst,sign &#x3D; adaboost.adaClassify(datMat,weakClassArr)</span><br><span class="line">	print aggClassEst.T</span><br><span class="line">	adaboost.plotROC(aggClassEst.T, classLabels)</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;<img src="/images/517519-20161221210648932-1909790489.png" alt="" width="402" height="343" /></p>
+<p>&nbsp;</p>
+<p>基于<strong>代价函数</strong>的分类器决策控制</p>
+<p>为权衡不同类型错误所造成的不同损失，可为错误赋予&ldquo;非均等代价&rdquo;。</p>
+<img src="/images/517519-20161221211346964-1308357773.png" alt="" width="540" height="195" />
+
+<p>在&ldquo;<strong>代价矩阵</strong>&rdquo;中，将-1错判成+1的代价（50），比把+1错判成-1的代价（1）要高。</p>
+<p>&nbsp;</p>
+<p><strong>处理非均衡问题的数据抽样方法</strong></p>
+<p>另外一种针对非均衡问题调节分类器的方法，就是对分类器的训练数据进行改造。这可以通过<strong>欠抽样</strong>或者<strong>过抽样</strong>来实现。</p>
+<p><strong>过抽样</strong>意味着复制样例，而<strong>欠抽样</strong>意味着删除样例。</p>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="http://tonglin0325.github.io/2016/12/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E9%9D%9E%E5%9D%87%E8%A1%A1%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98/" data-id="ckca3uy2i00dkw20l2ngk24f0" class="article-share-link">
+        <i class="fa fa-share"></i> 分享
+      </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/2016/12/15/git%E5%91%BD%E4%BB%A4/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">git命令</span>
+    </a>
+  </li>
+  
+  
+  <li role="presentation">
+    <a href="/2016/12/21/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E9%A2%84%E6%B5%8B%E6%95%B0%E5%80%BC%E5%9E%8B%E6%95%B0%E6%8D%AE%EF%BC%9A%E5%9B%9E%E5%BD%92/" id="article-nav-newer" class="article-nav-link-wrap">
+      <span class="article-nav-link-title">机器学习——预测数值型数据：回归</span>
+      <i class="fa fa-chevron-right pull-right"></i>
+    </a>
+  </li>
+  
+</ul>
+
+
+  
+</article>
+
+
+
+
+        </div>
+        <div class="col-sm-3 col-sm-offset-0 blog-sidebar">
+          
+  <div class="sidebar-module sidebar-module-inset">
+  <h4>tonglin0325</h4>
+  <div style="text-align:center;"><img src="/images/WechatIMG1.jpeg" width="150" height="150" style="vertical-align:middle;"/></div>
+</div>
+
+
+  
+
+
+  
+  <div class="sidebar-module">
+    <h4>标签</h4>
+    <ul class="sidebar-module-list" itemprop="keywords"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Airbnb/" rel="tag">Airbnb</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Ajax/" rel="tag">Ajax</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Android/" rel="tag">Android</a><span class="sidebar-module-list-count">18</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Bootstrap/" rel="tag">Bootstrap</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ELK/" rel="tag">ELK</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Flink/" rel="tag">Flink</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Git/" rel="tag">Git</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/HTML-CSS-JS/" rel="tag">HTML/CSS/JS</a><span class="sidebar-module-list-count">32</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hbase/" rel="tag">Hbase</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hive/" rel="tag">Hive</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JSON/" rel="tag">JSON</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JVM/" rel="tag">JVM</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a><span class="sidebar-module-list-count">72</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a><span class="sidebar-module-list-count">38</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E5%85%B3%E9%94%AE%E5%AD%97/" rel="tag">Java关键字</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">Java多线程</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">Java数据库</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E7%95%8C%E9%9D%A2/" rel="tag">Java界面</a><span class="sidebar-module-list-count">16</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="sidebar-module-list-count">50</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Maven/" rel="tag">Maven</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Nexus/" rel="tag">Nexus</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/NoSQL/" rel="tag">NoSQL</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Python/" rel="tag">Python</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Reading/" rel="tag">Reading</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Ruby/" rel="tag">Ruby</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SQL/" rel="tag">SQL</a><span class="sidebar-module-list-count">21</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Scala/" rel="tag">Scala</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Solr/" rel="tag">Solr</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Spark/" rel="tag">Spark</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/TCP-IP/" rel="tag">TCP/IP</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Thrift/" rel="tag">Thrift</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/antlr/" rel="tag">antlr</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/cdh/" rel="tag">cdh</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/docker/" rel="tag">docker</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/filebeat/" rel="tag">filebeat</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/flume/" rel="tag">flume</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/go/" rel="tag">go</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/jquery/" rel="tag">jquery</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/kafka/" rel="tag">kafka</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/kerberos/" rel="tag">kerberos</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/mac/" rel="tag">mac</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nlp/" rel="tag">nlp</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/open-falcon/" rel="tag">open-falcon</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/redis/" rel="tag">redis</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/yarn/" rel="tag">yarn</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/zookeeper/" rel="tag">zookeeper</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%9B%BE%E5%AD%98%E5%82%A8%E5%8F%8A%E8%AE%A1%E7%AE%97/" rel="tag">图存储及计算</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="tag">开发工具</a><span class="sidebar-module-list-count">15</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="sidebar-module-list-count">22</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a><span class="sidebar-module-list-count">28</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="sidebar-module-list-count">27</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/" rel="tag">面试准备</a><span class="sidebar-module-list-count">27</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>标签云</h4>
+    <p class="tagcloud">
+      <a href="/tags/Airbnb/" style="font-size: 12.27px;">Airbnb</a> <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Android/" style="font-size: 15.91px;">Android</a> <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/ELK/" style="font-size: 13.18px;">ELK</a> <a href="/tags/Flink/" style="font-size: 12.27px;">Flink</a> <a href="/tags/Git/" style="font-size: 10.91px;">Git</a> <a href="/tags/HTML-CSS-JS/" style="font-size: 18.64px;">HTML/CSS/JS</a> <a href="/tags/Hadoop/" style="font-size: 11.82px;">Hadoop</a> <a href="/tags/Hbase/" style="font-size: 10.91px;">Hbase</a> <a href="/tags/Hive/" style="font-size: 11.36px;">Hive</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/JavaSE/" style="font-size: 20px;">JavaSE</a> <a href="/tags/JavaWeb/" style="font-size: 19.09px;">JavaWeb</a> <a href="/tags/Java%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 12.73px;">Java关键字</a> <a href="/tags/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 14.09px;">Java多线程</a> <a href="/tags/Java%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 13.64px;">Java数据库</a> <a href="/tags/Java%E7%95%8C%E9%9D%A2/" style="font-size: 15.45px;">Java界面</a> <a href="/tags/Linux/" style="font-size: 19.55px;">Linux</a> <a href="/tags/Maven/" style="font-size: 10.45px;">Maven</a> <a href="/tags/Nexus/" style="font-size: 10.91px;">Nexus</a> <a href="/tags/NoSQL/" style="font-size: 10px;">NoSQL</a> <a href="/tags/Python/" style="font-size: 16.36px;">Python</a> <a href="/tags/Reading/" style="font-size: 10.91px;">Reading</a> <a href="/tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="/tags/SQL/" style="font-size: 16.82px;">SQL</a> <a href="/tags/Scala/" style="font-size: 13.64px;">Scala</a> <a href="/tags/Solr/" style="font-size: 10.91px;">Solr</a> <a href="/tags/Spark/" style="font-size: 16.36px;">Spark</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/SpringMVC/" style="font-size: 14.55px;">SpringMVC</a> <a href="/tags/TCP-IP/" style="font-size: 10.91px;">TCP/IP</a> <a href="/tags/Thrift/" style="font-size: 10.45px;">Thrift</a> <a href="/tags/antlr/" style="font-size: 10.45px;">antlr</a> <a href="/tags/cdh/" style="font-size: 10.91px;">cdh</a> <a href="/tags/docker/" style="font-size: 10.45px;">docker</a> <a href="/tags/filebeat/" style="font-size: 10.45px;">filebeat</a> <a href="/tags/flume/" style="font-size: 10.45px;">flume</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/kafka/" style="font-size: 11.36px;">kafka</a> <a href="/tags/kerberos/" style="font-size: 10px;">kerberos</a> <a href="/tags/mac/" style="font-size: 10.91px;">mac</a> <a href="/tags/nginx/" style="font-size: 12.27px;">nginx</a> <a href="/tags/nlp/" style="font-size: 10.45px;">nlp</a> <a href="/tags/open-falcon/" style="font-size: 10.91px;">open-falcon</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/yarn/" style="font-size: 10.45px;">yarn</a> <a href="/tags/zookeeper/" style="font-size: 13.64px;">zookeeper</a> <a href="/tags/%E5%9B%BE%E5%AD%98%E5%82%A8%E5%8F%8A%E8%AE%A1%E7%AE%97/" style="font-size: 10.45px;">图存储及计算</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" style="font-size: 15px;">开发工具</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 17.27px;">数据结构</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 18.18px;">机器学习</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 12.27px;">杂谈</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.73px;">算法</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 12.73px;">设计模式</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/" style="font-size: 17.73px;">面试准备</a>
+    </p>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>文章归档</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/07/">七月 2020</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/06/">六月 2020</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/05/">五月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/04/">四月 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/03/">三月 2020</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/02/">二月 2020</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/01/">一月 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/10/">十月 2019</a><span class="sidebar-module-list-count">12</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/09/">九月 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/08/">八月 2019</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/07/">七月 2019</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/04/">四月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/03/">三月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/01/">一月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/12/">十二月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/11/">十一月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/09/">九月 2018</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/06/">六月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">五月 2018</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">四月 2018</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/11/">十一月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/09/">九月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/05/">五月 2017</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/04/">四月 2017</a><span class="sidebar-module-list-count">23</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/03/">三月 2017</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/01/">一月 2017</a><span class="sidebar-module-list-count">24</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/12/">十二月 2016</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/11/">十一月 2016</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">12</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">15</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/08/">八月 2016</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/07/">七月 2016</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/06/">六月 2016</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/05/">五月 2016</a><span class="sidebar-module-list-count">32</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/04/">四月 2016</a><span class="sidebar-module-list-count">26</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/03/">三月 2016</a><span class="sidebar-module-list-count">133</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/02/">二月 2016</a><span class="sidebar-module-list-count">22</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/09/">九月 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/08/">八月 2015</a><span class="sidebar-module-list-count">14</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/07/">七月 2015</a><span class="sidebar-module-list-count">31</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/06/">六月 2015</a><span class="sidebar-module-list-count">25</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/04/">四月 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2013/04/">四月 2013</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>最近文章</h4>
+    <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/2020/07/12/Zk%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/">Zk学习笔记——应用场景</a>
+        </li>
+      
+        <li>
+          <a href="/2020/07/11/Zk%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94ZkClient/">Zk学习笔记——ZkClient</a>
+        </li>
+      
+        <li>
+          <a href="/2020/07/11/Zk%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E4%BF%AE%E6%94%B9%E8%8A%82%E7%82%B9/">Zk学习笔记——修改节点</a>
+        </li>
+      
+        <li>
+          <a href="/2020/07/11/Zk%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%A3%80%E6%B5%8B%E8%8A%82%E7%82%B9%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8/">Zk学习笔记——检测节点是否存在</a>
+        </li>
+      
+        <li>
+          <a href="/2020/07/09/Pac%E4%BB%A3%E7%90%86%E6%96%87%E4%BB%B6/">Pac代理文件</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+
+
+        </div>
+    </div>
+  </div>
+  <footer class="blog-footer">
+  <div class="container">
+    <div id="footer-info" class="inner">
+      &copy; 2020 tonglin0325<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+  
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" integrity="sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+<script src="/js/jquery.qrcode.min.js"></script>
+
+
+
+<script src="/js/jquery-1.6.2.min.js"></script>
+
+
+</body>
+</html>

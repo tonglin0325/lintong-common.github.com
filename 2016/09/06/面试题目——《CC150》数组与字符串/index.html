@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>面试题目——《CC150》数组与字符串 | tonglin0325的个人主页</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="面试题目——《CC150》数组与字符串">
+<meta property="og:url" content="http://tonglin0325.github.io/2016/09/06/%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E2%80%94%E2%80%94%E3%80%8ACC150%E3%80%8B%E6%95%B0%E7%BB%84%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2/index.html">
+<meta property="og:site_name" content="tonglin0325的个人主页">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://tonglin0325.github.io/images/517519-20160906091742285-1376466686.png">
+<meta property="og:image" content="http://tonglin0325.github.io/images/517519-20160906092051441-1608405020.png">
+<meta property="og:image" content="http://tonglin0325.github.io/images/517519-20160906103344957-647148121.png">
+<meta property="og:image" content="http://tonglin0325.github.io/images/517519-20160906104656504-999400421.png">
+<meta property="og:image" content="http://tonglin0325.github.io/images/517519-20160906104718488-2058198759.png">
+<meta property="og:image" content="http://tonglin0325.github.io/images/517519-20160906143156957-92226008.gif">
+<meta property="article:published_time" content="2016-09-05T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-07-12T14:28:45.492Z">
+<meta property="article:author" content="tonglin0325">
+<meta property="article:tag" content="面试准备">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tonglin0325.github.io/images/517519-20160906091742285-1376466686.png">
+  
+    <link rel="alternate" href="/atom.xml" title="tonglin0325的个人主页" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://tonglin0325.github.io/images/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+
+  
+<link rel="stylesheet" href="/css/styles.css">
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-166238833-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-menu-navbar">
+      <ul class="nav navbar-nav">
+        
+          <li><a class=""
+                 href="/index.html">主页</a></li>
+        
+          <li><a class=""
+                 href="/archives/">所有文章</a></li>
+        
+          <li><a class=""
+                 href="http://www.cnblogs.com/tonglin0325/">博客园</a></li>
+        
+          <li><a class=""
+                 href="https://github.com/tonglin0325">Github</a></li>
+        
+      </ul>
+
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        
+          <li><a href="/atom.xml" title="RSS Feed"><i class="fa fa-rss"></i></a></li>
+        
+      </ul>
+      -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="container">
+    <div class="blog-header">
+  <h1 class="blog-title">tonglin0325的个人主页</h1>
+  
+</div>
+
+    <div class="row">
+        <div class="col-sm-9 blog-main">
+          <article id="post-面试题目——《CC150》数组与字符串" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 class="article-title" itemprop="name">
+      面试题目——《CC150》数组与字符串
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2016/09/06/%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E2%80%94%E2%80%94%E3%80%8ACC150%E3%80%8B%E6%95%B0%E7%BB%84%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="article-date"><time datetime="2016-09-05T16:00:00.000Z" itemprop="datePublished">2016-09-06</time></a>
+</div>
+
+    <div class="article-author">tonglin0325</div>
+    
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <img src="/images/517519-20160906091742285-1376466686.png" alt="" width="746" height="363" />
+
+<img src="/images/517519-20160906092051441-1608405020.png" alt="" width="736" height="390" />
+
+<img src="/images/517519-20160906103344957-647148121.png" alt="" width="765" height="496" />
+
+<img src="/images/517519-20160906104656504-999400421.png" alt="" width="752" height="431" />
+
+<img src="/images/517519-20160906104718488-2058198759.png" alt="" width="741" height="500" />
+
+<a id="more"></a>
+<p>&nbsp;</p>
+<p><strong>面试题1.1：实现一个算法，确定一个字符串的所有字符是否全都不同。假使不允许使用额外的数据结构，又该如何处理？</strong></p>
+<p>**　　注意：ASCII字符共有255个，其中0-127的字符有字符表<img src="/images/517519-20160906143156957-92226008.gif" alt="" width="855" height="584" />**</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>　　第一种解法：是《CC150》里面的解法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public static boolean checkDifferent(String iniString) &#123;</span><br><span class="line">	if(iniString &#x3D;&#x3D; null || iniString.length() &lt;&#x3D; 0)</span><br><span class="line">		return true;</span><br><span class="line">	</span><br><span class="line">	String newString &#x3D; iniString.trim();	&#x2F;&#x2F;去掉左右空格</span><br><span class="line">	int len &#x3D; newString.length();</span><br><span class="line">	if(len &gt; 256)</span><br><span class="line">		return false;</span><br><span class="line"></span><br><span class="line">	boolean[] char_set &#x3D; new boolean[65536];	&#x2F;&#x2F;256的牛客网会报数组越界</span><br><span class="line">	for(int i&#x3D;0;i&lt;len;i++)&#123;</span><br><span class="line">		int val &#x3D; newString.charAt(i);	&#x2F;&#x2F;取得字符串每一个字符的ASCII码值</span><br><span class="line">		if(char_set[val] &#x3D;&#x3D; true)				&#x2F;&#x2F;有val表示出现过</span><br><span class="line">			return false;</span><br><span class="line">		char_set[val] &#x3D; true;						&#x2F;&#x2F;表示ASCII为val的字符出现过了</span><br><span class="line">	&#125;</span><br><span class="line">	return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>　　第二种解法：先排序，然后通过异或运算判断是否有重复的字符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public static boolean checkDifferent(String iniString) &#123;</span><br><span class="line">	if(iniString &#x3D;&#x3D; null || iniString.length() &lt;&#x3D; 0)</span><br><span class="line">		return true;</span><br><span class="line">	</span><br><span class="line">	String newString &#x3D; iniString.trim();	&#x2F;&#x2F;去掉左右空格</span><br><span class="line">	int len &#x3D; newString.length();</span><br><span class="line">	if(len &gt; 256)</span><br><span class="line">		return false;</span><br><span class="line"></span><br><span class="line">	char[] sortedArr &#x3D; newString.toCharArray();</span><br><span class="line">	Arrays.sort(sortedArr);</span><br><span class="line">	for(int i&#x3D;1;i&lt;len;i++)&#123;</span><br><span class="line">		int a &#x3D; sortedArr[i-1];</span><br><span class="line">		int b &#x3D; sortedArr[i];</span><br><span class="line">		if((a^b) &#x3D;&#x3D; 0)</span><br><span class="line">			return false;</span><br><span class="line">	&#125;</span><br><span class="line">	return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p><strong>面试题1.2：实现void reverse(char* str)函数，即反转一个null结尾的字符串</strong></p>
+<p><strong>&nbsp;　　注意：不分配额外空间，直接就地反转字符串，注意nul字符</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line"> </span><br><span class="line">public class Reverse &#123;</span><br><span class="line">    public String reverseString(String iniString) &#123;</span><br><span class="line">        &#x2F;&#x2F; write code here</span><br><span class="line">        StringBuffer Buf &#x3D; new StringBuffer();</span><br><span class="line">        if(iniString &#x3D;&#x3D; null || iniString.length() &lt;&#x3D;0)</span><br><span class="line">            return Buf.toString();</span><br><span class="line">        int length &#x3D; iniString.length();</span><br><span class="line">        for(int i&#x3D;length-1;i&gt;&#x3D;0;i--)&#123;</span><br><span class="line">            Buf.append(iniString.charAt(i));</span><br><span class="line">        &#125;</span><br><span class="line">        return Buf.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p><strong>面试题1.3：给定两个字符串，请编写程序，确定其中一个字符串的字符重新排列后，能否变成另一个字符串&mdash;&mdash;《Leetcode》242.&nbsp;<a href="https://leetcode.com/problems/valid-anagram" target="_blank" rel="noopener">Valid Anagram</a></strong></p>
+<p>&nbsp;　　思路：变位词问题（anagram），注意是否区分大小写，是否考虑空白字符，如果两个字符串的长度不一样，那么就不可能变位词</p>
+<p>　　解法1：对两个字符串的字符重新排序后，再组成字符串，然后equals两个字符串是否相等</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">package cc150;</span><br><span class="line"></span><br><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line">public class Anagram &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">		String str1 &#x3D; &quot;CBA&quot;;</span><br><span class="line">		String str2 &#x3D; &quot;ABC&quot;;</span><br><span class="line">		System.out.println(anagram(str1, str2));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public static String sort(String s)&#123;</span><br><span class="line">		char[] content &#x3D; s.toCharArray();</span><br><span class="line">		Arrays.sort(content);</span><br><span class="line">		return new String(content);	&#x2F;&#x2F;使用new String，toString是StringBuffer用的</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static boolean anagram(String s1,String s2)&#123;</span><br><span class="line">		if(s1.length() !&#x3D; s2.length())</span><br><span class="line">			return false;</span><br><span class="line"></span><br><span class="line">		return sort(s1).equals(sort(s2));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p>　　解法2：建一个256大小的字符数组，然后在这个数组记录每个字母出现的次数，最后比较两个数组是否相等（比第一种慢，且占用空间多）（Leetcode用的类似这种）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">package cc150;</span><br><span class="line"></span><br><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line">public class Anagram &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">		String str1 &#x3D; &quot;CBA&quot;;</span><br><span class="line">		String str2 &#x3D; &quot;ABC&quot;;</span><br><span class="line">		System.out.println(anagram(str1, str2));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public static boolean anagram(String s1,String s2)&#123;</span><br><span class="line">		if(s1.length() !&#x3D; s2.length())</span><br><span class="line">			return false;</span><br><span class="line">		</span><br><span class="line">		int[] Arr &#x3D; new int[256];</span><br><span class="line">		char[] Arr1 &#x3D; s1.toCharArray();</span><br><span class="line">		for(char c:Arr1)&#123;</span><br><span class="line">			Arr[c]++;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		for(int i&#x3D;0;i&lt;s2.length();i++)&#123;</span><br><span class="line">			int c &#x3D; (int) s2.charAt(i);</span><br><span class="line">			if(--Arr[c] &lt; 0)</span><br><span class="line">				return false;</span><br><span class="line">		&#125;</span><br><span class="line">		return true;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p><strong>面试题1.4：编写一个方法，讲字符串中的空格全部替换为&ldquo;%20&rdquo;。假定该字符串尾部有足够的空间存放新增字符，并且知道字符串的&ldquo;真实&rdquo;长度。（注：用Java实现的话，请使用字符数组实现，以便直接在数组上操作。）&mdash;&mdash;《剑指Offer》P61</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">package cc150;</span><br><span class="line"></span><br><span class="line">public class ReplaceSpaces &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">		</span><br><span class="line">		String str &#x3D; &quot;AB  C&quot;;</span><br><span class="line">		System.out.println(replaceSpace(str,5));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public static String replaceSpace(String iniString, int length) &#123;</span><br><span class="line">        &#x2F;&#x2F; write code here</span><br><span class="line">		int spaceCount &#x3D; 0;</span><br><span class="line">		for(int i&#x3D;0;i&lt;length;i++)&#123;</span><br><span class="line">			if(iniString.charAt(i) &#x3D;&#x3D; &#39; &#39;)</span><br><span class="line">				spaceCount++;</span><br><span class="line">		&#125;</span><br><span class="line">		int newLength &#x3D; length + spaceCount * 2;</span><br><span class="line">		char[] newString &#x3D; new char[newLength];</span><br><span class="line">		</span><br><span class="line">		for(int i&#x3D;length-1;i&gt;&#x3D;0;i--)&#123;</span><br><span class="line">			System.out.println(iniString.charAt(i) &#x3D;&#x3D; &#39; &#39;);</span><br><span class="line">			if(iniString.charAt(i) &#x3D;&#x3D; &#39; &#39;)&#123;</span><br><span class="line">				newString[newLength-1] &#x3D; &#39;0&#39;;</span><br><span class="line">				newString[newLength-2] &#x3D; &#39;2&#39;;</span><br><span class="line">				newString[newLength-3] &#x3D; &#39;%&#39;;</span><br><span class="line">				newLength &#x3D; newLength-3; </span><br><span class="line">			&#125;else&#123;</span><br><span class="line">				newString[newLength-1] &#x3D; iniString.charAt(i);</span><br><span class="line">				newLength &#x3D; newLength-1; </span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		StringBuffer buf &#x3D; new StringBuffer();</span><br><span class="line">		newLength &#x3D; length + spaceCount * 2;</span><br><span class="line">		for(int i&#x3D;0;i&lt;newLength;i++)</span><br><span class="line">			buf.append(newString[i]);</span><br><span class="line">		return buf.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p><strong>面试题1.5：利用字符重复出现的次数，编写一个方法，实现基本的字符串压缩功能。比如，字符串aabcccccaaa会变为a2b1c5a3。若&ldquo;压缩&rdquo; 后的字符串没有变短，则返回原先的字符串。</strong></p>
+<p>&nbsp;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">package cc150;</span><br><span class="line"></span><br><span class="line">public class Zipper &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">		String str &#x3D; &quot;aabcccccaaa&quot;;</span><br><span class="line">		System.out.println(zipString(str));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public String zipString(String iniString) &#123;</span><br><span class="line">        &#x2F;&#x2F; write code here</span><br><span class="line">        int len &#x3D; iniString.length();</span><br><span class="line">        String str &#x3D; zip(iniString);</span><br><span class="line">        int lenzip &#x3D; str.length();</span><br><span class="line">        if(lenzip &lt; len)</span><br><span class="line">        	return str;</span><br><span class="line">        else</span><br><span class="line">        	return iniString;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public static String zip(String iniString) &#123;</span><br><span class="line">        &#x2F;&#x2F; write code here</span><br><span class="line">		String str &#x3D; null;</span><br><span class="line">		if(iniString &#x3D;&#x3D; null || iniString.length() &lt;&#x3D; 0)</span><br><span class="line">			return str;</span><br><span class="line">		char last &#x3D; iniString.charAt(0);	&#x2F;&#x2F;记录第一个字符</span><br><span class="line">		int length &#x3D; iniString.length();</span><br><span class="line">		StringBuffer buf &#x3D; new StringBuffer();</span><br><span class="line">		buf.append(last);						&#x2F;&#x2F;把第一个字符放进buf</span><br><span class="line">		int count &#x3D; 1;							&#x2F;&#x2F;记录重复字符的数量</span><br><span class="line">		for(int i&#x3D;1;i&lt;length;i++)&#123;</span><br><span class="line">			if(iniString.charAt(i) &#x3D;&#x3D; last)</span><br><span class="line">				count++;</span><br><span class="line">			else&#123;</span><br><span class="line">				last &#x3D; iniString.charAt(i);	&#x2F;&#x2F;修改字符</span><br><span class="line">				buf.append(count);			&#x2F;&#x2F;放上一个字符的数量</span><br><span class="line">				buf.append(last);				&#x2F;&#x2F;放下一个字符</span><br><span class="line">				count &#x3D; 1;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		buf.append(count);					&#x2F;&#x2F;放最后一个字符的数量</span><br><span class="line">		return buf.toString();</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p><strong>面试题1.6：给定一幅有N&times;N矩阵表示的图像，其中每个像素的大小为4个字节，编写一个方法，将图像旋转90度。不占用额外内存空间能否做到？</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">package cc150;</span><br><span class="line"></span><br><span class="line">public class Transform &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">		int[][] mat &#x3D; &#123;&#123;1,2,3&#125;,&#123;4,5,6&#125;,&#123;7,8,9&#125;&#125;;</span><br><span class="line">		transformImage(mat, 3);</span><br><span class="line">		for(int i&#x3D;0;i&lt;3;i++)&#123;</span><br><span class="line">			for(int j&#x3D;0;j&lt;3;j++)&#123;</span><br><span class="line">				System.out.print(mat[i][j]);</span><br><span class="line">			&#125;</span><br><span class="line">				</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public static int[][] transformImage(int[][] mat, int n) &#123;</span><br><span class="line">        &#x2F;&#x2F; write code here</span><br><span class="line">		for(int layer&#x3D;0;layer&lt;n&#x2F;2;layer++)&#123;	&#x2F;&#x2F;从最外层开始，总共有n&#x2F;2层</span><br><span class="line">			int first &#x3D; layer;			&#x2F;&#x2F;确定每一层开始和结束的值</span><br><span class="line">			int last &#x3D; n-1-layer;</span><br><span class="line">			for(int i&#x3D;first;i&lt;last;i++)&#123;</span><br><span class="line">				int offset &#x3D; i-first;	&#x2F;&#x2F;记录移动的偏移量，循环的时候第一个从左上角开始向下</span><br><span class="line">				int top &#x3D; mat[first][i];</span><br><span class="line">				mat[first][i] &#x3D; mat[last-offset][first];</span><br><span class="line">				mat[last-offset][first] &#x3D; mat[last][last-offset];</span><br><span class="line">				mat[last][last-offset] &#x3D; mat[i][last];</span><br><span class="line">				mat[i][last] &#x3D; top;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return mat;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p><strong>面试题1.7：编写一个算法，若M&times;N矩阵中某个元素为0，则将其所在的行与列清零。</strong></p>
+<p>　　注意：一个一个清零会导致最后矩阵中所有的元素都变成零，所以要记录矩阵中所有零元素的位置再清零。并不用建立一个M&times;N的数组来标记零元素的位置，只用建立两个数组分别来记录每一个零元素的横坐标和纵坐标就行了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">package cc150;</span><br><span class="line"></span><br><span class="line">public class SetZeros &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">		int[][] a &#x3D; &#123;</span><br><span class="line">				&#123;1,0,3&#125;,</span><br><span class="line">				&#123;4,5,6&#125;,</span><br><span class="line">		&#125;;</span><br><span class="line">		&#x2F;&#x2F;原来的数组</span><br><span class="line">		for(int i&#x3D;0;i&lt;a.length;i++)&#123;</span><br><span class="line">			for(int j&#x3D;0;j&lt;a[0].length;j++)&#123;</span><br><span class="line">				System.out.print(a[i][j]+&quot;,&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println();</span><br><span class="line">		&#125;</span><br><span class="line">		&#x2F;&#x2F;置零</span><br><span class="line">		setZeros(a);</span><br><span class="line">		&#x2F;&#x2F;现在的数组</span><br><span class="line">		for(int i&#x3D;0;i&lt;a.length;i++)&#123;</span><br><span class="line">			for(int j&#x3D;0;j&lt;a[0].length;j++)&#123;</span><br><span class="line">				System.out.print(a[i][j]+&quot;,&quot;);</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public static void setZeros(int[][] matrix )&#123;</span><br><span class="line">		boolean[] row &#x3D; new boolean[matrix.length];</span><br><span class="line">		boolean[] column &#x3D; new boolean[matrix[0].length];</span><br><span class="line">		&#x2F;&#x2F;记录值为0的元素所在的行和列</span><br><span class="line">		for(int i&#x3D;0;i&lt;matrix.length;i++)&#123;&#x2F;&#x2F;行</span><br><span class="line">			for(int j&#x3D;0;j&lt;matrix[0].length;j++)&#123;&#x2F;&#x2F;列</span><br><span class="line">				if(matrix[i][j] &#x3D;&#x3D; 0)&#123;</span><br><span class="line">					row[i] &#x3D; true;</span><br><span class="line">					column[j] &#x3D; true;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		for(int i&#x3D;0;i&lt;matrix.length;i++)&#123;&#x2F;&#x2F;行</span><br><span class="line">			for(int j&#x3D;0;j&lt;matrix[0].length;j++)&#123;&#x2F;&#x2F;列</span><br><span class="line">				if(row[i] || column[j])&#123;	&#x2F;&#x2F;	其中有一个为true</span><br><span class="line">					matrix[i][j] &#x3D; 0;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+<p><strong>面试题1.8：假定有一个方法isSubstring，可检查一个单词是否为其他字符串的子串。给定两个字符串s1和s2，请编写代码检查s2是否为s1旋转而成，要求只能调用一次isSubstring。（比如，waterbottle是erbottlewat旋转后的字符串。</strong>）</p>
+<p>　　思路：令s1为<strong>waterbottle</strong>，s2为<strong>erbottlewat，</strong>则s2（<strong>erbottlewat</strong>）肯定是s1s1（wat<strong>erbottle**</strong>wat**erbottle）的子串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">package cc150;</span><br><span class="line"></span><br><span class="line">public class ReverseEqual &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">		String s1 &#x3D; &quot;waterbottlea&quot;;</span><br><span class="line">		String s2 &#x3D; &quot;erbottlewatb&quot;;</span><br><span class="line">		</span><br><span class="line">		System.out.println(checkReverseEqual(s1,s2));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public static boolean checkReverseEqual(String s1, String s2) &#123;</span><br><span class="line">        &#x2F;&#x2F; write code here</span><br><span class="line">		int len &#x3D; s1.length();</span><br><span class="line">		if(len &#x3D;&#x3D; s2.length() &amp;&amp; len &gt; 0)&#123;</span><br><span class="line">			String s1s1 &#x3D; s1 + s1;</span><br><span class="line">			&#x2F;&#x2F;return s1s1.indexOf(s2)&gt;0;</span><br><span class="line">			return s1s1.contains(s2);</span><br><span class="line">		&#125;</span><br><span class="line">		return false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="http://tonglin0325.github.io/2016/09/06/%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E2%80%94%E2%80%94%E3%80%8ACC150%E3%80%8B%E6%95%B0%E7%BB%84%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2/" data-id="ckca3uy2q00ecw20l42dzg8br" class="article-share-link">
+        <i class="fa fa-share"></i> 分享
+      </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/" rel="tag">面试准备</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/2016/09/04/Java%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E4%B8%89%E8%A7%92%E6%95%B0%E5%AD%97%EF%BC%88%E6%B6%88%E9%99%A4%E9%80%92%E5%BD%92%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">Java递归算法——三角数字（消除递归）</span>
+    </a>
+  </li>
+  
+  
+  <li role="presentation">
+    <a href="/2016/09/12/%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE%E2%80%94%E2%80%94%E3%80%8ACC150%E3%80%8B%E9%93%BE%E8%A1%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <span class="article-nav-link-title">面试题目——《CC150》链表</span>
+      <i class="fa fa-chevron-right pull-right"></i>
+    </a>
+  </li>
+  
+</ul>
+
+
+  
+</article>
+
+
+
+
+        </div>
+        <div class="col-sm-3 col-sm-offset-0 blog-sidebar">
+          
+  <div class="sidebar-module sidebar-module-inset">
+  <h4>tonglin0325</h4>
+  <div style="text-align:center;"><img src="/images/WechatIMG1.jpeg" width="150" height="150" style="vertical-align:middle;"/></div>
+</div>
+
+
+  
+
+
+  
+  <div class="sidebar-module">
+    <h4>标签</h4>
+    <ul class="sidebar-module-list" itemprop="keywords"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Airbnb/" rel="tag">Airbnb</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Ajax/" rel="tag">Ajax</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Android/" rel="tag">Android</a><span class="sidebar-module-list-count">18</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Bootstrap/" rel="tag">Bootstrap</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ELK/" rel="tag">ELK</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Flink/" rel="tag">Flink</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Git/" rel="tag">Git</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/HTML-CSS-JS/" rel="tag">HTML/CSS/JS</a><span class="sidebar-module-list-count">32</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hbase/" rel="tag">Hbase</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hive/" rel="tag">Hive</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JSON/" rel="tag">JSON</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JVM/" rel="tag">JVM</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a><span class="sidebar-module-list-count">72</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a><span class="sidebar-module-list-count">38</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E5%85%B3%E9%94%AE%E5%AD%97/" rel="tag">Java关键字</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">Java多线程</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">Java数据库</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E7%95%8C%E9%9D%A2/" rel="tag">Java界面</a><span class="sidebar-module-list-count">16</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="sidebar-module-list-count">50</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Maven/" rel="tag">Maven</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Nexus/" rel="tag">Nexus</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/NoSQL/" rel="tag">NoSQL</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Python/" rel="tag">Python</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Reading/" rel="tag">Reading</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Ruby/" rel="tag">Ruby</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SQL/" rel="tag">SQL</a><span class="sidebar-module-list-count">21</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Scala/" rel="tag">Scala</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Solr/" rel="tag">Solr</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Spark/" rel="tag">Spark</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/TCP-IP/" rel="tag">TCP/IP</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Thrift/" rel="tag">Thrift</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/antlr/" rel="tag">antlr</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/cdh/" rel="tag">cdh</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/docker/" rel="tag">docker</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/filebeat/" rel="tag">filebeat</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/flume/" rel="tag">flume</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/go/" rel="tag">go</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/jquery/" rel="tag">jquery</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/kafka/" rel="tag">kafka</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/kerberos/" rel="tag">kerberos</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/mac/" rel="tag">mac</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nlp/" rel="tag">nlp</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/open-falcon/" rel="tag">open-falcon</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/redis/" rel="tag">redis</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/yarn/" rel="tag">yarn</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/zookeeper/" rel="tag">zookeeper</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%9B%BE%E5%AD%98%E5%82%A8%E5%8F%8A%E8%AE%A1%E7%AE%97/" rel="tag">图存储及计算</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="tag">开发工具</a><span class="sidebar-module-list-count">15</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="sidebar-module-list-count">22</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a><span class="sidebar-module-list-count">28</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="sidebar-module-list-count">27</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/" rel="tag">面试准备</a><span class="sidebar-module-list-count">27</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>标签云</h4>
+    <p class="tagcloud">
+      <a href="/tags/Airbnb/" style="font-size: 12.27px;">Airbnb</a> <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Android/" style="font-size: 15.91px;">Android</a> <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/ELK/" style="font-size: 13.18px;">ELK</a> <a href="/tags/Flink/" style="font-size: 12.27px;">Flink</a> <a href="/tags/Git/" style="font-size: 10.91px;">Git</a> <a href="/tags/HTML-CSS-JS/" style="font-size: 18.64px;">HTML/CSS/JS</a> <a href="/tags/Hadoop/" style="font-size: 11.82px;">Hadoop</a> <a href="/tags/Hbase/" style="font-size: 10.91px;">Hbase</a> <a href="/tags/Hive/" style="font-size: 11.36px;">Hive</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/JavaSE/" style="font-size: 20px;">JavaSE</a> <a href="/tags/JavaWeb/" style="font-size: 19.09px;">JavaWeb</a> <a href="/tags/Java%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 12.73px;">Java关键字</a> <a href="/tags/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 14.09px;">Java多线程</a> <a href="/tags/Java%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 13.64px;">Java数据库</a> <a href="/tags/Java%E7%95%8C%E9%9D%A2/" style="font-size: 15.45px;">Java界面</a> <a href="/tags/Linux/" style="font-size: 19.55px;">Linux</a> <a href="/tags/Maven/" style="font-size: 10.45px;">Maven</a> <a href="/tags/Nexus/" style="font-size: 10.91px;">Nexus</a> <a href="/tags/NoSQL/" style="font-size: 10px;">NoSQL</a> <a href="/tags/Python/" style="font-size: 16.36px;">Python</a> <a href="/tags/Reading/" style="font-size: 10.91px;">Reading</a> <a href="/tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="/tags/SQL/" style="font-size: 16.82px;">SQL</a> <a href="/tags/Scala/" style="font-size: 13.64px;">Scala</a> <a href="/tags/Solr/" style="font-size: 10.91px;">Solr</a> <a href="/tags/Spark/" style="font-size: 16.36px;">Spark</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/SpringMVC/" style="font-size: 14.55px;">SpringMVC</a> <a href="/tags/TCP-IP/" style="font-size: 10.91px;">TCP/IP</a> <a href="/tags/Thrift/" style="font-size: 10.45px;">Thrift</a> <a href="/tags/antlr/" style="font-size: 10.45px;">antlr</a> <a href="/tags/cdh/" style="font-size: 10.91px;">cdh</a> <a href="/tags/docker/" style="font-size: 10.45px;">docker</a> <a href="/tags/filebeat/" style="font-size: 10.45px;">filebeat</a> <a href="/tags/flume/" style="font-size: 10.45px;">flume</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/kafka/" style="font-size: 11.36px;">kafka</a> <a href="/tags/kerberos/" style="font-size: 10px;">kerberos</a> <a href="/tags/mac/" style="font-size: 10.91px;">mac</a> <a href="/tags/nginx/" style="font-size: 12.27px;">nginx</a> <a href="/tags/nlp/" style="font-size: 10.45px;">nlp</a> <a href="/tags/open-falcon/" style="font-size: 10.91px;">open-falcon</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/yarn/" style="font-size: 10.45px;">yarn</a> <a href="/tags/zookeeper/" style="font-size: 13.64px;">zookeeper</a> <a href="/tags/%E5%9B%BE%E5%AD%98%E5%82%A8%E5%8F%8A%E8%AE%A1%E7%AE%97/" style="font-size: 10.45px;">图存储及计算</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" style="font-size: 15px;">开发工具</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 17.27px;">数据结构</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 18.18px;">机器学习</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 12.27px;">杂谈</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.73px;">算法</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 12.73px;">设计模式</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/" style="font-size: 17.73px;">面试准备</a>
+    </p>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>文章归档</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/07/">七月 2020</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/06/">六月 2020</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/05/">五月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/04/">四月 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/03/">三月 2020</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/02/">二月 2020</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/01/">一月 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/10/">十月 2019</a><span class="sidebar-module-list-count">12</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/09/">九月 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/08/">八月 2019</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/07/">七月 2019</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/04/">四月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/03/">三月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/01/">一月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/12/">十二月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/11/">十一月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/09/">九月 2018</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/06/">六月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">五月 2018</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">四月 2018</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/11/">十一月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/09/">九月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/05/">五月 2017</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/04/">四月 2017</a><span class="sidebar-module-list-count">23</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/03/">三月 2017</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/01/">一月 2017</a><span class="sidebar-module-list-count">24</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/12/">十二月 2016</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/11/">十一月 2016</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">12</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">15</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/08/">八月 2016</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/07/">七月 2016</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/06/">六月 2016</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/05/">五月 2016</a><span class="sidebar-module-list-count">32</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/04/">四月 2016</a><span class="sidebar-module-list-count">26</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/03/">三月 2016</a><span class="sidebar-module-list-count">133</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/02/">二月 2016</a><span class="sidebar-module-list-count">22</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/09/">九月 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/08/">八月 2015</a><span class="sidebar-module-list-count">14</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/07/">七月 2015</a><span class="sidebar-module-list-count">31</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/06/">六月 2015</a><span class="sidebar-module-list-count">25</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/04/">四月 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2013/04/">四月 2013</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>最近文章</h4>
+    <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/2020/07/12/Zk%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/">Zk学习笔记——应用场景</a>
+        </li>
+      
+        <li>
+          <a href="/2020/07/11/Zk%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94ZkClient/">Zk学习笔记——ZkClient</a>
+        </li>
+      
+        <li>
+          <a href="/2020/07/11/Zk%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E4%BF%AE%E6%94%B9%E8%8A%82%E7%82%B9/">Zk学习笔记——修改节点</a>
+        </li>
+      
+        <li>
+          <a href="/2020/07/11/Zk%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%A3%80%E6%B5%8B%E8%8A%82%E7%82%B9%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8/">Zk学习笔记——检测节点是否存在</a>
+        </li>
+      
+        <li>
+          <a href="/2020/07/09/Pac%E4%BB%A3%E7%90%86%E6%96%87%E4%BB%B6/">Pac代理文件</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+
+
+        </div>
+    </div>
+  </div>
+  <footer class="blog-footer">
+  <div class="container">
+    <div id="footer-info" class="inner">
+      &copy; 2020 tonglin0325<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+  
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" integrity="sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+<script src="/js/jquery.qrcode.min.js"></script>
+
+
+
+<script src="/js/jquery-1.6.2.min.js"></script>
+
+
+</body>
+</html>
