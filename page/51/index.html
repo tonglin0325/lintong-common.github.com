@@ -99,6 +99,235 @@ ga('send', 'pageview');
         <div class="col-sm-9 blog-main">
           
   
+    <article id="post-JavaScript学习笔记——基本知识" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/24/JavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/">JavaScript学习笔记——基本知识</a>
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2015/07/24/JavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/" class="article-date"><time datetime="2015-07-23T16:00:00.000Z" itemprop="datePublished">2015-07-24</time></a>
+</div>
+
+    <div class="article-author">tonglin0325</div>
+    
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>JavaScript学习的教程来自后盾网</strong></p>
+<p><strong>1&gt;JavaScript的放置和注释</strong></p>
+<p>　　<strong>1.输出工具</strong></p>
+<p>　　　　A.alert();</p>
+<p>　　　　B.document.write();</p>
+<p>　　　　C.prompt(“”,””);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html PUBLIC &quot;-&#x2F;&#x2F;W3C&#x2F;&#x2F;DTD XHTML 1.0 Transitional&#x2F;&#x2F;EN&quot; &quot;http:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;xhtml1&#x2F;DTD&#x2F;xhtml1-transitional.dtd&quot;&gt;</span><br><span class="line">&lt;html xmlns&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;1999&#x2F;xhtml&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv&#x3D;&quot;Content-Type&quot; content&#x3D;&quot;text&#x2F;html; charset&#x3D;UTF-8&quot; &#x2F;&gt;</span><br><span class="line">&lt;title&gt;输出函数测试&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    &lt;!-- 弹出对话框显示 --&gt;</span><br><span class="line">    alert(&quot;&lt;h1&gt;后盾网&lt;&#x2F;h1&gt;&quot;);</span><br><span class="line"></span><br><span class="line">    &lt;!-- 页面显示 --&gt;</span><br><span class="line">    document.write(&quot;&lt;h1&gt;后盾网视频教程&lt;&#x2F;h1&gt;&quot;);</span><br><span class="line"></span><br><span class="line">    &lt;!-- 弹出输入对话框，一个提示参数，一个输入参数 --&gt;</span><br><span class="line">       var value&#x3D;prompt(&quot;please enter your name&quot;,&quot;&quot;)</span><br><span class="line">       &lt;!-- 显示输入的参数 --&gt;</span><br><span class="line">       alert(value);</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="后盾网视频教程"><a href="#后盾网视频教程" class="headerlink" title="后盾网视频教程"></a>后盾网视频教程</h1><p>　　<strong>2.JavaScript如何在html页面当中进行放置</strong></p>
+<p>**　　　　<strong>A.<script></script>　　放在<head></head>中间，也可以放在<body></body>中间，有两个属性，一个是</strong>type<strong>，另外一个是</strong>language**</p>
+<p>**　　　　　　div中加样式：写class，，然后在<head></head>中写<style><strong></style>**</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">   .one&#123;</span><br><span class="line">     width:100px;</span><br><span class="line">     height:100px;</span><br><span class="line">     background:red;</span><br><span class="line">     font-size:12px;</span><br><span class="line">     color:blue;</span><br><span class="line">   &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a class="btn btn-primary" href="/2015/07/24/JavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/#more">全文 &gt;&gt;</a>
+          </p>
+        
+      
+    </div>
+
+    
+
+    <footer class="article-footer">
+      <a data-url="http://tonglin0325.github.io/2015/07/24/JavaScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/" data-id="ckca3uxyp002bw20l1lyeafj4" class="article-share-link">
+        <i class="fa fa-share"></i> 分享
+      </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML-CSS-JS/" rel="tag">HTML/CSS/JS</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-CSS学习笔记——简述" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/23/CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E7%AE%80%E8%BF%B0/">CSS学习笔记——简述</a>
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2015/07/23/CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E7%AE%80%E8%BF%B0/" class="article-date"><time datetime="2015-07-22T16:00:00.000Z" itemprop="datePublished">2015-07-23</time></a>
+</div>
+
+    <div class="article-author">tonglin0325</div>
+    
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>CSS3学习的教程来自后盾网</strong></p>
+        
+          <p class="article-more-link">
+            <a class="btn btn-primary" href="/2015/07/23/CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E7%AE%80%E8%BF%B0/#more">全文 &gt;&gt;</a>
+          </p>
+        
+      
+    </div>
+
+    
+
+    <footer class="article-footer">
+      <a data-url="http://tonglin0325.github.io/2015/07/23/CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E7%AE%80%E8%BF%B0/" data-id="ckca3uxxz000rw20la2mh1bt3" class="article-share-link">
+        <i class="fa fa-share"></i> 分享
+      </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML-CSS-JS/" rel="tag">HTML/CSS/JS</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-HTML学习笔记——CSS初涉" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/21/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94CSS%E5%88%9D%E6%B6%89/">HTML学习笔记——CSS初涉</a>
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2015/07/21/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94CSS%E5%88%9D%E6%B6%89/" class="article-date"><time datetime="2015-07-20T16:00:00.000Z" itemprop="datePublished">2015-07-21</time></a>
+</div>
+
+    <div class="article-author">tonglin0325</div>
+    
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1&gt;嵌入式css写法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html PUBLIC &quot;-&#x2F;&#x2F;W3C&#x2F;&#x2F;DTD XHTML 1.0 Transitional&#x2F;&#x2F;EN&quot; &quot;http:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;xhtml1&#x2F;DTD&#x2F;xhtml1-transitional.dtd&quot;&gt;</span><br><span class="line">&lt;html xmlns&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;1999&#x2F;xhtml&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv&#x3D;&quot;Content-Type&quot; content&#x3D;&quot;text&#x2F;html; charset&#x3D;utf-8&quot; &#x2F;&gt;</span><br><span class="line">&lt;title&gt;无标题文档&lt;&#x2F;title&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 嵌入式css写法 --&gt;</span><br><span class="line">    &lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt;&#x2F;*选择器*&#x2F;</span><br><span class="line">        p&#123;</span><br><span class="line">            color:red;</span><br><span class="line">            font-size: 30px;</span><br><span class="line">        &#125;</span><br><span class="line">        span&#123;</span><br><span class="line">            color:green;</span><br><span class="line">            font-size: 40px;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    </span><br><span class="line">    [百度]()</span><br><span class="line">    &lt;br &#x2F;&gt;</span><br><span class="line"></span><br><span class="line">    span标签</span><br><span class="line"></span><br><span class="line">    &lt;p&gt;今天是星期天&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;!-- 行内样式 --&gt;</span><br><span class="line">    今天天气不错</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a class="btn btn-primary" href="/2015/07/21/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94CSS%E5%88%9D%E6%B6%89/#more">全文 &gt;&gt;</a>
+          </p>
+        
+      
+    </div>
+
+    
+
+    <footer class="article-footer">
+      <a data-url="http://tonglin0325.github.io/2015/07/21/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94CSS%E5%88%9D%E6%B6%89/" data-id="ckca3uxyc001gw20l2eyl1z1k" class="article-share-link">
+        <i class="fa fa-share"></i> 分享
+      </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML-CSS-JS/" rel="tag">HTML/CSS/JS</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-HTML学习笔记——box" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/21/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94box/">HTML学习笔记——box</a>
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2015/07/21/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94box/" class="article-date"><time datetime="2015-07-20T16:00:00.000Z" itemprop="datePublished">2015-07-21</time></a>
+</div>
+
+    <div class="article-author">tonglin0325</div>
+    
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1&gt; HTML写法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html PUBLIC &quot;-&#x2F;&#x2F;W3C&#x2F;&#x2F;DTD XHTML 1.0 Transitional&#x2F;&#x2F;EN&quot; &quot;http:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;xhtml1&#x2F;DTD&#x2F;xhtml1-transitional.dtd&quot;&gt;</span><br><span class="line">&lt;html xmlns&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;1999&#x2F;xhtml&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv&#x3D;&quot;Content-Type&quot; content&#x3D;&quot;text&#x2F;html; charset&#x3D;utf-8&quot; &#x2F;&gt;</span><br><span class="line">&lt;title&gt;无标题文档&lt;&#x2F;title&gt;</span><br><span class="line">&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt;</span><br><span class="line">    #box&#123;</span><br><span class="line">        width: 300px;</span><br><span class="line">        border: 5px solid blue;</span><br><span class="line">        margin: 0 auto; </span><br><span class="line">        &#x2F;*内边距*&#x2F;</span><br><span class="line">        &#x2F;*padding: 0px;*&#x2F;</span><br><span class="line">        &#x2F;*padding-top: 20px;</span><br><span class="line">        padding-right: 40px;</span><br><span class="line">        padding-bottom: 30px;</span><br><span class="line">        padding-left: 50px;*&#x2F;</span><br><span class="line"></span><br><span class="line">        &#x2F;*一个参数代表四个方向*&#x2F;</span><br><span class="line">        &#x2F;*两个参数，第一个代表上下，第二个代表左右*&#x2F;</span><br><span class="line">        &#x2F;*三个参数，第一个代表上面，第二个代表左右，第三个代表下面*&#x2F;</span><br><span class="line">        &#x2F;*四个参数，代表上右下左*&#x2F;</span><br><span class="line">        padding: 20px 30px 100px;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">        盒子模型盒子模型盒子模型盒子模型盒子模型盒子模型盒子模型盒子模型盒子模型盒子模型盒子模型盒子模型盒子模型盒子模型盒子模型盒子模型盒子模型盒子模型盒子模型盒子模型</span><br><span class="line">    </span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a class="btn btn-primary" href="/2015/07/21/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94box/#more">全文 &gt;&gt;</a>
+          </p>
+        
+      
+    </div>
+
+    
+
+    <footer class="article-footer">
+      <a data-url="http://tonglin0325.github.io/2015/07/21/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94box/" data-id="ckca3uxyd001hw20lahvi6r1h" class="article-share-link">
+        <i class="fa fa-share"></i> 分享
+      </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML-CSS-JS/" rel="tag">HTML/CSS/JS</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-HTML学习笔记——frameset和marquee" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
@@ -432,234 +661,10 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-HTML学习笔记——选择器" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <header class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/21/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E9%80%89%E6%8B%A9%E5%99%A8/">HTML学习笔记——选择器</a>
-    </h1>
-  
-
-
-  </header>
-
-  <div class="article-meta">
-    <div class="article-datetime">
-  <a href="/2015/07/21/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E9%80%89%E6%8B%A9%E5%99%A8/" class="article-date"><time datetime="2015-07-20T16:00:00.000Z" itemprop="datePublished">2015-07-21</time></a>
-</div>
-
-    <div class="article-author">tonglin0325</div>
-    
-
-  </div>
-  <div class="article-inner">
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1&gt; ID选择器、交叉选择器、群组选择器、子代选择器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html PUBLIC &quot;-&#x2F;&#x2F;W3C&#x2F;&#x2F;DTD XHTML 1.0 Transitional&#x2F;&#x2F;EN&quot; &quot;http:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;xhtml1&#x2F;DTD&#x2F;xhtml1-transitional.dtd&quot;&gt;</span><br><span class="line">&lt;html xmlns&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;1999&#x2F;xhtml&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv&#x3D;&quot;Content-Type&quot; content&#x3D;&quot;text&#x2F;html; charset&#x3D;utf-8&quot; &#x2F;&gt;</span><br><span class="line">&lt;title&gt;无标题文档&lt;&#x2F;title&gt;</span><br><span class="line"></span><br><span class="line">&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt;</span><br><span class="line">    p&#123;</span><br><span class="line">        color: purple;</span><br><span class="line">        font-size: 25px;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    li&#123;</span><br><span class="line">        font-size: 25px;</span><br><span class="line">        line-height: 35px;</span><br><span class="line">    &#125;    </span><br><span class="line"></span><br><span class="line">    #two&#123;</span><br><span class="line">        color: red;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#x2F;*    .lanse&#123;</span><br><span class="line">        color: blue;</span><br><span class="line">    &#125;*&#x2F;</span><br><span class="line">    </span><br><span class="line">    &#x2F;*交叉选择器*&#x2F;</span><br><span class="line">    li.lanse&#123;</span><br><span class="line">        color:blue; </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;*群组选择器*&#x2F;</span><br><span class="line">    #test,.seven&#123;</span><br><span class="line">        color: orange;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;*子代选择器*&#x2F;</span><br><span class="line">    li span&#123;</span><br><span class="line">        color: pink;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;!-- 下面是html的写法 --&gt;</span><br><span class="line">    &lt;font color&#x3D;&#39;blue&#39; size&#x3D;&#39;3&#39;&gt;下面是html的写法&lt;&#x2F;font&gt;</span><br><span class="line">    &lt;font color&#x3D;&#39;blue&#39; size&#x3D;&#39;3&#39;&gt;下面是html的写法&lt;&#x2F;font&gt;</span><br><span class="line">    &lt;font color&#x3D;&#39;blue&#39; size&#x3D;&#39;3&#39;&gt;下面是html的写法&lt;&#x2F;font&gt;</span><br><span class="line">    &lt;font color&#x3D;&#39;blue&#39; size&#x3D;&#39;3&#39;&gt;下面是html的写法&lt;&#x2F;font&gt;</span><br><span class="line">    &lt;font color&#x3D;&#39;blue&#39; size&#x3D;&#39;3&#39;&gt;下面是html的写法&lt;&#x2F;font&gt;</span><br><span class="line">    &lt;font color&#x3D;&#39;blue&#39; size&#x3D;&#39;3&#39;&gt;下面是html的写法&lt;&#x2F;font&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 下面是css的写法 --&gt;</span><br><span class="line">    &lt;p&gt;下面是css的写法&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;p&gt;下面是css的写法&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;p&gt;下面是css的写法&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;p&gt;下面是css的写法&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;p&gt;下面是css的写法&lt;&#x2F;p&gt;</span><br><span class="line"></span><br><span class="line">    我是ul外面的span标签</span><br><span class="line"></span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;我是第1行li标签</span><br><span class="line">            我是ul里面的span标签&lt;&#x2F;li&gt;</span><br><span class="line">        - 我是第2行li标签</span><br><span class="line">        - 我是第3行li标签</span><br><span class="line">        - 我是第4行li标签</span><br><span class="line">        - 我是第5行li标签</span><br><span class="line">        - 我是第6行li标签</span><br><span class="line">        - 我是第7行li标签</span><br><span class="line">    &lt;&#x2F;ul&gt;</span><br><span class="line"></span><br><span class="line">    &lt;p class&#x3D;&quot;lanse&quot;&gt;我是class为lanse的p标签&lt;&#x2F;p&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a class="btn btn-primary" href="/2015/07/21/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E9%80%89%E6%8B%A9%E5%99%A8/#more">全文 &gt;&gt;</a>
-          </p>
-        
-      
-    </div>
-
-    
-
-    <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2015/07/21/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E9%80%89%E6%8B%A9%E5%99%A8/" data-id="ckca3uxyg001pw20lh7zcb8ec" class="article-share-link">
-        <i class="fa fa-share"></i> 分享
-      </a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML-CSS-JS/" rel="tag">HTML/CSS/JS</a></li></ul>
-
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-HTML学习笔记——head、body及简单标签" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <header class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/20/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94head%E3%80%81body%E5%8F%8A%E7%AE%80%E5%8D%95%E6%A0%87%E7%AD%BE/">HTML学习笔记——head、body及简单标签</a>
-    </h1>
-  
-
-
-  </header>
-
-  <div class="article-meta">
-    <div class="article-datetime">
-  <a href="/2015/07/20/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94head%E3%80%81body%E5%8F%8A%E7%AE%80%E5%8D%95%E6%A0%87%E7%AD%BE/" class="article-date"><time datetime="2015-07-19T16:00:00.000Z" itemprop="datePublished">2015-07-20</time></a>
-</div>
-
-    <div class="article-author">tonglin0325</div>
-    
-
-  </div>
-  <div class="article-inner">
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1&gt; title标签、网站关键词、网站描述、实现百度网的跳转</p>
-<p>2&gt; 单标签、对标签、p标签</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html PUBLIC &quot;-&#x2F;&#x2F;W3C&#x2F;&#x2F;DTD XHTML 1.0 Transitional&#x2F;&#x2F;EN&quot; &quot;http:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;xhtml1&#x2F;DTD&#x2F;xhtml1-transitional.dtd&quot;&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta http-equiv&#x3D;&quot;Content-Type&quot; content&#x3D;&quot;text&#x2F;html; charset&#x3D;UTF-8&quot;&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;!-- title标签 --&gt;</span><br><span class="line">        &lt;title&gt;我是title&lt;&#x2F;title&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;!-- 网站关键词 --&gt;</span><br><span class="line">        &lt;meta name&#x3D;&#39;keywords&#39; content&#x3D;&quot;切糕，卖切糕，卖切糕&quot;&#x2F;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- 网站描述 --&gt;</span><br><span class="line">        &lt;meta name&#x3D;&#39;description&#39; content&#x3D;&quot;本网站介绍，要有可读性，100-200字&quot;&#x2F;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- 5秒钟后跳转到百度网 --&gt;</span><br><span class="line">        &lt;meta http-equiv&#x3D;&#39;refresh&#39; content&#x3D;&quot;5;url&#x3D;&#39;http:&#x2F;&#x2F;www.baidu.com&#39;&quot;&#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;head&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;body&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- 单标签 --&gt;</span><br><span class="line">        &lt;img src&#x3D;&quot;dog.jpg&quot; width&#x3D;&quot;100&quot; height&#x3D;&quot;150&quot; title&#x3D;&quot;图片&quot;&#x2F;&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;!-- 对标签 --&gt;</span><br><span class="line">        [百度](http:&#x2F;&#x2F;www.baidu.com)</span><br><span class="line"></span><br><span class="line">        **我是strong标签**</span><br><span class="line">        &lt;p&gt;我是p标签&lt;&#x2F;p&gt;</span><br><span class="line"></span><br><span class="line">    &lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a class="btn btn-primary" href="/2015/07/20/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94head%E3%80%81body%E5%8F%8A%E7%AE%80%E5%8D%95%E6%A0%87%E7%AD%BE/#more">全文 &gt;&gt;</a>
-          </p>
-        
-      
-    </div>
-
-    
-
-    <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2015/07/20/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94head%E3%80%81body%E5%8F%8A%E7%AE%80%E5%8D%95%E6%A0%87%E7%AD%BE/" data-id="ckca3uxyd001jw20l621uh37r" class="article-share-link">
-        <i class="fa fa-share"></i> 分享
-      </a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML-CSS-JS/" rel="tag">HTML/CSS/JS</a></li></ul>
-
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-HTML学习笔记——锚链接、pre标签、实体" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <header class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/20/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E9%94%9A%E9%93%BE%E6%8E%A5%E3%80%81pre%E6%A0%87%E7%AD%BE%E3%80%81%E5%AE%9E%E4%BD%93/">HTML学习笔记——锚链接、pre标签、实体</a>
-    </h1>
-  
-
-
-  </header>
-
-  <div class="article-meta">
-    <div class="article-datetime">
-  <a href="/2015/07/20/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E9%94%9A%E9%93%BE%E6%8E%A5%E3%80%81pre%E6%A0%87%E7%AD%BE%E3%80%81%E5%AE%9E%E4%BD%93/" class="article-date"><time datetime="2015-07-19T16:00:00.000Z" itemprop="datePublished">2015-07-20</time></a>
-</div>
-
-    <div class="article-author">tonglin0325</div>
-    
-
-  </div>
-  <div class="article-inner">
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1&gt;锚链接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html PUBLIC &quot;-&#x2F;&#x2F;W3C&#x2F;&#x2F;DTD XHTML 1.0 Transitional&#x2F;&#x2F;EN&quot; &quot;http:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;xhtml1&#x2F;DTD&#x2F;xhtml1-transitional.dtd&quot;&gt;</span><br><span class="line">&lt;html xmlns&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;1999&#x2F;xhtml&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv&#x3D;&quot;Content-Type&quot; content&#x3D;&quot;text&#x2F;html; charset&#x3D;utf-8&quot; &#x2F;&gt;</span><br><span class="line">&lt;title&gt;无标题文档&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">    </span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;!-- 从新的页面打开 --&gt;</span><br><span class="line">    &lt;!-- [百度首页](http:&#x2F;&#x2F;www.baidu.com) --&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 锚链接用法 --&gt;</span><br><span class="line">    </span><br><span class="line">    [第一章节](#first)</span><br><span class="line">    [第二章节](#second)</span><br><span class="line"></span><br><span class="line">    &lt;h2 id&#x3D;&quot;first&quot;&gt;第一章节&lt;&#x2F;h2&gt;</span><br><span class="line">    &lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;</span><br><span class="line"></span><br><span class="line">    &lt;h2 id&#x3D;&quot;second&quot;&gt;第二章节&lt;&#x2F;h2&gt;</span><br><span class="line">    &lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;&lt;p&gt;里面的没有内容&lt;&#x2F;p&gt;</span><br><span class="line"></span><br><span class="line">    [回到顶部](#top)</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2&gt;pre标签、实体</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html PUBLIC &quot;-&#x2F;&#x2F;W3C&#x2F;&#x2F;DTD XHTML 1.0 Transitional&#x2F;&#x2F;EN&quot; &quot;http:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;xhtml1&#x2F;DTD&#x2F;xhtml1-transitional.dtd&quot;&gt;</span><br><span class="line">&lt;html xmlns&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;1999&#x2F;xhtml&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv&#x3D;&quot;Content-Type&quot; content&#x3D;&quot;text&#x2F;html; charset&#x3D;utf-8&quot; &#x2F;&gt;</span><br><span class="line">&lt;title&gt;无标题文档&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- pre标签 --&gt;</span><br><span class="line">    床前明月光</span><br><span class="line">    疑是地上霜</span><br><span class="line">    举头望明月</span><br><span class="line">    低头思故乡</span><br><span class="line">    &lt;pre&gt;</span><br><span class="line">    兰陵美酒郁金香</span><br><span class="line">    玉碗盛来琥珀光</span><br><span class="line">    但使主人能醉客</span><br><span class="line">    不知何处是他乡</span><br><span class="line">    &lt;&#x2F;pre&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 实体 --&gt;</span><br><span class="line">        ha标签的写法是这样的：&amp;lt;h1&amp;gt;h1实例&amp;lt;&#x2F;h1&amp;gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a class="btn btn-primary" href="/2015/07/20/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E9%94%9A%E9%93%BE%E6%8E%A5%E3%80%81pre%E6%A0%87%E7%AD%BE%E3%80%81%E5%AE%9E%E4%BD%93/#more">全文 &gt;&gt;</a>
-          </p>
-        
-      
-    </div>
-
-    
-
-    <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2015/07/20/HTML%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E9%94%9A%E9%93%BE%E6%8E%A5%E3%80%81pre%E6%A0%87%E7%AD%BE%E3%80%81%E5%AE%9E%E4%BD%93/" data-id="ckca3uxyg001qw20lgvluc79m" class="article-share-link">
-        <i class="fa fa-share"></i> 分享
-      </a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML-CSS-JS/" rel="tag">HTML/CSS/JS</a></li></ul>
-
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-MySQL学习笔记——多表连接和子查询" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <header class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/20/MySQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%A4%9A%E8%A1%A8%E8%BF%9E%E6%8E%A5%E5%92%8C%E5%AD%90%E6%9F%A5%E8%AF%A2/">MySQL学习笔记——多表连接和子查询</a>
-    </h1>
-  
-
-
-  </header>
-
-  <div class="article-meta">
-    <div class="article-datetime">
-  <a href="/2015/07/20/MySQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%A4%9A%E8%A1%A8%E8%BF%9E%E6%8E%A5%E5%92%8C%E5%AD%90%E6%9F%A5%E8%AF%A2/" class="article-date"><time datetime="2015-07-19T16:00:00.000Z" itemprop="datePublished">2015-07-20</time></a>
-</div>
-
-    <div class="article-author">tonglin0325</div>
-    
-
-  </div>
-  <div class="article-inner">
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>多表连接查询</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"># 返回的是两张表的乘积</span><br><span class="line">SELECT * FROM tb_emp,tb_dept</span><br><span class="line">SELECT COUNT(*) FROM tb_emp,tb_dept</span><br><span class="line"></span><br><span class="line"># 标准写法，每个数据库都能这么写</span><br><span class="line">SELECT * FROM tb_emp CROSS JOIN tb_dept</span><br><span class="line"></span><br><span class="line"># 内连接 只列出这些连接表中与连接条件相匹配的数据行</span><br><span class="line">SELECT * FROM tb_emp e,tb_dept d WHERE e.NAME &#x3D; d.NAME</span><br><span class="line"></span><br><span class="line">SELECT * FROM tb_emp INNER JOIN tb_dept</span><br><span class="line">ON tb_emp.NAME &#x3D; tb_dept.NAME</span><br><span class="line"></span><br><span class="line"># 外链接 不仅列出与连接条件相匹配的行，还列出左表（左外连接），右表（右外连接）或两个表（全外连接）中所有符合where过滤条件的数据行</span><br><span class="line"># 左外连接 在外连接中，某些不满足条件的列也会显示出来，也就是说，只限制其中一个表的行，而不限制另一个表的行</span><br><span class="line"># 左边的表作为主表，左边的表会全部显示</span><br><span class="line">SELECT * FROM tb_emp LEFT JOIN tb_dept</span><br><span class="line">ON tb_emp.NAME &#x3D; tb_dept.NAME</span><br><span class="line"></span><br><span class="line">#oracle语法，左连接加号在左边</span><br><span class="line">SELECT * FROM tb_emp e,tb_dept d WHERE e.NAME&#x3D;d.NAME(+)</span><br><span class="line"></span><br><span class="line">#右外连接</span><br><span class="line">SELECT * FROM tb_emp RIGHT JOIN tb_dept</span><br><span class="line">ON tb_emp.NAME &#x3D; tb_dept.NAME</span><br><span class="line"></span><br><span class="line">#全外连接 MySQL不支持 OUTER</span><br><span class="line"></span><br><span class="line">#自连接</span><br><span class="line">SELECT c.NAME &#39;部门名字&#39;,c2.NAME &#39;其他部门&#39;</span><br><span class="line">FROM tb_dept c LEFT JOIN tb_dept c2</span><br><span class="line">ON c.description&#x3D;c2.id</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a class="btn btn-primary" href="/2015/07/20/MySQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%A4%9A%E8%A1%A8%E8%BF%9E%E6%8E%A5%E5%92%8C%E5%AD%90%E6%9F%A5%E8%AF%A2/#more">全文 &gt;&gt;</a>
-          </p>
-        
-      
-    </div>
-
-    
-
-    <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2015/07/20/MySQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%A4%9A%E8%A1%A8%E8%BF%9E%E6%8E%A5%E5%92%8C%E5%AD%90%E6%9F%A5%E8%AF%A2/" data-id="ckca3uy0l007iw20lbkea4nc0" class="article-share-link">
-        <i class="fa fa-share"></i> 分享
-      </a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li></ul>
-
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <div id="page-nav">
-    <nav><ul class="pagination"><li><a class="page-prev" rel="prev" href="/page/50/"><i class="fa fa-chevron-left"></i> Prev</a></li><li><a class="page-number" href="/">1</a></li><li class="disabled"><span class="page-space">&hellip;</span></li><li><a class="page-number" href="/page/49/">49</a></li><li><a class="page-number" href="/page/50/">50</a></li><li class="active"><span class="page-number">51</span></li><li><a class="page-number" href="/page/52/">52</a></li><li><a class="page-number" href="/page/53/">53</a></li><li class="disabled"><span class="page-space">&hellip;</span></li><li><a class="page-number" href="/page/55/">55</a></li><li><a class="page-next" rel="next" href="/page/52/">Next <i class="fa fa-chevron-right"></i></a></li></ul></nav>
+    <nav><ul class="pagination"><li><a class="page-prev" rel="prev" href="/page/50/"><i class="fa fa-chevron-left"></i> Prev</a></li><li><a class="page-number" href="/">1</a></li><li class="disabled"><span class="page-space">&hellip;</span></li><li><a class="page-number" href="/page/49/">49</a></li><li><a class="page-number" href="/page/50/">50</a></li><li class="active"><span class="page-number">51</span></li><li><a class="page-number" href="/page/52/">52</a></li><li><a class="page-number" href="/page/53/">53</a></li><li class="disabled"><span class="page-space">&hellip;</span></li><li><a class="page-number" href="/page/56/">56</a></li><li><a class="page-next" rel="next" href="/page/52/">Next <i class="fa fa-chevron-right"></i></a></li></ul></nav>
   </div>
 
 
@@ -679,7 +684,7 @@ ga('send', 'pageview');
   
   <div class="sidebar-module">
     <h4>标签</h4>
-    <ul class="sidebar-module-list" itemprop="keywords"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Airbnb/" rel="tag">Airbnb</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Ajax/" rel="tag">Ajax</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Android/" rel="tag">Android</a><span class="sidebar-module-list-count">18</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Bootstrap/" rel="tag">Bootstrap</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ELK/" rel="tag">ELK</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Flink/" rel="tag">Flink</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Git/" rel="tag">Git</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/HTML-CSS-JS/" rel="tag">HTML/CSS/JS</a><span class="sidebar-module-list-count">32</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hbase/" rel="tag">Hbase</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hive/" rel="tag">Hive</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JSON/" rel="tag">JSON</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JVM/" rel="tag">JVM</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a><span class="sidebar-module-list-count">72</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a><span class="sidebar-module-list-count">38</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E5%85%B3%E9%94%AE%E5%AD%97/" rel="tag">Java关键字</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">Java数据库</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E7%95%8C%E9%9D%A2/" rel="tag">Java界面</a><span class="sidebar-module-list-count">16</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="sidebar-module-list-count">50</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ML/" rel="tag">ML</a><span class="sidebar-module-list-count">28</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Maven/" rel="tag">Maven</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Nexus/" rel="tag">Nexus</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/NoSQL/" rel="tag">NoSQL</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Python/" rel="tag">Python</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Reading/" rel="tag">Reading</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Ruby/" rel="tag">Ruby</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SQL/" rel="tag">SQL</a><span class="sidebar-module-list-count">21</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Scala/" rel="tag">Scala</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Solr/" rel="tag">Solr</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Spark/" rel="tag">Spark</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/TCP-IP/" rel="tag">TCP/IP</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Thrift/" rel="tag">Thrift</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/antlr/" rel="tag">antlr</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/cdh/" rel="tag">cdh</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/docker/" rel="tag">docker</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/filebeat/" rel="tag">filebeat</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/flume/" rel="tag">flume</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/go/" rel="tag">go</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/google/" rel="tag">google</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/jquery/" rel="tag">jquery</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/kafka/" rel="tag">kafka</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/kerberos/" rel="tag">kerberos</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/mac/" rel="tag">mac</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nlp/" rel="tag">nlp</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/open-falcon/" rel="tag">open-falcon</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/redis/" rel="tag">redis</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/twitter/" rel="tag">twitter</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/yarn/" rel="tag">yarn</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/zookeeper/" rel="tag">zookeeper</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%88%B7%E9%A2%98/" rel="tag">刷题</a><span class="sidebar-module-list-count">27</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%9B%BE%E5%AD%98%E5%82%A8%E5%8F%8A%E8%AE%A1%E7%AE%97/" rel="tag">图存储及计算</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="tag">开发工具</a><span class="sidebar-module-list-count">15</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="sidebar-module-list-count">22</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="sidebar-module-list-count">27</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="sidebar-module-list-count">7</span></li></ul>
+    <ul class="sidebar-module-list" itemprop="keywords"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Airbnb/" rel="tag">Airbnb</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Ajax/" rel="tag">Ajax</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Amazon/" rel="tag">Amazon</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Android/" rel="tag">Android</a><span class="sidebar-module-list-count">18</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Bootstrap/" rel="tag">Bootstrap</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ELK/" rel="tag">ELK</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Flink/" rel="tag">Flink</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Git/" rel="tag">Git</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/HTML-CSS-JS/" rel="tag">HTML/CSS/JS</a><span class="sidebar-module-list-count">32</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hbase/" rel="tag">Hbase</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hive/" rel="tag">Hive</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JDBC/" rel="tag">JDBC</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JSON/" rel="tag">JSON</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JVM/" rel="tag">JVM</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a><span class="sidebar-module-list-count">72</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a><span class="sidebar-module-list-count">38</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E5%85%B3%E9%94%AE%E5%AD%97/" rel="tag">Java关键字</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E7%95%8C%E9%9D%A2/" rel="tag">Java界面</a><span class="sidebar-module-list-count">16</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="sidebar-module-list-count">50</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ML/" rel="tag">ML</a><span class="sidebar-module-list-count">28</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Maven/" rel="tag">Maven</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Nexus/" rel="tag">Nexus</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/NoSQL/" rel="tag">NoSQL</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Python/" rel="tag">Python</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Reading/" rel="tag">Reading</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Ruby/" rel="tag">Ruby</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SQL/" rel="tag">SQL</a><span class="sidebar-module-list-count">21</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Scala/" rel="tag">Scala</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Solr/" rel="tag">Solr</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Spark/" rel="tag">Spark</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/TCP-IP/" rel="tag">TCP/IP</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Thrift/" rel="tag">Thrift</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/antlr/" rel="tag">antlr</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/cdh/" rel="tag">cdh</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/docker/" rel="tag">docker</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/filebeat/" rel="tag">filebeat</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/flume/" rel="tag">flume</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/go/" rel="tag">go</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/google/" rel="tag">google</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/jquery/" rel="tag">jquery</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/kafka/" rel="tag">kafka</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/kerberos/" rel="tag">kerberos</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ldap/" rel="tag">ldap</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/mac/" rel="tag">mac</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nlp/" rel="tag">nlp</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/open-falcon/" rel="tag">open-falcon</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/redis/" rel="tag">redis</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/twitter/" rel="tag">twitter</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/yarn/" rel="tag">yarn</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/zookeeper/" rel="tag">zookeeper</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%88%B7%E9%A2%98/" rel="tag">刷题</a><span class="sidebar-module-list-count">27</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%9B%BE%E5%AD%98%E5%82%A8%E5%8F%8A%E8%AE%A1%E7%AE%97/" rel="tag">图存储及计算</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="tag">开发工具</a><span class="sidebar-module-list-count">15</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="sidebar-module-list-count">22</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="sidebar-module-list-count">27</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="sidebar-module-list-count">7</span></li></ul>
   </div>
 
 
@@ -688,7 +693,7 @@ ga('send', 'pageview');
   <div class="sidebar-module">
     <h4>标签云</h4>
     <p class="tagcloud">
-      <a href="/tags/Airbnb/" style="font-size: 12.38px;">Airbnb</a> <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Android/" style="font-size: 15.71px;">Android</a> <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/ELK/" style="font-size: 13.33px;">ELK</a> <a href="/tags/Flink/" style="font-size: 12.38px;">Flink</a> <a href="/tags/Git/" style="font-size: 10.95px;">Git</a> <a href="/tags/HTML-CSS-JS/" style="font-size: 18.57px;">HTML/CSS/JS</a> <a href="/tags/Hadoop/" style="font-size: 11.43px;">Hadoop</a> <a href="/tags/Hbase/" style="font-size: 10.95px;">Hbase</a> <a href="/tags/Hive/" style="font-size: 11.43px;">Hive</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JVM/" style="font-size: 10.48px;">JVM</a> <a href="/tags/JavaSE/" style="font-size: 20px;">JavaSE</a> <a href="/tags/JavaWeb/" style="font-size: 19.05px;">JavaWeb</a> <a href="/tags/Java%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 12.86px;">Java关键字</a> <a href="/tags/Java%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 13.33px;">Java数据库</a> <a href="/tags/Java%E7%95%8C%E9%9D%A2/" style="font-size: 15.24px;">Java界面</a> <a href="/tags/Linux/" style="font-size: 19.52px;">Linux</a> <a href="/tags/ML/" style="font-size: 18.1px;">ML</a> <a href="/tags/Maven/" style="font-size: 10.48px;">Maven</a> <a href="/tags/Nexus/" style="font-size: 11.43px;">Nexus</a> <a href="/tags/NoSQL/" style="font-size: 10px;">NoSQL</a> <a href="/tags/Python/" style="font-size: 16.19px;">Python</a> <a href="/tags/Reading/" style="font-size: 10.95px;">Reading</a> <a href="/tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="/tags/SQL/" style="font-size: 16.67px;">SQL</a> <a href="/tags/Scala/" style="font-size: 13.33px;">Scala</a> <a href="/tags/Solr/" style="font-size: 10.95px;">Solr</a> <a href="/tags/Spark/" style="font-size: 16.19px;">Spark</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/SpringMVC/" style="font-size: 14.29px;">SpringMVC</a> <a href="/tags/TCP-IP/" style="font-size: 10.95px;">TCP/IP</a> <a href="/tags/Thrift/" style="font-size: 10.48px;">Thrift</a> <a href="/tags/antlr/" style="font-size: 10.48px;">antlr</a> <a href="/tags/cdh/" style="font-size: 10.95px;">cdh</a> <a href="/tags/docker/" style="font-size: 10.48px;">docker</a> <a href="/tags/filebeat/" style="font-size: 10.48px;">filebeat</a> <a href="/tags/flume/" style="font-size: 10.48px;">flume</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/kafka/" style="font-size: 11.9px;">kafka</a> <a href="/tags/kerberos/" style="font-size: 10px;">kerberos</a> <a href="/tags/mac/" style="font-size: 10.95px;">mac</a> <a href="/tags/nginx/" style="font-size: 12.38px;">nginx</a> <a href="/tags/nlp/" style="font-size: 10.48px;">nlp</a> <a href="/tags/open-falcon/" style="font-size: 10.95px;">open-falcon</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/twitter/" style="font-size: 10px;">twitter</a> <a href="/tags/yarn/" style="font-size: 10.48px;">yarn</a> <a href="/tags/zookeeper/" style="font-size: 13.81px;">zookeeper</a> <a href="/tags/%E5%88%B7%E9%A2%98/" style="font-size: 17.62px;">刷题</a> <a href="/tags/%E5%9B%BE%E5%AD%98%E5%82%A8%E5%8F%8A%E8%AE%A1%E7%AE%97/" style="font-size: 10.48px;">图存储及计算</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 13.81px;">多线程</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" style="font-size: 14.76px;">开发工具</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 17.14px;">数据结构</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 12.38px;">杂谈</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.62px;">算法</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 12.86px;">设计模式</a>
+      <a href="/tags/Airbnb/" style="font-size: 12.38px;">Airbnb</a> <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Amazon/" style="font-size: 10px;">Amazon</a> <a href="/tags/Android/" style="font-size: 15.71px;">Android</a> <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/ELK/" style="font-size: 13.33px;">ELK</a> <a href="/tags/Flink/" style="font-size: 12.38px;">Flink</a> <a href="/tags/Git/" style="font-size: 10.95px;">Git</a> <a href="/tags/HTML-CSS-JS/" style="font-size: 18.57px;">HTML/CSS/JS</a> <a href="/tags/Hadoop/" style="font-size: 11.9px;">Hadoop</a> <a href="/tags/Hbase/" style="font-size: 10.95px;">Hbase</a> <a href="/tags/Hive/" style="font-size: 11.43px;">Hive</a> <a href="/tags/JDBC/" style="font-size: 13.33px;">JDBC</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JVM/" style="font-size: 10.48px;">JVM</a> <a href="/tags/JavaSE/" style="font-size: 20px;">JavaSE</a> <a href="/tags/JavaWeb/" style="font-size: 19.05px;">JavaWeb</a> <a href="/tags/Java%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 12.86px;">Java关键字</a> <a href="/tags/Java%E7%95%8C%E9%9D%A2/" style="font-size: 15.24px;">Java界面</a> <a href="/tags/Linux/" style="font-size: 19.52px;">Linux</a> <a href="/tags/ML/" style="font-size: 18.1px;">ML</a> <a href="/tags/Maven/" style="font-size: 10.48px;">Maven</a> <a href="/tags/Nexus/" style="font-size: 11.43px;">Nexus</a> <a href="/tags/NoSQL/" style="font-size: 10px;">NoSQL</a> <a href="/tags/Python/" style="font-size: 16.19px;">Python</a> <a href="/tags/Reading/" style="font-size: 10.95px;">Reading</a> <a href="/tags/Ruby/" style="font-size: 10px;">Ruby</a> <a href="/tags/SQL/" style="font-size: 16.67px;">SQL</a> <a href="/tags/Scala/" style="font-size: 13.33px;">Scala</a> <a href="/tags/Solr/" style="font-size: 10.95px;">Solr</a> <a href="/tags/Spark/" style="font-size: 16.19px;">Spark</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/SpringMVC/" style="font-size: 14.29px;">SpringMVC</a> <a href="/tags/TCP-IP/" style="font-size: 10.95px;">TCP/IP</a> <a href="/tags/Thrift/" style="font-size: 10.48px;">Thrift</a> <a href="/tags/antlr/" style="font-size: 10.48px;">antlr</a> <a href="/tags/cdh/" style="font-size: 10.95px;">cdh</a> <a href="/tags/docker/" style="font-size: 10.48px;">docker</a> <a href="/tags/filebeat/" style="font-size: 10.48px;">filebeat</a> <a href="/tags/flume/" style="font-size: 10.48px;">flume</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/google/" style="font-size: 10.48px;">google</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/kafka/" style="font-size: 11.9px;">kafka</a> <a href="/tags/kerberos/" style="font-size: 10px;">kerberos</a> <a href="/tags/ldap/" style="font-size: 10px;">ldap</a> <a href="/tags/mac/" style="font-size: 10.95px;">mac</a> <a href="/tags/nginx/" style="font-size: 12.38px;">nginx</a> <a href="/tags/nlp/" style="font-size: 10.48px;">nlp</a> <a href="/tags/open-falcon/" style="font-size: 10.95px;">open-falcon</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/twitter/" style="font-size: 10px;">twitter</a> <a href="/tags/yarn/" style="font-size: 10.48px;">yarn</a> <a href="/tags/zookeeper/" style="font-size: 13.81px;">zookeeper</a> <a href="/tags/%E5%88%B7%E9%A2%98/" style="font-size: 17.62px;">刷题</a> <a href="/tags/%E5%9B%BE%E5%AD%98%E5%82%A8%E5%8F%8A%E8%AE%A1%E7%AE%97/" style="font-size: 10.48px;">图存储及计算</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 13.81px;">多线程</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" style="font-size: 14.76px;">开发工具</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 17.14px;">数据结构</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 12.38px;">杂谈</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.62px;">算法</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 12.86px;">设计模式</a>
     </p>
   </div>
 
@@ -697,7 +702,7 @@ ga('send', 'pageview');
   
   <div class="sidebar-module">
     <h4>文章归档</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/08/">八月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/07/">七月 2020</a><span class="sidebar-module-list-count">12</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/06/">六月 2020</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/05/">五月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/04/">四月 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/03/">三月 2020</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/02/">二月 2020</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/01/">一月 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/10/">十月 2019</a><span class="sidebar-module-list-count">12</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/09/">九月 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/08/">八月 2019</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/07/">七月 2019</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/04/">四月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/03/">三月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/01/">一月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/12/">十二月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/11/">十一月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/09/">九月 2018</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/06/">六月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">五月 2018</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">四月 2018</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/11/">十一月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/09/">九月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/05/">五月 2017</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/04/">四月 2017</a><span class="sidebar-module-list-count">23</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/03/">三月 2017</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/01/">一月 2017</a><span class="sidebar-module-list-count">24</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/12/">十二月 2016</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/11/">十一月 2016</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">12</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">15</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/08/">八月 2016</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/07/">七月 2016</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/06/">六月 2016</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/05/">五月 2016</a><span class="sidebar-module-list-count">32</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/04/">四月 2016</a><span class="sidebar-module-list-count">26</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/03/">三月 2016</a><span class="sidebar-module-list-count">133</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/02/">二月 2016</a><span class="sidebar-module-list-count">22</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/09/">九月 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/08/">八月 2015</a><span class="sidebar-module-list-count">14</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/07/">七月 2015</a><span class="sidebar-module-list-count">31</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/06/">六月 2015</a><span class="sidebar-module-list-count">25</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/04/">四月 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2013/04/">四月 2013</a><span class="sidebar-module-list-count">1</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/09/">九月 2020</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/08/">八月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/07/">七月 2020</a><span class="sidebar-module-list-count">12</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/06/">六月 2020</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/05/">五月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/04/">四月 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/03/">三月 2020</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/02/">二月 2020</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/01/">一月 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/10/">十月 2019</a><span class="sidebar-module-list-count">12</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/09/">九月 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/08/">八月 2019</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/07/">七月 2019</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/04/">四月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/03/">三月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/01/">一月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/12/">十二月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/11/">十一月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/09/">九月 2018</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/06/">六月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">五月 2018</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">四月 2018</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/11/">十一月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/09/">九月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/05/">五月 2017</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/04/">四月 2017</a><span class="sidebar-module-list-count">23</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/03/">三月 2017</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/01/">一月 2017</a><span class="sidebar-module-list-count">24</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/12/">十二月 2016</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/11/">十一月 2016</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">12</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">15</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/08/">八月 2016</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/07/">七月 2016</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/06/">六月 2016</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/05/">五月 2016</a><span class="sidebar-module-list-count">32</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/04/">四月 2016</a><span class="sidebar-module-list-count">26</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/03/">三月 2016</a><span class="sidebar-module-list-count">133</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/02/">二月 2016</a><span class="sidebar-module-list-count">22</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/09/">九月 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/08/">八月 2015</a><span class="sidebar-module-list-count">14</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/07/">七月 2015</a><span class="sidebar-module-list-count">31</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/06/">六月 2015</a><span class="sidebar-module-list-count">25</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/04/">四月 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2013/04/">四月 2013</a><span class="sidebar-module-list-count">1</span></li></ul>
   </div>
 
 
@@ -708,23 +713,23 @@ ga('send', 'pageview');
     <ul class="sidebar-module-list">
       
         <li>
+          <a href="/2020/09/29/MapReduce%E4%B8%AD%E7%9A%84InputFormat/">MapReduce中的InputFormat</a>
+        </li>
+      
+        <li>
+          <a href="/2020/09/17/Ubuntu16.04%E5%AE%89%E8%A3%85protobuf/">Ubuntu16.04安装protobuf</a>
+        </li>
+      
+        <li>
+          <a href="/2020/09/17/s3%E7%9B%B8%E5%85%B3/">s3相关</a>
+        </li>
+      
+        <li>
+          <a href="/2020/09/13/Ubuntu16.04%E5%AE%89%E8%A3%85openldap%E5%92%8Cphpldapadmin/">Ubuntu16.04安装openldap和phpldapadmin</a>
+        </li>
+      
+        <li>
           <a href="/2020/08/18/JVM%E8%B0%83%E4%BC%98%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">JVM调优常用命令</a>
-        </li>
-      
-        <li>
-          <a href="/2020/08/14/Nexus%E4%B8%8A%E4%BC%A0jar%E5%8C%85/">Nexus上传jar包</a>
-        </li>
-      
-        <li>
-          <a href="/2020/08/02/Zk%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/">Zk学习笔记——权限控制</a>
-        </li>
-      
-        <li>
-          <a href="/2020/07/25/guava%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">guava学习笔记</a>
-        </li>
-      
-        <li>
-          <a href="/2020/07/20/Elasticsearch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%88%AB%E5%90%8D/">Elasticsearch学习笔记——别名</a>
         </li>
       
     </ul>
