@@ -307,6 +307,8 @@ ga('send', 'pageview');
 
 <p>和</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public abstract </span><br><span class="line">  RecordReader&lt;K,V&gt; createRecordReader(InputSplit split,</span><br><span class="line">                                       TaskAttemptContext context</span><br><span class="line">                                      ) throws IOException, </span><br><span class="line">                                               InterruptedException;</span><br></pre></td></tr></table></figure>
+
+<p><strong>InputFormat</strong>做的事情就是将inputfile使用<strong>getSplits方法</strong>切分成List<InputSplit>，之后使用<strong>createRecordReader方法</strong>将每个split 解析成records, 再依次将record解析成&lt;K,V&gt;对</p>
         
           <p class="article-more-link">
             <a class="btn btn-primary" href="/2020/09/30/MapReduce%E4%B8%AD%E7%9A%84InputFormat/#more">全文 &gt;&gt;</a>

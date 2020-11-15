@@ -12,11 +12,21 @@
 <meta property="og:site_name" content="tonglin0325的个人主页">
 <meta property="og:description" content="InputFormat在hadoop源码中是一个抽象类 public abstract class InputFormat&lt;K, V&gt; 1https:&#x2F;&#x2F;github.com&#x2F;apache&#x2F;hadoop&#x2F;blob&#x2F;master&#x2F;hadoop-mapreduce-project&#x2F;hadoop-mapreduc">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://tonglin0325.github.io/images/517519-20201111173019261-371084873.png">
+<meta property="og:image" content="http://tonglin0325.github.io/images/517519-20201113154632190-996469566.png">
+<meta property="og:image" content="http://tonglin0325.github.io/images/517519-20201113154813343-496035637.png">
+<meta property="og:image" content="http://tonglin0325.github.io/images/517519-20201113154952009-2023481365.png">
+<meta property="og:image" content="http://tonglin0325.github.io/images/517519-20201113160810677-567983998.png">
+<meta property="og:image" content="http://tonglin0325.github.io/images/517519-20201113160933290-1992319925.png">
+<meta property="og:image" content="http://tonglin0325.github.io/images/517519-20201111163056598-1210829799.png">
+<meta property="og:image" content="http://tonglin0325.github.io/images/517519-20201113163206877-1827565106.png">
+<meta property="og:image" content="http://tonglin0325.github.io/images/517519-20201111165456938-1196281628.png">
 <meta property="article:published_time" content="2020-09-29T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-10-27T15:42:42.605Z">
+<meta property="article:modified_time" content="2020-11-15T16:11:33.207Z">
 <meta property="article:author" content="tonglin0325">
 <meta property="article:tag" content="Hadoop">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://tonglin0325.github.io/images/517519-20201111173019261-371084873.png">
   
     <link rel="alternate" href="/atom.xml" title="tonglin0325的个人主页" type="application/atom+xml">
   
@@ -140,13 +150,79 @@ ga('send', 'pageview');
 <p>和</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public abstract </span><br><span class="line">  RecordReader&lt;K,V&gt; createRecordReader(InputSplit split,</span><br><span class="line">                                       TaskAttemptContext context</span><br><span class="line">                                      ) throws IOException, </span><br><span class="line">                                               InterruptedException;</span><br></pre></td></tr></table></figure>
 
+<p><strong>InputFormat</strong>做的事情就是将inputfile使用<strong>getSplits方法</strong>切分成List<InputSplit>，之后使用<strong>createRecordReader方法</strong>将每个split 解析成records, 再依次将record解析成&lt;K,V&gt;对</p>
 <a id="more"></a>
-<p>&nbsp;getSplits方法负责将输入的文件做一个逻辑上的切分，切分成一个List<InputSplit>，InputSplit的源码在</p>
+<p>&nbsp;</p>
+<p>1.<strong>getSplits方法</strong>负责将输入的文件做一个逻辑上的切分，切分成一个List<InputSplit>，InputSplit的源码在</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;apache&#x2F;hadoop&#x2F;blob&#x2F;master&#x2F;hadoop-mapreduce-project&#x2F;hadoop-mapreduce-client&#x2F;hadoop-mapreduce-client-core&#x2F;src&#x2F;main&#x2F;java&#x2F;org&#x2F;apache&#x2F;hadoop&#x2F;mapreduce&#x2F;InputSplit.java</span><br></pre></td></tr></table></figure>
 
 <p>&nbsp;在下文中提到 <strong><code>InputSplit</code></strong>是一个逻辑概念，并没有对实际文件进行切分，它只包含一些元数据信息，比如数据的起始位置，数据长度，数据所在的节点等</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;cloud.tencent.com&#x2F;developer&#x2F;article&#x2F;1481777</span><br></pre></td></tr></table></figure>
 
+<p>2.<strong><code>createRecordReader</code>方法 将每个&nbsp;split&nbsp; 解析成records, 再依次将record解析成&lt;K,V&gt;对</strong></p>
+<p>&nbsp;</p>
+<p>常用的InputFormat如下图</p>
+<img src="/images/517519-20201111173019261-371084873.png" alt="" loading="lazy" />
+
+<p>&lt;1&gt;其中 <strong><code>TextInputFormat</code></strong> 格式的文件，每一行是一个record，key是这一行的byte的offset，即key是LongWritable，value是Text</p>
+<p>比如我们使用下面的建表语句来创建一张hive表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE &#96;default.test_1&#96;(</span><br><span class="line">      &#96;key&#96; string,</span><br><span class="line">      &#96;value&#96; string)</span><br><span class="line">STORED AS TEXTFILE</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;其hive表对应的inputformat即为 org.apache.hadoop.mapred.TextInputFormat</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE &#96;default.test_1&#96;(</span><br><span class="line">	  &#96;key&#96; string, </span><br><span class="line">	  &#96;value&#96; string)</span><br><span class="line">	ROW FORMAT SERDE </span><br><span class="line">	  &#39;org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe&#39; </span><br><span class="line">	STORED AS INPUTFORMAT </span><br><span class="line">	  &#39;org.apache.hadoop.mapred.TextInputFormat&#39; </span><br><span class="line">	OUTPUTFORMAT </span><br><span class="line">	  &#39;org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat&#39;</span><br><span class="line">	LOCATION</span><br><span class="line">	  &#39;hdfs:&#x2F;&#x2F;xxx-nameservice&#x2F;user&#x2F;hive&#x2F;warehouse&#x2F;test_1&#39;</span><br><span class="line">	TBLPROPERTIES (</span><br><span class="line">	  &#39;transient_lastDdlTime&#39;&#x3D;&#39;1605247462&#39;)</span><br></pre></td></tr></table></figure>
+
+<p>&lt;2&gt;其中 <strong>KeyValue<code>TextInputFormat</code></strong> 格式是最简单的 Hadoop 输入格式之一，可以用于从文本文件中读取键值对数据。每一行都会被独立处理，键和值之间用制表符隔开。</p>
+<p>参考：<a href="https://www.cnblogs.com/tonglin0325/p/6682367.html" target="_blank" rel="noopener">Spark学习笔记&mdash;&mdash;数据读取和保存</a></p>
+<p>比如文件的内容为，中间以tab分隔</p>
+<img src="/images/517519-20201113154632190-996469566.png" alt="" loading="lazy" />
+
+<p>&nbsp;</p>
+<p>如果使用 <strong><code>TextInputFormat</code></strong><code>来读取的话</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def main(args: Array[String]): Unit &#x3D; &#123;</span><br><span class="line">  val conf &#x3D; new SparkConf().setAppName(&quot;WordCount&quot;).setMaster(&quot;local&quot;)</span><br><span class="line">  val sc &#x3D; new SparkContext(conf)</span><br><span class="line">  val job &#x3D; Job.getInstance()</span><br><span class="line">  val data &#x3D; sc.newAPIHadoopFile(&quot;file:&#x2F;&#x2F;&#x2F;home&#x2F;lintong&#x2F;下载&#x2F;test.log&quot;,</span><br><span class="line">    classOf[TextInputFormat],</span><br><span class="line">    classOf[LongWritable],</span><br><span class="line">    classOf[Text],</span><br><span class="line">    job.getConfiguration)</span><br><span class="line">  data.foreach(println)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;输出为，其中_1为LongWritable，即byte的offset，_2为每行的文件内容</p>
+<img src="/images/517519-20201113154813343-496035637.png" alt="" loading="lazy" />
+
+<p>&nbsp;</p>
+<p>如果使用 <strong>KeyValue<code>TextInputFormat</code></strong> 来读取的话</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def main(args: Array[String]): Unit &#x3D; &#123;</span><br><span class="line">  val conf &#x3D; new SparkConf().setAppName(&quot;WordCount&quot;).setMaster(&quot;local&quot;)</span><br><span class="line">  val sc &#x3D; new SparkContext(conf)</span><br><span class="line">  val job &#x3D; Job.getInstance()</span><br><span class="line">  val data &#x3D; sc.newAPIHadoopFile(&quot;file:&#x2F;&#x2F;&#x2F;home&#x2F;lintong&#x2F;下载&#x2F;test.log&quot;,</span><br><span class="line">    classOf[KeyValueTextInputFormat],</span><br><span class="line">    classOf[Text],</span><br><span class="line">    classOf[Text],</span><br><span class="line">    job.getConfiguration)</span><br><span class="line">  data.foreach(println)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;输出为其中_1为Text，即tab分隔之前的内容，_2为tab分隔之后的内容，如果有多个tab的话，只会切分第一个tab</p>
+<img src="/images/517519-20201113154952009-2023481365.png" alt="" loading="lazy" />
+
+<p>&nbsp;&lt;3&gt; 对于 <strong><code>SequenceFileInputFormat</code></strong> 格式，这是一种专门用于二进制文件的input format，key和value的类型由用户决定</p>
+<p>在hive中如果使用thrift和PB序列化格式的hive表，可以参考Twitter的elephant-bird项目</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;twitter&#x2F;elephant-bird&#x2F;wiki&#x2F;How-to-use-Elephant-Bird-with-Hive</span><br></pre></td></tr></table></figure>
+
+<p>下面给出一个例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">CREATE EXTERNAL TABLE &#96;default.test&#96;(</span><br><span class="line">      &#96;bbb&#96; string COMMENT &#39;from deserializer&#39;,</span><br><span class="line">      &#96;aaa&#96; string COMMENT &#39;from deserializer&#39;)</span><br><span class="line">    COMMENT &#39;aas&#39;</span><br><span class="line">    PARTITIONED BY (</span><br><span class="line">      &#96;ds&#96; string COMMENT &#39;日期分区&#39;)</span><br><span class="line">    ROW FORMAT SERDE</span><br><span class="line">      &#39;org.apache.hadoop.hive.serde2.thrift.ThriftDeserializer&#39;</span><br><span class="line">    WITH SERDEPROPERTIES (</span><br><span class="line">      &#39;serialization.class&#39;&#x3D;&#39;com.xxx.xxx.xxx.tables.v1.XXXX&#39;,</span><br><span class="line">      &#39;serialization.format&#39;&#x3D;&#39;org.apache.thrift.protocol.TCompactProtocol&#39;)</span><br><span class="line">    STORED AS INPUTFORMAT</span><br><span class="line">      &#39;org.apache.hadoop.mapred.SequenceFileInputFormat&#39;</span><br><span class="line">    OUTPUTFORMAT</span><br><span class="line">      &#39;org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat&#39;</span><br><span class="line">    LOCATION</span><br><span class="line">      &#39;hdfs:&#x2F;&#x2F;master:8020&#x2F;user&#x2F;hive&#x2F;warehouse&#x2F;test&#39;</span><br><span class="line">    TBLPROPERTIES (</span><br><span class="line">      &#39;transient_lastDdlTime&#39;&#x3D;&#39;xxxxxx&#39;)</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;如果使用spark来读写sequencefile文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">def main(args: Array[String]) &#123;</span><br><span class="line">    val conf &#x3D; new SparkConf().setAppName(&quot;WordCount&quot;).setMaster(&quot;local&quot;)</span><br><span class="line">    val sc &#x3D; new SparkContext(conf)</span><br><span class="line"> </span><br><span class="line">    &#x2F;&#x2F;写sequenceFile，</span><br><span class="line">    val rdd &#x3D; sc.parallelize(List((&quot;Panda&quot;, 3), (&quot;Kay&quot;, 6), (&quot;Snail&quot;, 2)))</span><br><span class="line">    rdd.saveAsSequenceFile(&quot;file:&#x2F;&#x2F;&#x2F;home&#x2F;lintong&#x2F;下载&#x2F;output&quot;)</span><br><span class="line"> </span><br><span class="line">    &#x2F;&#x2F;读sequenceFile</span><br><span class="line">    val output &#x3D; sc.sequenceFile(&quot;file:&#x2F;&#x2F;&#x2F;home&#x2F;lintong&#x2F;下载&#x2F;output&quot;, classOf[Text], classOf[IntWritable]).</span><br><span class="line">      map&#123;case (x, y) &#x3D;&gt; (x.toString, y.get())&#125;</span><br><span class="line">    output.foreach(println)</span><br><span class="line"> </span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出的文件格式为二进制，如下</p>
+<img src="/images/517519-20201113160810677-567983998.png" alt="" loading="lazy" />
+
+<p>&nbsp;</p>
+<p>&nbsp;读取结果如下</p>
+<img src="/images/517519-20201113160933290-1992319925.png" alt="" loading="lazy" />
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;对于那些不支持split的文件格式，提升mapreduce任务的map数并不能加快处理的速度，参考hadoop权限指南的表格</p>
+<img src="/images/517519-20201111163056598-1210829799.png" alt="" loading="lazy" />
+
+<img src="/images/517519-20201113163206877-1827565106.png" alt="" loading="lazy" />
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>注意：其中<strong>gzip压缩格式</strong>适合用于冷数据上；<strong>snappy</strong>和<strong>lzo压缩格式</strong>适合用于热数据上；</p>
+<p><strong>lzo格式</strong>在创建在index索引文件后，可以支持切分；</p>
+<p>此外，从cloudera的文章 <a href="https://docs.cloudera.com/cloudera-manager/7.1.0/managing-clusters/topics/cm-choosing-configuring-data-compression.html" target="_blank" rel="noopener">Choosing and Configuring Data Compression</a> 中，可以看出</p>
+<p><strong>gzip</strong>和<strong>snappy格式</strong>的块是不能切分的，但是使用了avro这种<strong>容器文件格式</strong>的snappy块的文件是可以切分的；snappy压缩格式也建议是使用在二进制文件和avro数据文件中，不建议使用在文本格式文件中，比如json格式</p>
+<img src="/images/517519-20201111165456938-1196281628.png" alt="" loading="lazy" />
+
+<p><strong>&nbsp;</strong></p>
 <p>&nbsp;</p>
 
       
