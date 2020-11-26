@@ -464,7 +464,9 @@ for ldap providers in the same way as above does.
 
 <property>
   <name>io.serializations</name>
-  <value>org.apache.hadoop.io.serializer.WritableSerialization,org.apache.hadoop.io.serializer.avro.AvroSpecificSerialization,org.apache.hadoop.io.serializer.avro.AvroReflectSerialization</value>
+  <value>org.apache.hadoop.io.serializer.WritableSerialization,
+    org.apache.hadoop.io.serializer.avro.AvroSpecificSerialization,
+    org.apache.hadoop.io.serializer.avro.AvroReflectSerialization</value>
   <description>A list of serialization classes that can be used for
   obtaining serializers and deserializers.</description>
 </property>
@@ -510,6 +512,7 @@ for ldap providers in the same way as above does.
   uri's scheme determines the config property (fs.SCHEME.impl) naming
   the FileSystem implementation class.  The uri's authority is used to
   determine the host, port, etc. for a filesystem.</description>
+
 </property>
 
 <property>
@@ -517,6 +520,9 @@ for ldap providers in the same way as above does.
   <value>file:///</value>
   <description>Deprecated. Use (fs.defaultFS) property
   instead</description>
+  <cn_description>默认文件系统，uri定义主机名称和namenode的rpc服务器工作的端口号，默认是8020</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -1545,7 +1551,8 @@ for ldap providers in the same way as above does.
 
 <property>
   <name>hadoop.security.crypto.codec.classes.aes.ctr.nopadding</name>
-  <value>org.apache.hadoop.crypto.OpensslAesCtrCryptoCodec,org.apache.hadoop.crypto.JceAesCtrCryptoCodec</value>
+  <value>org.apache.hadoop.crypto.OpensslAesCtrCryptoCodec,
+    org.apache.hadoop.crypto.JceAesCtrCryptoCodec</value>
   <description>
     Comma-separated list of crypto codec implementations for AES/CTR/NoPadding. 
     The first implementation will be used if available, others are fallbacks.
