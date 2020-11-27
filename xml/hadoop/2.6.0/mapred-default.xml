@@ -105,7 +105,7 @@
   at.  If "local", then jobs are run in-process as a single map
   and reduce task.
   </description>
-  <cn_description>运行jobtracker的RPC服务器的主机名和端口。如果设为默认值local，则运行一个MapReduce作业时，jobtracker以处理时模式运行
+  <cn_description>运行jobtracker的RPC服务器的主机名和端口，一般使用的端口为8021。如果设为默认值local，则运行一个MapReduce作业时，jobtracker以处理时模式运行
     （换言之，用户）无需启动jobtracker；如果试图在该模式下启动jobtracker还会引发错误</cn_description>
   <cdh_val></cdh_val>
   <label></label>
@@ -125,6 +125,9 @@
     The job tracker http server address and port the server will listen on.
     If the port is 0 then the server will start on a free port.
   </description>
+  <cn_description>jobtrackerHTTP服务器地址和端口</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -143,6 +146,13 @@
   Since it is only connected to by the tasks, it uses the local interface.
   EXPERT ONLY. Should only be changed if your host does not have the loopback 
   interface.</description>
+  <cn_description>tasktracker的RPC服务器地址和端口。
+    tasktracker的子java虚拟机和tasktracker通信时使用。
+    这种情况下使用任意空闲的端口都是可以的，因为服务器只绑定回送地址。
+    机器没有回送地址时才需改变这个设置。
+  </cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -929,6 +939,9 @@
     The task tracker http server address and port.
     If the port is 0 then the server will start on a free port.
   </description>
+  <cn_description>tasktrackerHTTP服务器地址和端口</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>

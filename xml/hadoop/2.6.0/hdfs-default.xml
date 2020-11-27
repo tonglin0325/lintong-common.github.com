@@ -94,6 +94,9 @@
   <description>
     The secondary namenode http server address and port.
   </description>
+  <cn_description>secondary namenode的HTTP服务器地址和端口</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -126,6 +129,9 @@
   <description>
     The datanode ipc server address and port.
   </description>
+  <cn_description>数据节点的RPC服务器地址和端口设置</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -140,6 +146,9 @@
   <description>
     The address and the base port where the dfs namenode web ui will listen on.
   </description>
+  <cn_description>namenode的HTTP服务器地址和端口</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -211,6 +220,9 @@
   <name>dfs.datanode.https.address</name>
   <value>0.0.0.0:50475</value>
   <description>The datanode secure http server address and port.</description>
+  <cn_description>datanode的HTTP服务器地址和端口</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -284,6 +296,9 @@
   <value>0</value>
   <description>Reserved space in bytes per volume. Always leave this much space free for non dfs use.
   </description>
+  <cn_description>备用存储空间。默认情况下，datanode将尝试使用他们存储目录下所有可用的空间。如果想保留一些空间给非HDFS使用，可以使用该属性。</cn_description>
+  <cdh_val></cdh_val>
+  <label>建议设置留下一些空间，比如10T的HDD可以考虑留下50G</label>
 </property>
 
 <property>
@@ -476,6 +491,9 @@
   <value>1</value>
   <description>Minimal block replication. 
   </description>
+  <cn_description>写操作成功所需要的最小副本数</cn_description>
+  <cdh_val>1</cdh_val>
+  <label>建议保持1</label>
 </property>
 
 <property>
@@ -487,6 +505,9 @@
       k(kilo), m(mega), g(giga), t(tera), p(peta), e(exa) to specify the size (such as 128k, 512m, 1g, etc.),
       Or provide complete size in bytes (such as 134217728 for 128 MB).
   </description>
+  <cn_description>HDFS块大小</cn_description>
+  <cdh_val>268435456</cdh_val>
+  <label>默认的HDFS块大小是128MB，一般设置成256MB来让map操作更多的数据</label>
 </property>
 
 <property>
@@ -624,6 +645,10 @@
     percentage of blocks before exiting safemode.
     Values greater than 1 will make safe mode permanent.
   </description>
+  <cn_description>namenode退出安全模式之前系统中满足dfs.namenode.replication.min定义的最小副本数级别的块的百分比。
+  将其设置成0或者更少将强制namenode不以安全模式启动；将这个值设置成大于1，意味着namenode节点永远不会退出安全模式</cn_description>
+  <cdh_val>0.999f</cdh_val>
+  <label>可以保持0.999f或者设置为0.99f</label>
 </property>
 
 <property>
@@ -647,6 +672,9 @@
     Determines extension of safe mode in milliseconds 
     after the threshold level is reached.
   </description>
+  <cn_description>满足最小副本条件dfs.namenode.safemode.threshold-pct后安全模式的持续时间，单位为毫秒。</cn_description>
+  <cdh_val></cdh_val>
+  <label>10个节点的小型集群，此属性可以设置为0</label>
 </property>
 
 <property>

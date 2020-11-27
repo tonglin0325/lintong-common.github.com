@@ -422,6 +422,9 @@ for ldap providers in the same way as above does.
   The size of this buffer should probably be a multiple of hardware
   page size (4096 on Intel x86), and it determines how much data is
   buffered during read and write operations.</description>
+  <cn_description>Hadoop IO 操作的缓冲区大小</cn_description>
+  <cdh_val>65535</cdh_val>
+  <label>原生默认是4KB(4096字节)比较保守，cdh版本的默认是65535，对于节点数上千的大型Hadoop集群，一般会设置成128KB(131072字节)</label>
 </property>
   
 <property>
@@ -536,6 +539,9 @@ for ldap providers in the same way as above does.
   server side then the value configured on the server is
   used and the client configuration value is ignored.
   </description>
+  <cn_description>HDFS定期清理垃圾箱的间隔，单位分钟</cn_description>
+  <cdh_val></cdh_val>
+  <label>可以考虑设置成10080，即在垃圾箱中保留7天删除</label>
 </property>
 
 <property>
