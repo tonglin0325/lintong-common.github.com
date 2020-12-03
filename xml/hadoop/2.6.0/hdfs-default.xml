@@ -138,6 +138,9 @@
   <name>dfs.datanode.handler.count</name>
   <value>10</value>
   <description>The number of server threads for the datanode.</description>
+  <cn_description>datanode的服务器线程数</cn_description>
+  <cdh_val></cdh_val>
+  <label>该属性默认值为 10，是 DataNode 的处理线程数，如果 HDFS 客户端程序读写请求比较多，可以调高到 15~20，设置的值越大，内存消耗越多，不要调整的过高，一般业务中， 5~10 即可</label>
 </property>
 
 <property>
@@ -310,7 +313,7 @@
       directories, for redundancy. </description>
   <cn_description>存储namenode永久元数据的目录的列表。在列表中的每一个目录下存储着元数据的副本</cn_description>
   <cdh_val></cdh_val>
-  <label></label>
+  <label>建议和dfs.datanode.data.dir配置在不同的卷上，以免受到datanode的影响</label>
 </property>
 
 <property>
@@ -333,6 +336,9 @@
   <value>1048576</value>
   <description>Defines the maximum number of items that a directory may
       contain.  A value of 0 will disable the check.</description>
+  <cn_description>hdfs每个目录最多包含的文件数</cn_description>
+  <cdh_val></cdh_val>
+  <label>也可以加一倍，改成2097152</label>
 </property>
 
 <property>
@@ -360,6 +366,10 @@
       of directories then the transaction file is replicated in all of the 
       directories, for redundancy. Default value is same as dfs.namenode.name.dir
   </description>
+  <cn_description>用于存储namenode编译的本地文件系统目录。如果未设置，编辑将存储在namenode数据目录中。
+    如果存储journalnode且此namenode不是高可用，会自动生成此配置的值作为基于Quorum的存储URI。</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -371,6 +381,10 @@
   does not need to be listed in dfs.namenode.edits.dir above. It should be
   left empty in a non-HA cluster.
   </description>
+  <cn_description>用于存储namenode编辑的共享存储设备上的目录，例如基于Quorum的存储URI或NAS上的NFS装载的本地目录。
+  如果存储JournalNode且此namenode高度可用，会自动生成此配置的值作为Quorum Journal URI</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -457,9 +471,9 @@
   directories, typically on different devices.
   Directories that do not exist are ignored.
   </description>
-  <cn_description>数据节点存储块的目录列表</cn_description>
+  <cn_description>datanode存储HDFS块数据的本地文件系统中目录的逗号分隔列表</cn_description>
   <cdh_val></cdh_val>
-  <label></label>
+  <label>建议和dfs.namenode.name.dir配置在不同的卷上，以免datanode数据读取和写入影响namenode</label>
 </property>
 
 <property>
@@ -633,6 +647,9 @@
   <name>dfs.namenode.handler.count</name>
   <value>10</value>
   <description>The number of server threads for the namenode.</description>
+  <cn_description>namenode的服务器线程数量</cn_description>
+  <cdh_val></cdh_val>
+  <label>侦听来自客户端的请求的NamenodeRPC服务器线程的数量。根据机器的可用内存可以调整为 50~100</label>
 </property>
 
 <property>
@@ -723,6 +740,9 @@
         can utilize for the balancing purpose in term of
         the number of bytes per second.
   </description>
+  <cn_description>hdfs datanode之间副本balance时候的带宽，默认为1M(1048576)</cn_description>
+  <cdh_val></cdh_val>
+  <label>可以改成20M(20971520)，30M(31457280)甚至100M(10485760)，视交换机性能而定</label>
 </property>
 
 <property>
@@ -732,6 +752,9 @@
   permitted to connect to the namenode. The full pathname of the file
   must be specified.  If the value is empty, all hosts are
   permitted.</description>
+  <cn_description>dfs.hosts所对应的文件中列出了所有可以连接到namenode的datanode，如果为空则所有的都可以连入。</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -741,6 +764,9 @@
   not permitted to connect to the namenode.  The full pathname of the
   file must be specified.  If the value is empty, no hosts are
   excluded.</description>
+  <cn_description>dfs.hosts.exclude所对应的文件中列出了禁止连接namenode的datanode节点。如果一个节点在这两个文件中都存在，则不允许连入。</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property> 
 
 <property>
@@ -970,6 +996,9 @@
   fail before a datanode stops offering service. By default
   any volume failure will cause a datanode to shutdown.
   </description>
+  <cn_description>在datanode停止提供服务前允许失败的卷的数据量</cn_description>
+  <cdh_val></cdh_val>
+  <label>默认是0，建议改成2，因为hdfs为3备份，如果大于2有可能会丢失数据</label>
 </property>
 
 <property>
@@ -1038,6 +1067,9 @@
         Specifies the maximum number of threads to use for transferring data
         in and out of the DN.
   </description>
+  <cn_description>用于指定datanode之间传输block数据的最大线程数</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -1248,6 +1280,9 @@
     How often, in seconds, the StandbyNode should check for new
     finalized log segments in the shared edits log.
   </description>
+  <cn_description>standby namenode每隔一段时间去检查Journal node上新的Edits log文件。</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -1339,6 +1374,9 @@
     moved to the end of the node list returned for reading. See
     dfs.namenode.avoid.write.stale.datanode for a similar setting for writes.
   </description>
+  <cn_description>避免读取失效datanode</cn_description>
+  <cdh_val></cdh_val>
+  <label>决定是否避开从脏DN上读数据。脏DN指在一个指定的时间间隔内没有收到心跳信息。脏DN将被移到可以读取节点列表的尾端。尝试开启</label>
 </property>
 
 <property>
@@ -1353,6 +1391,9 @@
     stale. See dfs.namenode.avoid.read.stale.datanode for a similar setting
     for reads.
   </description>
+  <cn_description>避免写入失效datanode</cn_description>
+  <cdh_val></cdh_val>
+  <label>决定是否避开在脏DN上写数据。写操作将会避开脏DN，除非超过一个配置的比率。尝试开启</label>
 </property>
 
 <property>
@@ -1371,6 +1412,9 @@
     dfs.namenode.avoid.read.stale.datanode) and for writes (see
     dfs.namenode.avoid.write.stale.datanode).
   </description>
+  <cn_description>超过30s未收到heartbeat的datanode，namenode会将之判为最低优先级的读写</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -1381,6 +1425,9 @@
     is greater than this ratio, stop avoiding writing to stale nodes so
     as to prevent causing hotspots.
   </description>
+  <cn_description>当失效datanode数占被标记datanode总数的比率大于此比率时，允许写入失效节点，以防造成热点</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -2029,6 +2076,9 @@
     If the string "_PORT" is present in this path, it will be replaced by the
     TCP port of the DataNode.
   </description>
+  <cn_description>datanode本地文件系统到UNIX域套接字的路径，用于datanode和本地HDFS客户端之间的通信。</cn_description>
+  <cdh_val>/var/run/hdfs-sockets/dn</cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -2096,6 +2146,9 @@
     Comma separated list of the users allowd to open block files
     on legacy short-circuit local read.
   </description>
+  <cn_description>用户可进行快速阅读。快读阅读可让客户利用相关数据直接从HDFS中读取HDFS块。如果为空，则默认为datanode过程用户。</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>

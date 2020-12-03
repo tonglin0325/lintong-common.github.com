@@ -554,6 +554,9 @@ for ldap providers in the same way as above does.
   out of current and removes checkpoints created more than 
   fs.trash.interval minutes ago.
   </description>
+  <cn_description>垃圾检查点之间的分钟数。应该小于或等于fs.trash.interval</cn_description>
+  <cdh_val></cdh_val>
+  <label>可以考虑设置成1440</label>
 </property>
 
 <property>
