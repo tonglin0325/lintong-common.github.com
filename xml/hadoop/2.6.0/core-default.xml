@@ -949,6 +949,9 @@ for ldap providers in the same way as above does.
     node names. If the value for net.topology.script.file.name is not set, the
     default value of DEFAULT_RACK is returned for all node names.
   </description>
+  <cn_description>机架感知实现类。</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -987,6 +990,11 @@ for ldap providers in the same way as above does.
     If no entry corresponding to a host in the cluster is found, then 
     /default-rack is assumed.
   </description>
+  <cn_description>在net.topology.script.file.name被设置为 org.apache.hadoop.net.TableMapping时，可以使用此配置。
+    文件格式是一个有两个列的文本文件，使用空白字符分隔。
+    第一列是DNS或IP地址，第二列是机架路径。如无指定，使用默认机架（/default-rack）</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <!-- Local file system -->

@@ -113,6 +113,9 @@
   <description>
     The datanode server address and port for data transfer.
   </description>
+  <cn_description>DN服务地址和端口，用于数据传输</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -121,6 +124,9 @@
   <description>
     The datanode http server address and port.
   </description>
+  <cn_description>DN的HTTP服务地址和端口</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -384,7 +390,8 @@
   <cn_description>用于存储namenode编辑的共享存储设备上的目录，例如基于Quorum的存储URI或NAS上的NFS装载的本地目录。
   如果存储JournalNode且此namenode高度可用，会自动生成此配置的值作为Quorum Journal URI</cn_description>
   <cdh_val></cdh_val>
-  <label></label>
+  <label>在多个NN中共享存储目录，用于存放edits文件。这个目录，由active写，由standby读，以保持命名空间数据一致。
+    此目录不需要是dfs.namenode.edits.dir中列出的。在非HA集群中，它不会使用。建议使用qj方式</label>
 </property>
 
 <property>
@@ -402,12 +409,18 @@
     Switching from one parameter value to the other does not change the mode,
     owner or group of files or directories.
   </description>
+  <cn_description>是否在HDFS中开启权限检查</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
   <name>dfs.permissions.superusergroup</name>
   <value>supergroup</value>
   <description>The name of the group of super-users.</description>
+  <cn_description>超级用户组。仅能设置一个。</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 <!--
 <property>
@@ -427,6 +440,9 @@
     default, ACLs are disabled.  When ACLs are disabled, the NameNode rejects
     all RPCs related to setting or getting ACLs.
   </description>
+  <cn_description>HDFS ACLs开关</cn_description>
+  <cdh_val></cdh_val>
+  <label>建议开启，https://docs.cloudera.com/documentation/enterprise/latest/topics/cdh_sg_hdfs_ext_acls.html</label>
 </property>
 
 <property>
@@ -446,6 +462,9 @@
     If "true", access tokens are used as capabilities for accessing datanodes.
     If "false", no access tokens are checked on accessing datanodes.
   </description>
+  <cn_description>访问DN时是否验证访问令牌</cn_description>
+  <cdh_val></cdh_val>
+  <label>默认为false</label>
 </property>
 
 <property>
@@ -482,6 +501,9 @@
   <description>Permissions for the directories on on the local filesystem where
   the DFS data node store its blocks. The permissions can either be octal or
   symbolic.</description>
+  <cn_description>本地数据目录权限设定。8进制或者符号方式都可以。</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -600,11 +622,20 @@
   <name>dfs.blockreport.intervalMsec</name>
   <value>21600000</value>
   <description>Determines block reporting interval in milliseconds.</description>
+  <cn_description>Datanode会定期将当前该结点上所有的BLOCK信息报告给Namenode，参数dfs.blockreport.intervalMsec就是控制这个报告间隔的参数。</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
-  <name>dfs.blockreport.initialDelay</name>  <value>0</value>
+  <name>dfs.blockreport.initialDelay</name>
+  <value>0</value>
   <description>Delay for first block report in seconds.</description>
+  <cn_description>datanode启动后第一次报告自己的block信息的时间是在(0,dfs.blockreport.initialDelay)之间的一个随机数 initTime，
+    然后从initTime（不同datanode上的这个随即肯定是不一样的）开始每隔dfs.blockreport.intervalMsec ，该datanode会向namenode报告自己的所有block的信息。
+    如果没有initTime，多有datanode都从启动的那一刻开始发，这样会造成大量数据发往nn，造成堵塞 。是以用此参数来控制 。</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -900,6 +931,9 @@
   <value>3600</value>
   <description>The number of seconds between two periodic checkpoints.
   </description>
+  <cn_description>两次checkpoint的时间间隔达到阈值，由属性dfs.namenode.checkpoint.period控制，默认是3600s</cn_description>
+  <cdh_val></cdh_val>
+  <label>Checkpoint的触发条件之一：http://bigdatadecode.club/NameNode%E5%85%83%E6%95%B0%E6%8D%AE%E5%8F%8Acheckpoint%E5%88%86%E6%9E%90.html</label>
 </property>
 
 <property>
@@ -909,6 +943,9 @@
   of the namespace every 'dfs.namenode.checkpoint.txns' transactions, regardless
   of whether 'dfs.namenode.checkpoint.period' has expired.
   </description>
+  <cn_description>新生成的edit log中积累的事务数量达到了阈值，由属性dfs.namenode.checkpoint.txns控制，默认1000000</cn_description>
+  <cdh_val></cdh_val>
+  <label>Checkpoint的触发条件之二：http://bigdatadecode.club/NameNode%E5%85%83%E6%95%B0%E6%8D%AE%E5%8F%8Acheckpoint%E5%88%86%E6%9E%90.html</label>
 </property>
 
 <property>
@@ -980,6 +1017,9 @@
   <description>The maximum lifetime in milliseconds for which a delegation 
       token is valid.
   </description>
+  <cn_description>NN中更新主代理令牌的时间间隔，毫秒</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -1144,6 +1184,9 @@
         If the Hadoop native libraries are not available, this configuration
         has no effect.
   </description>
+  <cn_description>设置为true，在数据写入完成之后，datanode会要求操作系统将数据直接同步到磁盘</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -1249,6 +1292,9 @@
     The prefix for a given nameservice, contains a comma-separated
     list of namenodes for a given nameservice (eg EXAMPLENAMESERVICE).
   </description>
+  <cn_description>包含一个NN列表。EXAMPLENAMESERVICE是指具体的nameservice名称，通常就是dfs.nameservices中配置的。值是预备配置的NN的ID。</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -1293,6 +1339,9 @@
     Availability documentation for details on automatic HA
     configuration.
   </description>
+  <cn_description>是否开启自动故障转移。</cn_description>
+  <cdh_val></cdh_val>
+  <label>建议开启</label>
 </property>
 
 <property>
@@ -1546,6 +1595,9 @@
   <description>
     Enable WebHDFS (REST API) in Namenodes and Datanodes.
   </description>
+  <cn_description>在NN和DN上开启WebHDFS (REST API)功能</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -1577,6 +1629,11 @@
     (in seconds) for percentile latency metrics on the Namenode and Datanode.
     By default, percentile latency metrics are disabled.
   </description>
+  <cn_description>内存写入和磁盘之间的50/75/90/95/99百分位延迟持续了几毫秒。
+    百分比度量默认情况下是关闭的，通过观察没有间隔。
+    间隔由dfs.metrics.percentiles.intervals指定。</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -1674,6 +1731,9 @@
   <description>
     Boolean which enables backend datanode-side support for the experimental DistributedFileSystem#getFileVBlockStorageLocations API.
   </description>
+  <cn_description>布尔值，设定后台DN端是否支持DistributedFileSystem#getFileVBlockStorageLocations API。</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -1693,11 +1753,25 @@
 </property>
 
 <property>
+  <name>dfs.journalnode.edits.dir</name>
+  <value>/path/to/journal/node/local/data</value>
+  <description>
+    The path where the JournalNode daemon will store its local state.
+  </description>
+  <cn_description>JournalNode在本地磁盘存放数据的位置</cn_description>
+  <cdh_val></cdh_val>
+  <label>建议同样和datanode选用不用的卷，可以和namenode的卷放在一起</label>
+</property>
+
+<property>
   <name>dfs.journalnode.rpc-address</name>
   <value>0.0.0.0:8485</value>
   <description>
     The JournalNode RPC server address and port.
   </description>
+  <cn_description>JournalNode RPC服务地址和端口</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -1707,6 +1781,9 @@
     The address and port the JournalNode HTTP server listens on.
     If the port is 0 then the server will start on a free port.
   </description>
+  <cn_description>JournalNode的HTTP地址和端口</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -1743,6 +1820,9 @@
     will be considered balanced and block assignments will be done on a pure
     round robin basis.
   </description>
+  <cn_description></cn_description>
+  <cdh_val></cdh_val>
+  <label>一般使用默认值</label>
 </property>
 
 <property>
@@ -1757,6 +1837,9 @@
     be no reason to prefer that volumes with less available disk space receive
     more block allocations.
   </description>
+  <cn_description></cn_description>
+  <cdh_val></cdh_val>
+  <label>一般使用默认值</label>
 </property>
 
 <property>
@@ -2065,6 +2148,9 @@
   <description>
     This configuration parameter turns on short-circuit local reads.
   </description>
+  <cn_description>hdfs client短路读开关</cn_description>
+  <cdh_val></cdh_val>
+  <label>可以参考https://www.zybuluo.com/jewes/note/37713</label>
 </property>
 
 <property>
