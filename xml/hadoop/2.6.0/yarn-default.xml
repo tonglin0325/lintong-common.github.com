@@ -74,6 +74,9 @@
     <description>The number of threads used to handle applications manager requests.</description>
     <name>yarn.resourcemanager.client.thread-count</name>
     <value>50</value>
+    <cn_description>处理applications manager请求的线程数。</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
@@ -97,6 +100,9 @@
     <description>Number of threads to handle scheduler interface.</description>
     <name>yarn.resourcemanager.scheduler.client.thread-count</name>
     <value>50</value>
+    <cn_description>处理scheduler接口请求的线程数。</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
@@ -174,6 +180,9 @@
     allow at least one retry for AM.</description>
     <name>yarn.resourcemanager.am.max-attempts</name>
     <value>2</value>
+    <cn_description>AM失败重试次数 (默认两次)</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
@@ -219,12 +228,18 @@
     <description>Number of threads to handle resource tracker calls.</description>
     <name>yarn.resourcemanager.resource-tracker.client.thread-count</name>
     <value>50</value>
+    <cn_description>处理applications manager请求的线程数。</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
     <description>The class to use as the resource scheduler.</description>
     <name>yarn.resourcemanager.scheduler.class</name>
     <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler</value>
+    <cn_description>YARN ResourceManager调度器，默认为CapacityScheduler，可选FairScheduler。</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
@@ -233,6 +248,9 @@
     and the specified value will get allocated at minimum.</description>
     <name>yarn.scheduler.minimum-allocation-mb</name>
     <value>1024</value>
+    <cn_description>ResourceManager中针对每个container请求内存的最小分配值(MB). 低于该值的内存请求将会抛出InvalidResourceRequestException异常。</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
@@ -241,6 +259,9 @@
     and will get capped to this value.</description>
     <name>yarn.scheduler.maximum-allocation-mb</name>
     <value>8192</value>
+    <cn_description>ResourceManager中针对每个container请求内存的最大分配值(MB). 高于该值的内存请求将会抛出InvalidResourceRequestException异常。</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
@@ -716,6 +737,10 @@
     </description>
     <name>yarn.nodemanager.delete.debug-delay-sec</name>
     <value>0</value>
+    <cn_description>yarn的DeletionService在任务结束多长时间后，删除本地化的日志(yarn.nodemanager.local-dirs)和
+      container的运行日志(yarn.nodemanager.log-dirs)。 这个时间最好设置的大一点。</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
@@ -733,6 +758,9 @@
    </description>
     <name>yarn.nodemanager.local-dirs</name>
     <value>${hadoop.tmp.dir}/nm-local-dir</value>
+    <cn_description>application计算过程的中间数据存储，建议分为多个盘来存储</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
@@ -764,6 +792,9 @@
     <description>Interval in between cache cleanups.</description>
     <name>yarn.nodemanager.localizer.cache.cleanup.interval-ms</name>
     <value>600000</value>
+    <cn_description>deletion server多长时间做一次检测，并且清除缓存目录直到目录大小低于target-size-mb的配置</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
@@ -773,18 +804,27 @@
     </description>
     <name>yarn.nodemanager.localizer.cache.target-size-mb</name>
     <value>10240</value>
+    <cn_description>中间结果数据最大存储空间</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
     <description>Number of threads to handle localization requests.</description>
     <name>yarn.nodemanager.localizer.client.thread-count</name>
     <value>5</value>
+    <cn_description>用于处理localization请求的线程数。</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
     <description>Number of threads to use for localization fetching.</description>
     <name>yarn.nodemanager.localizer.fetch.thread-count</name>
     <value>4</value>
+    <cn_description>用于处理localization fetching请求的线程数。</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
@@ -797,6 +837,9 @@
     </description>
     <name>yarn.nodemanager.log-dirs</name>
     <value>${yarn.log.dir}/userlogs</value>
+    <cn_description>nodemanager 上 container 运行的本地日志</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
@@ -817,6 +860,9 @@
     Be careful set this too small and you will spam the name node.</description>
     <name>yarn.log-aggregation.retain-seconds</name>
     <value>-1</value>
+    <cn_description>在hdfs上日志保留时间</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property> 
   
   <property>
@@ -834,12 +880,18 @@
     </description>
     <name>yarn.nodemanager.log.retain-seconds</name>
     <value>10800</value>
+    <cn_description>nodemanager 本地日志保留时间，只有不开启日志聚合时候才生效</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
     <description>Where to aggregate logs to.</description>
     <name>yarn.nodemanager.remote-app-log-dir</name>
     <value>/tmp/logs</value>
+    <cn_description>hdfs上聚合日志的存放目录</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
   <property>
     <description>The remote log dir will be created at 
@@ -847,6 +899,9 @@
     </description>
     <name>yarn.nodemanager.remote-app-log-dir-suffix</name>
     <value>logs</value>
+    <cn_description>日志存放的后缀</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
@@ -854,6 +909,9 @@
     for containers.</description>
     <name>yarn.nodemanager.resource.memory-mb</name>
     <value>8192</value>
+    <cn_description>节点最大可用内存</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
@@ -861,6 +919,9 @@
     containers.</description>
     <name>yarn.nodemanager.pmem-check-enabled</name>
     <value>true</value>
+    <cn_description>是否需要为container检查物理内存限制。</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
@@ -868,6 +929,9 @@
     containers.</description>
     <name>yarn.nodemanager.vmem-check-enabled</name>
     <value>true</value>
+    <cn_description>是否需要为container检查虚拟内存限制。</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
@@ -878,6 +942,9 @@
     </description>
     <name>yarn.nodemanager.vmem-pmem-ratio</name>
     <value>2.1</value>
+    <cn_description>NodeManager中虚拟内存与物理内存的比率。</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
@@ -1054,6 +1121,9 @@
     <description>T-file compression types used to compress aggregated logs.</description>
     <name>yarn.nodemanager.log-aggregation.compression-type</name>
     <value>none</value>
+    <cn_description>日志聚合的压缩</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
