@@ -25,13 +25,15 @@
 <meta property="og:image" content="http://tonglin0325.github.io/images/517519-20201204172932521-1090217995.png">
 <meta property="og:image" content="http://tonglin0325.github.io/images/517519-20201207160012689-1391300189.png">
 <meta property="og:image" content="http://tonglin0325.github.io/images/517519-20201204173457387-498409907.png">
+<meta property="og:image" content="http://tonglin0325.github.io/images/517519-20201209143810168-484482273.png">
 <meta property="og:image" content="http://tonglin0325.github.io/images/517519-20201205000556239-1584401941.png">
 <meta property="og:image" content="http://tonglin0325.github.io/images/517519-20201205001138710-717175048.png">
 <meta property="og:image" content="http://tonglin0325.github.io/images/517519-20201205005407184-2139502432.png">
+<meta property="og:image" content="http://tonglin0325.github.io/images/517519-20201209144521041-1145635929.png">
 <meta property="og:image" content="http://tonglin0325.github.io/images/517519-20201205005813367-652689412.png">
 <meta property="og:image" content="http://tonglin0325.github.io/images/517519-20201205010026554-1380196751.png">
 <meta property="article:published_time" content="2020-12-07T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-12-08T14:52:24.843Z">
+<meta property="article:modified_time" content="2020-12-09T15:26:58.245Z">
 <meta property="article:author" content="tonglin0325">
 <meta property="article:tag" content="twitter">
 <meta property="article:tag" content="Paper">
@@ -204,7 +206,7 @@ ga('send', 'pageview');
 <img src="/images/517519-20201205000727917-386467285.png" width="500" height="121" loading="lazy" />
 
 <p>&nbsp;</p>
-<p>&nbsp;在日志定义中，由于Twitter广泛使用的是Thrift，所以其也就沿用了Thrift作为其日志定义语言，除了Twitter，使用Thrift来定义日志格式的公司还有Airbnb和Xiaomi；而使用Protobuf有百度，字节跳动</p>
+<p>&nbsp;在日志定义中，由于Twitter广泛使用的是Thrift，所以其也就沿用了Thrift作为其日志定义语言，除了Twitter，使用Thrift来定义日志格式的公司还有Airbnb和Xiaomi；而使用Protobuf有百度，字节跳动，快手</p>
 <img src="/images/517519-20201204172932521-1090217995.png" alt="" loading="lazy" />
 
 <img src="/images/517519-20201207160012689-1391300189.png" alt="" loading="lazy" />
@@ -215,6 +217,11 @@ ga('send', 'pageview');
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">今日头条数据平台架构师王烨 - 今日头条大数据平台的演进</span><br><span class="line">https:&#x2F;&#x2F;myslide.cn&#x2F;slides&#x2F;3497</span><br></pre></td></tr></table></figure>
 
+<img src="/images/517519-20201209143810168-484482273.png" alt="" loading="lazy" />
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Flink在快手实时多维分析场景的应用</span><br><span class="line">https:&#x2F;&#x2F;cloud.tencent.com&#x2F;developer&#x2F;news&#x2F;643334</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;</p>
 <p>在字段定义上，文章中提到了字段格式的问题，就是驼峰，下划线，还有id，uid。。。这些问题还是比较常见的</p>
 <img src="/images/517519-20201205000556239-1584401941.png" width="600" height="174" loading="lazy" />
 
@@ -229,6 +236,10 @@ ga('send', 'pageview');
 <p>2.使用HDFS来存储日志，每个HDFS目录下保持，少量的文件数以及大文件</p>
 <img src="/images/517519-20201205005407184-2139502432.png" width="600" height="137" loading="lazy" />
 
+<p>&nbsp;至于存储在HDFS的压缩格式，《Hadoop at Twitter (Hadoop Summit 2010)》中介绍的是lzo压一切，至于lzo和其他压缩方式的对比，可以参考我的文章《<a href="https://www.cnblogs.com/tonglin0325/p/13750952.html" target="_blank" rel="noopener">MapReduce中的InputFormat</a>》</p>
+<img src="/images/517519-20201209144521041-1145635929.png" alt="" loading="lazy" />
+
+<p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;3.从需要正则表达式解析的纯文本(plain-text)日志格式到json格式，再到Thrift格式</p>
 <img src="/images/517519-20201205005813367-652689412.png" width="500" height="258" loading="lazy" />

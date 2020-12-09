@@ -128,8 +128,6 @@ ga('send', 'pageview');
         <p>hive是使用antlr来解析的</p>
 <p>parser要做的事情，是从无结构的字符串里面，解码产生有结构的数据结构（a <a href="https://en.wikipedia.org/wiki/Parser" target="_blank" rel="noopener">parser</a> is a function accepting strings as input and returning some structure as output），参考 <a href="https://en.wikipedia.org/wiki/Parser_combinator" target="_blank" rel="noopener">Parser_combinator wiki</a></p>
 <p>parser分成两种，一种是<strong>parser combinator</strong>，一种是<strong>parser generator</strong>，区别可以参考 <a href="https://www.yinwang.org/blog-cn/2015/09/19/parser" target="_blank" rel="noopener">王垠的文章&mdash;&mdash;对 Parser 的误解</a></p>
-<p>parser combinator是需要手写parser，a <strong>parser combinator</strong> is a <a href="https://en.wikipedia.org/wiki/Higher-order_function" target="_blank" rel="noopener">higher-order function</a> that accepts several parsers as input and returns a new parser as its output</p>
-<p>parser generator是需要你用某种指定的描述语言来表示出语法，然后自动把他们转换成parser的代码，比如<strong>Antlr</strong>里面的<strong>g4语法文件</strong>，<strong>calcite</strong>的<strong>ftl语法文件</strong>，hue使用的<strong>jison</strong>以及<strong>flex</strong>和<strong>cup</strong>等，缺点是由于代码是生成的，排错比较困难</p>
         
           <p class="article-more-link">
             <a class="btn btn-primary" href="/2020/01/19/antlr%E8%A7%A3%E6%9E%90hive%E8%AF%AD%E5%8F%A5/#more">全文 &gt;&gt;</a>
