@@ -57,6 +57,9 @@
     <description>The address of the applications manager interface in the RM.</description>
     <name>yarn.resourcemanager.address</name>
     <value>${yarn.resourcemanager.hostname}:8032</value>
+    <cn_description>ResourceManager 对客户端暴露的地址。客户端通过该地址向RM提交应用程序，杀死应用程序等</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
@@ -68,6 +71,9 @@
     </description>
     <name>yarn.resourcemanager.bind-host</name>
     <value></value>
+    <cn_description>ResourceManager对外web ui地址。用户可通过该地址在浏览器中查看集群各类信息</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
@@ -137,12 +143,18 @@
     <description>Are acls enabled.</description>
     <name>yarn.acl.enable</name>
     <value>false</value>
+    <cn_description>是否启动REsourceManager ACL</cn_description>
+    <cdh_val></cdh_val>
+    <label>建议开启</label>
   </property>
 
   <property>
     <description>ACL of who can be admin of the YARN cluster.</description>
     <name>yarn.admin.acl</name>
     <value>*</value>
+    <cn_description>其中yarn.acl.enable默认值为true。而对于yarn.admin.acl默认值为*，意味着所有人都可以管理Resource Manager (比如运行yarn rmadmin)、管理已提交 (比如取消 kill) 的任务</cn_description>
+    <cdh_val></cdh_val>
+    <label>格式：用户1,用户2,用户3 用户组1,用户组2,用户组3，用户和用户组之间必须有个空格，比如yarn,dr.who xx_group</label>
   </property>
 
   <property>
@@ -237,7 +249,8 @@
     <description>The class to use as the resource scheduler.</description>
     <name>yarn.resourcemanager.scheduler.class</name>
     <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler</value>
-    <cn_description>YARN ResourceManager调度器，默认为CapacityScheduler，可选FairScheduler。</cn_description>
+    <cn_description>YARN ResourceManager调度器，默认为CapacityScheduler，cloudera官方建议选择CapacityScheduler，此外还有FairScheduler和FifoScheduler。
+    https://blog.cloudera.com/fair-scheduler-to-capacity-scheduler-conversion-tool/</cn_description>
     <cdh_val></cdh_val>
     <label></label>
   </property>
@@ -248,7 +261,8 @@
     and the specified value will get allocated at minimum.</description>
     <name>yarn.scheduler.minimum-allocation-mb</name>
     <value>1024</value>
-    <cn_description>ResourceManager中针对每个container请求内存的最小分配值(MB). 低于该值的内存请求将会抛出InvalidResourceRequestException异常。</cn_description>
+    <cn_description>ResourceManager中针对每个container可申请内存的最小分配值(MB).
+      低于该值的内存请求将会抛出InvalidResourceRequestException异常。</cn_description>
     <cdh_val></cdh_val>
     <label></label>
   </property>
@@ -259,8 +273,9 @@
     and will get capped to this value.</description>
     <name>yarn.scheduler.maximum-allocation-mb</name>
     <value>8192</value>
-    <cn_description>ResourceManager中针对每个container请求内存的最大分配值(MB). 高于该值的内存请求将会抛出InvalidResourceRequestException异常。</cn_description>
-    <cdh_val></cdh_val>
+    <cn_description>ResourceManager中针对每个container可申请内存的最大分配值(MB)，默认是8192（MB）.
+      高于该值的内存请求将会抛出InvalidResourceRequestException异常。</cn_description>
+    <cdh_val>可以修改成20480</cdh_val>
     <label></label>
   </property>
 
@@ -270,6 +285,10 @@
     and the specified value will get allocated the minimum.</description>
     <name>yarn.scheduler.minimum-allocation-vcores</name>
     <value>1</value>
+    <cn_description>单个任务可申请的最小虚拟CPU个数，默认是1。
+      如果一个任务申请的CPU个数少于该数，则该对应的值改为这个数。</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
@@ -278,6 +297,9 @@
     and will get capped to this value.</description>
     <name>yarn.scheduler.maximum-allocation-vcores</name>
     <value>32</value>
+    <cn_description>单个任务可申请的最多虚拟CPU个数，默认是32。</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
@@ -853,6 +875,9 @@
     </description>
     <name>yarn.log-aggregation-enable</name>
     <value>false</value>
+    <cn_description>选择是否启用日志聚合. 如果不启用聚合, NMs 会把日志存储在节点本地</cn_description>
+    <cdh_val></cdh_val>
+    <label>建议开启</label>
   </property>
 
   <property>
@@ -860,9 +885,9 @@
     Be careful set this too small and you will spam the name node.</description>
     <name>yarn.log-aggregation.retain-seconds</name>
     <value>-1</value>
-    <cn_description>在hdfs上日志保留时间</cn_description>
+    <cn_description>在hdfs上日志保留时间，收集的日志的保留时间，以秒为单位，到期后被删除</cn_description>
     <cdh_val></cdh_val>
-    <label></label>
+    <label>改成2592000，保留30天后删除</label>
   </property> 
   
   <property>
@@ -919,7 +944,7 @@
     containers.</description>
     <name>yarn.nodemanager.pmem-check-enabled</name>
     <value>true</value>
-    <cn_description>是否需要为container检查物理内存限制。</cn_description>
+    <cn_description>是否启动一个线程检查每个任务正使用的物理内存量，如果任务超出分配值，则直接将其杀掉，默认是true。</cn_description>
     <cdh_val></cdh_val>
     <label></label>
   </property>
@@ -929,7 +954,7 @@
     containers.</description>
     <name>yarn.nodemanager.vmem-check-enabled</name>
     <value>true</value>
-    <cn_description>是否需要为container检查虚拟内存限制。</cn_description>
+    <cn_description>是否启动一个线程检查每个任务正使用的虚拟内存量，如果任务超出分配值，则直接将其杀掉，默认是true。</cn_description>
     <cdh_val></cdh_val>
     <label></label>
   </property>
@@ -954,6 +979,10 @@
     physical cores used by YARN containers.</description>
     <name>yarn.nodemanager.resource.cpu-vcores</name>
     <value>8</value>
+    <cn_description>表示该节点上YARN可使用的虚拟CPU个数，默认是8，注意，目前推荐将该值设值为与物理CPU核数数目相同。
+      如果你的节点CPU核数不够8个，则需要调减小这个值，而YARN不会智能的探测节点的物理CPU总数。</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
@@ -964,6 +993,10 @@
     </description>
     <name>yarn.nodemanager.resource.percentage-physical-cpu-limit</name>
     <value>100</value>
+    <cn_description>设置所有 containers 的总的 CPU 使用率占用总的 CPU 资源的百分比。
+      比如设置为 60，则所有的 containers 的 CPU 使用总和在任何情况下都不会超过机器总体 CPU 资源的 60 %。</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
@@ -1021,6 +1054,9 @@
     new containers will not be launched on this node.</description>
     <name>yarn.nodemanager.disk-health-checker.min-healthy-disks</name>
     <value>0.25</value>
+    <cn_description>NodeManager上最少保证健康磁盘比例，当健康磁盘比例低于该值时，NodeManager不会再接收和启动新的Container，默认值是0.25，表示25%</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
@@ -1031,6 +1067,9 @@
     yarn.nodemanager.log-dirs.</description>
     <name>yarn.nodemanager.disk-health-checker.max-disk-utilization-per-disk-percentage</name>
     <value>90.0</value>
+    <cn_description>一块磁盘的最高使用率，当一块磁盘的使用率超过该值时，则认为该盘为坏盘，不再使用该盘，默认是100，表示100%，可以适当调低</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>
@@ -1039,6 +1078,9 @@
     yarn.nodemanager.log-dirs.</description>
     <name>yarn.nodemanager.disk-health-checker.min-free-space-per-disk-mb</name>
     <value>0</value>
+    <cn_description>一块磁盘最少保证剩余空间大小，当某块磁盘剩余空间低于该值时，将不再使用该盘，默认是0，表示0MB。</cn_description>
+    <cdh_val></cdh_val>
+    <label></label>
   </property>
 
   <property>

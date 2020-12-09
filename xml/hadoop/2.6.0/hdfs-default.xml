@@ -513,6 +513,9 @@
   The actual number of replications can be specified when the file is created.
   The default is used if replication is not specified in create time.
   </description>
+  <cn_description>数据块副本数</cn_description>
+  <cdh_val></cdh_val>
+  <label>此值可以在创建文件是设定，客户端可以只有设定，也可以在命令行修改。不同文件可以有不同的副本数。默认值用于未指定时。</label>
 </property>
 
 <property>
@@ -520,6 +523,9 @@
   <value>512</value>
   <description>Maximal block replication. 
   </description>
+  <cn_description>最大块副本数</cn_description>
+  <cdh_val></cdh_val>
+  <label>不要大于节点总数</label>
 </property>
 
 <property>
@@ -552,6 +558,9 @@
   <description>The number of retries for writing blocks to the data nodes, 
   before we signal failure to the application.
   </description>
+  <cn_description>客户端写数据到DN时，最大重试次数。超过重试次数就会报出错误。</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -574,6 +583,10 @@
 
     See also dfs.client.block.write.replace-datanode-on-failure.policy
   </description>
+  <cn_description>在进行pipeline写数据（上传数据的方式）时，如果DN或者磁盘故障，客户端将尝试移除失败的DN，然后写到剩下的磁盘。一个结果是，pipeline中的DN减少了。
+    这个特性是添加新的DN到pipeline。这是一个站点范围的选项。当集群规模非常小时，例如3个或者更小，集群管理者可能想要禁止掉此特性。</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -672,6 +685,9 @@
   <name>dfs.heartbeat.interval</name>
   <value>3</value>
   <description>Determines datanode heartbeat interval in seconds.</description>
+  <cn_description>DN的心跳间隔，秒</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -830,6 +846,9 @@
   <value>30</value>
   <description>Namenode periodicity in seconds to check if decommission is 
   complete.</description>
+  <cn_description>FSNamesystem的DecommissionManager.Monitor线程检查处于DECOMMISSION_INPROGRESS状态数据节点的周期，在所有区块副本达到期望值时更新为DECOMMISSIONED状态</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -837,6 +856,9 @@
   <value>5</value>
   <description>The number of nodes namenode checks if decommission is complete
   in each dfs.namenode.decommission.interval.</description>
+  <cn_description>FSNamesystem的DecommissionManager.Monitor线程一个周期内检查DataNode的个数</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -844,6 +866,9 @@
   <value>3</value>
   <description>The periodicity in seconds with which the namenode computes 
   repliaction work for datanodes. </description>
+  <cn_description>NN周期性计算DN的副本情况的频率，秒</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -853,6 +878,9 @@
                The default value is 1 hour. Setting a value of 0 disables
                access times for HDFS.
   </description>
+  <cn_description>HDFS文件的访问时间精确到此值，默认是1小时。0表示禁用访问时间。</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -876,6 +904,9 @@
   The size of this buffer should probably be a multiple of hardware
   page size (4096 on Intel x86), and it determines how much data is
   buffered during read and write operations.</description>
+  <cn_description>文件流缓存大小</cn_description>
+  <cdh_val></cdh_val>
+  <label>需要是硬件page大小的整数倍。在读写操作时，数据缓存大小。注意和core-default.xml中指定文件类型的缓存是不同的，这个是dfs共用的</label>
 </property>
 
 <property>
@@ -883,12 +914,18 @@
   <value>512</value>
   <description>The number of bytes per checksum.  Must not be larger than
   dfs.stream-buffer-size</description>
+  <cn_description>每次计算校验和的字节数</cn_description>
+  <cdh_val></cdh_val>
+  <label>一定不能大于dfs.stream-buffer-size</label>
 </property>
 
 <property>
   <name>dfs.client-write-packet-size</name>
   <value>65536</value>
   <description>Packet size for clients to write</description>
+  <cn_description>客户端写数据时的包的大小</cn_description>
+  <cdh_val></cdh_val>
+  <label>包是块中的更小单位数据集合</label>
 </property>
 
 <property>
@@ -910,7 +947,7 @@
       If this is a comma-delimited list of directories then the image is
       replicated in all of the directories for redundancy.
   </description>
-  <cn_description>secondary namenode用来存储检查点的目录列表。在所列的每一个目录中均存放一份检查点文件的副本</cn_description>
+  <cn_description>DFS secondary name node存放临时镜像的目录。如果这是一个逗号分隔的目录列表，则在所有目录中复制该images以进行冗余。</cn_description>
   <cdh_val></cdh_val>
   <label></label>
 </property>
@@ -924,6 +961,9 @@
       replicated in all of the directoires for redundancy.
       Default value is same as dfs.namenode.checkpoint.dir
   </description>
+  <cn_description>DFS secondary name node存放临时edits的目录。如果这是一个逗号分隔的目录列表，则在所有目录中复制该edits以进行冗余。</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -955,6 +995,9 @@
   every 'dfs.namenode.checkpoint.check.period' seconds to query the number
   of uncheckpointed transactions.
   </description>
+  <cn_description>查询未检查的检查点事务的执行时间间隔，单位为秒。</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -964,6 +1007,9 @@
   failure occurs while loading fsimage or replaying edits, the number of
   retries is limited by this variable. 
   </description>
+  <cn_description>当加载fsimage或重演edits失败时，重试的次数。</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -974,6 +1020,9 @@
   logs necessary to recover an up-to-date namespace from the oldest retained
   checkpoint will also be retained.
   </description>
+  <cn_description>在namenode和seccondary namenode中保留image检查点（fsimage_*）的数量。</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -991,6 +1040,9 @@
   if doing so would mean that more segments would be retained than the number
   configured by dfs.namenode.max.extra.edits.segments.retained.
   </description>
+  <cn_description>namenode的需要保留的额外的事务</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -1001,6 +1053,9 @@
   dfs.namenode.num.extra.edits.retained, this configuration property serves to cap
   the number of extra edits files to a reasonable value.
   </description>
+  <cn_description>额外的edit日志段的最大数量</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -1009,6 +1064,9 @@
   <description>The update interval for master key for delegation tokens 
        in the namenode in milliseconds.
   </description>
+  <cn_description>namenode中更新委托令牌主密钥的时间间隔，单位为毫秒</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -1017,7 +1075,7 @@
   <description>The maximum lifetime in milliseconds for which a delegation 
       token is valid.
   </description>
-  <cn_description>NN中更新主代理令牌的时间间隔，毫秒</cn_description>
+  <cn_description>namenode中更新主代理令牌的时间间隔，单位为毫秒</cn_description>
   <cdh_val></cdh_val>
   <label></label>
 </property>
@@ -1027,6 +1085,9 @@
   <value>86400000</value>
   <description>The renewal interval for delegation token in milliseconds.
   </description>
+  <cn_description>授权令牌的更新间隔以毫秒为单位</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -1046,6 +1107,10 @@
   <value>false</value>
   <description>Should the dfs image be compressed?
   </description>
+  <cn_description>dfs image是否应该补被压缩</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
+
 </property>
 
 <property>
@@ -1054,6 +1119,9 @@
   <description>If the dfs image is compressed, how should they be compressed?
                This has to be a codec defined in io.compression.codecs.
   </description>
+  <cn_description>如果DFS images被压缩，它们应该如何压缩。必须是 io.compression.codecs属性中定义的编解码器</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -1066,6 +1134,9 @@
         This timeout prevents client hangs when the sender fails during
         image transfer. This is socket timeout during image tranfer.
   </description>
+  <cn_description>image传输超时时间，单位为毫秒</cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
@@ -1809,6 +1880,20 @@
 </property>
 
 <property>
+  <name>dfs.datanode.fsdataset.volume.choosing.policy</name>
+  <value>org.apache.hadoop.hdfs.server.datanode.fsdataset.RoundRobinVolumeChoosingPolicy</value>
+  <description></description>
+  <cn_description>目录列表中选择卷的策略的类名。默认为org.apache.hadoop.hdfs.server.datanode.fsdataset.RoundRobinVolumeChoosingPolicy。
+    1.RoundRobinVolumeChoosingPolicy 策略先轮询的方式拿到下一个 volume ，如果这个 volume 的可用空间比需要存放的副本大小要大，则直接返回这个 volume 用于存放数据；
+    如果当前 volume 的可用空间不足以存放副本，则以轮询的方式选择下一个 volume，直到找到可用的 volume，如果遍历完所有的 volumes 还是没有找到可以存放下副本的 volume，则抛出 DiskOutOfSpaceException 异常。
+    2.AvailableSpaceVolumeChoosingPolicy 策略优先将数据写入具有最大可用空间的磁盘（通过百分比计算的）。
+  </cn_description>
+  <cdh_val></cdh_val>
+  <label>可以考虑修改成org.apache.hadoop.hdfs.server.datanode.fsdataset.AvailableSpaceVolumeChoosingPolicy</label>
+
+</property>
+
+<property>
   <name>dfs.datanode.available-space-volume-choosing-policy.balanced-space-threshold</name>
   <value>10737418240</value> <!-- 10 GB -->
   <description>
@@ -1820,7 +1905,9 @@
     will be considered balanced and block assignments will be done on a pure
     round robin basis.
   </description>
-  <cn_description></cn_description>
+  <cn_description>当dfs.datanode.fsdataset.volume.choosing.policy属性设置为org.apache.hadoop.hdfs.server.datanode.fsdataset.AvailableSpaceVolumeChoosingPolicy时使用。
+    该属性控制datanode卷在被认为不平衡之前允许在空闲磁盘空间上有多少不同字节。
+    如果所有卷的自由空间都在这一范围内，则卷将被认为是平衡的，并且块分配将在纯循环的基础上完成。</cn_description>
   <cdh_val></cdh_val>
   <label>一般使用默认值</label>
 </property>
@@ -1837,7 +1924,9 @@
     be no reason to prefer that volumes with less available disk space receive
     more block allocations.
   </description>
-  <cn_description></cn_description>
+  <cn_description>当dfs.datanode.fsdataset.volume.choosing.policy属性设置为org.apache.hadoop.hdfs.server.datanode.fsdataset.AvailableSpaceVolumeChoosingPolicy时使用。
+    此属性控制新的块分配百分比将被发送给具有比其他磁盘更可用的磁盘空间的卷。
+    这个设置应该在0.0到1.0的范围内。</cn_description>
   <cdh_val></cdh_val>
   <label>一般使用默认值</label>
 </property>
