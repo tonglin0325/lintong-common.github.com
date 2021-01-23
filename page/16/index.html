@@ -99,13 +99,13 @@ ga('send', 'pageview');
         <div class="col-sm-9 blog-main">
           
   
-    <article id="post-Spark学习笔记——数据读取和保存" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Spark学习笔记——构建基于Spark的推荐引擎" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
     
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/08/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96%E5%92%8C%E4%BF%9D%E5%AD%98/">Spark学习笔记——数据读取和保存</a>
+      <a class="article-title" href="/2017/04/29/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%9E%84%E5%BB%BA%E5%9F%BA%E4%BA%8ESpark%E7%9A%84%E6%8E%A8%E8%8D%90%E5%BC%95%E6%93%8E/">Spark学习笔记——构建基于Spark的推荐引擎</a>
     </h1>
   
 
@@ -114,7 +114,7 @@ ga('send', 'pageview');
 
   <div class="article-meta">
     <div class="article-datetime">
-  <a href="/2017/04/08/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96%E5%92%8C%E4%BF%9D%E5%AD%98/" class="article-date"><time datetime="2017-04-07T16:00:00.000Z" itemprop="datePublished">2017-04-08</time></a>
+  <a href="/2017/04/29/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%9E%84%E5%BB%BA%E5%9F%BA%E4%BA%8ESpark%E7%9A%84%E6%8E%A8%E8%8D%90%E5%BC%95%E6%93%8E/" class="article-date"><time datetime="2017-04-28T16:00:00.000Z" itemprop="datePublished">2017-04-29</time></a>
 </div>
 
     <div class="article-author">tonglin0325</div>
@@ -125,11 +125,27 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>spark所支持的文件格式</strong></p>
-<img src="/images/517519-20170408171821253-1118136829.png" alt="" width="614" height="293" />
+        <p><strong>推荐模型</strong></p>
+<p>推荐模型的种类分为：</p>
+<p><strong>1.基于内容的过滤</strong>：基于内容的过滤利用物品的内容或是属性信息以及某些相似度定义,来求出与该物品类似的物品。</p>
+<p><strong>2.协同过滤</strong>：协同过滤是一种借助众包智慧的途径。它利用大量已有的用户偏好来估计用户对其未接触过的物品的喜好程度。其内在思想是相似度的定义。</p>
+<p>在基于用户的方法的中,如果两个用户表现出相似的偏好(即对相同物品的偏好大体相同),那就认为他们的兴趣类似。</p>
+<p>同样也可以借助基于物品的方法来做推荐。这种方法通常根据现有用户对物品的偏好或是评级情况,来计算物品之间的某种相似度。</p>
+<p><strong>3.矩阵分解：</strong></p>
+<p>3.1. 显式矩阵分解</p>
+<p>例如我们可以得到多个用户对多部电影的评级的数据，这样我们就可以得到一个<strong>用户&mdash;电影评级的矩阵</strong>。</p>
+<img src="/images/517519-20170430154036428-1109250879.png" alt="" />
+
+<p>我们所得到的这个矩阵是稀疏的，假设得到的<strong>&ldquo;用户&mdash;物品&rdquo;矩阵的维度为U&times;I</strong>，我们需要对其进行降维，然后得到一个<strong>表示用户的U&times;k维矩阵</strong>和一个<strong>表示物品的k&times;I维矩阵</strong>。</p>
+<p>*<em>要计算给定用户对某个物品的预计评级 *</em>：</p>
+<p>只需要从用户因子矩阵和物品因子矩阵分别选取相应的行(用户因子向量)与列(物品因子向量),然后计算两者的点积即可</p>
+<img src="/images/517519-20170430155942584-698896923.png" alt="" width="400" height="301" />
+
+<p>而<strong>对于物品之间相似度的计算</strong>,可以用最近邻模型中用到的相似度衡量方法。不同的是,这里可以直接利用物品因子向量,将相似度计算转换为对两物品因子向量之间相似度的计算</p>
+<img src="/images/517519-20170430160031975-1941482174.png" alt="" width="391" height="299" />
         
           <p class="article-more-link">
-            <a class="btn btn-primary" href="/2017/04/08/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96%E5%92%8C%E4%BF%9D%E5%AD%98/#more">全文 &gt;&gt;</a>
+            <a class="btn btn-primary" href="/2017/04/29/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%9E%84%E5%BB%BA%E5%9F%BA%E4%BA%8ESpark%E7%9A%84%E6%8E%A8%E8%8D%90%E5%BC%95%E6%93%8E/#more">全文 &gt;&gt;</a>
           </p>
         
       
@@ -138,7 +154,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2017/04/08/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96%E5%92%8C%E4%BF%9D%E5%AD%98/" data-id="ckca3uy140097w20la6w5cg1f" class="article-share-link">
+      <a data-url="http://tonglin0325.github.io/2017/04/29/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%9E%84%E5%BB%BA%E5%9F%BA%E4%BA%8ESpark%E7%9A%84%E6%8E%A8%E8%8D%90%E5%BC%95%E6%93%8E/" data-id="ckca3uy15009aw20l7cgpe3m7" class="article-share-link">
         <i class="fa fa-share"></i> 分享
       </a>
       
@@ -154,13 +170,13 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-Spark学习笔记——键值对操作" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Spark学习笔记——基于MLlib的机器学习" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
     
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/07/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E9%94%AE%E5%80%BC%E5%AF%B9%E6%93%8D%E4%BD%9C/">Spark学习笔记——键值对操作</a>
+      <a class="article-title" href="/2017/04/28/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%9F%BA%E4%BA%8EMLlib%E7%9A%84%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">Spark学习笔记——基于MLlib的机器学习</a>
     </h1>
   
 
@@ -169,7 +185,7 @@ ga('send', 'pageview');
 
   <div class="article-meta">
     <div class="article-datetime">
-  <a href="/2017/04/07/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E9%94%AE%E5%80%BC%E5%AF%B9%E6%93%8D%E4%BD%9C/" class="article-date"><time datetime="2017-04-06T16:00:00.000Z" itemprop="datePublished">2017-04-07</time></a>
+  <a href="/2017/04/28/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%9F%BA%E4%BA%8EMLlib%E7%9A%84%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="article-date"><time datetime="2017-04-27T16:00:00.000Z" itemprop="datePublished">2017-04-28</time></a>
 </div>
 
     <div class="article-author">tonglin0325</div>
@@ -180,12 +196,18 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>键值对 RDD</strong>是 Spark 中许多操作所需要的常见数据类型</p>
-<p>键值对 RDD 通常用来进行聚合计算。我们一般要先通过一些初始** ETL(抽取、转化、装载)**操作来将数据转化为键值对形式。</p>
-<p>Spark 为包含键值对类型的 RDD 提供了一些专有的操作。</p>
+        <p>使用MLlib库中的机器学习算法对垃圾邮件进行分类</p>
+<p>分类的垃圾邮件的如图中分成4个文件夹，两个文件夹是训练集合，两个文件夹是测试集合</p>
+<img src="/images/517519-20170428224913912-1476201945.png" alt="" />
+
+<p>build.sbt文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">name :&#x3D; &quot;spark-first&quot;</span><br><span class="line"></span><br><span class="line">version :&#x3D; &quot;1.0&quot;</span><br><span class="line"></span><br><span class="line">scalaVersion :&#x3D; &quot;2.11.8&quot;</span><br><span class="line"></span><br><span class="line">libraryDependencies ++&#x3D; Seq(</span><br><span class="line">  &quot;org.apache.spark&quot; % &quot;spark-core_2.11&quot; % &quot;2.1.0&quot;,</span><br><span class="line">  &quot;org.apache.hadoop&quot; % &quot;hadoop-common&quot; % &quot;2.7.2&quot;,</span><br><span class="line">  &quot;mysql&quot; % &quot;mysql-connector-java&quot; % &quot;5.1.31&quot;,</span><br><span class="line">  &quot;org.apache.spark&quot; %% &quot;spark-sql&quot; % &quot;2.1.0&quot;,</span><br><span class="line">  &quot;org.apache.spark&quot; %% &quot;spark-streaming&quot; % &quot;2.1.0&quot;,</span><br><span class="line">  &quot;org.apache.spark&quot; % &quot;spark-mllib_2.11&quot; % &quot;2.1.0&quot;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">import org.apache.hadoop.io.&#123;IntWritable, LongWritable, MapWritable, Text&#125;</span><br><span class="line">import org.apache.spark.SparkContext</span><br><span class="line">import org.apache.spark.SparkConf</span><br><span class="line">import org.apache.spark._</span><br><span class="line">import org.apache.hadoop.mapreduce.Job</span><br><span class="line">import org.apache.hadoop.mapreduce.lib.input.KeyValueTextInputFormat</span><br><span class="line">import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat</span><br><span class="line">import org.apache.spark.sql.SQLContext</span><br><span class="line">import java.util.Properties</span><br><span class="line"></span><br><span class="line">import org.apache.spark.streaming.StreamingContext</span><br><span class="line">import org.apache.spark.streaming.StreamingContext._</span><br><span class="line">import org.apache.spark.streaming.dstream.DStream</span><br><span class="line">import org.apache.spark.streaming.Duration</span><br><span class="line">import org.apache.spark.streaming.Seconds</span><br><span class="line"></span><br><span class="line">import org.apache.spark.mllib.regression.LabeledPoint</span><br><span class="line">import org.apache.spark.mllib.feature.HashingTF</span><br><span class="line">import org.apache.spark.mllib.classification.LogisticRegressionWithSGD</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line">  * Created by common on 17-4-6.</span><br><span class="line">  *&#x2F;</span><br><span class="line">object SparkRDD &#123;</span><br><span class="line"></span><br><span class="line">  def main(args: Array[String]) &#123;</span><br><span class="line">    val conf &#x3D; new SparkConf().setAppName(&quot;WordCount&quot;).setMaster(&quot;local&quot;)</span><br><span class="line">    val sc &#x3D; new SparkContext(conf)</span><br><span class="line"></span><br><span class="line">    val spam &#x3D; sc.textFile(&quot;input&#x2F;email&#x2F;spam&quot;)</span><br><span class="line">    val normal &#x3D; sc.textFile(&quot;input&#x2F;email&#x2F;ham&quot;)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 创建一个HashingTF实例来把邮件文本映射为包含10000个特征的向量</span><br><span class="line">    val tf &#x3D; new HashingTF(numFeatures &#x3D; 10000)</span><br><span class="line">    &#x2F;&#x2F; 各邮件都被切分为单词，每个单词被映射为一个特征</span><br><span class="line">    val spamFeatures &#x3D; spam.map(email &#x3D;&gt; tf.transform(email.split(&quot; &quot;)))</span><br><span class="line">    val normalFeatures &#x3D; normal.map(email &#x3D;&gt; tf.transform(email.split(&quot; &quot;)))</span><br><span class="line">    &#x2F;&#x2F; 创建LabeledPoint数据集分别存放阳性（垃圾邮件）和阴性（正常邮件）的例子</span><br><span class="line">    val positiveExamples &#x3D; spamFeatures.map(features &#x3D;&gt; LabeledPoint(1, features))</span><br><span class="line">    val negativeExamples &#x3D; normalFeatures.map(features &#x3D;&gt; LabeledPoint(0, features))</span><br><span class="line">    val trainingData &#x3D; positiveExamples.union(negativeExamples)</span><br><span class="line">    trainingData.cache() &#x2F;&#x2F; 因为逻辑回归是迭代算法，所以缓存训练数据RDD</span><br><span class="line">    &#x2F;&#x2F; 使用SGD算法运行逻辑回归</span><br><span class="line">    val model &#x3D; new LogisticRegressionWithSGD().run(trainingData)</span><br><span class="line">    &#x2F;&#x2F; 以阳性（垃圾邮件）和阴性（正常邮件）的例子分别进行测试</span><br><span class="line">    val posTest &#x3D; tf.transform(</span><br><span class="line">      &quot;Experience with BiggerPenis Today! Grow 3-inches more ...&quot;.split(&quot; &quot;))</span><br><span class="line">    val negTest &#x3D; tf.transform(</span><br><span class="line">      &quot;That is cold.  Is there going to be a retirement party? ...&quot;.split(&quot; &quot;))</span><br><span class="line">    println(&quot;Prediction for positive test example: &quot; + model.predict(posTest))</span><br><span class="line">    println(&quot;Prediction for negative test example: &quot; + model.predict(negTest))</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         
           <p class="article-more-link">
-            <a class="btn btn-primary" href="/2017/04/07/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E9%94%AE%E5%80%BC%E5%AF%B9%E6%93%8D%E4%BD%9C/#more">全文 &gt;&gt;</a>
+            <a class="btn btn-primary" href="/2017/04/28/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%9F%BA%E4%BA%8EMLlib%E7%9A%84%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/#more">全文 &gt;&gt;</a>
           </p>
         
       
@@ -194,7 +216,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2017/04/07/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E9%94%AE%E5%80%BC%E5%AF%B9%E6%93%8D%E4%BD%9C/" data-id="ckca3uy16009fw20l2157geb3" class="article-share-link">
+      <a data-url="http://tonglin0325.github.io/2017/04/28/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%9F%BA%E4%BA%8EMLlib%E7%9A%84%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" data-id="ckca3uy130093w20lc8kvf4ug" class="article-share-link">
         <i class="fa fa-share"></i> 分享
       </a>
       
@@ -210,13 +232,13 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-Spark学习笔记——RDD编程" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Spark学习笔记——Spark Streaming" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
     
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/06/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94RDD%E7%BC%96%E7%A8%8B/">Spark学习笔记——RDD编程</a>
+      <a class="article-title" href="/2017/04/25/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94Spark%20Streaming/">Spark学习笔记——Spark Streaming</a>
     </h1>
   
 
@@ -225,7 +247,7 @@ ga('send', 'pageview');
 
   <div class="article-meta">
     <div class="article-datetime">
-  <a href="/2017/04/06/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94RDD%E7%BC%96%E7%A8%8B/" class="article-date"><time datetime="2017-04-05T16:00:00.000Z" itemprop="datePublished">2017-04-06</time></a>
+  <a href="/2017/04/25/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94Spark%20Streaming/" class="article-date"><time datetime="2017-04-24T16:00:00.000Z" itemprop="datePublished">2017-04-25</time></a>
 </div>
 
     <div class="article-author">tonglin0325</div>
@@ -236,19 +258,12 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>1.RDD&mdash;&mdash;弹性分布式数据集（Resilient Distributed Dataset）</strong></p>
-<p>RDD是一个分布式的元素集合，在Spark中，对数据的操作就是<strong>创建RDD</strong>、<strong>转换已有的RDD</strong>和<strong>调用RDD操作进行求值</strong>。</p>
-<p>Spark 中的 RDD 就是一个不可变的分布式对象集合。每个 RDD 都被分为多个分区,这些分区运行在集群中的不同节点上。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">object WordCount &#123;</span><br><span class="line">  def main(args: Array[String]) &#123;</span><br><span class="line">    val inputFile &#x3D;  &quot;file:&#x2F;&#x2F;&#x2F;home&#x2F;common&#x2F;coding&#x2F;coding&#x2F;Scala&#x2F;word-count&#x2F;test.segmented&quot;</span><br><span class="line">    val conf &#x3D; new SparkConf().setAppName(&quot;WordCount&quot;).setMaster(&quot;local&quot;)　　　　#创建一个SparkConf对象来配置应用&lt;br&gt;　　　　#集群URL：告诉Spark连接到哪个集群，local是单机单线程，无需连接到集群，应用名：在集群管理器的用户界面方便找到应用</span><br><span class="line">    val sc &#x3D; new SparkContext(conf)　　　　　　　　#然后基于这SparkConf创建一个SparkContext对象</span><br><span class="line">    val textFile &#x3D; sc.textFile(inputFile)　　　　#读取输入的数据</span><br><span class="line">    val wordCount &#x3D; textFile.flatMap(line &#x3D;&gt; line.split(&quot; &quot;)).map(word &#x3D;&gt; (word, 1)).reduceByKey((a, b) &#x3D;&gt; a + b)　　#切分成单词，转换成键值对并计数</span><br><span class="line">    wordCount.foreach(println)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>创建一个RDD</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val textFile &#x3D; sc.textFile(inputFile)</span><br></pre></td></tr></table></figure>
-
-<p>或者</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val lines &#x3D; sc.parallelize(List(&quot;pandas&quot;, &quot;i like pandas&quot;))</span><br></pre></td></tr></table></figure>
+        <p>许多应用需要<strong>即时处理</strong>收到的数据，例如用来实时追踪页面访问统计的应用、训练机器学习模型的应用， 还有自动检测异常的应用。<strong>Spark Streaming</strong> 是 Spark 为这些应用而设计的模型。它允许用户使用一套和批处理非常接近的 API 来编写流式计算应用，这样就可以大量重用批处理应用的技术甚至代码。 <br /><strong>Spark Streaming</strong> 使用离散化流（ discretized stream）作为抽象表示， 叫作 <strong>DStream</strong>。 DStream 是随时间推移而收到的数据的序列。在内部，每个时间区间收到的数据都作为 RDD 存在，而 <strong>DStream 是由这些 RDD 所组成的序列</strong>（因此得名&ldquo;离散化&rdquo;）。DStream 可以从各种输入源创建，比如 Flume、 Kafka 或者 HDFS。创建出来的 DStream 支持两种操作，一种是<strong>转化操作（ transformation）</strong> ，<strong>会生成一个新的DStream</strong>，另一种是<strong>输出操作（ output operation）</strong>，<strong>可以把数据写入外部系统中</strong>。DStream提供了许多与 RDD 所支持的操作相类似的操作支持，还增加了与时间相关的新操作，比如滑动窗口。 <br /><br /></p>
+<p><strong>build.sbt</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">name :&#x3D; &quot;spark-first&quot;</span><br><span class="line"></span><br><span class="line">version :&#x3D; &quot;1.0&quot;</span><br><span class="line"></span><br><span class="line">scalaVersion :&#x3D; &quot;2.11.8&quot;</span><br><span class="line"></span><br><span class="line">libraryDependencies ++&#x3D; Seq(</span><br><span class="line">  &quot;org.apache.spark&quot; % &quot;spark-core_2.11&quot; % &quot;2.1.0&quot;,</span><br><span class="line">  &quot;org.apache.hadoop&quot; % &quot;hadoop-common&quot; % &quot;2.7.2&quot;,</span><br><span class="line">  &quot;mysql&quot; % &quot;mysql-connector-java&quot; % &quot;5.1.31&quot;,</span><br><span class="line">  &quot;org.apache.spark&quot; %% &quot;spark-sql&quot; % &quot;2.1.0&quot;,</span><br><span class="line">  &quot;org.apache.spark&quot; %% &quot;spark-streaming&quot; % &quot;2.1.0&quot;</span><br><span class="line"></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
         
           <p class="article-more-link">
-            <a class="btn btn-primary" href="/2017/04/06/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94RDD%E7%BC%96%E7%A8%8B/#more">全文 &gt;&gt;</a>
+            <a class="btn btn-primary" href="/2017/04/25/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94Spark%20Streaming/#more">全文 &gt;&gt;</a>
           </p>
         
       
@@ -257,7 +272,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2017/04/06/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94RDD%E7%BC%96%E7%A8%8B/" data-id="ckca3uy10008xw20l4sufh1kj" class="article-share-link">
+      <a data-url="http://tonglin0325.github.io/2017/04/25/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94Spark%20Streaming/" data-id="ckca3uy11008yw20l2eou3q9h" class="article-share-link">
         <i class="fa fa-share"></i> 分享
       </a>
       
@@ -273,13 +288,13 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-Scala学习笔记——函数和闭包" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Scala学习笔记——断言和单元测试" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
     
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/05/Scala%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%E5%92%8C%E9%97%AD%E5%8C%85/">Scala学习笔记——函数和闭包</a>
+      <a class="article-title" href="/2017/04/19/Scala%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%96%AD%E8%A8%80%E5%92%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">Scala学习笔记——断言和单元测试</a>
     </h1>
   
 
@@ -288,7 +303,7 @@ ga('send', 'pageview');
 
   <div class="article-meta">
     <div class="article-datetime">
-  <a href="/2017/04/05/Scala%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%E5%92%8C%E9%97%AD%E5%8C%85/" class="article-date"><time datetime="2017-04-04T16:00:00.000Z" itemprop="datePublished">2017-04-05</time></a>
+  <a href="/2017/04/19/Scala%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%96%AD%E8%A8%80%E5%92%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" class="article-date"><time datetime="2017-04-18T16:00:00.000Z" itemprop="datePublished">2017-04-19</time></a>
 </div>
 
     <div class="article-author">tonglin0325</div>
@@ -299,16 +314,13 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>1.本地函数</strong></p>
-<p>可以在一个方法内再次定义一个方法，这个方法就是外部方法的内部私有方法，省略了private关键字</p>
-<p><strong>2.头等函数</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var increase &#x3D; (x: Int) &#x3D;&gt; x + 1</span><br><span class="line">System.out.println(increase(10))</span><br></pre></td></tr></table></figure>
-
-<p>集合类的<strong>foreach方法</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var list1 &#x3D; List(1, 2)</span><br><span class="line">list1.foreach((x: Int) &#x3D;&gt; println(x))</span><br></pre></td></tr></table></figure>
+        <p><strong>1.断言</strong></p>
+<p><strong>assert(conditon)</strong>将在条件不成立的时候，抛出assertionError</p>
+<p><strong>assert(conditon,explanation)</strong>讲在条件不成立的时候，抛出explanation作为说明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">package com.scala.first</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line">  * Created by common on 17-4-19.</span><br><span class="line">  *&#x2F;</span><br><span class="line">object Assert &#123;</span><br><span class="line"></span><br><span class="line">  def main(args: Array[String]): Unit &#x3D; &#123;</span><br><span class="line">    val a &#x3D; new Assert()</span><br><span class="line">    a.above1(0)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Assert &#123;</span><br><span class="line">  val value &#x3D; 1</span><br><span class="line"></span><br><span class="line">  def above(that: Int): Unit &#x3D; &#123;</span><br><span class="line">    val thatVal &#x3D; that</span><br><span class="line">    val thisVal &#x3D; this.value</span><br><span class="line">    &#x2F;&#x2F;如果条件不满足，Exception in thread &quot;main&quot; java.lang.AssertionError: assertion failed</span><br><span class="line">    assert(thatVal &#x3D;&#x3D; thisVal)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;另一种断言</span><br><span class="line">  &#x2F;&#x2F;如果条件不满足，Exception in thread &quot;main&quot; java.lang.AssertionError: assertion failed</span><br><span class="line">  def above1(that: Int): Unit &#x3D; &#123;</span><br><span class="line">    &#123;</span><br><span class="line">      val thatVal &#x3D; that</span><br><span class="line">      val thisVal &#x3D; this.value</span><br><span class="line">    &#125; ensuring(that &#x3D;&#x3D; this.value)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         
           <p class="article-more-link">
-            <a class="btn btn-primary" href="/2017/04/05/Scala%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%E5%92%8C%E9%97%AD%E5%8C%85/#more">全文 &gt;&gt;</a>
+            <a class="btn btn-primary" href="/2017/04/19/Scala%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%96%AD%E8%A8%80%E5%92%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/#more">全文 &gt;&gt;</a>
           </p>
         
       
@@ -317,7 +329,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2017/04/05/Scala%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%E5%92%8C%E9%97%AD%E5%8C%85/" data-id="ckca3uy0x008kw20l72ia1mgk" class="article-share-link">
+      <a data-url="http://tonglin0325.github.io/2017/04/19/Scala%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%96%AD%E8%A8%80%E5%92%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" data-id="ckca3uy0y008nw20l79u33hwb" class="article-share-link">
         <i class="fa fa-share"></i> 分享
       </a>
       
@@ -333,13 +345,13 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-Spark学习笔记——在远程机器中运行WordCount" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Scala学习笔记——样本类和模式匹配" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
     
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/05/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%9C%A8%E8%BF%9C%E7%A8%8B%E6%9C%BA%E5%99%A8%E4%B8%AD%E8%BF%90%E8%A1%8CWordCount/">Spark学习笔记——在远程机器中运行WordCount</a>
+      <a class="article-title" href="/2017/04/19/Scala%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%A0%B7%E6%9C%AC%E7%B1%BB%E5%92%8C%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/">Scala学习笔记——样本类和模式匹配</a>
     </h1>
   
 
@@ -348,7 +360,7 @@ ga('send', 'pageview');
 
   <div class="article-meta">
     <div class="article-datetime">
-  <a href="/2017/04/05/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%9C%A8%E8%BF%9C%E7%A8%8B%E6%9C%BA%E5%99%A8%E4%B8%AD%E8%BF%90%E8%A1%8CWordCount/" class="article-date"><time datetime="2017-04-04T16:00:00.000Z" itemprop="datePublished">2017-04-05</time></a>
+  <a href="/2017/04/19/Scala%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%A0%B7%E6%9C%AC%E7%B1%BB%E5%92%8C%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/" class="article-date"><time datetime="2017-04-18T16:00:00.000Z" itemprop="datePublished">2017-04-19</time></a>
 </div>
 
     <div class="article-author">tonglin0325</div>
@@ -359,17 +371,12 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.通过<strong>realy机器</strong>登录<strong>relay-shell</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh XXX@XXX</span><br></pre></td></tr></table></figure>
-
-<p>2.登录了跳板机之后，<strong>连接可以用的机器</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XXXX.bj</span><br></pre></td></tr></table></figure>
-
-<p>3.在本地的idea生成好程序的jar包（word-count_2.11-1.0.jar）之后，把<strong>jar包</strong>和<strong>需要put到远程机器的hdfs文件系统中的文件</strong>通过scp命令从开发机传到远程的机器中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp 开发机用户名@开发机ip地址:&#x2F;home&#x2F;XXXXX&#x2F;文件 .    #最后一个.表示cd的根目录下</span><br></pre></td></tr></table></figure>
+        <p><strong>1.样本类</strong></p>
+<p>在申明的类前面加上一个<strong>case修饰符</strong>，带有这种修饰符的类被称为<strong>样本类（case class）。</strong></p>
+<p>被申明为样本类的类的<strong>特点</strong>：1.会添加和类名一致的工厂方法；2.样本类参数列表中的所有参数隐式获得了val前缀，因此它被当做字段维护；3.编译器被这个样本类添加了toString、hashcode、equals方法的实现；4.支持了模式匹配</p>
         
           <p class="article-more-link">
-            <a class="btn btn-primary" href="/2017/04/05/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%9C%A8%E8%BF%9C%E7%A8%8B%E6%9C%BA%E5%99%A8%E4%B8%AD%E8%BF%90%E8%A1%8CWordCount/#more">全文 &gt;&gt;</a>
+            <a class="btn btn-primary" href="/2017/04/19/Scala%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%A0%B7%E6%9C%AC%E7%B1%BB%E5%92%8C%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/#more">全文 &gt;&gt;</a>
           </p>
         
       
@@ -378,7 +385,122 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2017/04/05/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%9C%A8%E8%BF%9C%E7%A8%8B%E6%9C%BA%E5%99%A8%E4%B8%AD%E8%BF%90%E8%A1%8CWordCount/" data-id="ckca3uy120091w20l0kd6ciav" class="article-share-link">
+      <a data-url="http://tonglin0325.github.io/2017/04/19/Scala%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%A0%B7%E6%9C%AC%E7%B1%BB%E5%92%8C%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/" data-id="ckca3uy0y008ow20lbt1ag1fl" class="article-share-link">
+        <i class="fa fa-share"></i> 分享
+      </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scala/" rel="tag">Scala</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Scala学习笔记——类型" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/19/Scala%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E7%B1%BB%E5%9E%8B/">Scala学习笔记——类型</a>
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2017/04/19/Scala%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E7%B1%BB%E5%9E%8B/" class="article-date"><time datetime="2017-04-18T16:00:00.000Z" itemprop="datePublished">2017-04-19</time></a>
+</div>
+
+    <div class="article-author">tonglin0325</div>
+    
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>1.Option类型</strong></p>
+<p>Option类型可以有<strong>两种类型</strong>，一种是<strong>Some(x)</strong>，一种是<strong>None对象</strong></p>
+<p>比如Scala的Map的get方法发现了指定键，返回Some(x)，没有发现，返回None对象</p>
+        
+          <p class="article-more-link">
+            <a class="btn btn-primary" href="/2017/04/19/Scala%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E7%B1%BB%E5%9E%8B/#more">全文 &gt;&gt;</a>
+          </p>
+        
+      
+    </div>
+
+    
+
+    <footer class="article-footer">
+      <a data-url="http://tonglin0325.github.io/2017/04/19/Scala%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E7%B1%BB%E5%9E%8B/" data-id="ckca3uy0y008qw20le4tuhvzc" class="article-share-link">
+        <i class="fa fa-share"></i> 分享
+      </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scala/" rel="tag">Scala</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Spark学习笔记——读写HDFS" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/18/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E8%AF%BB%E5%86%99HDFS/">Spark学习笔记——读写HDFS</a>
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2017/04/18/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E8%AF%BB%E5%86%99HDFS/" class="article-date"><time datetime="2017-04-17T16:00:00.000Z" itemprop="datePublished">2017-04-18</time></a>
+</div>
+
+    <div class="article-author">tonglin0325</div>
+    
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>使用Spark读写HDFS中的parquet文件</strong></p>
+<p><strong>文件夹中的parquet文件</strong></p>
+<img src="/images/517519-20170418143215462-2130167231.png" alt="" />
+
+<p><strong>build.sbt文件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">name :&#x3D; &quot;spark-hbase&quot;</span><br><span class="line"></span><br><span class="line">version :&#x3D; &quot;1.0&quot;</span><br><span class="line"></span><br><span class="line">scalaVersion :&#x3D; &quot;2.11.8&quot;</span><br><span class="line"></span><br><span class="line">libraryDependencies ++&#x3D; Seq(</span><br><span class="line">  &quot;org.apache.spark&quot; %% &quot;spark-core&quot; % &quot;2.1.0&quot;,</span><br><span class="line">  &quot;mysql&quot; % &quot;mysql-connector-java&quot; % &quot;5.1.31&quot;,</span><br><span class="line">  &quot;org.apache.spark&quot; %% &quot;spark-sql&quot; % &quot;2.1.0&quot;,</span><br><span class="line">  &quot;org.apache.hbase&quot; % &quot;hbase-common&quot; % &quot;1.3.0&quot;,</span><br><span class="line">  &quot;org.apache.hbase&quot; % &quot;hbase-client&quot; % &quot;1.3.0&quot;,</span><br><span class="line">  &quot;org.apache.hbase&quot; % &quot;hbase-server&quot; % &quot;1.3.0&quot;,</span><br><span class="line">  &quot;org.apache.hbase&quot; % &quot;hbase&quot; % &quot;1.2.1&quot;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a class="btn btn-primary" href="/2017/04/18/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E8%AF%BB%E5%86%99HDFS/#more">全文 &gt;&gt;</a>
+          </p>
+        
+      
+    </div>
+
+    
+
+    <footer class="article-footer">
+      <a data-url="http://tonglin0325.github.io/2017/04/18/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E8%AF%BB%E5%86%99HDFS/" data-id="ckca3uy15009cw20lc9tmf27b" class="article-share-link">
         <i class="fa fa-share"></i> 分享
       </a>
       
@@ -394,13 +516,13 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-Ubuntu下安装hbase" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Spark学习笔记——读写Hbase" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
     
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/05/Ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85hbase/">Ubuntu下安装hbase</a>
+      <a class="article-title" href="/2017/04/18/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E8%AF%BB%E5%86%99Hbase/">Spark学习笔记——读写Hbase</a>
     </h1>
   
 
@@ -409,7 +531,7 @@ ga('send', 'pageview');
 
   <div class="article-meta">
     <div class="article-datetime">
-  <a href="/2017/04/05/Ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85hbase/" class="article-date"><time datetime="2017-04-04T16:00:00.000Z" itemprop="datePublished">2017-04-05</time></a>
+  <a href="/2017/04/18/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E8%AF%BB%E5%86%99Hbase/" class="article-date"><time datetime="2017-04-17T16:00:00.000Z" itemprop="datePublished">2017-04-18</time></a>
 </div>
 
     <div class="article-author">tonglin0325</div>
@@ -420,26 +542,20 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.在清华镜像站点下载hbase的安装文件，选择的是stable的版本，版本号是hbase-1.2.5/</p>
-<p>2.解压放在/usr/local的目录下</p>
-<p>3.修改权限</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R hduser hadoop hbase-1.2.5&#x2F;</span><br></pre></td></tr></table></figure>
+        <p><strong>1.首先在Hbase中建立一张表，名字为student</strong></p>
+<p><strong>参考 <a href="http://www.cnblogs.com/tonglin0325/p/6701666.html" target="_blank" rel="noopener">Hbase学习笔记&mdash;&mdash;基本CRUD操作</a></strong></p>
+<p>一个<strong>cell的值,</strong>取决于<strong>Row,Column family,Column Qualifier和Timestamp</strong></p>
+<p><strong>Hbase表结构</strong></p>
+<p><strong><img src="/images/517519-20170418200643915-626033901.png" alt="" /></strong></p>
+<p><strong>2.往Hbase中写入数据，写入的时候，需要写family和column</strong></p>
+<p><strong>build.sbt</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">libraryDependencies ++&#x3D; Seq(</span><br><span class="line">  &quot;org.apache.spark&quot; %% &quot;spark-core&quot; % &quot;2.1.0&quot;,</span><br><span class="line">  &quot;mysql&quot; % &quot;mysql-connector-java&quot; % &quot;5.1.31&quot;,</span><br><span class="line">  &quot;org.apache.spark&quot; %% &quot;spark-sql&quot; % &quot;2.1.0&quot;,</span><br><span class="line">  &quot;org.apache.hbase&quot; % &quot;hbase-common&quot; % &quot;1.3.0&quot;,</span><br><span class="line">  &quot;org.apache.hbase&quot; % &quot;hbase-client&quot; % &quot;1.3.0&quot;,</span><br><span class="line">  &quot;org.apache.hbase&quot; % &quot;hbase-server&quot; % &quot;1.3.0&quot;,</span><br><span class="line">  &quot;org.apache.hbase&quot; % &quot;hbase&quot; % &quot;1.2.1&quot;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 
-<p>4.修改文件夹的名称为hbase</p>
-<p>5.在～/.bashrc下添加，之后source一下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH&#x3D;$PATH:&#x2F;usr&#x2F;local&#x2F;hbase&#x2F;bin</span><br></pre></td></tr></table></figure>
-
-<p>或者在 /etc/profile中添加</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export HBASE_HOME&#x3D;&#x2F;usr&#x2F;local&#x2F;hbase</span><br><span class="line">export PATH&#x3D;$&#123;HBASE_HOME&#125;&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
-
-<p>6.修改文件夹的权限</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local</span><br><span class="line">sudo chown -R hadoop .&#x2F;hbase</span><br></pre></td></tr></table></figure>
-
-<p>7.测试一下是否安装成功</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hbase version</span><br><span class="line">HBase 1.2.5...</span><br></pre></td></tr></table></figure>
+<p><strong>在hbaseshell中写数据的时候，写的是String，但是在idea中写代码的话，如果写的是int类型的，就会出现\x00…的情况</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line">import org.apache.spark.&#123;SparkConf, SparkContext&#125;</span><br><span class="line">import org.apache.spark.sql._</span><br><span class="line">import java.util.Properties</span><br><span class="line"></span><br><span class="line">import com.google.common.collect.Lists</span><br><span class="line">import org.apache.spark.sql.types.&#123;ArrayType, StringType, StructField, StructType&#125;</span><br><span class="line">import org.apache.hadoop.hbase.HBaseConfiguration</span><br><span class="line">import org.apache.hadoop.hbase.client.&#123;Get, Put, Result, Scan&#125;</span><br><span class="line">import org.apache.hadoop.hbase.io.ImmutableBytesWritable</span><br><span class="line">import org.apache.hadoop.hbase.mapred.TableOutputFormat</span><br><span class="line">import org.apache.hadoop.hbase.mapreduce.TableInputFormat</span><br><span class="line">import org.apache.hadoop.hbase.util.Bytes</span><br><span class="line">import org.apache.hadoop.mapred.JobConf</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line">  * Created by mi on 17-4-11.</span><br><span class="line">  *&#x2F;</span><br><span class="line"></span><br><span class="line">case class resultset(name: String,</span><br><span class="line">                     info: String,</span><br><span class="line">                     summary: String)</span><br><span class="line"></span><br><span class="line">case class IntroItem(name: String, value: String)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">case class BaikeLocation(name: String,</span><br><span class="line">                         url: String &#x3D; &quot;&quot;,</span><br><span class="line">                         info: Seq[IntroItem] &#x3D; Seq(),</span><br><span class="line">                         summary: Option[String] &#x3D; None)</span><br><span class="line"></span><br><span class="line">case class MewBaikeLocation(name: String,</span><br><span class="line">                            url: String &#x3D; &quot;&quot;,</span><br><span class="line">                            info: Option[String] &#x3D; None,</span><br><span class="line">                            summary: Option[String] &#x3D; None)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">object MysqlOpt &#123;</span><br><span class="line"></span><br><span class="line">  def main(args: Array[String]): Unit &#x3D; &#123;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 本地模式运行,便于测试</span><br><span class="line">    val conf &#x3D; new SparkConf().setAppName(&quot;WordCount&quot;).setMaster(&quot;local&quot;)</span><br><span class="line">    &#x2F;&#x2F; 创建 spark context</span><br><span class="line">    val sc &#x3D; new SparkContext(conf)</span><br><span class="line">    val sqlContext &#x3D; new SQLContext(sc)</span><br><span class="line">    import sqlContext.implicits._</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;定义数据库和表信息</span><br><span class="line">    val url &#x3D; &quot;jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;baidubaike?useUnicode&#x3D;true&amp;characterEncoding&#x3D;UTF-8&quot;</span><br><span class="line">    val table &#x3D; &quot;baike_pages&quot;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 读取Hbase文件，在hbase的&#x2F;usr&#x2F;local&#x2F;hbase&#x2F;conf&#x2F;hbase-site.xml中写的地址</span><br><span class="line">    val hbasePath &#x3D; &quot;file:&#x2F;&#x2F;&#x2F;usr&#x2F;local&#x2F;hbase&#x2F;hbase-tmp&quot;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 创建hbase configuration</span><br><span class="line">    val hBaseConf &#x3D; HBaseConfiguration.create()</span><br><span class="line">    hBaseConf.set(TableInputFormat.INPUT_TABLE, &quot;student&quot;)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 初始化jobconf，TableOutputFormat必须是org.apache.hadoop.hbase.mapred包下的！</span><br><span class="line">    val jobConf &#x3D; new JobConf(hBaseConf)</span><br><span class="line">    jobConf.setOutputFormat(classOf[TableOutputFormat])</span><br><span class="line">    jobConf.set(TableOutputFormat.OUTPUT_TABLE, &quot;student&quot;)</span><br><span class="line"></span><br><span class="line">    val indataRDD &#x3D; sc.makeRDD(Array(&quot;1,99,98&quot;,&quot;2,97,96&quot;,&quot;3,95,94&quot;))</span><br><span class="line"></span><br><span class="line">    val rdd &#x3D; indataRDD.map(_.split(&#39;,&#39;)).map&#123;arr&#x3D;&gt;&#123;</span><br><span class="line">      &#x2F;*一个Put对象就是一行记录，在构造方法中指定主键</span><br><span class="line">       * 所有插入的数据必须用org.apache.hadoop.hbase.util.Bytes.toBytes方法转换</span><br><span class="line">       * Put.add方法接收三个参数：列族，列名，数据</span><br><span class="line">       *&#x2F;</span><br><span class="line">      val put &#x3D; new Put(Bytes.toBytes(arr(0)))</span><br><span class="line">      put.add(Bytes.toBytes(&quot;course&quot;),Bytes.toBytes(&quot;math&quot;),Bytes.toBytes(arr(1)))</span><br><span class="line">      put.add(Bytes.toBytes(&quot;course&quot;),Bytes.toBytes(&quot;english&quot;),Bytes.toBytes(arr(2)))</span><br><span class="line">      &#x2F;&#x2F;转化成RDD[(ImmutableBytesWritable,Put)]类型才能调用saveAsHadoopDataset</span><br><span class="line">      (new ImmutableBytesWritable, put)</span><br><span class="line">    &#125;&#125;</span><br><span class="line"></span><br><span class="line">    rdd.saveAsHadoopDataset(jobConf)</span><br><span class="line"></span><br><span class="line">    sc.stop()</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         
           <p class="article-more-link">
-            <a class="btn btn-primary" href="/2017/04/05/Ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85hbase/#more">全文 &gt;&gt;</a>
+            <a class="btn btn-primary" href="/2017/04/18/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E8%AF%BB%E5%86%99Hbase/#more">全文 &gt;&gt;</a>
           </p>
         
       
@@ -448,12 +564,12 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2017/04/05/Ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85hbase/" data-id="ckca3uy1k00alw20l0pq3ec2a" class="article-share-link">
+      <a data-url="http://tonglin0325.github.io/2017/04/18/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E8%AF%BB%E5%86%99Hbase/" data-id="ckca3uy16009dw20lah9ianli" class="article-share-link">
         <i class="fa fa-share"></i> 分享
       </a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hbase/" rel="tag">Hbase</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hbase/" rel="tag">Hbase</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spark/" rel="tag">Spark</a></li></ul>
 
 
     </footer>
@@ -464,13 +580,13 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-Ubuntu下搜狗输入法只显示黑框，不显示输入的汉字选项" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Scala学习笔记——简化代码、柯里化、继承、特质" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
     
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/05/Ubuntu%E4%B8%8B%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%E5%8F%AA%E6%98%BE%E7%A4%BA%E9%BB%91%E6%A1%86%EF%BC%8C%E4%B8%8D%E6%98%BE%E7%A4%BA%E8%BE%93%E5%85%A5%E7%9A%84%E6%B1%89%E5%AD%97%E9%80%89%E9%A1%B9/">Ubuntu下搜狗输入法只显示黑框，不显示输入的汉字选项</a>
+      <a class="article-title" href="/2017/04/16/Scala%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E7%AE%80%E5%8C%96%E4%BB%A3%E7%A0%81%E3%80%81%E6%9F%AF%E9%87%8C%E5%8C%96%E3%80%81%E7%BB%A7%E6%89%BF%E3%80%81%E7%89%B9%E8%B4%A8/">Scala学习笔记——简化代码、柯里化、继承、特质</a>
     </h1>
   
 
@@ -479,7 +595,7 @@ ga('send', 'pageview');
 
   <div class="article-meta">
     <div class="article-datetime">
-  <a href="/2017/04/05/Ubuntu%E4%B8%8B%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%E5%8F%AA%E6%98%BE%E7%A4%BA%E9%BB%91%E6%A1%86%EF%BC%8C%E4%B8%8D%E6%98%BE%E7%A4%BA%E8%BE%93%E5%85%A5%E7%9A%84%E6%B1%89%E5%AD%97%E9%80%89%E9%A1%B9/" class="article-date"><time datetime="2017-04-04T16:00:00.000Z" itemprop="datePublished">2017-04-05</time></a>
+  <a href="/2017/04/16/Scala%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E7%AE%80%E5%8C%96%E4%BB%A3%E7%A0%81%E3%80%81%E6%9F%AF%E9%87%8C%E5%8C%96%E3%80%81%E7%BB%A7%E6%89%BF%E3%80%81%E7%89%B9%E8%B4%A8/" class="article-date"><time datetime="2017-04-15T16:00:00.000Z" itemprop="datePublished">2017-04-16</time></a>
 </div>
 
     <div class="article-author">tonglin0325</div>
@@ -490,69 +606,11 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
-<li>cd ~/.config</li>
-</ol>
-<p>2.删除三个文件夹: SogouPY, SogouPY.users, sogou-qimpanel</p>
-<p>然后重启输入法</p>
-
-      
-    </div>
-
-    
-      
-
-    
-
-    <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2017/04/05/Ubuntu%E4%B8%8B%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%E5%8F%AA%E6%98%BE%E7%A4%BA%E9%BB%91%E6%A1%86%EF%BC%8C%E4%B8%8D%E6%98%BE%E7%A4%BA%E8%BE%93%E5%85%A5%E7%9A%84%E6%B1%89%E5%AD%97%E9%80%89%E9%A1%B9/" data-id="ckca3uy1l00apw20l1qxzflnc" class="article-share-link">
-        <i class="fa fa-share"></i> 分享
-      </a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
-
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Scala学习笔记——内建控制结构" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <header class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/04/Scala%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%86%85%E5%BB%BA%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/">Scala学习笔记——内建控制结构</a>
-    </h1>
-  
-
-
-  </header>
-
-  <div class="article-meta">
-    <div class="article-datetime">
-  <a href="/2017/04/04/Scala%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%86%85%E5%BB%BA%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/" class="article-date"><time datetime="2017-04-03T16:00:00.000Z" itemprop="datePublished">2017-04-04</time></a>
-</div>
-
-    <div class="article-author">tonglin0325</div>
-    
-
-  </div>
-  <div class="article-inner">
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Scala的<strong>内建控制结构</strong>包括：if、while、for、try、match和函数调用</p>
-<p><strong>1.if表达式</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;常见的写法</span><br><span class="line">var filename &#x3D; &quot;name&quot;</span><br><span class="line">if (!args.isEmpty)</span><br><span class="line">  filename &#x3D; args(0)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;比较简洁的写法</span><br><span class="line">var filename1 &#x3D;</span><br><span class="line">  if (!args.isEmpty) args(0)</span><br><span class="line">  else &quot;name&quot;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;更简洁的写法，不要有中间变量</span><br><span class="line">println(if(!args.isEmpty) args(0) else &quot;name&quot;)</span><br></pre></td></tr></table></figure>
+        <p><strong>1.简化代码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">package com.scala.first</span><br><span class="line"></span><br><span class="line">import java.io.File</span><br><span class="line">import javax.management.Query</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line">  * Created by common on 17-4-5.</span><br><span class="line">  *&#x2F;</span><br><span class="line">object FileMatcher &#123;</span><br><span class="line"></span><br><span class="line">  def main(args: Array[String]) &#123;</span><br><span class="line"></span><br><span class="line">    for (file &lt;- filesHere)</span><br><span class="line">      println(file)</span><br><span class="line"></span><br><span class="line">    println()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    for (file &lt;- filesMatching(&quot;src&quot;, _.endsWith(_)))</span><br><span class="line">      println(file)</span><br><span class="line"></span><br><span class="line">    for (file &lt;- filesEnding(&quot;src&quot;))</span><br><span class="line">      println(file)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private def filesHere &#x3D; (new File(&quot;.&quot;)).listFiles</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;matcher是传入一个函数，返回boolean值，比如_.endsWith(_)</span><br><span class="line">  private def filesMatching(query: String, matcher: (String, String) &#x3D;&gt; Boolean) &#x3D; &#123;</span><br><span class="line">    for (file &lt;- filesHere; if matcher(file.getName, query)) yield file</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;上面的函数不够简洁，下面是更加简洁的定义</span><br><span class="line">  private def filesMatch(matcher: String &#x3D;&gt; Boolean) &#x3D; &#123;</span><br><span class="line">    for (file &lt;- filesHere; if matcher(file.getName)) yield file</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;然后可以定义使用不同matcher()的方法</span><br><span class="line">  def filesEnding(query: String) &#x3D; &#123;</span><br><span class="line">    filesMatch(_.endsWith(query))</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;使用exists来简化代码</span><br><span class="line">  def containsOdd(nums: List[Int]): Boolean &#x3D; &#123;</span><br><span class="line">    nums.exists(_ % 2 &#x3D;&#x3D; 1)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  def containsNeg(nums: List[Int]): Boolean &#x3D; &#123;</span><br><span class="line">    nums.exists(_ &lt; 0)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         
           <p class="article-more-link">
-            <a class="btn btn-primary" href="/2017/04/04/Scala%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%86%85%E5%BB%BA%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/#more">全文 &gt;&gt;</a>
+            <a class="btn btn-primary" href="/2017/04/16/Scala%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E7%AE%80%E5%8C%96%E4%BB%A3%E7%A0%81%E3%80%81%E6%9F%AF%E9%87%8C%E5%8C%96%E3%80%81%E7%BB%A7%E6%89%BF%E3%80%81%E7%89%B9%E8%B4%A8/#more">全文 &gt;&gt;</a>
           </p>
         
       
@@ -561,7 +619,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2017/04/04/Scala%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%86%85%E5%BB%BA%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/" data-id="ckca3uy0w008jw20l1qh79eio" class="article-share-link">
+      <a data-url="http://tonglin0325.github.io/2017/04/16/Scala%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E7%AE%80%E5%8C%96%E4%BB%A3%E7%A0%81%E3%80%81%E6%9F%AF%E9%87%8C%E5%8C%96%E3%80%81%E7%BB%A7%E6%89%BF%E3%80%81%E7%89%B9%E8%B4%A8/" data-id="ckca3uy0y008pw20l7joeb1us" class="article-share-link">
         <i class="fa fa-share"></i> 分享
       </a>
       
@@ -577,13 +635,13 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-Scala学习笔记——函数式对象" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Spark学习笔记——读写MySQL" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
     
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/04/Scala%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%E5%BC%8F%E5%AF%B9%E8%B1%A1/">Scala学习笔记——函数式对象</a>
+      <a class="article-title" href="/2017/04/13/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E8%AF%BB%E5%86%99MySQL/">Spark学习笔记——读写MySQL</a>
     </h1>
   
 
@@ -592,7 +650,7 @@ ga('send', 'pageview');
 
   <div class="article-meta">
     <div class="article-datetime">
-  <a href="/2017/04/04/Scala%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%E5%BC%8F%E5%AF%B9%E8%B1%A1/" class="article-date"><time datetime="2017-04-03T16:00:00.000Z" itemprop="datePublished">2017-04-04</time></a>
+  <a href="/2017/04/13/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E8%AF%BB%E5%86%99MySQL/" class="article-date"><time datetime="2017-04-12T16:00:00.000Z" itemprop="datePublished">2017-04-13</time></a>
 </div>
 
     <div class="article-author">tonglin0325</div>
@@ -603,12 +661,12 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>用创建一个函数式对象（<strong>类Rational</strong>）的过程来说明</strong></p>
-<p>类Rational是一种表示有理数（Rational number）的类</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">package com.scala.first</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line">  * Created by common on 17-4-3.</span><br><span class="line">  *&#x2F;</span><br><span class="line">object Rational &#123;</span><br><span class="line">  def main(args: Array[String]) &#123;</span><br><span class="line"></span><br><span class="line">    var r1 &#x3D; new Rational(1, 2)</span><br><span class="line">    var r2 &#x3D; new Rational(1)</span><br><span class="line">    System.out.println(r1.toString)</span><br><span class="line">    System.out.println(r1.add(r2).toString)</span><br><span class="line">    var r3 &#x3D; new Rational(2, 2)</span><br><span class="line">    System.out.println(r3)</span><br><span class="line">    System.out.println(r1 + r3)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Rational(n: Int, d: Int) &#123;</span><br><span class="line">  &#x2F;&#x2F;检查先决条件，不符合先决条件将抛出IllegalArgumentException</span><br><span class="line">  require(d !&#x3D; 0)</span><br><span class="line">  &#x2F;&#x2F;最大公约数</span><br><span class="line">  private val g &#x3D; gcd(n.abs, d.abs)</span><br><span class="line"></span><br><span class="line">  private def gcd(a: Int, b: Int): Int &#x3D; &#123;</span><br><span class="line">    if (b &#x3D;&#x3D; 0) a else gcd(b, a % b)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;进行约分</span><br><span class="line">  val numer: Int &#x3D; n &#x2F; g</span><br><span class="line">  val denom: Int &#x3D; d &#x2F; g</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;辅助构造器</span><br><span class="line">  def this(n: Int) &#x3D; this(n, 1)</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;定义操作符</span><br><span class="line">  def +(that: Rational): Rational &#x3D; &#123;</span><br><span class="line">    new Rational(</span><br><span class="line">      numer * that.denom + that.numer * denom,</span><br><span class="line">      denom * that.denom</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;方法重载</span><br><span class="line">  def +(i: Int): Rational &#x3D; &#123;</span><br><span class="line">    new Rational(</span><br><span class="line">      numer + i * denom, denom</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  def *(that: Rational): Rational &#x3D; &#123;</span><br><span class="line">    new Rational(</span><br><span class="line">      numer * that.numer,</span><br><span class="line">      denom * that.denom</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;方法重载</span><br><span class="line">  override def toString &#x3D; numer + &quot;&#x2F;&quot; + denom</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;定义方法</span><br><span class="line">  def add(that: Rational): Rational &#x3D; &#123;</span><br><span class="line">    new Rational(</span><br><span class="line">      numer * that.denom + that.numer * denom,</span><br><span class="line">      denom * that.denom</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;定义方法，自指向this可写可不写</span><br><span class="line">  def lessThan(that: Rational): Boolean &#x3D; &#123;</span><br><span class="line">    this.numer * that.denom &lt; that.numer * this.denom</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p><strong>1.使用Spark读取MySQL中某个表中的信息</strong></p>
+<p>build.sbt文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">name :&#x3D; &quot;spark-hbase&quot;</span><br><span class="line"></span><br><span class="line">version :&#x3D; &quot;1.0&quot;</span><br><span class="line"></span><br><span class="line">scalaVersion :&#x3D; &quot;2.11.8&quot;</span><br><span class="line"></span><br><span class="line">libraryDependencies ++&#x3D; Seq(</span><br><span class="line">  &quot;org.apache.spark&quot; %% &quot;spark-core&quot; % &quot;2.1.0&quot;,</span><br><span class="line">  &quot;mysql&quot; % &quot;mysql-connector-java&quot; % &quot;5.1.31&quot;,</span><br><span class="line">  &quot;org.apache.spark&quot; %% &quot;spark-sql&quot; % &quot;2.1.0&quot;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
         
           <p class="article-more-link">
-            <a class="btn btn-primary" href="/2017/04/04/Scala%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%E5%BC%8F%E5%AF%B9%E8%B1%A1/#more">全文 &gt;&gt;</a>
+            <a class="btn btn-primary" href="/2017/04/13/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E8%AF%BB%E5%86%99MySQL/#more">全文 &gt;&gt;</a>
           </p>
         
       
@@ -617,201 +675,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2017/04/04/Scala%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%E5%BC%8F%E5%AF%B9%E8%B1%A1/" data-id="ckca3uy0x008lw20l54y29jz7" class="article-share-link">
-        <i class="fa fa-share"></i> 分享
-      </a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scala/" rel="tag">Scala</a></li></ul>
-
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Spark学习笔记——安装和WordCount" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <header class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/03/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%AE%89%E8%A3%85%E5%92%8CWordCount/">Spark学习笔记——安装和WordCount</a>
-    </h1>
-  
-
-
-  </header>
-
-  <div class="article-meta">
-    <div class="article-datetime">
-  <a href="/2017/04/03/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%AE%89%E8%A3%85%E5%92%8CWordCount/" class="article-date"><time datetime="2017-04-02T16:00:00.000Z" itemprop="datePublished">2017-04-03</time></a>
-</div>
-
-    <div class="article-author">tonglin0325</div>
-    
-
-  </div>
-  <div class="article-inner">
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>1.</strong>去清华的镜像站点下载文件spark-2.1.0-bin-without-hadoop.tgz，不要下spark-2.1.0-bin-hadoop2.7.tgz</p>
-<p><strong>2.</strong>把文件解压到/usr/local目录下，解压之后的效果，Hadoop和Spark都在<strong>Hadoop用户</strong>下</p>
-<p><strong>下面的操作都在Hadoop用户下</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">drwxrwxrwx 13 hadoop hadoop 4096 4月&lt;!--more--&gt;</span><br><span class="line">&amp;nbsp;&amp;nbsp; 4 11:50 spark-2.1.0-bin-without-hadoop&#x2F;</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;添加Hadoop用户和用户组</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo addgroup hadoop</span><br><span class="line">$ sudo adduser --ingroup hadoop hadoop</span><br><span class="line">$ sudo adduser hadoop sudo</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;然后修改文件夹的用户，用户组以及权限</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R hduser:hadoop spark-2.1.0-bin-without-hadoop</span><br><span class="line">sudo chmod 777 hadoop&#x2F;</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;Hadoop文件夹如果权限不对的话，也需要修改</p>
-<p><strong>3.</strong>在/etc/profile下添加路径</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export SPARK_HOME&#x3D;&#x2F;usr&#x2F;local&#x2F;spark-2.1.0-bin-without-hadoop</span><br><span class="line">export PATH&#x3D;$&#123;SPARK_HOME&#125;&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
-
-<p><strong>4.</strong>还需要修改Spark的配置文件spark-env.sh</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local&#x2F;spark-2.1.0-bin-without-hadoop</span><br><span class="line">cp .&#x2F;conf&#x2F;spark-env.sh.template .&#x2F;conf&#x2F;spark-env.sh</span><br></pre></td></tr></table></figure>
-
-<p>添加如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export SPARK_DIST_CLASSPATH&#x3D;$(&#x2F;home&#x2F;lintong&#x2F;software&#x2F;apache&#x2F;hadoop-2.9.1&#x2F;bin&#x2F;hadoop classpath)</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;（以上可以参考厦门大学林子雨老师的教程&mdash;&mdash;<a href="http://dblab.xmu.edu.cn/blog/1307-2/" target="_blank" rel="noopener">Spark2.1.0入门：Spark的安装和使用</a>），有些教程坑无数</p>
-<p><strong>5.</strong>在~/coding/coding/Scala/word-count路径下准备一个文本文件，比如test.segmented文件</p>
-<p><strong>6.</strong>在该目录下，在终端运行 <strong>spark-shell</strong></p>
-<img src="/images/517519-20170403153849753-1451710534.png" alt="" />
-
-<p>创建一个RDD</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scala&gt; val textFile &#x3D; sc.textFile(&quot;file:&#x2F;&#x2F;&#x2F;home&#x2F;common&#x2F;coding&#x2F;coding&#x2F;Scala&#x2F;word-count&#x2F;test.segmented&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>保存RDD成文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">textFile.saveAsTextFile(&quot;file:&#x2F;&#x2F;&#x2F;home&#x2F;common&#x2F;coding&#x2F;coding&#x2F;Scala&#x2F;word-count&#x2F;writeback&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;这时候会发现在文件夹目录下多了writeback目录，目录下是这么几个文件</p>
-<img src="/images/517519-20170403154242785-678053673.png" alt="" />
-
-<p>&nbsp;现在，我们<strong>建立hdfs文件夹</strong>，来把 test.segmented 文件放进我们的hdfs文件夹中</p>
-<p>首先，<strong>启动Hadoop的HDFS组件</strong>，因为没有用到MapReduce组件，所以没有必要启动MapReducen或者YARN</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local&#x2F;hadoop</span><br><span class="line">.&#x2F;sbin&#x2F;start-dfs.sh</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;在<strong>HDFS文件系统</strong>中，建立文件夹</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;bin&#x2F;hdfs dfs -mkdir -p &#x2F;user&#x2F;hadoop</span><br></pre></td></tr></table></figure>
-
-<p>使用命令<strong>查看</strong>一下HDFS文件系统中的目录和文件</p>
-<p>在Hadoop文件夹下运行命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;bin&#x2F;hdfs dfs -ls .       #或者</span><br><span class="line">.&#x2F;bin&#x2F;hdfs dfs -ls &#x2F;user&#x2F;hadoop</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;或者直接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -ls &#x2F;user&#x2F;hadoop    #或者</span><br><span class="line">hadoop fs -ls .</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;把刚刚的 test.segmented** 文件上传到分布式文件系统HDFS**中（放到hadoop用户目录下）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -put &#x2F;home&#x2F;common&#x2F;coding&#x2F;coding&#x2F;Java&#x2F;WordCount&#x2F;input&#x2F;test.segmented .</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;再次<strong>查看</strong>一下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hadoop@master:~$ hadoop fs -ls &#x2F;user&#x2F;hadoop&lt;br &#x2F;&gt;Found 2 items</span><br><span class="line">drwxr-xr-x   - hadoop supergroup          0 2017-04-03 16:18 &#x2F;user&#x2F;hadoop&#x2F;QuasiMonteCarlo_1491207499210_758373570</span><br><span class="line">-rw-r--r--   1 hadoop supergroup         59 2017-04-03 16:43 &#x2F;user&#x2F;hadoop&#x2F;test.segmented</span><br></pre></td></tr></table></figure>
-
-<p>如果需要<strong>删除</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -rm &#x2F;user&#x2F;hadoop&#x2F;test.segmented</span><br></pre></td></tr></table></figure>
-
-<p>查看一个文件的大小</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -du -h &#x2F;logs&#x2F;xxxx</span><br></pre></td></tr></table></figure>
-
-<p>现在<strong>回到 **</strong>spark-shell 窗口**，编写代码从HDFS文件系统加载&nbsp;test.segmented 文件</p>
-<p>并打印文件中的第一行内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">scala&gt; val textFile &#x3D; sc.textFile(&quot;hdfs:&#x2F;&#x2F;master:9000&#x2F;user&#x2F;hadoop&#x2F;test.segmented&quot;)</span><br><span class="line">textFile: org.apache.spark.rdd.RDD[String] &#x3D; hdfs:&#x2F;&#x2F;master:9000&#x2F;user&#x2F;hadoop&#x2F;test.segmented MapPartitionsRDD[1] at textFile at &lt;console&gt;:24</span><br><span class="line"></span><br><span class="line">scala&gt; textFile.first()</span><br><span class="line">res0: String &#x3D; aa bb aa</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;如果是单机的话，其中下面两条语句和上面第一条语句是一样的，但是如果是Hadoop伪分布式或者分布式的话，就不行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val textFile &#x3D; sc.textFile(&quot;&#x2F;user&#x2F;hadoop&#x2F;test.segmented&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;再次把textFile写回到HDFS文件系统中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">textFile.saveAsTextFile(&quot;hdfs:&#x2F;&#x2F;master:9000&#x2F;user&#x2F;hadoop&#x2F;writeback&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>再次查看</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hadoop@master:~$ hadoop fs -ls &#x2F;user&#x2F;hadoop</span><br><span class="line">Found 3 items</span><br><span class="line">drwxr-xr-x   - hadoop supergroup          0 2017-04-03 16:18 &#x2F;user&#x2F;hadoop&#x2F;QuasiMonteCarlo_1491207499210_758373570</span><br><span class="line">-rw-r--r--   1 hadoop supergroup         59 2017-04-03 16:43 &#x2F;user&#x2F;hadoop&#x2F;test.segmented</span><br><span class="line">drwxr-xr-x   - hadoop supergroup          0 2017-04-03 17:10 &#x2F;user&#x2F;hadoop&#x2F;writeback</span><br></pre></td></tr></table></figure>
-
-<p>如果进入writeback文件夹中查看的话，可以看到里面的文件的内容和test.segmented中的是一样的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hadoop@master:~$ hadoop fs -ls &#x2F;user&#x2F;hadoop&#x2F;writeback</span><br><span class="line">Found 3 items</span><br><span class="line">-rw-r--r--   3 hadoop supergroup          0 2017-04-03 17:10 &#x2F;user&#x2F;hadoop&#x2F;writeback&#x2F;_SUCCESS</span><br><span class="line">-rw-r--r--   3 hadoop supergroup         36 2017-04-03 17:10 &#x2F;user&#x2F;hadoop&#x2F;writeback&#x2F;part-00000</span><br><span class="line">-rw-r--r--   3 hadoop supergroup         24 2017-04-03 17:10 &#x2F;user&#x2F;hadoop&#x2F;writeback&#x2F;part-00001</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hadoop@master:~$ hadoop fs -cat &#x2F;user&#x2F;hadoop&#x2F;writeback&#x2F;part-00000</span><br><span class="line">aa bb aa</span><br><span class="line">bb aa aa</span><br><span class="line">cc bb ee</span><br><span class="line">dd ee cc</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">hadoop@master:~$ hadoop fs -cat &#x2F;user&#x2F;hadoop&#x2F;writeback&#x2F;part-00001</span><br><span class="line">aa</span><br><span class="line">cc</span><br><span class="line">ee</span><br><span class="line">ff</span><br><span class="line">ff</span><br><span class="line">gg</span><br><span class="line">hh</span><br><span class="line">aa</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;</p>
-<p>现在进入<strong>WordCount阶段</strong>，再次进入 <strong>Spark-shell</strong> 中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">val textFile &#x3D; sc.textFile(&quot;hdfs:&#x2F;&#x2F;master:9000&#x2F;user&#x2F;hadoop&#x2F;test.segmented&quot;)</span><br><span class="line">val wordCount &#x3D; textFile.flatMap(line &#x3D;&gt; line.split(&quot; &quot;)).map(word &#x3D;&gt; (word, 1)).reduceByKey((a, b) &#x3D;&gt; a + b)</span><br><span class="line">wordCount.collect()</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;输出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">res6: Array[(String, Int)] &#x3D; Array((ee,3), (aa,6), (gg,1), (dd,1), (hh,1), (ff,2), (bb,3), (cc,3))</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;</p>
-<p>&nbsp;<strong>在spark-shell下面运行成功之后，就需要试着在idea里面建立一个工程来运行这段代码</strong></p>
-<p><strong>在idea下面建立一个Scala的工程，构建的方式选择是sbt</strong></p>
-<p><strong><img src="/images/517519-20170404140301285-1875803098.png" alt="" width="990" height="320" /></strong></p>
-<p>&nbsp;</p>
-<p>由于本机的Scala的版本是2.11.8</p>
-<img src="/images/517519-20170404141009738-94649904.png" alt="" />
-
-<p>所以在project structure里面设置成2.11.8</p>
-<img src="/images/517519-20170404141118863-2091736797.png" alt="" width="697" height="481" />
-
-<p><strong>接着在build.sbt里面写</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">name :&#x3D; &quot;word-count&quot;</span><br><span class="line"></span><br><span class="line">version :&#x3D; &quot;1.0&quot;</span><br><span class="line"></span><br><span class="line">scalaVersion :&#x3D; &quot;2.11.8&quot;</span><br><span class="line"></span><br><span class="line">libraryDependencies +&#x3D; &quot;org.apache.spark&quot; %% &quot;spark-core&quot; % &quot;2.1.0&quot;</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;注意里面的scalaVersion如果是2.11.X的话，sbt就会去拉spark-core_2.11-2.1.0的包</p>
-<p>可以去公司的私服nexus里面去看看有没有这个包</p>
-<p><strong>然后在WordCount.scala文件中写入我们的代码</strong></p>
-<p><strong>注意如果是setMaster(“local”)的话，需要在/etc/hosts中设置127.0.1.1，然后取消192.168.0.1</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import org.apache.spark.SparkContext</span><br><span class="line">import org.apache.spark.SparkContext._</span><br><span class="line">import org.apache.spark.SparkConf</span><br><span class="line">&#x2F;**</span><br><span class="line">  * Created by common on 17-4-3.</span><br><span class="line">  *&#x2F;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">object WordCount &#123;</span><br><span class="line">  def main(args: Array[String]) &#123;</span><br><span class="line">    val inputFile &#x3D;  &quot;file:&#x2F;&#x2F;&#x2F;home&#x2F;common&#x2F;coding&#x2F;coding&#x2F;Scala&#x2F;word-count&#x2F;test.segmented&quot;</span><br><span class="line">    val conf &#x3D; new SparkConf().setAppName(&quot;WordCount&quot;).setMaster(&quot;local&quot;)　　　　#创建一个SparkConf对象来配置应用&lt;br &#x2F;&gt;　　　　#集群URL：告诉Spark连接到哪个集群，local是单机单线程，无需连接到集群，应用名：在集群管理器的用户界面方便找到应用</span><br><span class="line">    val sc &#x3D; new SparkContext(conf)　　　　　　　　#然后基于这SparkConf创建一个SparkContext对象</span><br><span class="line">    val textFile &#x3D; sc.textFile(inputFile)　　　　#读取输入的数据</span><br><span class="line">    val wordCount &#x3D; textFile.flatMap(line &#x3D;&gt; line.split(&quot; &quot;)).map(word &#x3D;&gt; (word, 1)).reduceByKey((a, b) &#x3D;&gt; a + b)　　#切分成单词，转换成键值对并计数</span><br><span class="line">    wordCount.foreach(println)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后在sbt中refresh，进行拉包，拉包的过程是无比缓慢的</p>
-<p>拉好了之后运行的结果</p>
-<img src="/images/517519-20170404141529816-1881109987.png" alt="" />
-
-<p>和在 spark-shell中运行的结果是一致的</p>
-<p>&nbsp;</p>
-<p>在林子雨老师的教程中，<a href="http://dblab.xmu.edu.cn/blog/1311-2/" target="_blank" rel="noopener">Spark2.1.0入门：第一个Spark应用程序：WordCount</a></p>
-<p>最后是将整个应用程序打包成JAR，然后通过 spark-submit 提交到 Spark 中运行</p>
-<p>做法是在idea的终端中，对代码进行<strong>打包</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">common@master:~&#x2F;coding&#x2F;coding&#x2F;Scala&#x2F;word-count$ sbt package</span><br><span class="line">[info] Loading project definition from &#x2F;home&#x2F;common&#x2F;coding&#x2F;coding&#x2F;Scala&#x2F;word-count&#x2F;project</span><br><span class="line">[info] Set current project to word-count (in build file:&#x2F;home&#x2F;common&#x2F;coding&#x2F;coding&#x2F;Scala&#x2F;word-count&#x2F;)</span><br><span class="line">[info] Compiling 1 Scala source to &#x2F;home&#x2F;common&#x2F;coding&#x2F;coding&#x2F;Scala&#x2F;word-count&#x2F;target&#x2F;scala-2.11&#x2F;classes...</span><br><span class="line">[info] Packaging &#x2F;home&#x2F;common&#x2F;coding&#x2F;coding&#x2F;Scala&#x2F;word-count&#x2F;target&#x2F;scala-2.11&#x2F;word-count_2.11-1.0.jar ...</span><br><span class="line">[info] Done packaging.</span><br><span class="line">[success] Total time: 6 s, completed 2017-4-4 18:02:13</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;生成的jar包位置在</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;home&#x2F;common&#x2F;coding&#x2F;coding&#x2F;Scala&#x2F;word-count&#x2F;target&#x2F;scala-2.11</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;最后通过 spark-submit 运行程序，将jar包通过这个命令提交到 Spark 中运行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">common@master:~&#x2F;coding&#x2F;coding&#x2F;Scala&#x2F;word-count$ spark-submit --class &quot;WordCount&quot;  &#x2F;home&#x2F;common&#x2F;coding&#x2F;coding&#x2F;Scala&#x2F;word-count&#x2F;target&#x2F;scala-2.11&#x2F;word-count_2.11-1.0.jar</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;运行结果</p>
-<img src="/images/517519-20170404180945082-9627841.png" alt="" />
-
-<p>&nbsp;</p>
-<p>在执行spark任务的时候，如果遇到</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">报如下错误:</span><br><span class="line">Exception in thread &quot;main&quot; java.lang.Exception: When running with master &#39;yarn-client&#39; either HADOOP_CONF_DIR or YARN_CONF_DIR must be set in the environment</span><br></pre></td></tr></table></figure>
-
-<p>在spark的配置文件 conf/spark-env.sh 中添加</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export HADOOP_HOME&#x3D;&#x2F;home&#x2F;lintong&#x2F;software&#x2F;apache&#x2F;hadoop-2.9.1</span><br><span class="line">export HADOOP_CONF_DIR&#x3D;$HADOOP_HOME&#x2F;etc&#x2F;hadoop</span><br><span class="line">PATH&#x3D;$PATH:$HIVE_HOME&#x2F;bin:$HADOOP_HOME&#x2F;bin</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;</p>
-<p>spark集群安装参考：<a href="https://blog.csdn.net/bitcarmanlee/article/details/51967323" target="_blank" rel="noopener">spark 集群搭建 详细步骤</a></p>
-<p>主要是配置slave文件和spark-env文件</p>
-<p>集群内容spark-env文件，其中xxx是spark web ui的端口</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">export SPARK_DIST_CLASSPATH&#x3D;$(&#x2F;usr&#x2F;bin&#x2F;hadoop classpath)</span><br><span class="line"></span><br><span class="line">#export JAVA_HOME&#x3D;&#x2F;usr&#x2F;lib&#x2F;jvm&#x2F;java-8-oracle</span><br><span class="line">export SCALA_HOME&#x3D;&#x2F;home&#x2F;dl&#x2F;packages&#x2F;scala-2.11.8</span><br><span class="line"></span><br><span class="line">export SPARK_MASTER_WEBUI_PORT&#x3D;xxxx</span><br><span class="line"></span><br><span class="line">export HADOOP_HOME&#x3D;&#x2F;opt&#x2F;cloudera&#x2F;parcels&#x2F;CDH-5.12.0-1.cdh5.12.0.p0.29&#x2F;lib&#x2F;hadoop</span><br><span class="line">export HADOOP_CONF_DIR&#x3D;$HADOOP_HOME&#x2F;etc&#x2F;hadoop</span><br><span class="line">export HIVE_HOME&#x3D;&#x2F;opt&#x2F;cloudera&#x2F;parcels&#x2F;CDH-5.12.0-1.cdh5.12.0.p0.29&#x2F;lib&#x2F;hive</span><br><span class="line">PATH&#x3D;$PATH:$HIVE_HOME&#x2F;bin:$HADOOP_HOME&#x2F;bin</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;</p>
-
-      
-    </div>
-
-    
-      
-
-    
-
-    <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2017/04/03/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%AE%89%E8%A3%85%E5%92%8CWordCount/" data-id="ckca3uy130094w20l8wb224xi" class="article-share-link">
+      <a data-url="http://tonglin0325.github.io/2017/04/13/Spark%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E8%AF%BB%E5%86%99MySQL/" data-id="ckca3uy16009ew20l9wkb1779" class="article-share-link">
         <i class="fa fa-share"></i> 分享
       </a>
       
@@ -830,7 +694,7 @@ ga('send', 'pageview');
 
 
   <div id="page-nav">
-    <nav><ul class="pagination"><li><a class="page-prev" rel="prev" href="/page/15/"><i class="fa fa-chevron-left"></i> Prev</a></li><li><a class="page-number" href="/">1</a></li><li class="disabled"><span class="page-space">&hellip;</span></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li class="active"><span class="page-number">16</span></li><li><a class="page-number" href="/page/17/">17</a></li><li><a class="page-number" href="/page/18/">18</a></li><li class="disabled"><span class="page-space">&hellip;</span></li><li><a class="page-number" href="/page/54/">54</a></li><li><a class="page-next" rel="next" href="/page/17/">Next <i class="fa fa-chevron-right"></i></a></li></ul></nav>
+    <nav><ul class="pagination"><li><a class="page-prev" rel="prev" href="/page/15/"><i class="fa fa-chevron-left"></i> Prev</a></li><li><a class="page-number" href="/">1</a></li><li class="disabled"><span class="page-space">&hellip;</span></li><li><a class="page-number" href="/page/14/">14</a></li><li><a class="page-number" href="/page/15/">15</a></li><li class="active"><span class="page-number">16</span></li><li><a class="page-number" href="/page/17/">17</a></li><li><a class="page-number" href="/page/18/">18</a></li><li class="disabled"><span class="page-space">&hellip;</span></li><li><a class="page-number" href="/page/56/">56</a></li><li><a class="page-next" rel="next" href="/page/17/">Next <i class="fa fa-chevron-right"></i></a></li></ul></nav>
   </div>
 
 
@@ -850,7 +714,7 @@ ga('send', 'pageview');
   
   <div class="sidebar-module">
     <h4>标签</h4>
-    <ul class="sidebar-module-list" itemprop="keywords"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Airbnb/" rel="tag">Airbnb</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Ajax/" rel="tag">Ajax</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Amazon/" rel="tag">Amazon</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Android/" rel="tag">Android</a><span class="sidebar-module-list-count">18</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Bootstrap/" rel="tag">Bootstrap</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ELK/" rel="tag">ELK</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Flink/" rel="tag">Flink</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Git/" rel="tag">Git</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/HTML-CSS-JS/" rel="tag">HTML/CSS/JS</a><span class="sidebar-module-list-count">32</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hbase/" rel="tag">Hbase</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hive/" rel="tag">Hive</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JDBC/" rel="tag">JDBC</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JSON/" rel="tag">JSON</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JVM/" rel="tag">JVM</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a><span class="sidebar-module-list-count">72</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a><span class="sidebar-module-list-count">38</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E5%85%B3%E9%94%AE%E5%AD%97/" rel="tag">Java关键字</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E7%95%8C%E9%9D%A2/" rel="tag">Java界面</a><span class="sidebar-module-list-count">16</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="sidebar-module-list-count">50</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ML/" rel="tag">ML</a><span class="sidebar-module-list-count">28</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Maven/" rel="tag">Maven</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Nexus/" rel="tag">Nexus</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/NoSQL/" rel="tag">NoSQL</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Paper/" rel="tag">Paper</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Python/" rel="tag">Python</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Reading/" rel="tag">Reading</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SQL/" rel="tag">SQL</a><span class="sidebar-module-list-count">21</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Scala/" rel="tag">Scala</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Solr/" rel="tag">Solr</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Spark/" rel="tag">Spark</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/TCP-IP/" rel="tag">TCP/IP</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Thrift/" rel="tag">Thrift</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/antlr/" rel="tag">antlr</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/cdh/" rel="tag">cdh</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/docker/" rel="tag">docker</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/filebeat/" rel="tag">filebeat</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/flume/" rel="tag">flume</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/go/" rel="tag">go</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/google/" rel="tag">google</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/jquery/" rel="tag">jquery</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/kafka/" rel="tag">kafka</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/kerberos/" rel="tag">kerberos</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ldap/" rel="tag">ldap</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/mac/" rel="tag">mac</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nlp/" rel="tag">nlp</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/open-falcon/" rel="tag">open-falcon</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/redis/" rel="tag">redis</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/twitter/" rel="tag">twitter</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/yarn/" rel="tag">yarn</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/zookeeper/" rel="tag">zookeeper</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%88%B7%E9%A2%98/" rel="tag">刷题</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%9B%BE%E5%AD%98%E5%82%A8%E5%8F%8A%E8%AE%A1%E7%AE%97/" rel="tag">图存储及计算</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="tag">开发工具</a><span class="sidebar-module-list-count">15</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="sidebar-module-list-count">22</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="sidebar-module-list-count">27</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="sidebar-module-list-count">7</span></li></ul>
+    <ul class="sidebar-module-list" itemprop="keywords"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Airbnb/" rel="tag">Airbnb</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Ajax/" rel="tag">Ajax</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Amazon/" rel="tag">Amazon</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Android/" rel="tag">Android</a><span class="sidebar-module-list-count">18</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Bootstrap/" rel="tag">Bootstrap</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ELK/" rel="tag">ELK</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Flink/" rel="tag">Flink</a><span class="sidebar-module-list-count">12</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Git/" rel="tag">Git</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/HTML-CSS-JS/" rel="tag">HTML/CSS/JS</a><span class="sidebar-module-list-count">32</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hbase/" rel="tag">Hbase</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hive/" rel="tag">Hive</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JDBC/" rel="tag">JDBC</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JSON/" rel="tag">JSON</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JVM/" rel="tag">JVM</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a><span class="sidebar-module-list-count">72</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a><span class="sidebar-module-list-count">38</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E5%85%B3%E9%94%AE%E5%AD%97/" rel="tag">Java关键字</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E7%95%8C%E9%9D%A2/" rel="tag">Java界面</a><span class="sidebar-module-list-count">16</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="sidebar-module-list-count">50</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ML/" rel="tag">ML</a><span class="sidebar-module-list-count">28</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Maven/" rel="tag">Maven</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Nexus/" rel="tag">Nexus</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/NoSQL/" rel="tag">NoSQL</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Paper/" rel="tag">Paper</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Python/" rel="tag">Python</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Reading/" rel="tag">Reading</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SQL/" rel="tag">SQL</a><span class="sidebar-module-list-count">21</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Scala/" rel="tag">Scala</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Solr/" rel="tag">Solr</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Spark/" rel="tag">Spark</a><span class="sidebar-module-list-count">21</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/TCP-IP/" rel="tag">TCP/IP</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Thrift/" rel="tag">Thrift</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/antlr/" rel="tag">antlr</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/cdh/" rel="tag">cdh</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/docker/" rel="tag">docker</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/filebeat/" rel="tag">filebeat</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/flume/" rel="tag">flume</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/go/" rel="tag">go</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/google/" rel="tag">google</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/jquery/" rel="tag">jquery</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/kafka/" rel="tag">kafka</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/kerberos/" rel="tag">kerberos</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ldap/" rel="tag">ldap</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/mac/" rel="tag">mac</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nlp/" rel="tag">nlp</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/open-falcon/" rel="tag">open-falcon</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/redis/" rel="tag">redis</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/twitter/" rel="tag">twitter</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/yarn/" rel="tag">yarn</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/zookeeper/" rel="tag">zookeeper</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%88%B7%E9%A2%98/" rel="tag">刷题</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%9B%BE%E5%AD%98%E5%82%A8%E5%8F%8A%E8%AE%A1%E7%AE%97/" rel="tag">图存储及计算</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="tag">开发工具</a><span class="sidebar-module-list-count">15</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="sidebar-module-list-count">22</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="sidebar-module-list-count">27</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="sidebar-module-list-count">7</span></li></ul>
   </div>
 
 
@@ -859,7 +723,7 @@ ga('send', 'pageview');
   <div class="sidebar-module">
     <h4>标签云</h4>
     <p class="tagcloud">
-      <a href="/tags/Airbnb/" style="font-size: 12.38px;">Airbnb</a> <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Amazon/" style="font-size: 10px;">Amazon</a> <a href="/tags/Android/" style="font-size: 15.71px;">Android</a> <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/ELK/" style="font-size: 13.33px;">ELK</a> <a href="/tags/Flink/" style="font-size: 13.33px;">Flink</a> <a href="/tags/Git/" style="font-size: 10.95px;">Git</a> <a href="/tags/HTML-CSS-JS/" style="font-size: 18.57px;">HTML/CSS/JS</a> <a href="/tags/Hadoop/" style="font-size: 12.86px;">Hadoop</a> <a href="/tags/Hbase/" style="font-size: 10.95px;">Hbase</a> <a href="/tags/Hive/" style="font-size: 11.9px;">Hive</a> <a href="/tags/JDBC/" style="font-size: 13.33px;">JDBC</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JVM/" style="font-size: 10.48px;">JVM</a> <a href="/tags/JavaSE/" style="font-size: 20px;">JavaSE</a> <a href="/tags/JavaWeb/" style="font-size: 19.05px;">JavaWeb</a> <a href="/tags/Java%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 12.86px;">Java关键字</a> <a href="/tags/Java%E7%95%8C%E9%9D%A2/" style="font-size: 15.24px;">Java界面</a> <a href="/tags/Linux/" style="font-size: 19.52px;">Linux</a> <a href="/tags/ML/" style="font-size: 18.1px;">ML</a> <a href="/tags/Maven/" style="font-size: 10.95px;">Maven</a> <a href="/tags/Nexus/" style="font-size: 11.43px;">Nexus</a> <a href="/tags/NoSQL/" style="font-size: 10px;">NoSQL</a> <a href="/tags/Paper/" style="font-size: 10px;">Paper</a> <a href="/tags/Python/" style="font-size: 16.19px;">Python</a> <a href="/tags/Reading/" style="font-size: 10.95px;">Reading</a> <a href="/tags/SQL/" style="font-size: 16.67px;">SQL</a> <a href="/tags/Scala/" style="font-size: 13.33px;">Scala</a> <a href="/tags/Solr/" style="font-size: 10.95px;">Solr</a> <a href="/tags/Spark/" style="font-size: 16.19px;">Spark</a> <a href="/tags/SpringBoot/" style="font-size: 10.48px;">SpringBoot</a> <a href="/tags/SpringMVC/" style="font-size: 14.29px;">SpringMVC</a> <a href="/tags/TCP-IP/" style="font-size: 10.95px;">TCP/IP</a> <a href="/tags/Thrift/" style="font-size: 10.95px;">Thrift</a> <a href="/tags/antlr/" style="font-size: 10.48px;">antlr</a> <a href="/tags/cdh/" style="font-size: 10.95px;">cdh</a> <a href="/tags/docker/" style="font-size: 10.48px;">docker</a> <a href="/tags/filebeat/" style="font-size: 10.95px;">filebeat</a> <a href="/tags/flume/" style="font-size: 10.48px;">flume</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/google/" style="font-size: 10.48px;">google</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/kafka/" style="font-size: 11.9px;">kafka</a> <a href="/tags/kerberos/" style="font-size: 10px;">kerberos</a> <a href="/tags/ldap/" style="font-size: 10px;">ldap</a> <a href="/tags/mac/" style="font-size: 10.95px;">mac</a> <a href="/tags/nginx/" style="font-size: 12.38px;">nginx</a> <a href="/tags/nlp/" style="font-size: 10.48px;">nlp</a> <a href="/tags/open-falcon/" style="font-size: 10.95px;">open-falcon</a> <a href="/tags/redis/" style="font-size: 10.48px;">redis</a> <a href="/tags/twitter/" style="font-size: 10.48px;">twitter</a> <a href="/tags/yarn/" style="font-size: 10.48px;">yarn</a> <a href="/tags/zookeeper/" style="font-size: 13.81px;">zookeeper</a> <a href="/tags/%E5%88%B7%E9%A2%98/" style="font-size: 10px;">刷题</a> <a href="/tags/%E5%9B%BE%E5%AD%98%E5%82%A8%E5%8F%8A%E8%AE%A1%E7%AE%97/" style="font-size: 10.48px;">图存储及计算</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 13.81px;">多线程</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" style="font-size: 14.76px;">开发工具</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 17.14px;">数据结构</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 12.38px;">杂谈</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.62px;">算法</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 12.86px;">设计模式</a>
+      <a href="/tags/Airbnb/" style="font-size: 12.17px;">Airbnb</a> <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Amazon/" style="font-size: 10px;">Amazon</a> <a href="/tags/Android/" style="font-size: 16.09px;">Android</a> <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/ELK/" style="font-size: 13.91px;">ELK</a> <a href="/tags/Flink/" style="font-size: 14.35px;">Flink</a> <a href="/tags/Git/" style="font-size: 10.87px;">Git</a> <a href="/tags/HTML-CSS-JS/" style="font-size: 18.7px;">HTML/CSS/JS</a> <a href="/tags/Hadoop/" style="font-size: 12.61px;">Hadoop</a> <a href="/tags/Hbase/" style="font-size: 11.74px;">Hbase</a> <a href="/tags/Hive/" style="font-size: 12.17px;">Hive</a> <a href="/tags/JDBC/" style="font-size: 13.48px;">JDBC</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JVM/" style="font-size: 10.43px;">JVM</a> <a href="/tags/JavaSE/" style="font-size: 20px;">JavaSE</a> <a href="/tags/JavaWeb/" style="font-size: 19.13px;">JavaWeb</a> <a href="/tags/Java%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 12.61px;">Java关键字</a> <a href="/tags/Java%E7%95%8C%E9%9D%A2/" style="font-size: 15.65px;">Java界面</a> <a href="/tags/Linux/" style="font-size: 19.57px;">Linux</a> <a href="/tags/ML/" style="font-size: 18.26px;">ML</a> <a href="/tags/Maven/" style="font-size: 10.87px;">Maven</a> <a href="/tags/Nexus/" style="font-size: 11.3px;">Nexus</a> <a href="/tags/NoSQL/" style="font-size: 10px;">NoSQL</a> <a href="/tags/Paper/" style="font-size: 10px;">Paper</a> <a href="/tags/Python/" style="font-size: 16.52px;">Python</a> <a href="/tags/Reading/" style="font-size: 10.87px;">Reading</a> <a href="/tags/SQL/" style="font-size: 16.96px;">SQL</a> <a href="/tags/Scala/" style="font-size: 13.48px;">Scala</a> <a href="/tags/Solr/" style="font-size: 10.87px;">Solr</a> <a href="/tags/Spark/" style="font-size: 16.96px;">Spark</a> <a href="/tags/SpringBoot/" style="font-size: 10.43px;">SpringBoot</a> <a href="/tags/SpringMVC/" style="font-size: 14.78px;">SpringMVC</a> <a href="/tags/TCP-IP/" style="font-size: 10.87px;">TCP/IP</a> <a href="/tags/Thrift/" style="font-size: 10.87px;">Thrift</a> <a href="/tags/antlr/" style="font-size: 10.43px;">antlr</a> <a href="/tags/cdh/" style="font-size: 10.87px;">cdh</a> <a href="/tags/docker/" style="font-size: 10.43px;">docker</a> <a href="/tags/filebeat/" style="font-size: 10.87px;">filebeat</a> <a href="/tags/flume/" style="font-size: 10.43px;">flume</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/google/" style="font-size: 10.43px;">google</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/kafka/" style="font-size: 13.04px;">kafka</a> <a href="/tags/kerberos/" style="font-size: 10px;">kerberos</a> <a href="/tags/ldap/" style="font-size: 10px;">ldap</a> <a href="/tags/mac/" style="font-size: 10.87px;">mac</a> <a href="/tags/nginx/" style="font-size: 12.17px;">nginx</a> <a href="/tags/nlp/" style="font-size: 10.43px;">nlp</a> <a href="/tags/open-falcon/" style="font-size: 10.87px;">open-falcon</a> <a href="/tags/redis/" style="font-size: 10.87px;">redis</a> <a href="/tags/twitter/" style="font-size: 10.43px;">twitter</a> <a href="/tags/yarn/" style="font-size: 10.43px;">yarn</a> <a href="/tags/zookeeper/" style="font-size: 13.91px;">zookeeper</a> <a href="/tags/%E5%88%B7%E9%A2%98/" style="font-size: 10px;">刷题</a> <a href="/tags/%E5%9B%BE%E5%AD%98%E5%82%A8%E5%8F%8A%E8%AE%A1%E7%AE%97/" style="font-size: 10.43px;">图存储及计算</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 13.91px;">多线程</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" style="font-size: 15.22px;">开发工具</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 17.39px;">数据结构</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 12.17px;">杂谈</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.83px;">算法</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 12.61px;">设计模式</a>
     </p>
   </div>
 
@@ -868,7 +732,7 @@ ga('send', 'pageview');
   
   <div class="sidebar-module">
     <h4>文章归档</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/12/">十二月 2020</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/11/">十一月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/10/">十月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/09/">九月 2020</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/08/">八月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/07/">七月 2020</a><span class="sidebar-module-list-count">12</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/06/">六月 2020</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/05/">五月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/04/">四月 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/03/">三月 2020</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/02/">二月 2020</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/01/">一月 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/10/">十月 2019</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/09/">九月 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/08/">八月 2019</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/07/">七月 2019</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/04/">四月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/03/">三月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/01/">一月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/12/">十二月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/11/">十一月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/09/">九月 2018</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/06/">六月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">五月 2018</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">四月 2018</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/11/">十一月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/09/">九月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/05/">五月 2017</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/04/">四月 2017</a><span class="sidebar-module-list-count">23</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/03/">三月 2017</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/01/">一月 2017</a><span class="sidebar-module-list-count">24</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/12/">十二月 2016</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/11/">十一月 2016</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/08/">八月 2016</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/07/">七月 2016</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/06/">六月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/05/">五月 2016</a><span class="sidebar-module-list-count">31</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/04/">四月 2016</a><span class="sidebar-module-list-count">26</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/03/">三月 2016</a><span class="sidebar-module-list-count">133</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/02/">二月 2016</a><span class="sidebar-module-list-count">22</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/09/">九月 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/08/">八月 2015</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/07/">七月 2015</a><span class="sidebar-module-list-count">31</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/06/">六月 2015</a><span class="sidebar-module-list-count">25</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/04/">四月 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2013/04/">四月 2013</a><span class="sidebar-module-list-count">1</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2021/01/">一月 2021</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/12/">十二月 2020</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/11/">十一月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/10/">十月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/09/">九月 2020</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/08/">八月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/07/">七月 2020</a><span class="sidebar-module-list-count">12</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/06/">六月 2020</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/05/">五月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/04/">四月 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/03/">三月 2020</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/02/">二月 2020</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/01/">一月 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/10/">十月 2019</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/09/">九月 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/08/">八月 2019</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/07/">七月 2019</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/04/">四月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/03/">三月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/01/">一月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/12/">十二月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/11/">十一月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/09/">九月 2018</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/06/">六月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">五月 2018</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">四月 2018</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/11/">十一月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/09/">九月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/05/">五月 2017</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/04/">四月 2017</a><span class="sidebar-module-list-count">24</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/03/">三月 2017</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/01/">一月 2017</a><span class="sidebar-module-list-count">24</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/12/">十二月 2016</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/11/">十一月 2016</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/08/">八月 2016</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/07/">七月 2016</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/06/">六月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/05/">五月 2016</a><span class="sidebar-module-list-count">31</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/04/">四月 2016</a><span class="sidebar-module-list-count">26</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/03/">三月 2016</a><span class="sidebar-module-list-count">133</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/02/">二月 2016</a><span class="sidebar-module-list-count">22</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/09/">九月 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/08/">八月 2015</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/07/">七月 2015</a><span class="sidebar-module-list-count">31</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/06/">六月 2015</a><span class="sidebar-module-list-count">25</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/04/">四月 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2013/04/">四月 2013</a><span class="sidebar-module-list-count">1</span></li></ul>
   </div>
 
 
@@ -879,23 +743,23 @@ ga('send', 'pageview');
     <ul class="sidebar-module-list">
       
         <li>
-          <a href="/2020/12/11/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94DataSet%20API/">Flink学习笔记——DataSet API</a>
+          <a href="/2021/01/22/ElasticSearch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/">ElasticSearch学习笔记——插件开发</a>
         </li>
       
         <li>
-          <a href="/2020/12/11/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94DataStream%20API/">Flink学习笔记——DataStream API</a>
+          <a href="/2021/01/21/Hbase%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94rowkey/">Hbase学习笔记——rowkey</a>
         </li>
       
         <li>
-          <a href="/2020/12/10/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E9%85%8D%E7%BD%AE/">Flink学习笔记——配置</a>
+          <a href="/2021/01/20/Hive%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94fetch/">Hive学习笔记——fetch</a>
         </li>
       
         <li>
-          <a href="/2020/12/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94Twitter%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/">论文阅读——Twitter日志系统</a>
+          <a href="/2021/01/11/kafka%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E9%85%8D%E7%BD%AE/">kafka学习笔记——配置</a>
         </li>
       
         <li>
-          <a href="/2020/12/01/Spring%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94Redis%20Template/">Spring学习笔记——Redis Template</a>
+          <a href="/2021/01/07/ElasticSearch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94ik%E5%88%86%E8%AF%8D%E6%B7%BB%E5%8A%A0%E8%AF%8D%E5%BA%93/">ElasticSearch学习笔记——ik分词添加词库</a>
         </li>
       
     </ul>
@@ -910,7 +774,7 @@ ga('send', 'pageview');
   <footer class="blog-footer">
   <div class="container">
     <div id="footer-info" class="inner">
-      &copy; 2020 tonglin0325<br>
+      &copy; 2021 tonglin0325<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

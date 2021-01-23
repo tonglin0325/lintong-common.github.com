@@ -99,13 +99,13 @@ ga('send', 'pageview');
         <div class="col-sm-9 blog-main">
           
   
-    <article id="post-Flink学习笔记——WordCount" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-小米手机卸载小爱同学" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
     
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/13/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94WordCount/">Flink学习笔记——WordCount</a>
+      <a class="article-title" href="/2020/06/14/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA%E5%8D%B8%E8%BD%BD%E5%B0%8F%E7%88%B1%E5%90%8C%E5%AD%A6/">小米手机卸载小爱同学</a>
     </h1>
   
 
@@ -114,7 +114,7 @@ ga('send', 'pageview');
 
   <div class="article-meta">
     <div class="article-datetime">
-  <a href="/2020/03/13/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94WordCount/" class="article-date"><time datetime="2020-03-12T16:00:00.000Z" itemprop="datePublished">2020-03-13</time></a>
+  <a href="/2020/06/14/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA%E5%8D%B8%E8%BD%BD%E5%B0%8F%E7%88%B1%E5%90%8C%E5%AD%A6/" class="article-date"><time datetime="2020-06-13T16:00:00.000Z" itemprop="datePublished">2020-06-14</time></a>
 </div>
 
     <div class="article-author">tonglin0325</div>
@@ -125,20 +125,23 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>参考Flink官方example</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;apache&#x2F;flink&#x2F;blob&#x2F;master&#x2F;flink-examples&#x2F;flink-examples-streaming&#x2F;src&#x2F;main&#x2F;java&#x2F;org&#x2F;apache&#x2F;flink&#x2F;streaming&#x2F;examples&#x2F;wordcount&#x2F;WordCount.java</span><br></pre></td></tr></table></figure>
+        <p>1.手机的miui版本是开发版，然后进行了root</p>
+<p>2.安装termux</p>
+<p>3.安装了termux-adb</p>
+<p>参考：<a href="https://github.com/MasterDevX/Termux-ADB" target="_blank" rel="noopener">https://github.com/MasterDevX/Termux-ADB</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt update &amp;&amp; apt install wget &amp;&amp; wget https:&#x2F;&#x2F;github.com&#x2F;MasterDevX&#x2F;Termux-ADB&#x2F;raw&#x2F;master&#x2F;RemoveTools.sh &amp;&amp; bash RemoveTools.sh</span><br></pre></td></tr></table></figure>
 
-<p>pom</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--flink--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.flink&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;flink-java&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.8.0&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.flink&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;flink-streaming-java_2.11&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.8.0&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.flink&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;flink-scala_2.11&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.8.0&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.flink&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;flink-streaming-scala_2.11&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.8.0&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>然后如图所示进行操作，就可以卸载小爱同学</p>
+<img src="/images/517519-20200614132915932-1570750100.png" width="600" height="1072" loading="lazy" />
 
-<p>代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><span class="line">package com.xxx.xx.flink;</span><br><span class="line"></span><br><span class="line">import org.apache.flink.api.common.functions.FlatMapFunction;</span><br><span class="line">import org.apache.flink.api.java.tuple.Tuple2;</span><br><span class="line">import org.apache.flink.api.java.utils.ParameterTool;</span><br><span class="line">import org.apache.flink.streaming.api.datastream.DataStream;</span><br><span class="line">import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;</span><br><span class="line">import org.apache.flink.util.Collector;</span><br><span class="line">import org.apache.flink.util.Preconditions;</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * Created by lintong on 20-3-13.</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class WordCount &#123;</span><br><span class="line"></span><br><span class="line">    public static class WordCountData &#123;</span><br><span class="line"></span><br><span class="line">        public static final String[] WORDS &#x3D; new String[]&#123;</span><br><span class="line">                &quot;To be, or not to be,--that is the question:--&quot;,</span><br><span class="line">                &quot;Whether &#39;tis nobler in the mind to suffer&quot;,</span><br><span class="line">                &quot;The slings and arrows of outrageous fortune&quot;,</span><br><span class="line">                &quot;Or to take arms against a sea of troubles,&quot;,</span><br><span class="line">                &quot;And by opposing end them?--To die,--to sleep,--&quot;,</span><br><span class="line">                &quot;No more; and by a sleep to say we end&quot;,</span><br><span class="line">                &quot;The heartache, and the thousand natural shocks&quot;,</span><br><span class="line">                &quot;That flesh is heir to,--&#39;tis a consummation&quot;,</span><br><span class="line">                &quot;Devoutly to be wish&#39;d. To die,--to sleep;--&quot;,</span><br><span class="line">                &quot;To sleep! perchance to dream:--ay, there&#39;s the rub;&quot;,</span><br><span class="line">                &quot;For in that sleep of death what dreams may come,&quot;,</span><br><span class="line">                &quot;When we have shuffled off this mortal coil,&quot;,</span><br><span class="line">                &quot;Must give us pause: there&#39;s the respect&quot;,</span><br><span class="line">                &quot;That makes calamity of so long life;&quot;,</span><br><span class="line">                &quot;For who would bear the whips and scorns of time,&quot;,</span><br><span class="line">                &quot;The oppressor&#39;s wrong, the proud man&#39;s contumely,&quot;,</span><br><span class="line">                &quot;The pangs of despis&#39;d love, the law&#39;s delay,&quot;,</span><br><span class="line">                &quot;The insolence of office, and the spurns&quot;,</span><br><span class="line">                &quot;That patient merit of the unworthy takes,&quot;,</span><br><span class="line">                &quot;When he himself might his quietus make&quot;,</span><br><span class="line">                &quot;With a bare bodkin? who would these fardels bear,&quot;,</span><br><span class="line">                &quot;To grunt and sweat under a weary life,&quot;,</span><br><span class="line">                &quot;But that the dread of something after death,--&quot;,</span><br><span class="line">                &quot;The undiscover&#39;d country, from whose bourn&quot;,</span><br><span class="line">                &quot;No traveller returns,--puzzles the will,&quot;,</span><br><span class="line">                &quot;And makes us rather bear those ills we have&quot;,</span><br><span class="line">                &quot;Than fly to others that we know not of?&quot;,</span><br><span class="line">                &quot;Thus conscience does make cowards of us all;&quot;,</span><br><span class="line">                &quot;And thus the native hue of resolution&quot;,</span><br><span class="line">                &quot;Is sicklied o&#39;er with the pale cast of thought;&quot;,</span><br><span class="line">                &quot;And enterprises of great pith and moment,&quot;,</span><br><span class="line">                &quot;With this regard, their currents turn awry,&quot;,</span><br><span class="line">                &quot;And lose the name of action.--Soft you now!&quot;,</span><br><span class="line">                &quot;The fair Ophelia!--Nymph, in thy orisons&quot;,</span><br><span class="line">                &quot;Be all my sins remember&#39;d.&quot;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; *************************************************************************</span><br><span class="line">    &#x2F;&#x2F; PROGRAM</span><br><span class="line">    &#x2F;&#x2F; *************************************************************************</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">        final ParameterTool params &#x3D; ParameterTool.fromArgs(args);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; set up the execution environment</span><br><span class="line">        final StreamExecutionEnvironment env &#x3D; StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; make parameters available in the web interface</span><br><span class="line">        env.getConfig().setGlobalJobParameters(params);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; get input data</span><br><span class="line">        DataStream&lt;String&gt; text &#x3D; null;</span><br><span class="line">        if (params.has(&quot;input&quot;)) &#123;</span><br><span class="line">            text &#x3D; env.readTextFile(params.get(&quot;input&quot;));</span><br><span class="line">            Preconditions.checkNotNull(text, &quot;Input DataStream should not be null.&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            System.out.println(&quot;Executing WordCount example with default input data set.&quot;);</span><br><span class="line">            System.out.println(&quot;Use --input to specify file input.&quot;);</span><br><span class="line">            &#x2F;&#x2F; get default test text data</span><br><span class="line">            text &#x3D; env.fromElements(WordCountData.WORDS);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        DataStream&lt;Tuple2&lt;String, Integer&gt;&gt; counts &#x3D;</span><br><span class="line">                &#x2F;&#x2F; split up the lines in pairs (2-tuples) containing: (word,1)</span><br><span class="line">                text.flatMap(new Tokenizer())</span><br><span class="line">                        &#x2F;&#x2F; group by the tuple field &quot;0&quot; and sum up tuple field &quot;1&quot;</span><br><span class="line">                        .keyBy(0).sum(1);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; emit result</span><br><span class="line">        if (params.has(&quot;output&quot;)) &#123;</span><br><span class="line">            counts.writeAsText(params.get(&quot;output&quot;));</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            System.out.println(&quot;Printing result to stdout. Use --output to specify output path.&quot;);</span><br><span class="line">            counts.print();</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; execute program</span><br><span class="line">        env.execute(&quot;Streaming WordCount&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; *************************************************************************</span><br><span class="line">    &#x2F;&#x2F; USER FUNCTIONS</span><br><span class="line">    &#x2F;&#x2F; *************************************************************************</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * Implements the string tokenizer that splits sentences into words as a</span><br><span class="line">     * user-defined FlatMapFunction. The function takes a line (String) and</span><br><span class="line">     * splits it into multiple pairs in the form of &quot;(word,1)&quot; (&#123;@code Tuple2&lt;String,</span><br><span class="line">     * Integer&gt;&#125;).</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static final class Tokenizer implements FlatMapFunction&lt;String, Tuple2&lt;String, Integer&gt;&gt; &#123;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void flatMap(String value, Collector&lt;Tuple2&lt;String, Integer&gt;&gt; out) &#123;</span><br><span class="line">            &#x2F;&#x2F; normalize and split the line</span><br><span class="line">            String[] tokens &#x3D; value.toLowerCase().split(&quot;\\W+&quot;);</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F; emit the pairs</span><br><span class="line">            for (String token : tokens) &#123;</span><br><span class="line">                if (token.length() &gt; 0) &#123;</span><br><span class="line">                    out.collect(new Tuple2&lt;&gt;(token, 1));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果还需要卸载其他的系统应用的话，参考下面文章</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;powersee.github.io&#x2F;2019&#x2F;09&#x2F;MIUI-adb&#x2F;</span><br></pre></td></tr></table></figure>
 
-<p>运行参数</p>
-<img src="/images/517519-20200313155734660-595476051.png" alt="" />
+<p>可以卸载的应用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">pm uninstall com.xiaomi.mimobile.noti</span><br><span class="line">pm uninstall com.xiaomi.jr.security</span><br><span class="line">pm uninstall -k --user 0 com.miui.voiceassist</span><br><span class="line">pm uninstall -k --user 0 com.miui.yellowpage</span><br><span class="line">pm uninstall -k --user 0 com.miui.bugreport</span><br><span class="line">pm uninstall -k --user 0 com.miui.hybrid</span><br><span class="line">pm uninstall -k --user 0 com.xiaomi.ab</span><br><span class="line">pm uninstall -k --user 0 com.xiaomi.vipaccount</span><br><span class="line">pm uninstall -k --user 0 com.miui.milivetalk</span><br><span class="line">pm uninstall -k --user 0 com.xiaomi.payment</span><br><span class="line">pm uninstall -k --user 0 com.miui.hybrid.accessory</span><br><span class="line">pm uninstall -k --user 0 com.sohu.inputmethod.sogou.xiaomi</span><br><span class="line">pm uninstall -k --user 0 com.xiaomi.gamecenter</span><br><span class="line">pm uninstall -k --user 0 com.miui.analytics</span><br><span class="line">pm uninstall -k --user 0 com.mipay.wallet</span><br><span class="line">pm uninstall -k --user 0 com.xiaomi.joyose</span><br><span class="line">pm uninstall -k --user 0 com.xiaomi.miplay</span><br><span class="line">pm uninstall -k --user 0 com.miui.video</span><br><span class="line">pm uninstall -k --user 0 com.miui.klo.bugreport</span><br><span class="line">pm uninstall -k --user 0 com.baidu.input_mi</span><br><span class="line">pm uninstall -k --user 0 com.xiaomi.pass</span><br><span class="line">pm uninstall -k --user 0 com.miui.virtualsim</span><br><span class="line">pm uninstall -k --user 0 com.miui.player</span><br><span class="line">pm uninstall -k --user 0 com.miui.compass</span><br><span class="line">pm uninstall -k --user 0 com.miui.systemAdSolution</span><br><span class="line">pm uninstall -k --user 0 com.android.browser</span><br><span class="line">pm uninstall -k --user 0 com.miui.contentextension</span><br><span class="line">pm uninstall -k --user 0 com.xiaomi.gamecenter.sdk.service</span><br></pre></td></tr></table></figure>
         
           <p class="article-more-link">
-            <a class="btn btn-primary" href="/2020/03/13/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94WordCount/#more">全文 &gt;&gt;</a>
+            <a class="btn btn-primary" href="/2020/06/14/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA%E5%8D%B8%E8%BD%BD%E5%B0%8F%E7%88%B1%E5%90%8C%E5%AD%A6/#more">全文 &gt;&gt;</a>
           </p>
         
       
@@ -147,7 +150,64 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2020/03/13/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94WordCount/" data-id="ckca3uxy80017w20l1cqqdn3r" class="article-share-link">
+      <a data-url="http://tonglin0325.github.io/2020/06/14/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA%E5%8D%B8%E8%BD%BD%E5%B0%8F%E7%88%B1%E5%90%8C%E5%AD%A6/" data-id="ckgs52zhf0000gt0lcj2h68qs" class="article-share-link">
+        <i class="fa fa-share"></i> 分享
+      </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/" rel="tag">Android</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Flink学习笔记——flink on yarn" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/31/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94flink%20on%20yarn/">Flink学习笔记——Flink on YARN</a>
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2020/05/31/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94flink%20on%20yarn/" class="article-date"><time datetime="2020-05-30T16:00:00.000Z" itemprop="datePublished">2020-05-31</time></a>
+</div>
+
+    <div class="article-author">tonglin0325</div>
+    
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Flink集群部署的方式有以下几种，在本文中主要介绍Flink on yarn：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Yarn</span><br><span class="line">Mesos</span><br><span class="line">Docker&#x2F;Kubernetes</span><br><span class="line">Standalone</span><br></pre></td></tr></table></figure>
+
+<img src="/images/517519-20200531120817189-925422057.png" alt="" width="444" height="249" />
+        
+          <p class="article-more-link">
+            <a class="btn btn-primary" href="/2020/05/31/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94flink%20on%20yarn/#more">全文 &gt;&gt;</a>
+          </p>
+        
+      
+    </div>
+
+    
+
+    <footer class="article-footer">
+      <a data-url="http://tonglin0325.github.io/2020/05/31/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94flink%20on%20yarn/" data-id="ckca3uxy90018w20l7uft6bzw" class="article-share-link">
         <i class="fa fa-share"></i> 分享
       </a>
       
@@ -163,13 +223,13 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-CDH学习笔记——cloudera manager API" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-使用frp+ss访问内网机器服务" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
     
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/12/CDH%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94cloudera%20manager%20API/">CDH学习笔记——cloudera manager API</a>
+      <a class="article-title" href="/2020/05/02/%E4%BD%BF%E7%94%A8frp+ss%E8%AE%BF%E9%97%AE%E5%86%85%E7%BD%91%E6%9C%BA%E5%99%A8%E6%9C%8D%E5%8A%A1/">使用frp+ss访问内网机器服务</a>
     </h1>
   
 
@@ -178,7 +238,7 @@ ga('send', 'pageview');
 
   <div class="article-meta">
     <div class="article-datetime">
-  <a href="/2020/03/12/CDH%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94cloudera%20manager%20API/" class="article-date"><time datetime="2020-03-11T16:00:00.000Z" itemprop="datePublished">2020-03-12</time></a>
+  <a href="/2020/05/02/%E4%BD%BF%E7%94%A8frp+ss%E8%AE%BF%E9%97%AE%E5%86%85%E7%BD%91%E6%9C%BA%E5%99%A8%E6%9C%8D%E5%8A%A1/" class="article-date"><time datetime="2020-05-01T16:00:00.000Z" itemprop="datePublished">2020-05-02</time></a>
 </div>
 
     <div class="article-author">tonglin0325</div>
@@ -189,32 +249,24 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>可以使用CM提供的api查询cdh集群的信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;cloudera.github.io&#x2F;cm_api&#x2F;</span><br></pre></td></tr></table></figure>
+        <p>1.在<a href="https://www.cnblogs.com/tonglin0325/p/12815487.html" target="_blank" rel="noopener">使用frp进行内网穿透</a>的基础上，在内网机器的frpc.ini配置中添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[web]</span><br><span class="line">type &#x3D; tcp</span><br><span class="line">local_ip &#x3D; master</span><br><span class="line">local_port &#x3D; 内网端口</span><br><span class="line">remote_port &#x3D; 外网机器端口</span><br></pre></td></tr></table></figure>
 
-<p>7.0.3的api文档</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;archive.cloudera.com&#x2F;cm7&#x2F;7.0.3&#x2F;generic&#x2F;jar&#x2F;cm_api&#x2F;apidocs&#x2F;index.html</span><br></pre></td></tr></table></figure>
+<p>启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;frpc -c frpc.ini</span><br></pre></td></tr></table></figure>
 
-<p><strong>查询impala query的api</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;archive.cloudera.com&#x2F;cm7&#x2F;7.0.3&#x2F;generic&#x2F;jar&#x2F;cm_api&#x2F;apidocs&#x2F;json_ApiImpalaQuery.html</span><br></pre></td></tr></table></figure>
+<p>2.在内网机器上启动ss-server</p>
+<p>修改配置/etc/shadow$ocks-libev/config.json，必须是0.0.0.0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;server&quot;:&quot;0.0.0.0&quot;,</span><br><span class="line">    &quot;server_port&quot;:内网端口,</span><br><span class="line">    &quot;local_port&quot;:1080,</span><br><span class="line">    &quot;password&quot;:&quot;密码&quot;,</span><br><span class="line">    &quot;timeout&quot;:60,</span><br><span class="line">    &quot;method&quot;:&quot;chacha20-ietf-poly1305&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>比如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;xxxx:7180&#x2F;api&#x2F;v9&#x2F;clusters&#x2F;dev-cdh&#x2F;services&#x2F;impala&#x2F;impalaQueries?from&#x3D;2020-03-10T06:26:01.927Z</span><br></pre></td></tr></table></figure>
+<p>启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ss-server -c &#x2F;etc&#x2F;shadow$ocks-libev&#x2F;config.json</span><br></pre></td></tr></table></figure>
 
-<p>支持的参数如图所示</p>
-<img src="/images/517519-20200312200226264-520049914.png" alt="" />
-
-<p><strong>查询yarn上query的api</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;archive.cloudera.com&#x2F;cm7&#x2F;7.0.3&#x2F;generic&#x2F;jar&#x2F;cm_api&#x2F;apidocs&#x2F;resource_YarnApplicationsResource.html</span><br></pre></td></tr></table></figure>
-
-<p>比如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;xxxx:7180&#x2F;api&#x2F;v9&#x2F;clusters&#x2F;dev-cdh&#x2F;services&#x2F;yarn&#x2F;yarnApplications</span><br></pre></td></tr></table></figure>
-
-<p>支持的参数如图所示，和impala的一样</p>
-<img src="/images/517519-20200316160930294-2106981338.png" alt="" />
+<p>3.配置代理</p>
+<img src="/images/517519-20200502165548613-237501905.png" alt="" width="600" height="341" />
         
           <p class="article-more-link">
-            <a class="btn btn-primary" href="/2020/03/12/CDH%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94cloudera%20manager%20API/#more">全文 &gt;&gt;</a>
+            <a class="btn btn-primary" href="/2020/05/02/%E4%BD%BF%E7%94%A8frp+ss%E8%AE%BF%E9%97%AE%E5%86%85%E7%BD%91%E6%9C%BA%E5%99%A8%E6%9C%8D%E5%8A%A1/#more">全文 &gt;&gt;</a>
           </p>
         
       
@@ -223,7 +275,129 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2020/03/12/CDH%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94cloudera%20manager%20API/" data-id="ckca3uxxy000ow20l8w5y8jvh" class="article-share-link">
+      <a data-url="http://tonglin0325.github.io/2020/05/02/%E4%BD%BF%E7%94%A8frp+ss%E8%AE%BF%E9%97%AE%E5%86%85%E7%BD%91%E6%9C%BA%E5%99%A8%E6%9C%8D%E5%8A%A1/" data-id="ckca3uy2300chw20l1g8ueo3x" class="article-share-link">
+        <i class="fa fa-share"></i> 分享
+      </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-使用frp进行内网穿透" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/01/%E4%BD%BF%E7%94%A8frp%E8%BF%9B%E8%A1%8C%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">使用frp进行内网穿透</a>
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2020/05/01/%E4%BD%BF%E7%94%A8frp%E8%BF%9B%E8%A1%8C%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" class="article-date"><time datetime="2020-04-30T16:00:00.000Z" itemprop="datePublished">2020-05-01</time></a>
+</div>
+
+    <div class="article-author">tonglin0325</div>
+    
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.前提：1台有公网ip的服务器（1核1G），1台在内网的服务器（16G）</p>
+<p>2.在公网机器上安装frp，并启动frp server</p>
+<p>下载并解压</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;github.com&#x2F;fatedier&#x2F;frp&#x2F;releases&#x2F;download&#x2F;v0.33.0&#x2F;frp_0.33.0_linux_amd64.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>配置文件frps.ini</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">bind_port &#x3D; xxxx</span><br><span class="line">token &#x3D; ssssss</span><br></pre></td></tr></table></figure>
+
+<p>其中bind_port是用于和client端通信的；token是密码；vhost_http_port是当client端配置了web http的服务的时候，通过server访问的端口；vhost_https_port是当client端配置了web https的服务的时候，通过server访问的端口</p>
+<p>启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;frps -c frps.ini</span><br></pre></td></tr></table></figure>
+
+<img src="/images/517519-20200501235344532-1380346097.png" alt="" width="600" height="87" />
+        
+          <p class="article-more-link">
+            <a class="btn btn-primary" href="/2020/05/01/%E4%BD%BF%E7%94%A8frp%E8%BF%9B%E8%A1%8C%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/#more">全文 &gt;&gt;</a>
+          </p>
+        
+      
+    </div>
+
+    
+
+    <footer class="article-footer">
+      <a data-url="http://tonglin0325.github.io/2020/05/01/%E4%BD%BF%E7%94%A8frp%E8%BF%9B%E8%A1%8C%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" data-id="ckca3uy2400ciw20l7l4o8i11" class="article-share-link">
+        <i class="fa fa-share"></i> 分享
+      </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-CDH修改机器ip" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/11/CDH%E4%BF%AE%E6%94%B9%E6%9C%BA%E5%99%A8ip/">CDH修改机器ip</a>
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2020/04/11/CDH%E4%BF%AE%E6%94%B9%E6%9C%BA%E5%99%A8ip/" class="article-date"><time datetime="2020-04-10T16:00:00.000Z" itemprop="datePublished">2020-04-11</time></a>
+</div>
+
+    <div class="article-author">tonglin0325</div>
+    
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如果机器ip变更的话,cdh将无法正常启动,需要修改两个地方的ip地址</p>
+<p>1.数据库scm库的HOSTS表,将IP_ADDRESS字段的ip修改成变更后的ip地址</p>
+<img src="/images/517519-20200411104916148-1677176555.png" alt="" />
+        
+          <p class="article-more-link">
+            <a class="btn btn-primary" href="/2020/04/11/CDH%E4%BF%AE%E6%94%B9%E6%9C%BA%E5%99%A8ip/#more">全文 &gt;&gt;</a>
+          </p>
+        
+      
+    </div>
+
+    
+
+    <footer class="article-footer">
+      <a data-url="http://tonglin0325.github.io/2020/04/11/CDH%E4%BF%AE%E6%94%B9%E6%9C%BA%E5%99%A8ip/" data-id="ckca3uxxw000nw20l195can7c" class="article-share-link">
         <i class="fa fa-share"></i> 分享
       </a>
       
@@ -239,13 +413,13 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-Ubuntu16.04安装Kitematic" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Python学习笔记——sqlalchemy" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
     
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/11/Ubuntu16.04%E5%AE%89%E8%A3%85Kitematic/">Ubuntu16.04安装Kitematic</a>
+      <a class="article-title" href="/2020/04/09/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94sqlalchemy/">Python学习笔记——sqlalchemy</a>
     </h1>
   
 
@@ -254,7 +428,7 @@ ga('send', 'pageview');
 
   <div class="article-meta">
     <div class="article-datetime">
-  <a href="/2020/03/11/Ubuntu16.04%E5%AE%89%E8%A3%85Kitematic/" class="article-date"><time datetime="2020-03-10T16:00:00.000Z" itemprop="datePublished">2020-03-11</time></a>
+  <a href="/2020/04/09/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94sqlalchemy/" class="article-date"><time datetime="2020-04-08T16:00:00.000Z" itemprop="datePublished">2020-04-09</time></a>
 </div>
 
     <div class="article-author">tonglin0325</div>
@@ -265,17 +439,15 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.下载安装文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;docker&#x2F;kitematic&#x2F;releases</span><br></pre></td></tr></table></figure>
+        <p><strong>sqlalchemy</strong>是Python的<strong>ORM</strong>框架</p>
+<p>1.安装sqlalchemy</p>
+<img src="/images/517519-20200408162646722-997313354.png" alt="" width="600" height="491" />
 
-<p>解压并安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i .&#x2F;Kitematic-0.17.10_amd64.deb</span><br></pre></td></tr></table></figure>
-
-<p>启动，然后可以启动容器</p>
-<img src="/images/517519-20200311110421472-1939029830.png" alt="" />
+<p>2.安装mysql-connector</p>
+<img src="/images/517519-20200408172931138-1720758907.png" alt="" width="600" height="482" />
         
           <p class="article-more-link">
-            <a class="btn btn-primary" href="/2020/03/11/Ubuntu16.04%E5%AE%89%E8%A3%85Kitematic/#more">全文 &gt;&gt;</a>
+            <a class="btn btn-primary" href="/2020/04/09/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94sqlalchemy/#more">全文 &gt;&gt;</a>
           </p>
         
       
@@ -284,12 +456,12 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2020/03/11/Ubuntu16.04%E5%AE%89%E8%A3%85Kitematic/" data-id="ckca3uy1g00a8w20l0wp74eqo" class="article-share-link">
+      <a data-url="http://tonglin0325.github.io/2020/04/09/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94sqlalchemy/" data-id="ckca3uy0p007ww20l61wog6d5" class="article-share-link">
         <i class="fa fa-share"></i> 分享
       </a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/" rel="tag">docker</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
 
 
     </footer>
@@ -300,13 +472,13 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-Ubuntu16.04安装flink-1.10.0" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Hive学习笔记——hive hook" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
     
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/10/Ubuntu16.04%E5%AE%89%E8%A3%85flink-1.10.0/">Ubuntu16.04安装flink-1.10.0</a>
+      <a class="article-title" href="/2020/03/21/Hive%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94hive%20hook/">Hive学习笔记——hive hook</a>
     </h1>
   
 
@@ -315,7 +487,7 @@ ga('send', 'pageview');
 
   <div class="article-meta">
     <div class="article-datetime">
-  <a href="/2020/03/10/Ubuntu16.04%E5%AE%89%E8%A3%85flink-1.10.0/" class="article-date"><time datetime="2020-03-09T16:00:00.000Z" itemprop="datePublished">2020-03-10</time></a>
+  <a href="/2020/03/21/Hive%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94hive%20hook/" class="article-date"><time datetime="2020-03-20T16:00:00.000Z" itemprop="datePublished">2020-03-21</time></a>
 </div>
 
     <div class="article-author">tonglin0325</div>
@@ -326,38 +498,11 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本来想cdh集成flink，但是我的cdh版本为5.16.2，参考了下面的issue可能cdh版本太低，至少要cdh6</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;pkeropen&#x2F;flink-parcel&#x2F;issues</span><br></pre></td></tr></table></figure>
-
-<p>进行独立安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;apache&#x2F;flink&#x2F;flink-1.10.0&#x2F;flink-1.10.0-bin-scala_2.11.tgz</span><br></pre></td></tr></table></figure>
-
-<p>安装路径</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;home&#x2F;lintong&#x2F;software&#x2F;apache&#x2F;flink-1.10.0</span><br></pre></td></tr></table></figure>
-
-<p>/etc/profile添加，并source /etc/profile</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#flink</span><br><span class="line">export FLINK_HOME&#x3D;&#x2F;home&#x2F;lintong&#x2F;software&#x2F;apache&#x2F;flink-1.10.0</span><br><span class="line">export PATH&#x3D;$&#123;FLINK_HOME&#125;&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
-
-<p>下载flink-shaded-hadoop-2-uber-2.7.5-7.0.jar包，放到flink的lib目录下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;repo1.maven.org&#x2F;maven2&#x2F;org&#x2F;apache&#x2F;flink&#x2F;flink-shaded-hadoop-2-uber&#x2F;2.7.5-7.0&#x2F;flink-shaded-hadoop-2-uber-2.7.5-7.0.jar</span><br></pre></td></tr></table></figure>
-
-<p>不然flink on yarn的时候会报</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Error: A JNI error has occurred, please check your installation and try again</span><br><span class="line">Exception in thread &quot;main&quot; java.lang.NoClassDefFoundError: org&#x2F;apache&#x2F;hadoop&#x2F;yarn&#x2F;exceptions&#x2F;YarnException</span><br><span class="line">	at java.lang.Class.getDeclaredMethods0(Native Method)</span><br><span class="line">	at java.lang.Class.privateGetDeclaredMethods(Class.java:2701)</span><br><span class="line">	at java.lang.Class.privateGetMethodRecursive(Class.java:3048)</span><br><span class="line">	at java.lang.Class.getMethod0(Class.java:3018)</span><br><span class="line">	at java.lang.Class.getMethod(Class.java:1784)</span><br><span class="line">	at sun.launcher.LauncherHelper.validateMainClass(LauncherHelper.java:544)</span><br><span class="line">	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:526)</span><br><span class="line">Caused by: java.lang.ClassNotFoundException: org.apache.hadoop.yarn.exceptions.YarnException</span><br><span class="line">	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)</span><br><span class="line">	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)</span><br><span class="line">	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331)</span><br><span class="line">	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)</span><br><span class="line">	... 7 more</span><br></pre></td></tr></table></figure>
-
-<p>启动yarn-session</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn-session.sh -n 3 -s 5 -jm 1024 -tm 4096 -d</span><br></pre></td></tr></table></figure>
-
-<p>yarn-seesion参数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">-n ： 指定TaskManager的数量；</span><br><span class="line">-d: 以分离模式运行；</span><br><span class="line">-id：指定yarn的任务ID；</span><br><span class="line">-j:Flink jar文件的路径;</span><br><span class="line">-jm：JobManager容器的内存（默认值：MB）;</span><br><span class="line">-nl：为YARN应用程序指定YARN节点标签;</span><br><span class="line">-nm:在YARN上为应用程序设置自定义名称;</span><br><span class="line">-q:显示可用的YARN资源（内存，内核）;</span><br><span class="line">-qu:指定YARN队列;</span><br><span class="line">-s:指定TaskManager中slot的数量;</span><br><span class="line">-st:以流模式启动Flink;</span><br><span class="line">-tm:每个TaskManager容器的内存（默认值：MB）;</span><br><span class="line">-z:命名空间，用于为高可用性模式创建Zookeeper子路径;</span><br></pre></td></tr></table></figure>
-
-<p>去CDH上查看，第一个是正在运行，第二个是结束</p>
-<img src="/images/517519-20200310235657051-1377564747.png" alt="" width="1200" height="316" />
-
-<p>去appliance id进到yarn的app页面</p>
-<img src="/images/517519-20200313000607455-1448641822.png" alt="" width="1200" height="359" />
+        <p>Hive hook是hive的钩子函数，可以下面这几种情况下被执行</p>
+<img src="/images/517519-20200321193657092-1621988024.png" alt="" width="400" height="309" />
         
           <p class="article-more-link">
-            <a class="btn btn-primary" href="/2020/03/10/Ubuntu16.04%E5%AE%89%E8%A3%85flink-1.10.0/#more">全文 &gt;&gt;</a>
+            <a class="btn btn-primary" href="/2020/03/21/Hive%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94hive%20hook/#more">全文 &gt;&gt;</a>
           </p>
         
       
@@ -366,7 +511,89 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2020/03/10/Ubuntu16.04%E5%AE%89%E8%A3%85flink-1.10.0/" data-id="ckca3uy1h00acw20le61g17ax" class="article-share-link">
+      <a data-url="http://tonglin0325.github.io/2020/03/21/Hive%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94hive%20hook/" data-id="ckca3uxyk001vw20l93ar76e9" class="article-share-link">
+        <i class="fa fa-share"></i> 分享
+      </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hive/" rel="tag">Hive</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Flink学习笔记——kafka" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/15/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94kafka/">Flink学习笔记——kafka</a>
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2020/03/15/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94kafka/" class="article-date"><time datetime="2020-03-14T16:00:00.000Z" itemprop="datePublished">2020-03-15</time></a>
+</div>
+
+    <div class="article-author">tonglin0325</div>
+    
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>部分代码参考了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;apache&#x2F;flink&#x2F;blob&#x2F;master&#x2F;flink-end-to-end-tests&#x2F;flink-streaming-kafka-test&#x2F;src&#x2F;main&#x2F;java&#x2F;org&#x2F;apache&#x2F;flink&#x2F;streaming&#x2F;kafka&#x2F;test&#x2F;KafkaExample.java</span><br></pre></td></tr></table></figure>
+
+<p>以及</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;juejin.im&#x2F;post&#x2F;5d844d11e51d4561e0516bbd</span><br><span class="line">https:&#x2F;&#x2F;developer.aliyun.com&#x2F;article&#x2F;686809</span><br></pre></td></tr></table></figure>
+
+<p>pom</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--flink--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.flink&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;flink-java&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.8.0&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.flink&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;flink-streaming-java_2.11&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.8.0&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.flink&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;flink-scala_2.11&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.8.0&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.flink&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;flink-streaming-scala_2.11&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.8.0&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.flink&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;flink-connector-kafka_2.12&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.8.0&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.flink&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;flink-clients_2.11&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.8.0&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">package com.bigdata.flink;</span><br><span class="line"></span><br><span class="line">import org.apache.flink.api.common.restartstrategy.RestartStrategies;</span><br><span class="line">import org.apache.flink.api.java.utils.ParameterTool;</span><br><span class="line">import org.apache.flink.streaming.api.TimeCharacteristic;</span><br><span class="line">import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;</span><br><span class="line"></span><br><span class="line">public class KafkaExampleUtil &#123;</span><br><span class="line"></span><br><span class="line">    public static StreamExecutionEnvironment prepareExecutionEnv(ParameterTool parameterTool)</span><br><span class="line">            throws Exception &#123;</span><br><span class="line"></span><br><span class="line">        if (parameterTool.getNumberOfParameters() &lt; 5) &#123;</span><br><span class="line">            System.out.println(&quot;Missing parameters!\n&quot; +</span><br><span class="line">                    &quot;Usage: Kafka --input-topic &lt;topic&gt; --output-topic &lt;topic&gt; &quot; +</span><br><span class="line">                    &quot;--bootstrap.servers &lt;kafka brokers&gt; &quot; +</span><br><span class="line">                    &quot;--zookeeper.connect &lt;zk quorum&gt; --group.id &lt;some id&gt;&quot;);</span><br><span class="line">            throw new Exception(&quot;Missing parameters!\n&quot; +</span><br><span class="line">                    &quot;Usage: Kafka --input-topic &lt;topic&gt; --output-topic &lt;topic&gt; &quot; +</span><br><span class="line">                    &quot;--bootstrap.servers &lt;kafka brokers&gt; &quot; +</span><br><span class="line">                    &quot;--zookeeper.connect &lt;zk quorum&gt; --group.id &lt;some id&gt;&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        StreamExecutionEnvironment env &#x3D; StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line">        env.getConfig().setRestartStrategy(RestartStrategies.fixedDelayRestart(4, 10000));</span><br><span class="line">        env.enableCheckpointing(5000); &#x2F;&#x2F; create a checkpoint every 5 seconds</span><br><span class="line">        env.getConfig().setGlobalJobParameters(parameterTool); &#x2F;&#x2F; make parameters available in the web interface</span><br><span class="line">        env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);</span><br><span class="line"></span><br><span class="line">        return env;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">package com.bigdata.flink;</span><br><span class="line"></span><br><span class="line">import org.apache.flink.api.common.serialization.SimpleStringSchema;</span><br><span class="line">import org.apache.flink.api.java.utils.ParameterTool;</span><br><span class="line">import org.apache.flink.streaming.api.datastream.DataStream;</span><br><span class="line">import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;</span><br><span class="line">import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer;</span><br><span class="line">import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer;</span><br><span class="line"></span><br><span class="line">public class KafkaExample &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        &#x2F;&#x2F; parse input arguments</span><br><span class="line">        final ParameterTool parameterTool &#x3D; ParameterTool.fromArgs(args);</span><br><span class="line">        StreamExecutionEnvironment env &#x3D; KafkaExampleUtil.prepareExecutionEnv(parameterTool);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 消费kafka</span><br><span class="line">        DataStream input &#x3D; env</span><br><span class="line">                .addSource(new FlinkKafkaConsumer(&quot;test_topic&quot;, new SimpleStringSchema(), parameterTool.getProperties()));</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 打印</span><br><span class="line">        input.print();</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 往kafka中写数据</span><br><span class="line">        FlinkKafkaProducer&lt;String&gt; myProducer &#x3D; new FlinkKafkaProducer&lt;&gt;(</span><br><span class="line">                parameterTool.getProperties().getProperty(&quot;bootstrap.servers&quot;),            &#x2F;&#x2F; broker list</span><br><span class="line">                &quot;test_source&quot;,                  &#x2F;&#x2F; target topic</span><br><span class="line">                new SimpleStringSchema());   &#x2F;&#x2F; serialization schema</span><br><span class="line"></span><br><span class="line">        input.map(line -&gt; line + &quot;test&quot;).addSink(myProducer);</span><br><span class="line"></span><br><span class="line">        env.execute(&quot;Modern Kafka Example&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--input-topic test_topic --output-topic test_source --bootstrap.servers master:9092 --zookeeper.connect master:2181 --group.id test_group</span><br></pre></td></tr></table></figure>
+
+<p>往kafka topic中放数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;opt&#x2F;cloudera&#x2F;parcels&#x2F;KAFKA&#x2F;bin&#x2F;kafka-console-producer --broker-list master:9092 --topic test_topic</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<img src="/images/517519-20200315152259900-1724316756.png" alt="" width="600" height="129" />
+
+<p>消费flink程序写入的topic</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;opt&#x2F;cloudera&#x2F;parcels&#x2F;KAFKA&#x2F;bin&#x2F;kafka-console-consumer --bootstrap-server master:9092 --topic test_source</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<img src="/images/517519-20200315224503265-985486934.png" alt="" width="700" height="105" />
+        
+          <p class="article-more-link">
+            <a class="btn btn-primary" href="/2020/03/15/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94kafka/#more">全文 &gt;&gt;</a>
+          </p>
+        
+      
+    </div>
+
+    
+
+    <footer class="article-footer">
+      <a data-url="http://tonglin0325.github.io/2020/03/15/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94kafka/" data-id="ckca3uxy90019w20l898b0poe" class="article-share-link">
         <i class="fa fa-share"></i> 分享
       </a>
       
@@ -382,13 +609,13 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-Yarn学习笔记——MR任务" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Flink学习笔记——读写kafka" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
     
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/10/Yarn%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94MR%E4%BB%BB%E5%8A%A1/">Yarn学习笔记——MR任务</a>
+      <a class="article-title" href="/2020/03/15/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E8%AF%BB%E5%86%99kafka/">Flink学习笔记——读写kafka</a>
     </h1>
   
 
@@ -397,7 +624,7 @@ ga('send', 'pageview');
 
   <div class="article-meta">
     <div class="article-datetime">
-  <a href="/2020/03/10/Yarn%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94MR%E4%BB%BB%E5%8A%A1/" class="article-date"><time datetime="2020-03-09T16:00:00.000Z" itemprop="datePublished">2020-03-10</time></a>
+  <a href="/2020/03/15/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E8%AF%BB%E5%86%99kafka/" class="article-date"><time datetime="2020-03-14T16:00:00.000Z" itemprop="datePublished">2020-03-15</time></a>
 </div>
 
     <div class="article-author">tonglin0325</div>
@@ -408,14 +635,34 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.hive sql提交到yarn上面执行之后，将会成为MR任务执行</p>
-<p>正在运行的MR任务的application查看的url，不同类似的任务查看的url可能会不同，比如Spark，Flink等</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;xxxx:8088&#x2F;cluster&#x2F;app&#x2F;application_158225xxxxx_0316</span><br></pre></td></tr></table></figure>
+        <p>Flink的<strong>kafka connector</strong>文档</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;ci.apache.org&#x2F;projects&#x2F;flink&#x2F;flink-docs-release-1.12&#x2F;zh&#x2F;dev&#x2F;connectors&#x2F;kafka.html</span><br></pre></td></tr></table></figure>
 
-<img src="/images/517519-20200310150834878-452941309.png" alt="" />
+<p>Flink写入kafka时候需要实现<strong>序列化</strong>和<strong>反序列化</strong></p>
+<p>部分代码参考了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;apache&#x2F;flink&#x2F;blob&#x2F;master&#x2F;flink-end-to-end-tests&#x2F;flink-streaming-kafka-test&#x2F;src&#x2F;main&#x2F;java&#x2F;org&#x2F;apache&#x2F;flink&#x2F;streaming&#x2F;kafka&#x2F;test&#x2F;KafkaExample.java</span><br></pre></td></tr></table></figure>
+
+<p>以及</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;juejin.im&#x2F;post&#x2F;5d844d11e51d4561e0516bbd</span><br><span class="line">https:&#x2F;&#x2F;developer.aliyun.com&#x2F;article&#x2F;686809</span><br></pre></td></tr></table></figure>
+
+<p><strong>1.依赖</strong>，其中</p>
+<p><strong>flink-java</strong>提供了flink的java api，包括dataset执行环境，format，一些算子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;apache&#x2F;flink&#x2F;tree&#x2F;master&#x2F;flink-java&#x2F;src&#x2F;main&#x2F;java&#x2F;org&#x2F;apache&#x2F;flink&#x2F;api&#x2F;java</span><br></pre></td></tr></table></figure>
+
+<p><strong>flink-streaming-java</strong>提供了flink的java streaming api，包括stream执行环境，一些算子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;apache&#x2F;flink&#x2F;tree&#x2F;master&#x2F;flink-streaming-java&#x2F;src&#x2F;main&#x2F;java&#x2F;org&#x2F;apache&#x2F;flink&#x2F;streaming&#x2F;api</span><br></pre></td></tr></table></figure>
+
+<p><strong>flink-connector-kafka</strong>提供了kafka的连接器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;apache&#x2F;flink&#x2F;tree&#x2F;master&#x2F;flink-connectors&#x2F;flink-connector-kafka</span><br></pre></td></tr></table></figure>
+
+<p><strong>pom文件内容</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- log4j --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.slf4j&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;slf4j-log4j12&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.7.7&lt;&#x2F;version&gt;</span><br><span class="line">    &lt;scope&gt;runtime&lt;&#x2F;scope&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;log4j&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;log4j&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.2.17&lt;&#x2F;version&gt;</span><br><span class="line">    &lt;scope&gt;runtime&lt;&#x2F;scope&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;!--flink--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.flink&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;flink-java&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.10.0&lt;&#x2F;version&gt;</span><br><span class="line">    &lt;exclusions&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">            &lt;groupId&gt;org.slf4j&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;slf4j-log4j12&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;&#x2F;exclusion&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">            &lt;groupId&gt;log4j&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;*&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;&#x2F;exclusion&gt;</span><br><span class="line">    &lt;&#x2F;exclusions&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.flink&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;flink-streaming-java_2.11&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.10.0&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.flink&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;flink-connector-kafka_2.11&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.10.0&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.Kafka Consumer</strong></p>
+<p>作为kafka consumer有几个比较重要的配置参数</p>
         
           <p class="article-more-link">
-            <a class="btn btn-primary" href="/2020/03/10/Yarn%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94MR%E4%BB%BB%E5%8A%A1/#more">全文 &gt;&gt;</a>
+            <a class="btn btn-primary" href="/2020/03/15/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E8%AF%BB%E5%86%99kafka/#more">全文 &gt;&gt;</a>
           </p>
         
       
@@ -424,12 +671,12 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2020/03/10/Yarn%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94MR%E4%BB%BB%E5%8A%A1/" data-id="ckca3uy1m00avw20lgnfzh84e" class="article-share-link">
+      <a data-url="http://tonglin0325.github.io/2020/03/15/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E8%AF%BB%E5%86%99kafka/" data-id="ckk95d58n000kjr0l1i4whr8m" class="article-share-link">
         <i class="fa fa-share"></i> 分享
       </a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yarn/" rel="tag">yarn</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flink/" rel="tag">Flink</a></li></ul>
 
 
     </footer>
@@ -440,13 +687,13 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-Yarn学习笔记——常用命令" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Flink学习笔记——scala shell" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
     
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/10/Yarn%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Yarn学习笔记——常用命令</a>
+      <a class="article-title" href="/2020/03/14/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94scala%20shell/">Flink学习笔记——scala shell</a>
     </h1>
   
 
@@ -455,7 +702,7 @@ ga('send', 'pageview');
 
   <div class="article-meta">
     <div class="article-datetime">
-  <a href="/2020/03/10/Yarn%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="article-date"><time datetime="2020-03-09T16:00:00.000Z" itemprop="datePublished">2020-03-10</time></a>
+  <a href="/2020/03/14/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94scala%20shell/" class="article-date"><time datetime="2020-03-13T16:00:00.000Z" itemprop="datePublished">2020-03-14</time></a>
 </div>
 
     <div class="article-author">tonglin0325</div>
@@ -466,26 +713,17 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.yarn top，查看yarn上面的资源使用情况</p>
-<img src="/images/517519-20200310143812487-1384791057.png" alt="" />
+        <p>Flink也和和spark-shell类似的交互式开发模式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">bin&#x2F;start-scala-shell.sh yarn</span><br><span class="line">Starting Flink Shell:</span><br><span class="line">20&#x2F;03&#x2F;14 14:34:07 INFO configuration.GlobalConfiguration: Loading configuration property: jobmanager.rpc.address, localhost</span><br><span class="line">20&#x2F;03&#x2F;14 14:34:07 INFO configuration.GlobalConfiguration: Loading configuration property: jobmanager.rpc.port, 6123</span><br><span class="line">20&#x2F;03&#x2F;14 14:34:07 INFO configuration.GlobalConfiguration: Loading configuration property: jobmanager.heap.size, 1024m</span><br><span class="line">20&#x2F;03&#x2F;14 14:34:07 INFO configuration.GlobalConfiguration: Loading configuration property: taskmanager.memory.process.size, 1568m</span><br><span class="line">20&#x2F;03&#x2F;14 14:34:07 INFO configuration.GlobalConfiguration: Loading configuration property: taskmanager.numberOfTaskSlots, 1</span><br><span class="line">20&#x2F;03&#x2F;14 14:34:07 INFO configuration.GlobalConfiguration: Loading configuration property: parallelism.default, 1</span><br><span class="line">20&#x2F;03&#x2F;14 14:34:07 INFO configuration.GlobalConfiguration: Loading configuration property: jobmanager.execution.failover-strategy, region</span><br><span class="line">20&#x2F;03&#x2F;14 14:34:07 INFO cli.FlinkYarnSessionCli: Found Yarn properties file under &#x2F;tmp&#x2F;.yarn-properties-lintong.</span><br><span class="line">20&#x2F;03&#x2F;14 14:34:07 WARN cli.FlinkYarnSessionCli: The configuration directory (&#39;&#x2F;home&#x2F;lintong&#x2F;software&#x2F;apache&#x2F;flink-1.10.0&#x2F;conf&#39;) already contains a LOG4J config file.If you want to use logback, then please delete or rename the log configuration file.</span><br><span class="line"></span><br><span class="line">Connecting to Flink cluster (host: localhost, port: 6123).</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                         ▒▓██▓██▒</span><br><span class="line">                     ▓████▒▒█▓▒▓███▓▒</span><br><span class="line">                  ▓███▓░░        ▒▒▒▓██▒  ▒</span><br><span class="line">                ░██▒   ▒▒▓▓█▓▓▒░      ▒████</span><br><span class="line">                ██▒         ░▒▓███▒    ▒█▒█▒</span><br><span class="line">                  ░▓█            ███   ▓░▒██</span><br><span class="line">                    ▓█       ▒▒▒▒▒▓██▓░▒░▓▓█</span><br><span class="line">                  █░ █   ▒▒░       ███▓▓█ ▒█▒▒▒</span><br><span class="line">                  ████░   ▒▓█▓      ██▒▒▒ ▓███▒</span><br><span class="line">               ░▒█▓▓██       ▓█▒    ▓█▒▓██▓ ░█░</span><br><span class="line">         ▓░▒▓████▒ ██         ▒█    █▓░▒█▒░▒█▒</span><br><span class="line">        ███▓░██▓  ▓█           █   █▓ ▒▓█▓▓█▒</span><br><span class="line">      ░██▓  ░█░            █  █▒ ▒█████▓▒ ██▓░▒</span><br><span class="line">     ███░ ░ █░          ▓ ░█ █████▒░░    ░█░▓  ▓░</span><br><span class="line">    ██▓█ ▒▒▓▒          ▓███████▓░       ▒█▒ ▒▓ ▓██▓</span><br><span class="line"> ▒██▓ ▓█ █▓█       ░▒█████▓▓▒░         ██▒▒  █ ▒  ▓█▒</span><br><span class="line"> ▓█▓  ▓█ ██▓ ░▓▓▓▓▓▓▓▒              ▒██▓           ░█▒</span><br><span class="line"> ▓█    █ ▓███▓▒░              ░▓▓▓███▓          ░▒░ ▓█</span><br><span class="line"> ██▓    ██▒    ░▒▓▓███▓▓▓▓▓██████▓▒            ▓███  █</span><br><span class="line">▓███▒ ███   ░▓▓▒░░   ░▓████▓░                  ░▒▓▒  █▓</span><br><span class="line">█▓▒▒▓▓██  ░▒▒░░░▒▒▒▒▓██▓░                            █▓</span><br><span class="line">██ ▓░▒█   ▓▓▓▓▒░░  ▒█▓       ▒▓▓██▓    ▓▒          ▒▒▓</span><br><span class="line">▓█▓ ▓▒█  █▓░  ░▒▓▓██▒            ░▓█▒   ▒▒▒░▒▒▓█████▒</span><br><span class="line"> ██░ ▓█▒█▒  ▒▓▓▒  ▓█                █░      ░░░░   ░█▒</span><br><span class="line"> ▓█   ▒█▓   ░     █░                ▒█              █▓</span><br><span class="line">  █▓   ██         █░                 ▓▓        ▒█▓▓▓▒█░</span><br><span class="line">   █▓ ░▓██░       ▓▒                  ▓█▓▒░░░▒▓█░    ▒█</span><br><span class="line">    ██   ▓█▓░      ▒                    ░▒█▒██▒      ▓▓</span><br><span class="line">     ▓█▒   ▒█▓▒░                         ▒▒ █▒█▓▒▒░░▒██</span><br><span class="line">      ░██▒    ▒▓▓▒                     ▓██▓▒█▒ ░▓▓▓▓▒█▓</span><br><span class="line">        ░▓██▒                          ▓░  ▒█▓█  ░░▒▒▒</span><br><span class="line">            ▒▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░▓▓  ▓░▒█░</span><br><span class="line"></span><br><span class="line">              F L I N K - S C A L A - S H E L L</span><br></pre></td></tr></table></figure>
 
-<p>2.队列使用状态</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">queue -status root.xxx_common</span><br><span class="line">Queue Information : </span><br><span class="line">Queue Name : root.xxx_common</span><br><span class="line">	State : RUNNING</span><br><span class="line">	Capacity : 100.0%</span><br><span class="line">	Current Capacity : 21.7%</span><br><span class="line">	Maximum Capacity : -100.0%</span><br><span class="line">	Default Node Label expression : </span><br><span class="line">	Accessible Node Labels :</span><br></pre></td></tr></table></figure>
+<p>读文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">scala&gt; val dataSet &#x3D; benv.readTextFile(&quot;hdfs:&#x2F;&#x2F;master:8020&#x2F;user&#x2F;lintong&#x2F;logs&#x2F;test&#x2F;test.log&quot;)</span><br><span class="line">20&#x2F;03&#x2F;14 14:49:07 INFO configuration.GlobalConfiguration: Loading configuration property: jobmanager.rpc.address, localhost</span><br><span class="line">20&#x2F;03&#x2F;14 14:49:07 INFO configuration.GlobalConfiguration: Loading configuration property: jobmanager.rpc.port, 6123</span><br><span class="line">20&#x2F;03&#x2F;14 14:49:07 INFO configuration.GlobalConfiguration: Loading configuration property: jobmanager.heap.size, 1024m</span><br><span class="line">20&#x2F;03&#x2F;14 14:49:07 INFO configuration.GlobalConfiguration: Loading configuration property: taskmanager.memory.process.size, 1568m</span><br><span class="line">20&#x2F;03&#x2F;14 14:49:07 INFO configuration.GlobalConfiguration: Loading configuration property: taskmanager.numberOfTaskSlots, 1</span><br><span class="line">20&#x2F;03&#x2F;14 14:49:07 INFO configuration.GlobalConfiguration: Loading configuration property: parallelism.default, 1</span><br><span class="line">20&#x2F;03&#x2F;14 14:49:07 INFO configuration.GlobalConfiguration: Loading configuration property: jobmanager.execution.failover-strategy, region</span><br><span class="line">dataSet: org.apache.flink.api.scala.DataSet[String] &#x3D; org.apache.flink.api.scala.DataSet@13e5b262</span><br></pre></td></tr></table></figure>
 
-<p>3.查看yarn上运行的任务列表，如果集群有krb认证的话，需要先kinit，认证后可以看到所有正在运行的任务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn application -list</span><br></pre></td></tr></table></figure>
-
-<p>结果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Total number of applications (application-types: [] and states: [SUBMITTED, ACCEPTED, RUNNING]):12</span><br><span class="line">                Application-Id	    Application-Name	    Application-Type	      User	     Queue	             State	       Final-State	       Progress	                       Tracking-URL</span><br><span class="line">application_15771778xxxxx_0664	xx-flink-test	        Apache Flink	  xxx-xx	root.xxx_common	           RUNNING	         UNDEFINED	           100%	         http:&#x2F;&#x2F;xxx-76:35437</span><br><span class="line">application_15771778xxxxx_0663	xx-flink-debug	        Apache Flink	        xx	root.xxx_common	           RUNNING	         UNDEFINED	           100%	         http:&#x2F;&#x2F;xxx-79:42443</span><br><span class="line">application_15771778xxxxx_0641	           xxx-flink	        Apache Flink	 xxx-xx	root.xxx_common	           RUNNING	         UNDEFINED	           100%	         http:&#x2F;&#x2F;xxx-76:38067</span><br><span class="line">application_15771778xxxxx_0182	        common_flink	        Apache Flink	        xx	root.xxx_common	           RUNNING	         UNDEFINED	           100%	         http:&#x2F;&#x2F;xxx-79:38583</span><br><span class="line">application_15822552xxxxx_0275	             testjar	        XXX-FLINK	xxx	root.xxx_common	           RUNNING	         UNDEFINED	           100%	         http:&#x2F;&#x2F;xxx-78:36751</span><br><span class="line">application_15822552xxxxx_0259	            flinksql	        XXX-FLINK	      hdfs	root.xxx_common	           RUNNING	         UNDEFINED	           100%	         http:&#x2F;&#x2F;xxx-77:37127</span><br><span class="line">application_15822552xxxxx_0026	           kudu-test	        Apache Flink	      hdfs	root.xxx_common	           RUNNING	         UNDEFINED	           100%	         http:&#x2F;&#x2F;xxx-78:43071</span><br><span class="line">application_15822552xxxxx_0307	        xxx_statistic	       XXX Flink	xxx	root.xxx_common	           RUNNING	         UNDEFINED	           100%	         http:&#x2F;&#x2F;xxx:18000</span><br><span class="line">application_15822552xxxxx_0308	       xxx-statistic	       XXX Flink	xxx	root.xxx_common	          ACCEPTED	         UNDEFINED	             0%	                                N&#x2F;A</span><br><span class="line">application_15810489xxxxx_0003	 xxx-flink	        Apache Flink	        xx	root.xxx_common	           RUNNING	         UNDEFINED	           100%	          http:&#x2F;&#x2F;xxx-78:8081</span><br><span class="line">application_15810489xxxxx_0184	        common_flink	        Apache Flink	        xx	root.xxx_common	           RUNNING	         UNDEFINED	           100%	         http:&#x2F;&#x2F;xxx-76:35659</span><br><span class="line">application_15810489xxxxx_0154	Flink session cluster	        Apache Flink	      hdfs	root.xxx_common	           RUNNING	         UNDEFINED	           100%	         http:&#x2F;&#x2F;xxx-80:38797</span><br></pre></td></tr></table></figure>
-
-<p>使用状态进行筛选</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yarn application -list -appStates RUNNING</span><br><span class="line">Total number of applications (application-types: [] and states: [RUNNING]):12</span><br><span class="line">                Application-Id	    Application-Name	    Application-Type	      User	     Queue	             State	       Final-State	       Progress	                       Tracking-URL</span><br><span class="line">application_157717780xxxx_0664	xx-flink-test	        Apache Flink	  xxx-xx	root.xxx_common	           RUNNING	         UNDEFINED	           100%	         http:&#x2F;&#x2F;xxxxx-xx:35437</span><br></pre></td></tr></table></figure>
-
-<p>4.查看任务状态信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">yarn application -status application_1582255xxxx_0314</span><br><span class="line">Application Report : </span><br><span class="line">	Application-Id : application_1582255xxxx_0314</span><br><span class="line">	Application-Name : select count(*) from tb1 (Stage-1)</span><br><span class="line">	Application-Type : MAPREDUCE</span><br><span class="line">	User : hive</span><br><span class="line">	Queue : root.xxxx_common</span><br><span class="line">	Start-Time : 1583822835423</span><br><span class="line">	Finish-Time : 1583822860082</span><br><span class="line">	Progress : 100%</span><br><span class="line">	State : FINISHED</span><br><span class="line">	Final-State : SUCCEEDED</span><br><span class="line">	Tracking-URL : http:&#x2F;&#x2F;xxx-xxxx-xx:19888&#x2F;jobhistory&#x2F;job&#x2F;job_15822552xxxx_0314</span><br><span class="line">	RPC Port : 32829</span><br><span class="line">	AM Host : xxxx-xxxx-xx</span><br><span class="line">	Aggregate Resource Allocation : 162810 MB-seconds, 78 vcore-seconds</span><br><span class="line">	Log Aggregation Status : SUCCEEDED</span><br><span class="line">	Diagnostics :</span><br></pre></td></tr></table></figure>
+<p>打印</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">scala&gt; dataSet.print()</span><br><span class="line">20&#x2F;03&#x2F;14 14:49:10 INFO java.ExecutionEnvironment: The job has 0 registered types and 0 default Kryo serializers</span><br><span class="line">20&#x2F;03&#x2F;14 14:49:11 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable</span><br><span class="line">20&#x2F;03&#x2F;14 14:49:11 INFO client.RMProxy: Connecting to ResourceManager at master&#x2F;192.168.2.105:8032</span><br><span class="line">20&#x2F;03&#x2F;14 14:49:11 INFO yarn.YarnClusterDescriptor: No path for the flink jar passed. Using the location of class org.apache.flink.yarn.YarnClusterDescriptor to locate the jar</span><br><span class="line">20&#x2F;03&#x2F;14 14:49:11 INFO yarn.YarnClusterDescriptor: Found Web Interface master:36441 of application &#39;application_1584163852090_0002&#39;.</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
         
           <p class="article-more-link">
-            <a class="btn btn-primary" href="/2020/03/10/Yarn%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#more">全文 &gt;&gt;</a>
+            <a class="btn btn-primary" href="/2020/03/14/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94scala%20shell/#more">全文 &gt;&gt;</a>
           </p>
         
       
@@ -494,248 +732,12 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2020/03/10/Yarn%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" data-id="ckca3uy1n00aww20l7sxvb8df" class="article-share-link">
+      <a data-url="http://tonglin0325.github.io/2020/03/14/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94scala%20shell/" data-id="ckca3uxya001aw20l1f2cekid" class="article-share-link">
         <i class="fa fa-share"></i> 分享
       </a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yarn/" rel="tag">yarn</a></li></ul>
-
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Elasticsearch的Shard和Segment" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <header class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/24/Elasticsearch%E7%9A%84Shard%E5%92%8CSegment/">Elasticsearch的Shard和Segment</a>
-    </h1>
-  
-
-
-  </header>
-
-  <div class="article-meta">
-    <div class="article-datetime">
-  <a href="/2020/02/24/Elasticsearch%E7%9A%84Shard%E5%92%8CSegment/" class="article-date"><time datetime="2020-02-23T16:00:00.000Z" itemprop="datePublished">2020-02-24</time></a>
-</div>
-
-    <div class="article-author">tonglin0325</div>
-    
-
-  </div>
-  <div class="article-inner">
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>Shard是什么？</strong></p>
-<p>在下面的文档中进行了介绍</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;www.elastic.co&#x2F;guide&#x2F;cn&#x2F;elasticsearch&#x2F;guide&#x2F;current&#x2F;kagillion-shards.html</span><br></pre></td></tr></table></figure>
-
-<p>1.一个分片的底层即为一个 Lucene 索引，会消耗一定文件句柄、内存、以及 CPU 运转。
-        
-          <p class="article-more-link">
-            <a class="btn btn-primary" href="/2020/02/24/Elasticsearch%E7%9A%84Shard%E5%92%8CSegment/#more">全文 &gt;&gt;</a>
-          </p>
-        
-      
-    </div>
-
-    
-
-    <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2020/02/24/Elasticsearch%E7%9A%84Shard%E5%92%8CSegment/" data-id="ckca3uxy70014w20l8d04ctcu" class="article-share-link">
-        <i class="fa fa-share"></i> 分享
-      </a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ELK/" rel="tag">ELK</a></li></ul>
-
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-mac使用karabiner-elements修改键位" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <header class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/23/mac%E4%BD%BF%E7%94%A8karabiner-elements%E4%BF%AE%E6%94%B9%E9%94%AE%E4%BD%8D/">mac使用karabiner-elements修改键位</a>
-    </h1>
-  
-
-
-  </header>
-
-  <div class="article-meta">
-    <div class="article-datetime">
-  <a href="/2020/02/23/mac%E4%BD%BF%E7%94%A8karabiner-elements%E4%BF%AE%E6%94%B9%E9%94%AE%E4%BD%8D/" class="article-date"><time datetime="2020-02-22T16:00:00.000Z" itemprop="datePublished">2020-02-23</time></a>
-</div>
-
-    <div class="article-author">tonglin0325</div>
-    
-
-  </div>
-  <div class="article-inner">
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在最新的mac catalina系统中，已经从karabiner更名为karabiner-elements，安装的版本为Karabiner-Elements-12.9.0</p>
-<p>下载地址：<a href="https://pqrs.org/osx/karabiner/" target="_blank" rel="noopener">https://pqrs.org/osx/karabiner/</a></p>
-<img src="/images/517519-20200223113738102-801024441.png" alt="" width="800" height="581" />
-        
-          <p class="article-more-link">
-            <a class="btn btn-primary" href="/2020/02/23/mac%E4%BD%BF%E7%94%A8karabiner-elements%E4%BF%AE%E6%94%B9%E9%94%AE%E4%BD%8D/#more">全文 &gt;&gt;</a>
-          </p>
-        
-      
-    </div>
-
-    
-
-    <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2020/02/23/mac%E4%BD%BF%E7%94%A8karabiner-elements%E4%BF%AE%E6%94%B9%E9%94%AE%E4%BD%8D/" data-id="ckca3uy1t00bfw20l84f82v62" class="article-share-link">
-        <i class="fa fa-share"></i> 分享
-      </a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/" rel="tag">mac</a></li></ul>
-
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-mac修改brew源" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <header class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/15/mac%E4%BF%AE%E6%94%B9brew%E6%BA%90/">mac修改brew源</a>
-    </h1>
-  
-
-
-  </header>
-
-  <div class="article-meta">
-    <div class="article-datetime">
-  <a href="/2020/02/15/mac%E4%BF%AE%E6%94%B9brew%E6%BA%90/" class="article-date"><time datetime="2020-02-14T16:00:00.000Z" itemprop="datePublished">2020-02-15</time></a>
-</div>
-
-    <div class="article-author">tonglin0325</div>
-    
-
-  </div>
-  <div class="article-inner">
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>参考：<a href="https://juejin.im/post/5daec26a51882575d50cd0aa" target="_blank" rel="noopener">https://juejin.im/post/5daec26a51882575d50cd0aa</a></p>
-<p>1.改成清华的源</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git -C &quot;$(brew --repo)&quot; remote set-url origin https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;git&#x2F;homebrew&#x2F;brew.git</span><br><span class="line"></span><br><span class="line">git -C &quot;$(brew --repo homebrew&#x2F;core)&quot; remote set-url origin https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;git&#x2F;homebrew&#x2F;homebrew-core.git</span><br><span class="line"></span><br><span class="line">git -C &quot;$(brew --repo homebrew&#x2F;cask)&quot; remote set-url origin https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;git&#x2F;homebrew&#x2F;homebrew-cask.git</span><br><span class="line"></span><br><span class="line">brew update</span><br></pre></td></tr></table></figure>
-
-<p>如果想还原</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git -C &quot;$(brew --repo)&quot; remote set-url origin https:&#x2F;&#x2F;github.com&#x2F;Homebrew&#x2F;brew.git</span><br><span class="line"></span><br><span class="line">git -C &quot;$(brew --repo homebrew&#x2F;core)&quot; remote set-url origin https:&#x2F;&#x2F;github.com&#x2F;Homebrew&#x2F;homebrew-core.git</span><br><span class="line"></span><br><span class="line">git -C &quot;$(brew --repo homebrew&#x2F;cask)&quot; remote set-url origin https:&#x2F;&#x2F;github.com&#x2F;Homebrew&#x2F;homebrew-cask.git</span><br><span class="line"></span><br><span class="line">brew update</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a class="btn btn-primary" href="/2020/02/15/mac%E4%BF%AE%E6%94%B9brew%E6%BA%90/#more">全文 &gt;&gt;</a>
-          </p>
-        
-      
-    </div>
-
-    
-
-    <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2020/02/15/mac%E4%BF%AE%E6%94%B9brew%E6%BA%90/" data-id="ckca3uy1t00bgw20lckrqekc3" class="article-share-link">
-        <i class="fa fa-share"></i> 分享
-      </a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/" rel="tag">mac</a></li></ul>
-
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-mac环境变量不生效问题" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <header class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/15/mac%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%B8%8D%E7%94%9F%E6%95%88%E9%97%AE%E9%A2%98/">mac环境变量不生效问题</a>
-    </h1>
-  
-
-
-  </header>
-
-  <div class="article-meta">
-    <div class="article-datetime">
-  <a href="/2020/02/15/mac%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%B8%8D%E7%94%9F%E6%95%88%E9%97%AE%E9%A2%98/" class="article-date"><time datetime="2020-02-14T16:00:00.000Z" itemprop="datePublished">2020-02-15</time></a>
-</div>
-
-    <div class="article-author">tonglin0325</div>
-    
-
-  </div>
-  <div class="article-inner">
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>参考：<a href="https://blog.csdn.net/qq_18505715/article/details/83276208" target="_blank" rel="noopener">https://blog.csdn.net/qq_18505715/article/details/83276208</a></p>
-<p>在 ~/.zshrc 中添加</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~&#x2F;.bash_profile</span><br></pre></td></tr></table></figure>
-
-<p>比如mac的git命令补全不生效，可以参考如下文章添加</p>
-<p><a href="https://blog.csdn.net/WinWill2012/article/details/71774461" target="_blank" rel="noopener">https://blog.csdn.net/WinWill2012/article/details/71774461</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~&#x2F;.git-completion.bash</span><br></pre></td></tr></table></figure>
-
-<p>调整mac终端颜色和全路径显示</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export PS1&#x3D;&quot;%n@%m %0~ $ &quot;</span><br><span class="line"></span><br><span class="line">export CLICOLOR&#x3D;1</span><br><span class="line">export LSCOLORS&#x3D;ExFxBxDxCxegedabagacad</span><br><span class="line">alias ls&#x3D;&#39;ls -GFh&#39;</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a class="btn btn-primary" href="/2020/02/15/mac%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%B8%8D%E7%94%9F%E6%95%88%E9%97%AE%E9%A2%98/#more">全文 &gt;&gt;</a>
-          </p>
-        
-      
-    </div>
-
-    
-
-    <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2020/02/15/mac%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%B8%8D%E7%94%9F%E6%95%88%E9%97%AE%E9%A2%98/" data-id="ckca3uy1t00bhw20l96lg00bi" class="article-share-link">
-        <i class="fa fa-share"></i> 分享
-      </a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/" rel="tag">mac</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flink/" rel="tag">Flink</a></li></ul>
 
 
     </footer>
@@ -749,7 +751,7 @@ ga('send', 'pageview');
 
 
   <div id="page-nav">
-    <nav><ul class="pagination"><li><a class="page-prev" rel="prev" href="/page/4/"><i class="fa fa-chevron-left"></i> Prev</a></li><li><a class="page-number" href="/">1</a></li><li class="disabled"><span class="page-space">&hellip;</span></li><li><a class="page-number" href="/page/3/">3</a></li><li><a class="page-number" href="/page/4/">4</a></li><li class="active"><span class="page-number">5</span></li><li><a class="page-number" href="/page/6/">6</a></li><li><a class="page-number" href="/page/7/">7</a></li><li class="disabled"><span class="page-space">&hellip;</span></li><li><a class="page-number" href="/page/54/">54</a></li><li><a class="page-next" rel="next" href="/page/6/">Next <i class="fa fa-chevron-right"></i></a></li></ul></nav>
+    <nav><ul class="pagination"><li><a class="page-prev" rel="prev" href="/page/4/"><i class="fa fa-chevron-left"></i> Prev</a></li><li><a class="page-number" href="/">1</a></li><li class="disabled"><span class="page-space">&hellip;</span></li><li><a class="page-number" href="/page/3/">3</a></li><li><a class="page-number" href="/page/4/">4</a></li><li class="active"><span class="page-number">5</span></li><li><a class="page-number" href="/page/6/">6</a></li><li><a class="page-number" href="/page/7/">7</a></li><li class="disabled"><span class="page-space">&hellip;</span></li><li><a class="page-number" href="/page/56/">56</a></li><li><a class="page-next" rel="next" href="/page/6/">Next <i class="fa fa-chevron-right"></i></a></li></ul></nav>
   </div>
 
 
@@ -769,7 +771,7 @@ ga('send', 'pageview');
   
   <div class="sidebar-module">
     <h4>标签</h4>
-    <ul class="sidebar-module-list" itemprop="keywords"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Airbnb/" rel="tag">Airbnb</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Ajax/" rel="tag">Ajax</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Amazon/" rel="tag">Amazon</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Android/" rel="tag">Android</a><span class="sidebar-module-list-count">18</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Bootstrap/" rel="tag">Bootstrap</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ELK/" rel="tag">ELK</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Flink/" rel="tag">Flink</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Git/" rel="tag">Git</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/HTML-CSS-JS/" rel="tag">HTML/CSS/JS</a><span class="sidebar-module-list-count">32</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hbase/" rel="tag">Hbase</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hive/" rel="tag">Hive</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JDBC/" rel="tag">JDBC</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JSON/" rel="tag">JSON</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JVM/" rel="tag">JVM</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a><span class="sidebar-module-list-count">72</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a><span class="sidebar-module-list-count">38</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E5%85%B3%E9%94%AE%E5%AD%97/" rel="tag">Java关键字</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E7%95%8C%E9%9D%A2/" rel="tag">Java界面</a><span class="sidebar-module-list-count">16</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="sidebar-module-list-count">50</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ML/" rel="tag">ML</a><span class="sidebar-module-list-count">28</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Maven/" rel="tag">Maven</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Nexus/" rel="tag">Nexus</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/NoSQL/" rel="tag">NoSQL</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Paper/" rel="tag">Paper</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Python/" rel="tag">Python</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Reading/" rel="tag">Reading</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SQL/" rel="tag">SQL</a><span class="sidebar-module-list-count">21</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Scala/" rel="tag">Scala</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Solr/" rel="tag">Solr</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Spark/" rel="tag">Spark</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/TCP-IP/" rel="tag">TCP/IP</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Thrift/" rel="tag">Thrift</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/antlr/" rel="tag">antlr</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/cdh/" rel="tag">cdh</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/docker/" rel="tag">docker</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/filebeat/" rel="tag">filebeat</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/flume/" rel="tag">flume</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/go/" rel="tag">go</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/google/" rel="tag">google</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/jquery/" rel="tag">jquery</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/kafka/" rel="tag">kafka</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/kerberos/" rel="tag">kerberos</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ldap/" rel="tag">ldap</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/mac/" rel="tag">mac</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nlp/" rel="tag">nlp</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/open-falcon/" rel="tag">open-falcon</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/redis/" rel="tag">redis</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/twitter/" rel="tag">twitter</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/yarn/" rel="tag">yarn</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/zookeeper/" rel="tag">zookeeper</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%88%B7%E9%A2%98/" rel="tag">刷题</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%9B%BE%E5%AD%98%E5%82%A8%E5%8F%8A%E8%AE%A1%E7%AE%97/" rel="tag">图存储及计算</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="tag">开发工具</a><span class="sidebar-module-list-count">15</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="sidebar-module-list-count">22</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="sidebar-module-list-count">27</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="sidebar-module-list-count">7</span></li></ul>
+    <ul class="sidebar-module-list" itemprop="keywords"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Airbnb/" rel="tag">Airbnb</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Ajax/" rel="tag">Ajax</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Amazon/" rel="tag">Amazon</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Android/" rel="tag">Android</a><span class="sidebar-module-list-count">18</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Bootstrap/" rel="tag">Bootstrap</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ELK/" rel="tag">ELK</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Flink/" rel="tag">Flink</a><span class="sidebar-module-list-count">12</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Git/" rel="tag">Git</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/HTML-CSS-JS/" rel="tag">HTML/CSS/JS</a><span class="sidebar-module-list-count">32</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hbase/" rel="tag">Hbase</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hive/" rel="tag">Hive</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JDBC/" rel="tag">JDBC</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JSON/" rel="tag">JSON</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JVM/" rel="tag">JVM</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a><span class="sidebar-module-list-count">72</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a><span class="sidebar-module-list-count">38</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E5%85%B3%E9%94%AE%E5%AD%97/" rel="tag">Java关键字</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E7%95%8C%E9%9D%A2/" rel="tag">Java界面</a><span class="sidebar-module-list-count">16</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="sidebar-module-list-count">50</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ML/" rel="tag">ML</a><span class="sidebar-module-list-count">28</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Maven/" rel="tag">Maven</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Nexus/" rel="tag">Nexus</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/NoSQL/" rel="tag">NoSQL</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Paper/" rel="tag">Paper</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Python/" rel="tag">Python</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Reading/" rel="tag">Reading</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SQL/" rel="tag">SQL</a><span class="sidebar-module-list-count">21</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Scala/" rel="tag">Scala</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Solr/" rel="tag">Solr</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Spark/" rel="tag">Spark</a><span class="sidebar-module-list-count">21</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/TCP-IP/" rel="tag">TCP/IP</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Thrift/" rel="tag">Thrift</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/antlr/" rel="tag">antlr</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/cdh/" rel="tag">cdh</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/docker/" rel="tag">docker</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/filebeat/" rel="tag">filebeat</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/flume/" rel="tag">flume</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/go/" rel="tag">go</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/google/" rel="tag">google</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/jquery/" rel="tag">jquery</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/kafka/" rel="tag">kafka</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/kerberos/" rel="tag">kerberos</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ldap/" rel="tag">ldap</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/mac/" rel="tag">mac</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nlp/" rel="tag">nlp</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/open-falcon/" rel="tag">open-falcon</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/redis/" rel="tag">redis</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/twitter/" rel="tag">twitter</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/yarn/" rel="tag">yarn</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/zookeeper/" rel="tag">zookeeper</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%88%B7%E9%A2%98/" rel="tag">刷题</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%9B%BE%E5%AD%98%E5%82%A8%E5%8F%8A%E8%AE%A1%E7%AE%97/" rel="tag">图存储及计算</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="tag">开发工具</a><span class="sidebar-module-list-count">15</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="sidebar-module-list-count">22</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="sidebar-module-list-count">27</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="sidebar-module-list-count">7</span></li></ul>
   </div>
 
 
@@ -778,7 +780,7 @@ ga('send', 'pageview');
   <div class="sidebar-module">
     <h4>标签云</h4>
     <p class="tagcloud">
-      <a href="/tags/Airbnb/" style="font-size: 12.38px;">Airbnb</a> <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Amazon/" style="font-size: 10px;">Amazon</a> <a href="/tags/Android/" style="font-size: 15.71px;">Android</a> <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/ELK/" style="font-size: 13.33px;">ELK</a> <a href="/tags/Flink/" style="font-size: 13.33px;">Flink</a> <a href="/tags/Git/" style="font-size: 10.95px;">Git</a> <a href="/tags/HTML-CSS-JS/" style="font-size: 18.57px;">HTML/CSS/JS</a> <a href="/tags/Hadoop/" style="font-size: 12.86px;">Hadoop</a> <a href="/tags/Hbase/" style="font-size: 10.95px;">Hbase</a> <a href="/tags/Hive/" style="font-size: 11.9px;">Hive</a> <a href="/tags/JDBC/" style="font-size: 13.33px;">JDBC</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JVM/" style="font-size: 10.48px;">JVM</a> <a href="/tags/JavaSE/" style="font-size: 20px;">JavaSE</a> <a href="/tags/JavaWeb/" style="font-size: 19.05px;">JavaWeb</a> <a href="/tags/Java%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 12.86px;">Java关键字</a> <a href="/tags/Java%E7%95%8C%E9%9D%A2/" style="font-size: 15.24px;">Java界面</a> <a href="/tags/Linux/" style="font-size: 19.52px;">Linux</a> <a href="/tags/ML/" style="font-size: 18.1px;">ML</a> <a href="/tags/Maven/" style="font-size: 10.95px;">Maven</a> <a href="/tags/Nexus/" style="font-size: 11.43px;">Nexus</a> <a href="/tags/NoSQL/" style="font-size: 10px;">NoSQL</a> <a href="/tags/Paper/" style="font-size: 10px;">Paper</a> <a href="/tags/Python/" style="font-size: 16.19px;">Python</a> <a href="/tags/Reading/" style="font-size: 10.95px;">Reading</a> <a href="/tags/SQL/" style="font-size: 16.67px;">SQL</a> <a href="/tags/Scala/" style="font-size: 13.33px;">Scala</a> <a href="/tags/Solr/" style="font-size: 10.95px;">Solr</a> <a href="/tags/Spark/" style="font-size: 16.19px;">Spark</a> <a href="/tags/SpringBoot/" style="font-size: 10.48px;">SpringBoot</a> <a href="/tags/SpringMVC/" style="font-size: 14.29px;">SpringMVC</a> <a href="/tags/TCP-IP/" style="font-size: 10.95px;">TCP/IP</a> <a href="/tags/Thrift/" style="font-size: 10.95px;">Thrift</a> <a href="/tags/antlr/" style="font-size: 10.48px;">antlr</a> <a href="/tags/cdh/" style="font-size: 10.95px;">cdh</a> <a href="/tags/docker/" style="font-size: 10.48px;">docker</a> <a href="/tags/filebeat/" style="font-size: 10.95px;">filebeat</a> <a href="/tags/flume/" style="font-size: 10.48px;">flume</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/google/" style="font-size: 10.48px;">google</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/kafka/" style="font-size: 11.9px;">kafka</a> <a href="/tags/kerberos/" style="font-size: 10px;">kerberos</a> <a href="/tags/ldap/" style="font-size: 10px;">ldap</a> <a href="/tags/mac/" style="font-size: 10.95px;">mac</a> <a href="/tags/nginx/" style="font-size: 12.38px;">nginx</a> <a href="/tags/nlp/" style="font-size: 10.48px;">nlp</a> <a href="/tags/open-falcon/" style="font-size: 10.95px;">open-falcon</a> <a href="/tags/redis/" style="font-size: 10.48px;">redis</a> <a href="/tags/twitter/" style="font-size: 10.48px;">twitter</a> <a href="/tags/yarn/" style="font-size: 10.48px;">yarn</a> <a href="/tags/zookeeper/" style="font-size: 13.81px;">zookeeper</a> <a href="/tags/%E5%88%B7%E9%A2%98/" style="font-size: 10px;">刷题</a> <a href="/tags/%E5%9B%BE%E5%AD%98%E5%82%A8%E5%8F%8A%E8%AE%A1%E7%AE%97/" style="font-size: 10.48px;">图存储及计算</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 13.81px;">多线程</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" style="font-size: 14.76px;">开发工具</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 17.14px;">数据结构</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 12.38px;">杂谈</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.62px;">算法</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 12.86px;">设计模式</a>
+      <a href="/tags/Airbnb/" style="font-size: 12.17px;">Airbnb</a> <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Amazon/" style="font-size: 10px;">Amazon</a> <a href="/tags/Android/" style="font-size: 16.09px;">Android</a> <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/ELK/" style="font-size: 13.91px;">ELK</a> <a href="/tags/Flink/" style="font-size: 14.35px;">Flink</a> <a href="/tags/Git/" style="font-size: 10.87px;">Git</a> <a href="/tags/HTML-CSS-JS/" style="font-size: 18.7px;">HTML/CSS/JS</a> <a href="/tags/Hadoop/" style="font-size: 12.61px;">Hadoop</a> <a href="/tags/Hbase/" style="font-size: 11.74px;">Hbase</a> <a href="/tags/Hive/" style="font-size: 12.17px;">Hive</a> <a href="/tags/JDBC/" style="font-size: 13.48px;">JDBC</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JVM/" style="font-size: 10.43px;">JVM</a> <a href="/tags/JavaSE/" style="font-size: 20px;">JavaSE</a> <a href="/tags/JavaWeb/" style="font-size: 19.13px;">JavaWeb</a> <a href="/tags/Java%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 12.61px;">Java关键字</a> <a href="/tags/Java%E7%95%8C%E9%9D%A2/" style="font-size: 15.65px;">Java界面</a> <a href="/tags/Linux/" style="font-size: 19.57px;">Linux</a> <a href="/tags/ML/" style="font-size: 18.26px;">ML</a> <a href="/tags/Maven/" style="font-size: 10.87px;">Maven</a> <a href="/tags/Nexus/" style="font-size: 11.3px;">Nexus</a> <a href="/tags/NoSQL/" style="font-size: 10px;">NoSQL</a> <a href="/tags/Paper/" style="font-size: 10px;">Paper</a> <a href="/tags/Python/" style="font-size: 16.52px;">Python</a> <a href="/tags/Reading/" style="font-size: 10.87px;">Reading</a> <a href="/tags/SQL/" style="font-size: 16.96px;">SQL</a> <a href="/tags/Scala/" style="font-size: 13.48px;">Scala</a> <a href="/tags/Solr/" style="font-size: 10.87px;">Solr</a> <a href="/tags/Spark/" style="font-size: 16.96px;">Spark</a> <a href="/tags/SpringBoot/" style="font-size: 10.43px;">SpringBoot</a> <a href="/tags/SpringMVC/" style="font-size: 14.78px;">SpringMVC</a> <a href="/tags/TCP-IP/" style="font-size: 10.87px;">TCP/IP</a> <a href="/tags/Thrift/" style="font-size: 10.87px;">Thrift</a> <a href="/tags/antlr/" style="font-size: 10.43px;">antlr</a> <a href="/tags/cdh/" style="font-size: 10.87px;">cdh</a> <a href="/tags/docker/" style="font-size: 10.43px;">docker</a> <a href="/tags/filebeat/" style="font-size: 10.87px;">filebeat</a> <a href="/tags/flume/" style="font-size: 10.43px;">flume</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/google/" style="font-size: 10.43px;">google</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/kafka/" style="font-size: 13.04px;">kafka</a> <a href="/tags/kerberos/" style="font-size: 10px;">kerberos</a> <a href="/tags/ldap/" style="font-size: 10px;">ldap</a> <a href="/tags/mac/" style="font-size: 10.87px;">mac</a> <a href="/tags/nginx/" style="font-size: 12.17px;">nginx</a> <a href="/tags/nlp/" style="font-size: 10.43px;">nlp</a> <a href="/tags/open-falcon/" style="font-size: 10.87px;">open-falcon</a> <a href="/tags/redis/" style="font-size: 10.87px;">redis</a> <a href="/tags/twitter/" style="font-size: 10.43px;">twitter</a> <a href="/tags/yarn/" style="font-size: 10.43px;">yarn</a> <a href="/tags/zookeeper/" style="font-size: 13.91px;">zookeeper</a> <a href="/tags/%E5%88%B7%E9%A2%98/" style="font-size: 10px;">刷题</a> <a href="/tags/%E5%9B%BE%E5%AD%98%E5%82%A8%E5%8F%8A%E8%AE%A1%E7%AE%97/" style="font-size: 10.43px;">图存储及计算</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 13.91px;">多线程</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" style="font-size: 15.22px;">开发工具</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 17.39px;">数据结构</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 12.17px;">杂谈</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.83px;">算法</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 12.61px;">设计模式</a>
     </p>
   </div>
 
@@ -787,7 +789,7 @@ ga('send', 'pageview');
   
   <div class="sidebar-module">
     <h4>文章归档</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/12/">十二月 2020</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/11/">十一月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/10/">十月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/09/">九月 2020</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/08/">八月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/07/">七月 2020</a><span class="sidebar-module-list-count">12</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/06/">六月 2020</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/05/">五月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/04/">四月 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/03/">三月 2020</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/02/">二月 2020</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/01/">一月 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/10/">十月 2019</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/09/">九月 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/08/">八月 2019</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/07/">七月 2019</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/04/">四月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/03/">三月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/01/">一月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/12/">十二月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/11/">十一月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/09/">九月 2018</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/06/">六月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">五月 2018</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">四月 2018</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/11/">十一月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/09/">九月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/05/">五月 2017</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/04/">四月 2017</a><span class="sidebar-module-list-count">23</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/03/">三月 2017</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/01/">一月 2017</a><span class="sidebar-module-list-count">24</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/12/">十二月 2016</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/11/">十一月 2016</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/08/">八月 2016</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/07/">七月 2016</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/06/">六月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/05/">五月 2016</a><span class="sidebar-module-list-count">31</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/04/">四月 2016</a><span class="sidebar-module-list-count">26</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/03/">三月 2016</a><span class="sidebar-module-list-count">133</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/02/">二月 2016</a><span class="sidebar-module-list-count">22</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/09/">九月 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/08/">八月 2015</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/07/">七月 2015</a><span class="sidebar-module-list-count">31</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/06/">六月 2015</a><span class="sidebar-module-list-count">25</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/04/">四月 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2013/04/">四月 2013</a><span class="sidebar-module-list-count">1</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2021/01/">一月 2021</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/12/">十二月 2020</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/11/">十一月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/10/">十月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/09/">九月 2020</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/08/">八月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/07/">七月 2020</a><span class="sidebar-module-list-count">12</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/06/">六月 2020</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/05/">五月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/04/">四月 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/03/">三月 2020</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/02/">二月 2020</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/01/">一月 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/10/">十月 2019</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/09/">九月 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/08/">八月 2019</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/07/">七月 2019</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/04/">四月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/03/">三月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/01/">一月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/12/">十二月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/11/">十一月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/09/">九月 2018</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/06/">六月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">五月 2018</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">四月 2018</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/11/">十一月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/09/">九月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/05/">五月 2017</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/04/">四月 2017</a><span class="sidebar-module-list-count">24</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/03/">三月 2017</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/01/">一月 2017</a><span class="sidebar-module-list-count">24</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/12/">十二月 2016</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/11/">十一月 2016</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/08/">八月 2016</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/07/">七月 2016</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/06/">六月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/05/">五月 2016</a><span class="sidebar-module-list-count">31</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/04/">四月 2016</a><span class="sidebar-module-list-count">26</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/03/">三月 2016</a><span class="sidebar-module-list-count">133</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/02/">二月 2016</a><span class="sidebar-module-list-count">22</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/09/">九月 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/08/">八月 2015</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/07/">七月 2015</a><span class="sidebar-module-list-count">31</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/06/">六月 2015</a><span class="sidebar-module-list-count">25</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/04/">四月 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2013/04/">四月 2013</a><span class="sidebar-module-list-count">1</span></li></ul>
   </div>
 
 
@@ -798,23 +800,23 @@ ga('send', 'pageview');
     <ul class="sidebar-module-list">
       
         <li>
-          <a href="/2020/12/11/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94DataSet%20API/">Flink学习笔记——DataSet API</a>
+          <a href="/2021/01/22/ElasticSearch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/">ElasticSearch学习笔记——插件开发</a>
         </li>
       
         <li>
-          <a href="/2020/12/11/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94DataStream%20API/">Flink学习笔记——DataStream API</a>
+          <a href="/2021/01/21/Hbase%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94rowkey/">Hbase学习笔记——rowkey</a>
         </li>
       
         <li>
-          <a href="/2020/12/10/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E9%85%8D%E7%BD%AE/">Flink学习笔记——配置</a>
+          <a href="/2021/01/20/Hive%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94fetch/">Hive学习笔记——fetch</a>
         </li>
       
         <li>
-          <a href="/2020/12/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94Twitter%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/">论文阅读——Twitter日志系统</a>
+          <a href="/2021/01/11/kafka%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E9%85%8D%E7%BD%AE/">kafka学习笔记——配置</a>
         </li>
       
         <li>
-          <a href="/2020/12/01/Spring%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94Redis%20Template/">Spring学习笔记——Redis Template</a>
+          <a href="/2021/01/07/ElasticSearch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94ik%E5%88%86%E8%AF%8D%E6%B7%BB%E5%8A%A0%E8%AF%8D%E5%BA%93/">ElasticSearch学习笔记——ik分词添加词库</a>
         </li>
       
     </ul>
@@ -829,7 +831,7 @@ ga('send', 'pageview');
   <footer class="blog-footer">
   <div class="container">
     <div id="footer-info" class="inner">
-      &copy; 2020 tonglin0325<br>
+      &copy; 2021 tonglin0325<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

@@ -99,13 +99,13 @@ ga('send', 'pageview');
         <div class="col-sm-9 blog-main">
           
   
-    <article id="post-由crt和key文件生成keystore文件" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-mac环境变量不生效问题" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
     
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/14/%E7%94%B1crt%E5%92%8Ckey%E6%96%87%E4%BB%B6%E7%94%9F%E6%88%90keystore%E6%96%87%E4%BB%B6/">由crt和key文件生成keystore文件</a>
+      <a class="article-title" href="/2020/02/15/mac%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%B8%8D%E7%94%9F%E6%95%88%E9%97%AE%E9%A2%98/">mac环境变量不生效问题</a>
     </h1>
   
 
@@ -114,7 +114,7 @@ ga('send', 'pageview');
 
   <div class="article-meta">
     <div class="article-datetime">
-  <a href="/2019/10/14/%E7%94%B1crt%E5%92%8Ckey%E6%96%87%E4%BB%B6%E7%94%9F%E6%88%90keystore%E6%96%87%E4%BB%B6/" class="article-date"><time datetime="2019-10-13T16:00:00.000Z" itemprop="datePublished">2019-10-14</time></a>
+  <a href="/2020/02/15/mac%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%B8%8D%E7%94%9F%E6%95%88%E9%97%AE%E9%A2%98/" class="article-date"><time datetime="2020-02-14T16:00:00.000Z" itemprop="datePublished">2020-02-15</time></a>
 </div>
 
     <div class="article-author">tonglin0325</div>
@@ -125,91 +125,19 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-<p>&nbsp;</p>
-<p>&nbsp;该图转自知乎 <a href="https://www.zhihu.com/people/pingcai" target="_blank" rel="noopener">海棠依旧</a></p>
-<p>&nbsp;</p>
-<p>1.先生成p12文件,生成的时候需要指定密码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl pkcs12 -export -in your_crt.crt -inkey your_key.key -out your_p12.p12</span><br></pre></td></tr></table></figure>
+        <p>参考：<a href="https://blog.csdn.net/qq_18505715/article/details/83276208" target="_blank" rel="noopener">https://blog.csdn.net/qq_18505715/article/details/83276208</a></p>
+<p>在 ~/.zshrc 中添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~&#x2F;.bash_profile</span><br></pre></td></tr></table></figure>
 
-<p>2.再生成keystore文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -importkeystore -v  -srckeystore your_p12.p12 -srcstoretype pkcs12 -srcstorepass 你设置的密码 -destkeystore your_keystore.keystore -deststoretype jks -deststorepass 你设置的密码</span><br></pre></td></tr></table></figure>
+<p>比如mac的git命令补全不生效，可以参考如下文章添加</p>
+<p><a href="https://blog.csdn.net/WinWill2012/article/details/71774461" target="_blank" rel="noopener">https://blog.csdn.net/WinWill2012/article/details/71774461</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~&#x2F;.git-completion.bash</span><br></pre></td></tr></table></figure>
 
-<p>3.然后就能使用这个keystore文件和密码来进行https的请求</p>
-<p>&nbsp;</p>
-<p>参考</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;blog.csdn.net&#x2F;u013944791&#x2F;article&#x2F;details&#x2F;73551253</span><br></pre></td></tr></table></figure>
-
-<p>其他证书转换参考</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;www.netkiller.cn&#x2F;cryptography&#x2F;openssl&#x2F;format.html</span><br></pre></td></tr></table></figure>
-
-<p>&nbsp;</p>
-
-      
-    </div>
-
-    
-      
-
-    
-
-    <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2019/10/14/%E7%94%B1crt%E5%92%8Ckey%E6%96%87%E4%BB%B6%E7%94%9F%E6%88%90keystore%E6%96%87%E4%BB%B6/" data-id="ckca3uy2k00dsw20lf84kfa8r" class="article-share-link">
-        <i class="fa fa-share"></i> 分享
-      </a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TCP-IP/" rel="tag">TCP/IP</a></li></ul>
-
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Nginx修改时间戳" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <header class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/13/Nginx%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4%E6%88%B3/">Nginx修改时间戳</a>
-    </h1>
-  
-
-
-  </header>
-
-  <div class="article-meta">
-    <div class="article-datetime">
-  <a href="/2019/10/13/Nginx%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4%E6%88%B3/" class="article-date"><time datetime="2019-10-12T16:00:00.000Z" itemprop="datePublished">2019-10-13</time></a>
-</div>
-
-    <div class="article-author">tonglin0325</div>
-    
-
-  </div>
-  <div class="article-inner">
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.安装nginx,注意不要安装nginx-common或者nginx-full</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nginx</span><br><span class="line">sudo apt-get install nginx-common</span><br><span class="line">sudo apt-get install nginx-extras</span><br></pre></td></tr></table></figure>
-
-<p>确认版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">apt list --installed | grep nginx</span><br><span class="line"></span><br><span class="line">WARNING: apt does not have a stable CLI interface. Use with caution in scripts.</span><br><span class="line"></span><br><span class="line">nginx&#x2F;xenial-updates,xenial-updates,xenial-security,xenial-security,now 1.10.3-0ubuntu0.16.04.4 all [已安装]</span><br><span class="line">nginx-common&#x2F;xenial-updates,xenial-updates,xenial-security,xenial-security,now 1.10.3-0ubuntu0.16.04.4 all [已安装]</span><br><span class="line">nginx-extras&#x2F;xenial-updates,xenial-security,now 1.10.3-0ubuntu0.16.04.4 amd64 [已安装]</span><br></pre></td></tr></table></figure>
-
-<p>2.修改配置 /etc/nginx/nginx.conf</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">http &#123;</span><br><span class="line"></span><br><span class="line">        ##</span><br><span class="line">        # Basic Settings</span><br><span class="line">        ##</span><br><span class="line"></span><br><span class="line">        sendfile on;</span><br><span class="line">        tcp_nopush on;</span><br><span class="line">        tcp_nodelay on;</span><br><span class="line">        keepalive_timeout 65;</span><br><span class="line">        types_hash_max_size 2048;</span><br><span class="line">        # server_tokens off;</span><br><span class="line"></span><br><span class="line">        # server_names_hash_bucket_size 64;</span><br><span class="line">        # server_name_in_redirect off;</span><br><span class="line"></span><br><span class="line">        include &#x2F;etc&#x2F;nginx&#x2F;mime.types;</span><br><span class="line">        default_type application&#x2F;octet-stream;</span><br><span class="line"></span><br><span class="line">        ##</span><br><span class="line">        # SSL Settings</span><br><span class="line">        ##</span><br><span class="line"></span><br><span class="line">        ssl_protocols TLSv1 TLSv1.1 TLSv1.2; # Dropping SSLv3, ref: POODLE</span><br><span class="line">        ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">        ##</span><br><span class="line">        # Logging Settings</span><br><span class="line">        ##</span><br><span class="line"></span><br><span class="line">#       access_log &#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log;</span><br><span class="line">        error_log &#x2F;var&#x2F;log&#x2F;nginx&#x2F;error.log;</span><br><span class="line"></span><br><span class="line">        ##</span><br><span class="line">        # Gzip Settings</span><br><span class="line">        ##</span><br><span class="line"></span><br><span class="line">        gzip on;</span><br><span class="line">        gzip_disable &quot;msie6&quot;;</span><br><span class="line"></span><br><span class="line">        # gzip_vary on;</span><br><span class="line">        # gzip_proxied any;</span><br><span class="line">        # gzip_comp_level 6;</span><br><span class="line">        # gzip_buffers 16 8k;</span><br><span class="line">        # gzip_http_version 1.1;</span><br><span class="line">        # gzip_types text&#x2F;plain text&#x2F;css application&#x2F;json application&#x2F;javascript text&#x2F;xml application&#x2F;xml application&#x2F;xml+rss text&#x2F;javascript;</span><br><span class="line"></span><br><span class="line">        ##</span><br><span class="line">        # Virtual Host Configs</span><br><span class="line">        ##</span><br><span class="line"></span><br><span class="line">        include &#x2F;etc&#x2F;nginx&#x2F;conf.d&#x2F;*.conf;</span><br><span class="line">        include &#x2F;etc&#x2F;nginx&#x2F;sites-enabled&#x2F;*;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">                listen       80;</span><br><span class="line">                server_name  localhost;</span><br><span class="line">                location &#x2F; &#123;</span><br><span class="line">                    root   html;</span><br><span class="line">                    index  index.html index.htm;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">log_format access_json &#39;&#123;&quot;ts&quot;:&quot;$fmt_localtime&quot;,&#39;</span><br><span class="line">                           &#39;&quot;schema&quot;:&quot;com.xxx.xxx&quot;,&#39;</span><br><span class="line">                           &#39;&quot;host&quot;:&quot;$server_addr&quot;,&#39;</span><br><span class="line">                           &#39;&quot;clientip&quot;:&quot;$remote_addr&quot;,&#39;</span><br><span class="line">                           &#39;&quot;size&quot;:$body_bytes_sent,&#39;</span><br><span class="line">                           &#39;&quot;responsetime&quot;:$request_time,&#39;</span><br><span class="line">                           &#39;&quot;upstreamtime&quot;:&quot;$upstream_response_time&quot;,&#39;</span><br><span class="line">                           &#39;&quot;upstreamhost&quot;:&quot;$upstream_addr&quot;,&#39;</span><br><span class="line">                           &#39;&quot;http_host&quot;:&quot;$host&quot;,&#39;</span><br><span class="line">                           &#39;&quot;url&quot;:&quot;$uri&quot;,&#39;</span><br><span class="line">                           &#39;&quot;domain&quot;:&quot;$host&quot;,&#39;</span><br><span class="line">                           &#39;&quot;xff&quot;:&quot;$http_x_forwarded_for&quot;,&#39;</span><br><span class="line">                           &#39;&quot;referer&quot;:&quot;$http_referer&quot;,&#39;</span><br><span class="line">                           &#39;&quot;status&quot;:&quot;$status&quot;&#125;&#39;;</span><br><span class="line"></span><br><span class="line">access_log  &#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log  access_json;</span><br><span class="line"></span><br><span class="line">map $host $fmt_localtime &#123;</span><br><span class="line">        default &#39;&#39;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">log_by_lua_block &#123;</span><br><span class="line">       ngx.var.fmt_localtime &#x3D; ngx.localtime();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>3.输出的日志</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;ts&quot;:&quot;2019-10-13 22:59:48&quot;,&quot;schema&quot;:&quot;com.xxx.xxx&quot;,&quot;host&quot;:&quot;127.0.0.1&quot;,&quot;clientip&quot;:&quot;127.0.0.1&quot;,&quot;size&quot;:0,&quot;responsetime&quot;:0.000,&quot;upstreamtime&quot;:&quot;-&quot;,&quot;upstreamhost&quot;:&quot;-&quot;,&quot;http_host&quot;:&quot;localhost&quot;,&quot;url&quot;:&quot;&#x2F;index.html&quot;,&quot;domain&quot;:&quot;localhost&quot;,&quot;xff&quot;:&quot;-&quot;,&quot;referer&quot;:&quot;-&quot;,&quot;status&quot;:&quot;304&quot;&#125;</span><br><span class="line">&#123;&quot;ts&quot;:&quot;2019-10-13 22:59:48&quot;,&quot;schema&quot;:&quot;com.xxx.xxx&quot;,&quot;host&quot;:&quot;127.0.0.1&quot;,&quot;clientip&quot;:&quot;127.0.0.1&quot;,&quot;size&quot;:0,&quot;responsetime&quot;:0.000,&quot;upstreamtime&quot;:&quot;-&quot;,&quot;upstreamhost&quot;:&quot;-&quot;,&quot;http_host&quot;:&quot;localhost&quot;,&quot;url&quot;:&quot;&#x2F;index.html&quot;,&quot;domain&quot;:&quot;localhost&quot;,&quot;xff&quot;:&quot;-&quot;,&quot;referer&quot;:&quot;-&quot;,&quot;status&quot;:&quot;304&quot;&#125;</span><br></pre></td></tr></table></figure>
+<p>调整mac终端颜色和全路径显示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export PS1&#x3D;&quot;%n@%m %0~ $ &quot;</span><br><span class="line"></span><br><span class="line">export CLICOLOR&#x3D;1</span><br><span class="line">export LSCOLORS&#x3D;ExFxBxDxCxegedabagacad</span><br><span class="line">alias ls&#x3D;&#39;ls -GFh&#39;</span><br></pre></td></tr></table></figure>
         
           <p class="article-more-link">
-            <a class="btn btn-primary" href="/2019/10/13/Nginx%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4%E6%88%B3/#more">全文 &gt;&gt;</a>
+            <a class="btn btn-primary" href="/2020/02/15/mac%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%B8%8D%E7%94%9F%E6%95%88%E9%97%AE%E9%A2%98/#more">全文 &gt;&gt;</a>
           </p>
         
       
@@ -218,12 +146,12 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2019/10/13/Nginx%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4%E6%88%B3/" data-id="ckca3uy0o007qw20legfjakwu" class="article-share-link">
+      <a data-url="http://tonglin0325.github.io/2020/02/15/mac%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%B8%8D%E7%94%9F%E6%95%88%E9%97%AE%E9%A2%98/" data-id="ckca3uy1t00bhw20l96lg00bi" class="article-share-link">
         <i class="fa fa-share"></i> 分享
       </a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/" rel="tag">mac</a></li></ul>
 
 
     </footer>
@@ -234,13 +162,13 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-Nginx打印json日志" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-分屏工具xpanes" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
     
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/12/Nginx%E6%89%93%E5%8D%B0json%E6%97%A5%E5%BF%97/">Nginx打印json日志</a>
+      <a class="article-title" href="/2020/02/15/%E5%88%86%E5%B1%8F%E5%B7%A5%E5%85%B7xpanes/">分屏工具xpanes</a>
     </h1>
   
 
@@ -249,7 +177,7 @@ ga('send', 'pageview');
 
   <div class="article-meta">
     <div class="article-datetime">
-  <a href="/2019/10/12/Nginx%E6%89%93%E5%8D%B0json%E6%97%A5%E5%BF%97/" class="article-date"><time datetime="2019-10-11T16:00:00.000Z" itemprop="datePublished">2019-10-12</time></a>
+  <a href="/2020/02/15/%E5%88%86%E5%B1%8F%E5%B7%A5%E5%85%B7xpanes/" class="article-date"><time datetime="2020-02-14T16:00:00.000Z" itemprop="datePublished">2020-02-15</time></a>
 </div>
 
     <div class="article-author">tonglin0325</div>
@@ -260,11 +188,11 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.修改配置，在http{}中添加</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">log_format access_json &#39;&#123;&quot;@timestamp&quot;:&quot;$time_iso8601&quot;,&#39;</span><br><span class="line">                           &#39;&quot;host&quot;:&quot;$server_addr&quot;,&#39;</span><br><span class="line">                           &#39;&quot;clientip&quot;:&quot;$remote_addr&quot;,&#39;</span><br><span class="line">                           &#39;&quot;size&quot;:$body_bytes_sent,&#39;</span><br><span class="line">                           &#39;&quot;responsetime&quot;:$request_time,&#39;</span><br><span class="line">                           &#39;&quot;upstreamtime&quot;:&quot;$upstream_response_time&quot;,&#39;</span><br><span class="line">                           &#39;&quot;upstreamhost&quot;:&quot;$upstream_addr&quot;,&#39;</span><br><span class="line">                           &#39;&quot;http_host&quot;:&quot;$host&quot;,&#39;</span><br><span class="line">                           &#39;&quot;url&quot;:&quot;$uri&quot;,&#39;</span><br><span class="line">                           &#39;&quot;domain&quot;:&quot;$host&quot;,&#39;</span><br><span class="line">                           &#39;&quot;xff&quot;:&quot;$http_x_forwarded_for&quot;,&#39;</span><br><span class="line">                           &#39;&quot;referer&quot;:&quot;$http_referer&quot;,&#39;</span><br><span class="line">                           &#39;&quot;status&quot;:&quot;$status&quot;&#125;&#39;;</span><br><span class="line">access_log  &#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log  access_json;</span><br></pre></td></tr></table></figure>
+        <p>参考：<a href="https://www.ctolib.com/greymd-tmux-xpanes.html" target="_blank" rel="noopener">https://www.ctolib.com/greymd-tmux-xpanes.html</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install tmux-xpanes</span><br></pre></td></tr></table></figure>
         
           <p class="article-more-link">
-            <a class="btn btn-primary" href="/2019/10/12/Nginx%E6%89%93%E5%8D%B0json%E6%97%A5%E5%BF%97/#more">全文 &gt;&gt;</a>
+            <a class="btn btn-primary" href="/2020/02/15/%E5%88%86%E5%B1%8F%E5%B7%A5%E5%85%B7xpanes/#more">全文 &gt;&gt;</a>
           </p>
         
       
@@ -273,12 +201,12 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2019/10/12/Nginx%E6%89%93%E5%8D%B0json%E6%97%A5%E5%BF%97/" data-id="ckca3uy0o007rw20lhij99ouo" class="article-share-link">
+      <a data-url="http://tonglin0325.github.io/2020/02/15/%E5%88%86%E5%B1%8F%E5%B7%A5%E5%85%B7xpanes/" data-id="ckca3uy2400clw20ld5h25xh5" class="article-share-link">
         <i class="fa fa-share"></i> 分享
       </a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="tag">开发工具</a></li></ul>
 
 
     </footer>
@@ -289,13 +217,13 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-Nginx添加静态页面" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-MySQL自增id不连续问题" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
     
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/12/Nginx%E6%B7%BB%E5%8A%A0%E9%9D%99%E6%80%81%E9%A1%B5%E9%9D%A2/">Nginx添加静态页面</a>
+      <a class="article-title" href="/2020/02/01/MySQL%E8%87%AA%E5%A2%9Eid%E4%B8%8D%E8%BF%9E%E7%BB%AD%E9%97%AE%E9%A2%98/">MySQL自增id不连续问题</a>
     </h1>
   
 
@@ -304,7 +232,7 @@ ga('send', 'pageview');
 
   <div class="article-meta">
     <div class="article-datetime">
-  <a href="/2019/10/12/Nginx%E6%B7%BB%E5%8A%A0%E9%9D%99%E6%80%81%E9%A1%B5%E9%9D%A2/" class="article-date"><time datetime="2019-10-11T16:00:00.000Z" itemprop="datePublished">2019-10-12</time></a>
+  <a href="/2020/02/01/MySQL%E8%87%AA%E5%A2%9Eid%E4%B8%8D%E8%BF%9E%E7%BB%AD%E9%97%AE%E9%A2%98/" class="article-date"><time datetime="2020-01-31T16:00:00.000Z" itemprop="datePublished">2020-02-01</time></a>
 </div>
 
     <div class="article-author">tonglin0325</div>
@@ -315,28 +243,35 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.编辑配置文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim  &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br></pre></td></tr></table></figure>
+        <p>项目中有一张表是记录人员，在每个新用户调用接口认证通过了之后，会有一个往该表插入这个新用户信息的操作。</p>
+<p>但是在线上环境中，发现该表的自增id不连续，且间隔都是差了2，比如上一个人的id是10，下一个人的id就是12，而在前端页面中，一个用户认证通过后，会调用3个接口，初步排查是MySQL并发操作导致了自增id不连续的情况</p>
+<p>在这篇文章中，列举了导致自增id不连续的几个原因，这次遇到的就是第一种情况，因为个人的信息中我设置了唯一索引：</p>
+<p><a href="https://www.jianshu.com/p/957f605a646c" target="_blank" rel="noopener">https://www.jianshu.com/p/957f605a646c</a></p>
+<p>&lt;1&gt;、唯一键冲突是导致自增主键id不连续的第一种原因</p>
+<p>&lt;2&gt;、事务回滚是导致自增主键id不连续的第二种原因</p>
+<p>&lt;3&gt;、批量申请自增id的策略是导致自增主键id不连续的第三种原因</p>
+<p>在这篇文章中提到了MySQL默认的innodb_autoinc_lock_mode=1，当innodb_autoinc_lock_mode=1和innodb_autoinc_lock_mode=2的情况下，自增id可能会出现不连续</p>
+<p>在innodb_autoinc_lock_mode=0的时候，自增id是连续的，但是会导致锁表，影响并发性能</p>
+<p><a href="https://www.cnblogs.com/zhoujinyi/p/3433823.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhoujinyi/p/3433823.html</a></p>
+<p><a href="https://www.jianshu.com/p/369559f399d0" target="_blank" rel="noopener">https://www.jianshu.com/p/369559f399d0</a></p>
+<p>解决方法：</p>
+<p>1.<a href="https://blog.csdn.net/yang5726685/article/details/78161105" target="_blank" rel="noopener">https://blog.csdn.net/yang5726685/article/details/78161105</a></p>
 
-<p>在http {}中添加如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">                listen       80;</span><br><span class="line">                server_name  localhost;</span><br><span class="line">                location &#x2F; &#123;</span><br><span class="line">                    root   html;</span><br><span class="line">                    index  index.html index.htm;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a class="btn btn-primary" href="/2019/10/12/Nginx%E6%B7%BB%E5%8A%A0%E9%9D%99%E6%80%81%E9%A1%B5%E9%9D%A2/#more">全文 &gt;&gt;</a>
-          </p>
-        
       
     </div>
 
     
+      
+
+    
 
     <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2019/10/12/Nginx%E6%B7%BB%E5%8A%A0%E9%9D%99%E6%80%81%E9%A1%B5%E9%9D%A2/" data-id="ckca3uy0o007sw20l7klzebr3" class="article-share-link">
+      <a data-url="http://tonglin0325.github.io/2020/02/01/MySQL%E8%87%AA%E5%A2%9Eid%E4%B8%8D%E8%BF%9E%E7%BB%AD%E9%97%AE%E9%A2%98/" data-id="ckca3uy0n007nw20l4qhh0b1i" class="article-share-link">
         <i class="fa fa-share"></i> 分享
       </a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li></ul>
 
 
     </footer>
@@ -347,13 +282,13 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-Ubuntu16.04安装nginx" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Ubuntu16.04安装zkui" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
     
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/12/Ubuntu16.04%E5%AE%89%E8%A3%85nginx/">Ubuntu16.04安装nginx</a>
+      <a class="article-title" href="/2020/01/20/Ubuntu16.04%E5%AE%89%E8%A3%85zkui/">Ubuntu16.04安装zkui</a>
     </h1>
   
 
@@ -362,7 +297,7 @@ ga('send', 'pageview');
 
   <div class="article-meta">
     <div class="article-datetime">
-  <a href="/2019/10/12/Ubuntu16.04%E5%AE%89%E8%A3%85nginx/" class="article-date"><time datetime="2019-10-11T16:00:00.000Z" itemprop="datePublished">2019-10-12</time></a>
+  <a href="/2020/01/20/Ubuntu16.04%E5%AE%89%E8%A3%85zkui/" class="article-date"><time datetime="2020-01-19T16:00:00.000Z" itemprop="datePublished">2020-01-20</time></a>
 </div>
 
     <div class="article-author">tonglin0325</div>
@@ -373,23 +308,22 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nginx</span><br></pre></td></tr></table></figure>
+        <p>1.git clone</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:DeemOpen&#x2F;zkui.git</span><br></pre></td></tr></table></figure>
 
-<p>2.启动</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start nginx.service</span><br></pre></td></tr></table></figure>
+<p>2.打包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean install</span><br></pre></td></tr></table></figure>
 
-<p>如果和apache2的80端口冲突了，修改一下apache2的port</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;apache2&#x2F;ports.conf</span><br></pre></td></tr></table></figure>
+<p>3.复制config.cfg到target目录，并修改zk地址</p>
+<p>4.配置 supervisor zkui.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[program:zkui]</span><br><span class="line">directory&#x3D;&#x2F;home&#x2F;lintong&#x2F;software&#x2F;zkui&#x2F;target</span><br><span class="line">command &#x3D; java -jar zkui-2.0-SNAPSHOT-jar-with-dependencies.jar</span><br><span class="line">user &#x3D; lintong</span><br><span class="line">autostart &#x3D; false</span><br><span class="line">autoresart &#x3D; true</span><br><span class="line">stderr_logfile &#x3D; &#x2F;var&#x2F;log&#x2F;supervisor&#x2F;zkui.stderr.log</span><br><span class="line">stdout_logfile &#x3D; &#x2F;var&#x2F;log&#x2F;supervisor&#x2F;zkui.stdout.log</span><br></pre></td></tr></table></figure>
 
-<p>冲突的话，日志/var/log/nginx/error.log中将会报</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2019&#x2F;10&#x2F;12 14:25:31 [emerg] 23836#23836: listen() to 0.0.0.0:80, backlog 511 failed (98: Address already in use)</span><br></pre></td></tr></table></figure>
-
-<p>修改成8080</p>
-<img src="/images/517519-20191012164526636-1550542863.png" alt="" />
+<p>5.启动zookeeper</p>
+<p>6.启动zkui</p>
+<img src="/images/517519-20200120111847848-1657225752.png" alt="" />
         
           <p class="article-more-link">
-            <a class="btn btn-primary" href="/2019/10/12/Ubuntu16.04%E5%AE%89%E8%A3%85nginx/#more">全文 &gt;&gt;</a>
+            <a class="btn btn-primary" href="/2020/01/20/Ubuntu16.04%E5%AE%89%E8%A3%85zkui/#more">全文 &gt;&gt;</a>
           </p>
         
       
@@ -398,12 +332,12 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2019/10/12/Ubuntu16.04%E5%AE%89%E8%A3%85nginx/" data-id="ckca3uy1h00adw20lem2bb78f" class="article-share-link">
+      <a data-url="http://tonglin0325.github.io/2020/01/20/Ubuntu16.04%E5%AE%89%E8%A3%85zkui/" data-id="ckca3uy1i00afw20lhnpz6vr0" class="article-share-link">
         <i class="fa fa-share"></i> 分享
       </a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/zookeeper/" rel="tag">zookeeper</a></li></ul>
 
 
     </footer>
@@ -414,13 +348,13 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-Nexus上传python包" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-antlr解析hive语句" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
     
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/30/Nexus%E4%B8%8A%E4%BC%A0python%E5%8C%85/">Nexus上传python包</a>
+      <a class="article-title" href="/2020/01/19/antlr%E8%A7%A3%E6%9E%90hive%E8%AF%AD%E5%8F%A5/">antlr解析hive语句</a>
     </h1>
   
 
@@ -429,7 +363,121 @@ ga('send', 'pageview');
 
   <div class="article-meta">
     <div class="article-datetime">
-  <a href="/2019/09/30/Nexus%E4%B8%8A%E4%BC%A0python%E5%8C%85/" class="article-date"><time datetime="2019-09-29T16:00:00.000Z" itemprop="datePublished">2019-09-30</time></a>
+  <a href="/2020/01/19/antlr%E8%A7%A3%E6%9E%90hive%E8%AF%AD%E5%8F%A5/" class="article-date"><time datetime="2020-01-18T16:00:00.000Z" itemprop="datePublished">2020-01-19</time></a>
+</div>
+
+    <div class="article-author">tonglin0325</div>
+    
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>hive是使用antlr来解析的</p>
+<p>parser要做的事情，是从无结构的字符串里面，解码产生有结构的数据结构（a <a href="https://en.wikipedia.org/wiki/Parser" target="_blank" rel="noopener">parser</a> is a function accepting strings as input and returning some structure as output），参考 <a href="https://en.wikipedia.org/wiki/Parser_combinator" target="_blank" rel="noopener">Parser_combinator wiki</a></p>
+<p>parser分成两种，一种是<strong>parser combinator</strong>，一种是<strong>parser generator</strong>，区别可以参考 <a href="https://www.yinwang.org/blog-cn/2015/09/19/parser" target="_blank" rel="noopener">王垠的文章&mdash;&mdash;对 Parser 的误解</a></p>
+        
+          <p class="article-more-link">
+            <a class="btn btn-primary" href="/2020/01/19/antlr%E8%A7%A3%E6%9E%90hive%E8%AF%AD%E5%8F%A5/#more">全文 &gt;&gt;</a>
+          </p>
+        
+      
+    </div>
+
+    
+
+    <footer class="article-footer">
+      <a data-url="http://tonglin0325.github.io/2020/01/19/antlr%E8%A7%A3%E6%9E%90hive%E8%AF%AD%E5%8F%A5/" data-id="ckca3uy1o00b0w20lfm380igo" class="article-share-link">
+        <i class="fa fa-share"></i> 分享
+      </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/antlr/" rel="tag">antlr</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Elasticsearch学习笔记——索引模板" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/29/Elasticsearch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E7%B4%A2%E5%BC%95%E6%A8%A1%E6%9D%BF/">Elasticsearch学习笔记——索引模板</a>
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2019/10/29/Elasticsearch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E7%B4%A2%E5%BC%95%E6%A8%A1%E6%9D%BF/" class="article-date"><time datetime="2019-10-28T16:00:00.000Z" itemprop="datePublished">2019-10-29</time></a>
+</div>
+
+    <div class="article-author">tonglin0325</div>
+    
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在索引模板里面,date类型的字段的format支持多种类型,在es中全部会转换成long类型进行存储,参考</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;34240906</span><br></pre></td></tr></table></figure>
+
+<p>一个索引模板范例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;order&quot;: 0,</span><br><span class="line">  &quot;index_patterns&quot;: [</span><br><span class="line">    &quot;ssssssssssssssss_test*&quot;</span><br><span class="line">  ],</span><br><span class="line">  &quot;settings&quot;: &#123;</span><br><span class="line">    &quot;index&quot;: &#123;</span><br><span class="line">      &quot;codec&quot;: &quot;best_compression&quot;,</span><br><span class="line">      &quot;routing&quot;: &#123;</span><br><span class="line">        &quot;allocation&quot;: &#123;</span><br><span class="line">          &quot;require&quot;: &#123;</span><br><span class="line">            &quot;box_type&quot;: &quot;master&quot;</span><br><span class="line">          &#125;,</span><br><span class="line">          &quot;total_shards_per_node&quot;: &quot;3&quot;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;refresh_interval&quot;: &quot;60s&quot;,</span><br><span class="line">      &quot;unassigned&quot;: &#123;</span><br><span class="line">        &quot;node_left&quot;: &#123;</span><br><span class="line">          &quot;delayed_timeout&quot;: &quot;900m&quot;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;number_of_shards&quot;: &quot;3&quot;,</span><br><span class="line">      &quot;number_of_replicas&quot;: &quot;1&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;mappings&quot;: &#123;</span><br><span class="line">    &quot;_default_&quot;: &#123;</span><br><span class="line">      &quot;_source&quot;: &#123;</span><br><span class="line">        &quot;enabled&quot;: true</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;dynamic_templates&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;string_template&quot;: &#123;</span><br><span class="line">            &quot;mapping&quot;: &#123;</span><br><span class="line">              &quot;type&quot;: &quot;keyword&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;match_mapping_type&quot;: &quot;string&quot;,</span><br><span class="line">            &quot;match&quot;: &quot;*&quot;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      &quot;properties&quot;: &#123;</span><br><span class="line">        &quot;a1&quot;: &#123;</span><br><span class="line">          &quot;search_analyzer&quot;: &quot;ik_max_word&quot;,</span><br><span class="line">          &quot;analyzer&quot;: &quot;ik_max_word&quot;,</span><br><span class="line">          &quot;type&quot;: &quot;text&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;a2&quot;: &#123;</span><br><span class="line">          &quot;type&quot;: &quot;float&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;a3&quot;: &#123;</span><br><span class="line">          &quot;type&quot;: &quot;integer&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;untitled&quot;: &#123;</span><br><span class="line">          &quot;type&quot;: &quot;float&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;a4&quot;: &#123;</span><br><span class="line">          &quot;type&quot;: &quot;long&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;a5&quot;: &#123;</span><br><span class="line">          &quot;type&quot;: &quot;double&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;a6&quot;: &#123;</span><br><span class="line">          &quot;type&quot;: &quot;ip&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;a8&quot;: &#123;</span><br><span class="line">          &quot;type&quot;: &quot;keyword&quot;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;_all&quot;: &#123;</span><br><span class="line">        &quot;enabled&quot;: false</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;aliases&quot;: &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a class="btn btn-primary" href="/2019/10/29/Elasticsearch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E7%B4%A2%E5%BC%95%E6%A8%A1%E6%9D%BF/#more">全文 &gt;&gt;</a>
+          </p>
+        
+      
+    </div>
+
+    
+
+    <footer class="article-footer">
+      <a data-url="http://tonglin0325.github.io/2019/10/29/Elasticsearch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E7%B4%A2%E5%BC%95%E6%A8%A1%E6%9D%BF/" data-id="ckca3uxy60013w20lh5lc4pwb" class="article-share-link">
+        <i class="fa fa-share"></i> 分享
+      </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ELK/" rel="tag">ELK</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Elasticsearch6.2.1安装elasticsearch-sq插件" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/27/Elasticsearch6.2.1%E5%AE%89%E8%A3%85elasticsearch-sq%E6%8F%92%E4%BB%B6/">Elasticsearch6.2.1安装elasticsearch-sq插件</a>
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2019/10/27/Elasticsearch6.2.1%E5%AE%89%E8%A3%85elasticsearch-sq%E6%8F%92%E4%BB%B6/" class="article-date"><time datetime="2019-10-26T16:00:00.000Z" itemprop="datePublished">2019-10-27</time></a>
 </div>
 
     <div class="article-author">tonglin0325</div>
@@ -441,13 +489,37 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <p>参考</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_37607365&#x2F;article&#x2F;details&#x2F;79998955</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;NLPchina&#x2F;elasticsearch-sql</span><br></pre></td></tr></table></figure>
 
-<p>1.首先创建pypi仓库</p>
-<img src="/images/517519-20190930191830954-860937756.png" alt="" />
+<p>1.下载插件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;github.com&#x2F;NLPchina&#x2F;elasticsearch-sql&#x2F;releases&#x2F;download&#x2F;6.2.1.0&#x2F;elasticsearch-sql-6.2.1.0.zip</span><br></pre></td></tr></table></figure>
+
+<p>2.安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;bin&#x2F;elasticsearch-plugin instal file:&#x2F;&#x2F;&#x2F;home&#x2F;lintong&#x2F;下载&#x2F;elasticsearch-sql-6.2.1.0.zip</span><br></pre></td></tr></table></figure>
+
+<p>如果遇到 Exception in thread “main” java.lang.IllegalArgumentException: Unknown properties in plugin descriptor: [jvm, site]</p>
+<p>解压zip文件,然后修改 plugin-descriptor.properties 文件</p>
+<p>去掉下面两行后重新压缩成zip,然后再安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">site&#x3D;</span><br><span class="line">jvm&#x3D;</span><br></pre></td></tr></table></figure>
+
+<p>参考</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;NLPchina&#x2F;elasticsearch-sql&#x2F;issues&#x2F;610</span><br></pre></td></tr></table></figure>
+
+<p>3.下载前端组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;github.com&#x2F;NLPchina&#x2F;elasticsearch-sql&#x2F;releases&#x2F;download&#x2F;5.4.1.0&#x2F;es-sql-site-standalone.zip</span><br></pre></td></tr></table></figure>
+
+<p>解压</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd site-server</span><br><span class="line">npm --registry https:&#x2F;&#x2F;registry.npm.taobao.org install express --save</span><br><span class="line">node node-server.js</span><br></pre></td></tr></table></figure>
+
+<p>4.执行sql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -X GET &quot;localhost:9200&#x2F;_sql&quot; -H &#39;Content-Type: application&#x2F;json&#39; -d&#39;select * from es limit 10&#39;</span><br><span class="line">&#123;&quot;took&quot;:7,&quot;timed_out&quot;:false,&quot;_shards&quot;:&#123;&quot;total&quot;:5,&quot;successful&quot;:5,&quot;skipped&quot;:0,&quot;failed&quot;:0&#125;,&quot;hits&quot;:&#123;&quot;total&quot;:20000,&quot;max_score&quot;:1.0,&quot;hits&quot;:[&#123;&quot;_index&quot;:&quot;es&quot;,&quot;_type&quot;:&quot;people&quot;,&quot;_id&quot;:&quot;0&quot;,&quot;_score&quot;:1.0,&quot;_source&quot;:&#123;&quot;playerId&quot;:122,&quot;logId&quot;:0,&quot;dateTime&quot;:&quot;2012-01-02 00:21:00&quot;,&quot;action&quot;:&quot;私聊:нужен парень 0965188229&quot;&#125;&#125;,&#123;&quot;_index&quot;:&quot;es&quot;,&quot;_type&quot;:&quot;people&quot;,&quot;_id&quot;:&quot;14&quot;,&quot;_score&quot;:1.0,&quot;_source&quot;:&#123;&quot;playerId&quot;:343,&quot;logId&quot;:14,&quot;dateTime&quot;:&quot;2012-01-02 00:35:00&quot;,&quot;action&quot;:&quot;私聊:с новым годом!скучно девченкам.0988939122&quot;&#125;&#125;,&#123;&quot;_index&quot;:&quot;es&quot;,&quot;_type&quot;:&quot;people&quot;,&quot;_id&quot;:&quot;19&quot;,&quot;_score&quot;:1.0,&quot;_source&quot;:&#123;&quot;playerId&quot;:219,&quot;logId&quot;:19,&quot;dateTime&quot;:&quot;2012-01-02 00:42:00&quot;,&quot;action&quot;:&quot;私聊:ищу взрослую женщину звоните 0661464552&quot;&#125;&#125;,&#123;&quot;_index&quot;:&quot;es&quot;,&quot;_type&quot;:&quot;people&quot;,&quot;_id&quot;:&quot;22&quot;,&quot;_score&quot;:1.0,&quot;_source&quot;:&#123;&quot;playerId&quot;:822,&quot;logId&quot;:22,&quot;dateTime&quot;:&quot;2012-01-02 00:45:00&quot;,&quot;action&quot;:&quot;私聊:Жду смс от солидного мужчины за 47  0952342589&quot;&#125;&#125;,&#123;&quot;_index&quot;:&quot;es&quot;,&quot;_type&quot;:&quot;people&quot;,&quot;_id&quot;:&quot;24&quot;,&quot;_score&quot;:1.0,&quot;_source&quot;:&#123;&quot;playerId&quot;:111,&quot;logId&quot;:24,&quot;dateTime&quot;:&quot;2012-01-02 00:47:00&quot;,&quot;action&quot;:&quot;私聊:П27 ищу горячую снегурочку 0505618815&quot;&#125;&#125;,&#123;&quot;_index&quot;:&quot;es&quot;,&quot;_type&quot;:&quot;people&quot;,&quot;_id&quot;:&quot;25&quot;,&quot;_score&quot;:1.0,&quot;_source&quot;:&#123;&quot;playerId&quot;:204,&quot;logId&quot;:25,&quot;dateTime&quot;:&quot;2012-01-02 00:48:00&quot;,&quot;action&quot;:&quot;私聊:снегурочька хочет деда мороза.тома.0661796082&quot;&#125;&#125;,&#123;&quot;_index&quot;:&quot;es&quot;,&quot;_type&quot;:&quot;people&quot;,&quot;_id&quot;:&quot;26&quot;,&quot;_score&quot;:1.0,&quot;_source&quot;:&#123;&quot;playerId&quot;:789,&quot;logId&quot;:26,&quot;dateTime&quot;:&quot;2012-01-02 00:49:00&quot;,&quot;action&quot;:&quot;私聊:молодой парень 31год из сел.местн. Очень хочет познакомиться с м&quot;&#125;&#125;,&#123;&quot;_index&quot;:&quot;es&quot;,&quot;_type&quot;:&quot;people&quot;,&quot;_id&quot;:&quot;29&quot;,&quot;_score&quot;:1.0,&quot;_source&quot;:&#123;&quot;playerId&quot;:328,&quot;logId&quot;:29,&quot;dateTime&quot;:&quot;2012-01-02 00:54:00&quot;,&quot;action&quot;:&quot;私聊:ВСЕХ ПАРНЕЙ С НОВЫМ ГОДОМ ЛЮБВИ СЧАСТЬЯ.С УВ.СВЕТА 0666339477.ЗАДЕРЖ&quot;&#125;&#125;,&#123;&quot;_index&quot;:&quot;es&quot;,&quot;_type&quot;:&quot;people&quot;,&quot;_id&quot;:&quot;40&quot;,&quot;_score&quot;:1.0,&quot;_source&quot;:&#123;&quot;playerId&quot;:35,&quot;logId&quot;:40,&quot;dateTime&quot;:&quot;2012-01-02 01:06:00&quot;,&quot;action&quot;:&quot;私聊:ищю парня до21&quot;&#125;&#125;,&#123;&quot;_index&quot;:&quot;es&quot;,&quot;_type&quot;:&quot;people&quot;,&quot;_id&quot;:&quot;41&quot;,&quot;_score&quot;:1.0,&quot;_source&quot;:&#123;&quot;playerId&quot;:750,&quot;logId&quot;:41,&quot;dateTime&quot;:&quot;2012-01-02 01:06:00&quot;,&quot;action&quot;:&quot;私聊:ВСЕХ ДЕВУШЕК С НОВЫМ ГОДОМ Я ВАС ВСЕХ ЛЮБЛЮ 0507143632 СЕРЁГА&quot;&#125;&#125;]&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5.web界面</p>
+<p>配置在site_configuration.json</p>
+<img src="/images/517519-20191028221657265-425319582.png" alt="" />
         
           <p class="article-more-link">
-            <a class="btn btn-primary" href="/2019/09/30/Nexus%E4%B8%8A%E4%BC%A0python%E5%8C%85/#more">全文 &gt;&gt;</a>
+            <a class="btn btn-primary" href="/2019/10/27/Elasticsearch6.2.1%E5%AE%89%E8%A3%85elasticsearch-sq%E6%8F%92%E4%BB%B6/#more">全文 &gt;&gt;</a>
           </p>
         
       
@@ -456,7 +528,117 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2019/09/30/Nexus%E4%B8%8A%E4%BC%A0python%E5%8C%85/" data-id="ckca3uy0n007pw20l10dz57p4" class="article-share-link">
+      <a data-url="http://tonglin0325.github.io/2019/10/27/Elasticsearch6.2.1%E5%AE%89%E8%A3%85elasticsearch-sq%E6%8F%92%E4%BB%B6/" data-id="ckca3uxy2000zw20l1j2jettw" class="article-share-link">
+        <i class="fa fa-share"></i> 分享
+      </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ELK/" rel="tag">ELK</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-多用户同时操作一条Mysql记录问题" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/23/%E5%A4%9A%E7%94%A8%E6%88%B7%E5%90%8C%E6%97%B6%E6%93%8D%E4%BD%9C%E4%B8%80%E6%9D%A1Mysql%E8%AE%B0%E5%BD%95%E9%97%AE%E9%A2%98/">多用户同时操作一条Mysql记录问题</a>
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2019/10/23/%E5%A4%9A%E7%94%A8%E6%88%B7%E5%90%8C%E6%97%B6%E6%93%8D%E4%BD%9C%E4%B8%80%E6%9D%A1Mysql%E8%AE%B0%E5%BD%95%E9%97%AE%E9%A2%98/" class="article-date"><time datetime="2019-10-22T16:00:00.000Z" itemprop="datePublished">2019-10-23</time></a>
+</div>
+
+    <div class="article-author">tonglin0325</div>
+    
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>场景：两个用户同时读取了数据库中的一条记录，此时用户A对其中一个字段的值进行了修改操作并进行了提交，后来用户B也对这个字段进行了修改，用户B的提交将会覆盖用户A提交的值</p>
+        
+          <p class="article-more-link">
+            <a class="btn btn-primary" href="/2019/10/23/%E5%A4%9A%E7%94%A8%E6%88%B7%E5%90%8C%E6%97%B6%E6%93%8D%E4%BD%9C%E4%B8%80%E6%9D%A1Mysql%E8%AE%B0%E5%BD%95%E9%97%AE%E9%A2%98/#more">全文 &gt;&gt;</a>
+          </p>
+        
+      
+    </div>
+
+    
+
+    <footer class="article-footer">
+      <a data-url="http://tonglin0325.github.io/2019/10/23/%E5%A4%9A%E7%94%A8%E6%88%B7%E5%90%8C%E6%97%B6%E6%93%8D%E4%BD%9C%E4%B8%80%E6%9D%A1Mysql%E8%AE%B0%E5%BD%95%E9%97%AE%E9%A2%98/" data-id="ckca3uy2600csw20lgksd1erd" class="article-share-link">
+        <i class="fa fa-share"></i> 分享
+      </a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Nexus上传npm包" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/18/Nexus%E4%B8%8A%E4%BC%A0npm%E5%8C%85/">Nexus上传npm包</a>
+    </h1>
+  
+
+
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/2019/10/18/Nexus%E4%B8%8A%E4%BC%A0npm%E5%8C%85/" class="article-date"><time datetime="2019-10-17T16:00:00.000Z" itemprop="datePublished">2019-10-18</time></a>
+</div>
+
+    <div class="article-author">tonglin0325</div>
+    
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.创建npm仓库</p>
+<p>私服仓库npm-hosted</p>
+<img src="/images/517519-20191018135625065-1744848825.png" alt="" />
+        
+          <p class="article-more-link">
+            <a class="btn btn-primary" href="/2019/10/18/Nexus%E4%B8%8A%E4%BC%A0npm%E5%8C%85/#more">全文 &gt;&gt;</a>
+          </p>
+        
+      
+    </div>
+
+    
+
+    <footer class="article-footer">
+      <a data-url="http://tonglin0325.github.io/2019/10/18/Nexus%E4%B8%8A%E4%BC%A0npm%E5%8C%85/" data-id="ckca3uy0n007ow20lb7gogvz0" class="article-share-link">
         <i class="fa fa-share"></i> 分享
       </a>
       
@@ -472,13 +654,13 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-Hive学习笔记——parse" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Nginx请求转发" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
     
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/15/Hive%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94parse/">Hive学习笔记——parse</a>
+      <a class="article-title" href="/2019/10/16/Nginx%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91/">Nginx请求转发</a>
     </h1>
   
 
@@ -487,7 +669,7 @@ ga('send', 'pageview');
 
   <div class="article-meta">
     <div class="article-datetime">
-  <a href="/2019/09/15/Hive%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94parse/" class="article-date"><time datetime="2019-09-14T16:00:00.000Z" itemprop="datePublished">2019-09-15</time></a>
+  <a href="/2019/10/16/Nginx%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91/" class="article-date"><time datetime="2019-10-15T16:00:00.000Z" itemprop="datePublished">2019-10-16</time></a>
 </div>
 
     <div class="article-author">tonglin0325</div>
@@ -498,18 +680,12 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Hive是如何解析SQL的呢,首先拿hive的建表语句来举例,比如下面的建表语句</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table test(id int,name string)row format delimited fields terminated by &#39;\t&#39;;</span><br></pre></td></tr></table></figure>
-
-<p>然后使用hive的show create table语句来查看创建的表结构，这是一张text表</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE &#96;test&#96;(</span><br><span class="line">  &#96;id&#96; int, </span><br><span class="line">  &#96;name&#96; string)</span><br><span class="line">ROW FORMAT SERDE </span><br><span class="line">  &#39;org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe&#39; </span><br><span class="line">WITH SERDEPROPERTIES ( </span><br><span class="line">  &#39;field.delim&#39;&#x3D;&#39;\t&#39;, </span><br><span class="line">  &#39;serialization.format&#39;&#x3D;&#39;\t&#39;) </span><br><span class="line">STORED AS INPUTFORMAT </span><br><span class="line">  &#39;org.apache.hadoop.mapred.TextInputFormat&#39; </span><br><span class="line">OUTPUTFORMAT </span><br><span class="line">  &#39;org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat&#39;</span><br><span class="line">LOCATION</span><br><span class="line">  &#39;hdfs:&#x2F;&#x2F;master:8020&#x2F;user&#x2F;hive&#x2F;warehouse&#x2F;test&#39;</span><br><span class="line">TBLPROPERTIES (</span><br><span class="line">  &#39;transient_lastDdlTime&#39;&#x3D;&#39;1568561230&#39;)</span><br></pre></td></tr></table></figure>
-
-<p>当然还有其他各种建表语句，比如</p>
-<p>csv表</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">CREATE EXTERNAL TABLE &#96;default.test_1&#96;(</span><br><span class="line">	  &#96;key&#96; string COMMENT &#39;from deserializer&#39;, </span><br><span class="line">	  &#96;value&#96; string COMMENT &#39;from deserializer&#39;)</span><br><span class="line">	ROW FORMAT SERDE </span><br><span class="line">	  &#39;org.apache.hadoop.hive.serde2.OpenCSVSerde&#39; </span><br><span class="line">	WITH SERDEPROPERTIES ( </span><br><span class="line">	  &#39;escapeChar&#39;&#x3D;&#39;\\&#39;, </span><br><span class="line">	  &#39;quoteChar&#39;&#x3D;&#39;\&#39;&#39;, </span><br><span class="line">	  &#39;separatorChar&#39;&#x3D;&#39;\t&#39;) </span><br><span class="line">	STORED AS INPUTFORMAT </span><br><span class="line">	  &#39;org.apache.hadoop.mapred.TextInputFormat&#39; </span><br><span class="line">	OUTPUTFORMAT </span><br><span class="line">	  &#39;org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat&#39;</span><br><span class="line">	LOCATION</span><br><span class="line">	  &#39;hdfs:&#x2F;&#x2F;master:8020&#x2F;user&#x2F;hive&#x2F;warehouse&#x2F;test&#39;</span><br><span class="line">	TBLPROPERTIES (</span><br><span class="line">	  &#39;COLUMN_STATS_ACCURATE&#39;&#x3D;&#39;false&#39;, </span><br><span class="line">	  &#39;numFiles&#39;&#x3D;&#39;0&#39;, </span><br><span class="line">	  &#39;numRows&#39;&#x3D;&#39;-1&#39;, </span><br><span class="line">	  &#39;rawDataSize&#39;&#x3D;&#39;-1&#39;, </span><br><span class="line">	  &#39;totalSize&#39;&#x3D;&#39;0&#39;, </span><br><span class="line">	  &#39;transient_lastDdlTime&#39;&#x3D;&#39;xxxx&#39;)</span><br></pre></td></tr></table></figure>
+        <p>1.比如说我要将127.0.0.1/topics上的所有请求转发到xxx:xxx/上</p>
+<p>修改 sudo vim /etc/nginx/nginx.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">       listen       80;</span><br><span class="line">        server_name  127.0.0.1;</span><br><span class="line">        location &#x2F;topics &#123;</span><br><span class="line">            #root   html;</span><br><span class="line">            #index  index.html index.htm;</span><br><span class="line">        proxy_pass http:&#x2F;&#x2F;xxx:xxx;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
         
           <p class="article-more-link">
-            <a class="btn btn-primary" href="/2019/09/15/Hive%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94parse/#more">全文 &gt;&gt;</a>
+            <a class="btn btn-primary" href="/2019/10/16/Nginx%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91/#more">全文 &gt;&gt;</a>
           </p>
         
       
@@ -518,199 +694,12 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2019/09/15/Hive%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94parse/" data-id="ckca3uxyk001xw20lhc1oh6i5" class="article-share-link">
+      <a data-url="http://tonglin0325.github.io/2019/10/16/Nginx%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91/" data-id="ckca3uy0o007tw20l59lreb05" class="article-share-link">
         <i class="fa fa-share"></i> 分享
       </a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hive/" rel="tag">Hive</a></li></ul>
-
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Ubuntu16.04安装Supervisor" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <header class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/07/Ubuntu16.04%E5%AE%89%E8%A3%85Supervisor/">Ubuntu16.04安装Supervisor</a>
-    </h1>
-  
-
-
-  </header>
-
-  <div class="article-meta">
-    <div class="article-datetime">
-  <a href="/2019/09/07/Ubuntu16.04%E5%AE%89%E8%A3%85Supervisor/" class="article-date"><time datetime="2019-09-06T16:00:00.000Z" itemprop="datePublished">2019-09-07</time></a>
-</div>
-
-    <div class="article-author">tonglin0325</div>
-    
-
-  </div>
-  <div class="article-inner">
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install supervisor</span><br></pre></td></tr></table></figure>
-
-<p>启动,否则会报 unix:///tmp/supervisor.sock no such file</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service supervisor start</span><br></pre></td></tr></table></figure>
-
-<p>或者</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supervisord -c &#x2F;etc&#x2F;supervisor&#x2F;supervisord.conf</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a class="btn btn-primary" href="/2019/09/07/Ubuntu16.04%E5%AE%89%E8%A3%85Supervisor/#more">全文 &gt;&gt;</a>
-          </p>
-        
-      
-    </div>
-
-    
-
-    <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2019/09/07/Ubuntu16.04%E5%AE%89%E8%A3%85Supervisor/" data-id="ckca3uy1g00aaw20lgcg9gmcy" class="article-share-link">
-        <i class="fa fa-share"></i> 分享
-      </a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
-
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Hive学习笔记——metadata" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <header class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/03/Hive%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94metadata/">Hive学习笔记——metadata</a>
-    </h1>
-  
-
-
-  </header>
-
-  <div class="article-meta">
-    <div class="article-datetime">
-  <a href="/2019/09/03/Hive%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94metadata/" class="article-date"><time datetime="2019-09-02T16:00:00.000Z" itemprop="datePublished">2019-09-03</time></a>
-</div>
-
-    <div class="article-author">tonglin0325</div>
-    
-
-  </div>
-  <div class="article-inner">
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>Hive结构体系</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;blog.csdn.net&#x2F;zhoudaxia&#x2F;article&#x2F;details&#x2F;8855937</span><br></pre></td></tr></table></figure>
-
-<p>可以在hive的jdbc接口中使用getMetaData方法来获取hive表的相关元信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">statement &#x3D; connection.createStatement();</span><br><span class="line">DatabaseMetaData meta &#x3D; connection.getMetaData();</span><br></pre></td></tr></table></figure>
-
-<p>参考</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;blog.csdn.net&#x2F;u010368839&#x2F;article&#x2F;details&#x2F;76358831</span><br></pre></td></tr></table></figure>
-
-<p>hive metadata源码解析可以参考</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;cloud.tencent.com&#x2F;developer&#x2F;article&#x2F;1330250</span><br></pre></td></tr></table></figure>
-
-<p>hive thrift接口可以参考</p>
-        
-          <p class="article-more-link">
-            <a class="btn btn-primary" href="/2019/09/03/Hive%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94metadata/#more">全文 &gt;&gt;</a>
-          </p>
-        
-      
-    </div>
-
-    
-
-    <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2019/09/03/Hive%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94metadata/" data-id="ckca3uxyk001ww20lejrb1rst" class="article-share-link">
-        <i class="fa fa-share"></i> 分享
-      </a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hive/" rel="tag">Hive</a></li></ul>
-
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Ubuntu16.04安装Filebeat" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <header class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/27/Ubuntu16.04%E5%AE%89%E8%A3%85Filebeat/">Ubuntu16.04安装Filebeat</a>
-    </h1>
-  
-
-
-  </header>
-
-  <div class="article-meta">
-    <div class="article-datetime">
-  <a href="/2019/08/27/Ubuntu16.04%E5%AE%89%E8%A3%85Filebeat/" class="article-date"><time datetime="2019-08-26T16:00:00.000Z" itemprop="datePublished">2019-08-27</time></a>
-</div>
-
-    <div class="article-author">tonglin0325</div>
-    
-
-  </div>
-  <div class="article-inner">
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Filebeat官方文档地址</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;www.elastic.co&#x2F;guide&#x2F;en&#x2F;beats&#x2F;filebeat&#x2F;current&#x2F;filebeat-installation.html</span><br></pre></td></tr></table></figure>
-
-<p>下载和安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -L -O https:&#x2F;&#x2F;artifacts.elastic.co&#x2F;downloads&#x2F;beats&#x2F;filebeat&#x2F;filebeat-7.3.1-linux-x86_64.tar.gz</span><br><span class="line">tar xzvf filebeat-7.3.1-linux-x86_64.tar.gz</span><br></pre></td></tr></table></figure>
-
-<p>编写filebeat.yml</p>
-        
-          <p class="article-more-link">
-            <a class="btn btn-primary" href="/2019/08/27/Ubuntu16.04%E5%AE%89%E8%A3%85Filebeat/#more">全文 &gt;&gt;</a>
-          </p>
-        
-      
-    </div>
-
-    
-
-    <footer class="article-footer">
-      <a data-url="http://tonglin0325.github.io/2019/08/27/Ubuntu16.04%E5%AE%89%E8%A3%85Filebeat/" data-id="ckca3uy1f00a7w20l2dxgd0nd" class="article-share-link">
-        <i class="fa fa-share"></i> 分享
-      </a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/filebeat/" rel="tag">filebeat</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li></ul>
 
 
     </footer>
@@ -724,7 +713,7 @@ ga('send', 'pageview');
 
 
   <div id="page-nav">
-    <nav><ul class="pagination"><li><a class="page-prev" rel="prev" href="/page/6/"><i class="fa fa-chevron-left"></i> Prev</a></li><li><a class="page-number" href="/">1</a></li><li class="disabled"><span class="page-space">&hellip;</span></li><li><a class="page-number" href="/page/5/">5</a></li><li><a class="page-number" href="/page/6/">6</a></li><li class="active"><span class="page-number">7</span></li><li><a class="page-number" href="/page/8/">8</a></li><li><a class="page-number" href="/page/9/">9</a></li><li class="disabled"><span class="page-space">&hellip;</span></li><li><a class="page-number" href="/page/54/">54</a></li><li><a class="page-next" rel="next" href="/page/8/">Next <i class="fa fa-chevron-right"></i></a></li></ul></nav>
+    <nav><ul class="pagination"><li><a class="page-prev" rel="prev" href="/page/6/"><i class="fa fa-chevron-left"></i> Prev</a></li><li><a class="page-number" href="/">1</a></li><li class="disabled"><span class="page-space">&hellip;</span></li><li><a class="page-number" href="/page/5/">5</a></li><li><a class="page-number" href="/page/6/">6</a></li><li class="active"><span class="page-number">7</span></li><li><a class="page-number" href="/page/8/">8</a></li><li><a class="page-number" href="/page/9/">9</a></li><li class="disabled"><span class="page-space">&hellip;</span></li><li><a class="page-number" href="/page/56/">56</a></li><li><a class="page-next" rel="next" href="/page/8/">Next <i class="fa fa-chevron-right"></i></a></li></ul></nav>
   </div>
 
 
@@ -744,7 +733,7 @@ ga('send', 'pageview');
   
   <div class="sidebar-module">
     <h4>标签</h4>
-    <ul class="sidebar-module-list" itemprop="keywords"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Airbnb/" rel="tag">Airbnb</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Ajax/" rel="tag">Ajax</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Amazon/" rel="tag">Amazon</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Android/" rel="tag">Android</a><span class="sidebar-module-list-count">18</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Bootstrap/" rel="tag">Bootstrap</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ELK/" rel="tag">ELK</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Flink/" rel="tag">Flink</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Git/" rel="tag">Git</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/HTML-CSS-JS/" rel="tag">HTML/CSS/JS</a><span class="sidebar-module-list-count">32</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hbase/" rel="tag">Hbase</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hive/" rel="tag">Hive</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JDBC/" rel="tag">JDBC</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JSON/" rel="tag">JSON</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JVM/" rel="tag">JVM</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a><span class="sidebar-module-list-count">72</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a><span class="sidebar-module-list-count">38</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E5%85%B3%E9%94%AE%E5%AD%97/" rel="tag">Java关键字</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E7%95%8C%E9%9D%A2/" rel="tag">Java界面</a><span class="sidebar-module-list-count">16</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="sidebar-module-list-count">50</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ML/" rel="tag">ML</a><span class="sidebar-module-list-count">28</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Maven/" rel="tag">Maven</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Nexus/" rel="tag">Nexus</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/NoSQL/" rel="tag">NoSQL</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Paper/" rel="tag">Paper</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Python/" rel="tag">Python</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Reading/" rel="tag">Reading</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SQL/" rel="tag">SQL</a><span class="sidebar-module-list-count">21</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Scala/" rel="tag">Scala</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Solr/" rel="tag">Solr</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Spark/" rel="tag">Spark</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/TCP-IP/" rel="tag">TCP/IP</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Thrift/" rel="tag">Thrift</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/antlr/" rel="tag">antlr</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/cdh/" rel="tag">cdh</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/docker/" rel="tag">docker</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/filebeat/" rel="tag">filebeat</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/flume/" rel="tag">flume</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/go/" rel="tag">go</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/google/" rel="tag">google</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/jquery/" rel="tag">jquery</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/kafka/" rel="tag">kafka</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/kerberos/" rel="tag">kerberos</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ldap/" rel="tag">ldap</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/mac/" rel="tag">mac</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nlp/" rel="tag">nlp</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/open-falcon/" rel="tag">open-falcon</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/redis/" rel="tag">redis</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/twitter/" rel="tag">twitter</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/yarn/" rel="tag">yarn</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/zookeeper/" rel="tag">zookeeper</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%88%B7%E9%A2%98/" rel="tag">刷题</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%9B%BE%E5%AD%98%E5%82%A8%E5%8F%8A%E8%AE%A1%E7%AE%97/" rel="tag">图存储及计算</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="tag">开发工具</a><span class="sidebar-module-list-count">15</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="sidebar-module-list-count">22</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="sidebar-module-list-count">27</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="sidebar-module-list-count">7</span></li></ul>
+    <ul class="sidebar-module-list" itemprop="keywords"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Airbnb/" rel="tag">Airbnb</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Ajax/" rel="tag">Ajax</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Amazon/" rel="tag">Amazon</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Android/" rel="tag">Android</a><span class="sidebar-module-list-count">18</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Bootstrap/" rel="tag">Bootstrap</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ELK/" rel="tag">ELK</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Flink/" rel="tag">Flink</a><span class="sidebar-module-list-count">12</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Git/" rel="tag">Git</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/HTML-CSS-JS/" rel="tag">HTML/CSS/JS</a><span class="sidebar-module-list-count">32</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hbase/" rel="tag">Hbase</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Hive/" rel="tag">Hive</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JDBC/" rel="tag">JDBC</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JSON/" rel="tag">JSON</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JVM/" rel="tag">JVM</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JavaSE/" rel="tag">JavaSE</a><span class="sidebar-module-list-count">72</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a><span class="sidebar-module-list-count">38</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E5%85%B3%E9%94%AE%E5%AD%97/" rel="tag">Java关键字</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Java%E7%95%8C%E9%9D%A2/" rel="tag">Java界面</a><span class="sidebar-module-list-count">16</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="sidebar-module-list-count">50</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ML/" rel="tag">ML</a><span class="sidebar-module-list-count">28</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Maven/" rel="tag">Maven</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Nexus/" rel="tag">Nexus</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/NoSQL/" rel="tag">NoSQL</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Paper/" rel="tag">Paper</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Python/" rel="tag">Python</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Reading/" rel="tag">Reading</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SQL/" rel="tag">SQL</a><span class="sidebar-module-list-count">21</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Scala/" rel="tag">Scala</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Solr/" rel="tag">Solr</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Spark/" rel="tag">Spark</a><span class="sidebar-module-list-count">21</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/TCP-IP/" rel="tag">TCP/IP</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/Thrift/" rel="tag">Thrift</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/antlr/" rel="tag">antlr</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/cdh/" rel="tag">cdh</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/docker/" rel="tag">docker</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/filebeat/" rel="tag">filebeat</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/flume/" rel="tag">flume</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/go/" rel="tag">go</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/google/" rel="tag">google</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/jquery/" rel="tag">jquery</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/kafka/" rel="tag">kafka</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/kerberos/" rel="tag">kerberos</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/ldap/" rel="tag">ldap</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/mac/" rel="tag">mac</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/nlp/" rel="tag">nlp</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/open-falcon/" rel="tag">open-falcon</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/redis/" rel="tag">redis</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/twitter/" rel="tag">twitter</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/yarn/" rel="tag">yarn</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/zookeeper/" rel="tag">zookeeper</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%88%B7%E9%A2%98/" rel="tag">刷题</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%9B%BE%E5%AD%98%E5%82%A8%E5%8F%8A%E8%AE%A1%E7%AE%97/" rel="tag">图存储及计算</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="tag">开发工具</a><span class="sidebar-module-list-count">15</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="sidebar-module-list-count">22</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="sidebar-module-list-count">27</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="sidebar-module-list-count">7</span></li></ul>
   </div>
 
 
@@ -753,7 +742,7 @@ ga('send', 'pageview');
   <div class="sidebar-module">
     <h4>标签云</h4>
     <p class="tagcloud">
-      <a href="/tags/Airbnb/" style="font-size: 12.38px;">Airbnb</a> <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Amazon/" style="font-size: 10px;">Amazon</a> <a href="/tags/Android/" style="font-size: 15.71px;">Android</a> <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/ELK/" style="font-size: 13.33px;">ELK</a> <a href="/tags/Flink/" style="font-size: 13.33px;">Flink</a> <a href="/tags/Git/" style="font-size: 10.95px;">Git</a> <a href="/tags/HTML-CSS-JS/" style="font-size: 18.57px;">HTML/CSS/JS</a> <a href="/tags/Hadoop/" style="font-size: 12.86px;">Hadoop</a> <a href="/tags/Hbase/" style="font-size: 10.95px;">Hbase</a> <a href="/tags/Hive/" style="font-size: 11.9px;">Hive</a> <a href="/tags/JDBC/" style="font-size: 13.33px;">JDBC</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JVM/" style="font-size: 10.48px;">JVM</a> <a href="/tags/JavaSE/" style="font-size: 20px;">JavaSE</a> <a href="/tags/JavaWeb/" style="font-size: 19.05px;">JavaWeb</a> <a href="/tags/Java%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 12.86px;">Java关键字</a> <a href="/tags/Java%E7%95%8C%E9%9D%A2/" style="font-size: 15.24px;">Java界面</a> <a href="/tags/Linux/" style="font-size: 19.52px;">Linux</a> <a href="/tags/ML/" style="font-size: 18.1px;">ML</a> <a href="/tags/Maven/" style="font-size: 10.95px;">Maven</a> <a href="/tags/Nexus/" style="font-size: 11.43px;">Nexus</a> <a href="/tags/NoSQL/" style="font-size: 10px;">NoSQL</a> <a href="/tags/Paper/" style="font-size: 10px;">Paper</a> <a href="/tags/Python/" style="font-size: 16.19px;">Python</a> <a href="/tags/Reading/" style="font-size: 10.95px;">Reading</a> <a href="/tags/SQL/" style="font-size: 16.67px;">SQL</a> <a href="/tags/Scala/" style="font-size: 13.33px;">Scala</a> <a href="/tags/Solr/" style="font-size: 10.95px;">Solr</a> <a href="/tags/Spark/" style="font-size: 16.19px;">Spark</a> <a href="/tags/SpringBoot/" style="font-size: 10.48px;">SpringBoot</a> <a href="/tags/SpringMVC/" style="font-size: 14.29px;">SpringMVC</a> <a href="/tags/TCP-IP/" style="font-size: 10.95px;">TCP/IP</a> <a href="/tags/Thrift/" style="font-size: 10.95px;">Thrift</a> <a href="/tags/antlr/" style="font-size: 10.48px;">antlr</a> <a href="/tags/cdh/" style="font-size: 10.95px;">cdh</a> <a href="/tags/docker/" style="font-size: 10.48px;">docker</a> <a href="/tags/filebeat/" style="font-size: 10.95px;">filebeat</a> <a href="/tags/flume/" style="font-size: 10.48px;">flume</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/google/" style="font-size: 10.48px;">google</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/kafka/" style="font-size: 11.9px;">kafka</a> <a href="/tags/kerberos/" style="font-size: 10px;">kerberos</a> <a href="/tags/ldap/" style="font-size: 10px;">ldap</a> <a href="/tags/mac/" style="font-size: 10.95px;">mac</a> <a href="/tags/nginx/" style="font-size: 12.38px;">nginx</a> <a href="/tags/nlp/" style="font-size: 10.48px;">nlp</a> <a href="/tags/open-falcon/" style="font-size: 10.95px;">open-falcon</a> <a href="/tags/redis/" style="font-size: 10.48px;">redis</a> <a href="/tags/twitter/" style="font-size: 10.48px;">twitter</a> <a href="/tags/yarn/" style="font-size: 10.48px;">yarn</a> <a href="/tags/zookeeper/" style="font-size: 13.81px;">zookeeper</a> <a href="/tags/%E5%88%B7%E9%A2%98/" style="font-size: 10px;">刷题</a> <a href="/tags/%E5%9B%BE%E5%AD%98%E5%82%A8%E5%8F%8A%E8%AE%A1%E7%AE%97/" style="font-size: 10.48px;">图存储及计算</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 13.81px;">多线程</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" style="font-size: 14.76px;">开发工具</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 17.14px;">数据结构</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 12.38px;">杂谈</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.62px;">算法</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 12.86px;">设计模式</a>
+      <a href="/tags/Airbnb/" style="font-size: 12.17px;">Airbnb</a> <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Amazon/" style="font-size: 10px;">Amazon</a> <a href="/tags/Android/" style="font-size: 16.09px;">Android</a> <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/ELK/" style="font-size: 13.91px;">ELK</a> <a href="/tags/Flink/" style="font-size: 14.35px;">Flink</a> <a href="/tags/Git/" style="font-size: 10.87px;">Git</a> <a href="/tags/HTML-CSS-JS/" style="font-size: 18.7px;">HTML/CSS/JS</a> <a href="/tags/Hadoop/" style="font-size: 12.61px;">Hadoop</a> <a href="/tags/Hbase/" style="font-size: 11.74px;">Hbase</a> <a href="/tags/Hive/" style="font-size: 12.17px;">Hive</a> <a href="/tags/JDBC/" style="font-size: 13.48px;">JDBC</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JVM/" style="font-size: 10.43px;">JVM</a> <a href="/tags/JavaSE/" style="font-size: 20px;">JavaSE</a> <a href="/tags/JavaWeb/" style="font-size: 19.13px;">JavaWeb</a> <a href="/tags/Java%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 12.61px;">Java关键字</a> <a href="/tags/Java%E7%95%8C%E9%9D%A2/" style="font-size: 15.65px;">Java界面</a> <a href="/tags/Linux/" style="font-size: 19.57px;">Linux</a> <a href="/tags/ML/" style="font-size: 18.26px;">ML</a> <a href="/tags/Maven/" style="font-size: 10.87px;">Maven</a> <a href="/tags/Nexus/" style="font-size: 11.3px;">Nexus</a> <a href="/tags/NoSQL/" style="font-size: 10px;">NoSQL</a> <a href="/tags/Paper/" style="font-size: 10px;">Paper</a> <a href="/tags/Python/" style="font-size: 16.52px;">Python</a> <a href="/tags/Reading/" style="font-size: 10.87px;">Reading</a> <a href="/tags/SQL/" style="font-size: 16.96px;">SQL</a> <a href="/tags/Scala/" style="font-size: 13.48px;">Scala</a> <a href="/tags/Solr/" style="font-size: 10.87px;">Solr</a> <a href="/tags/Spark/" style="font-size: 16.96px;">Spark</a> <a href="/tags/SpringBoot/" style="font-size: 10.43px;">SpringBoot</a> <a href="/tags/SpringMVC/" style="font-size: 14.78px;">SpringMVC</a> <a href="/tags/TCP-IP/" style="font-size: 10.87px;">TCP/IP</a> <a href="/tags/Thrift/" style="font-size: 10.87px;">Thrift</a> <a href="/tags/antlr/" style="font-size: 10.43px;">antlr</a> <a href="/tags/cdh/" style="font-size: 10.87px;">cdh</a> <a href="/tags/docker/" style="font-size: 10.43px;">docker</a> <a href="/tags/filebeat/" style="font-size: 10.87px;">filebeat</a> <a href="/tags/flume/" style="font-size: 10.43px;">flume</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/google/" style="font-size: 10.43px;">google</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/kafka/" style="font-size: 13.04px;">kafka</a> <a href="/tags/kerberos/" style="font-size: 10px;">kerberos</a> <a href="/tags/ldap/" style="font-size: 10px;">ldap</a> <a href="/tags/mac/" style="font-size: 10.87px;">mac</a> <a href="/tags/nginx/" style="font-size: 12.17px;">nginx</a> <a href="/tags/nlp/" style="font-size: 10.43px;">nlp</a> <a href="/tags/open-falcon/" style="font-size: 10.87px;">open-falcon</a> <a href="/tags/redis/" style="font-size: 10.87px;">redis</a> <a href="/tags/twitter/" style="font-size: 10.43px;">twitter</a> <a href="/tags/yarn/" style="font-size: 10.43px;">yarn</a> <a href="/tags/zookeeper/" style="font-size: 13.91px;">zookeeper</a> <a href="/tags/%E5%88%B7%E9%A2%98/" style="font-size: 10px;">刷题</a> <a href="/tags/%E5%9B%BE%E5%AD%98%E5%82%A8%E5%8F%8A%E8%AE%A1%E7%AE%97/" style="font-size: 10.43px;">图存储及计算</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 13.91px;">多线程</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" style="font-size: 15.22px;">开发工具</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 17.39px;">数据结构</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 12.17px;">杂谈</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.83px;">算法</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 12.61px;">设计模式</a>
     </p>
   </div>
 
@@ -762,7 +751,7 @@ ga('send', 'pageview');
   
   <div class="sidebar-module">
     <h4>文章归档</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/12/">十二月 2020</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/11/">十一月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/10/">十月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/09/">九月 2020</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/08/">八月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/07/">七月 2020</a><span class="sidebar-module-list-count">12</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/06/">六月 2020</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/05/">五月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/04/">四月 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/03/">三月 2020</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/02/">二月 2020</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/01/">一月 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/10/">十月 2019</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/09/">九月 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/08/">八月 2019</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/07/">七月 2019</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/04/">四月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/03/">三月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/01/">一月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/12/">十二月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/11/">十一月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/09/">九月 2018</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/06/">六月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">五月 2018</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">四月 2018</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/11/">十一月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/09/">九月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/05/">五月 2017</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/04/">四月 2017</a><span class="sidebar-module-list-count">23</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/03/">三月 2017</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/01/">一月 2017</a><span class="sidebar-module-list-count">24</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/12/">十二月 2016</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/11/">十一月 2016</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/08/">八月 2016</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/07/">七月 2016</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/06/">六月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/05/">五月 2016</a><span class="sidebar-module-list-count">31</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/04/">四月 2016</a><span class="sidebar-module-list-count">26</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/03/">三月 2016</a><span class="sidebar-module-list-count">133</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/02/">二月 2016</a><span class="sidebar-module-list-count">22</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/09/">九月 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/08/">八月 2015</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/07/">七月 2015</a><span class="sidebar-module-list-count">31</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/06/">六月 2015</a><span class="sidebar-module-list-count">25</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/04/">四月 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2013/04/">四月 2013</a><span class="sidebar-module-list-count">1</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2021/01/">一月 2021</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/12/">十二月 2020</a><span class="sidebar-module-list-count">9</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/11/">十一月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/10/">十月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/09/">九月 2020</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/08/">八月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/07/">七月 2020</a><span class="sidebar-module-list-count">12</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/06/">六月 2020</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/05/">五月 2020</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/04/">四月 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/03/">三月 2020</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/02/">二月 2020</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/01/">一月 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/10/">十月 2019</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/09/">九月 2019</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/08/">八月 2019</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/07/">七月 2019</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/04/">四月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/03/">三月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/01/">一月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/12/">十二月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/11/">十一月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/09/">九月 2018</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/06/">六月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">五月 2018</a><span class="sidebar-module-list-count">10</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">四月 2018</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/11/">十一月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/09/">九月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/05/">五月 2017</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/04/">四月 2017</a><span class="sidebar-module-list-count">24</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/03/">三月 2017</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/01/">一月 2017</a><span class="sidebar-module-list-count">24</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/12/">十二月 2016</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/11/">十一月 2016</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/08/">八月 2016</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/07/">七月 2016</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/06/">六月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/05/">五月 2016</a><span class="sidebar-module-list-count">31</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/04/">四月 2016</a><span class="sidebar-module-list-count">26</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/03/">三月 2016</a><span class="sidebar-module-list-count">133</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/02/">二月 2016</a><span class="sidebar-module-list-count">22</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/09/">九月 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/08/">八月 2015</a><span class="sidebar-module-list-count">13</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/07/">七月 2015</a><span class="sidebar-module-list-count">31</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/06/">六月 2015</a><span class="sidebar-module-list-count">25</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2015/04/">四月 2015</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2013/04/">四月 2013</a><span class="sidebar-module-list-count">1</span></li></ul>
   </div>
 
 
@@ -773,23 +762,23 @@ ga('send', 'pageview');
     <ul class="sidebar-module-list">
       
         <li>
-          <a href="/2020/12/11/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94DataSet%20API/">Flink学习笔记——DataSet API</a>
+          <a href="/2021/01/22/ElasticSearch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/">ElasticSearch学习笔记——插件开发</a>
         </li>
       
         <li>
-          <a href="/2020/12/11/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94DataStream%20API/">Flink学习笔记——DataStream API</a>
+          <a href="/2021/01/21/Hbase%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94rowkey/">Hbase学习笔记——rowkey</a>
         </li>
       
         <li>
-          <a href="/2020/12/10/Flink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E9%85%8D%E7%BD%AE/">Flink学习笔记——配置</a>
+          <a href="/2021/01/20/Hive%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94fetch/">Hive学习笔记——fetch</a>
         </li>
       
         <li>
-          <a href="/2020/12/08/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E2%80%94%E2%80%94Twitter%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/">论文阅读——Twitter日志系统</a>
+          <a href="/2021/01/11/kafka%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E9%85%8D%E7%BD%AE/">kafka学习笔记——配置</a>
         </li>
       
         <li>
-          <a href="/2020/12/01/Spring%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94Redis%20Template/">Spring学习笔记——Redis Template</a>
+          <a href="/2021/01/07/ElasticSearch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94ik%E5%88%86%E8%AF%8D%E6%B7%BB%E5%8A%A0%E8%AF%8D%E5%BA%93/">ElasticSearch学习笔记——ik分词添加词库</a>
         </li>
       
     </ul>
@@ -804,7 +793,7 @@ ga('send', 'pageview');
   <footer class="blog-footer">
   <div class="container">
     <div id="footer-info" class="inner">
-      &copy; 2020 tonglin0325<br>
+      &copy; 2021 tonglin0325<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
