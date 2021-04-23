@@ -549,7 +549,10 @@
   </description>
   <cn_description>HDFS块大小</cn_description>
   <cdh_val>268435456</cdh_val>
-  <label>默认的HDFS块大小是128MB，一般设置成256MB来让map操作更多的数据</label>
+  <label>
+    默认的HDFS块大小是128MB，一般设置成256MB来让map操作更多的数据
+    cdh也建议在hive中使用parquet table的时候，将其设置为256MB，参考：https://docs.cloudera.com/documentation/enterprise/6/6.2/topics/cdh_ig_parquet.html
+  </label>
 </property>
 
 <property>
