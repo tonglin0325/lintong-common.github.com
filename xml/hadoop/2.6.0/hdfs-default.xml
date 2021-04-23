@@ -796,6 +796,60 @@
 </property>
 
 <property>
+  <name>dfs.datanode.balance.max.concurrent.moves</name>
+  <value>24</value>
+  <description>
+        Limits the maximum number of concurrent block moves that a Datanode is allowed for balancing the cluster.
+  </description>
+  <cn_description>
+    均衡器参数：如果datanode有12块盘，建议可以设置成24或者36来加速
+    https://docs.cloudera.com/HDPDocuments/HDP2/HDP-2.6.0/bk_hdfs-administration/content/configuring_balancer.html
+  </cn_description>
+  <cdh_val>cdh默认5</cdh_val>
+  <label></label>
+</property>
+
+<property>
+  <name>dfs.balancer.max-size-to-move</name>
+  <value></value>
+  <description>
+        Maximum amount of data to move per node in each iteration of the balancer.
+  </description>
+  <cn_description>
+        每次balance进行迭代的过程最大移动数据量，默认10737418240(10GB)
+  </cn_description>
+  <cdh_val>cdh默认10G</cdh_val>
+  <label></label>
+</property>
+
+<property>
+  <name>dfs.balancer.dispatcherThreads</name>
+  <value></value>
+  <description>
+        Thread pool size for dispatching block moves.
+  </description>
+  <cn_description>
+        Balancer会在移动Block之前，每次迭代会查询出一个Block列表，分发给Mover线程使用。
+        说明 dispatcherThreads是这个分发线程的个数，默认为200。
+  </cn_description>
+  <cdh_val>cdh默认200</cdh_val>
+  <label></label>
+</property>
+
+<property>
+  <name>dfs.balancer.moverThreads</name>
+  <value>4096</value>
+  <description>
+        Thread pool size for executing block moves.
+  </description>
+  <cn_description>
+        用于执行block移动的线程池大小，默认1000，可以调整成4096
+  </cn_description>
+  <cdh_val>cdh1000</cdh_val>
+  <label></label>
+</property>
+
+<property>
   <name>dfs.hosts</name>
   <value></value>
   <description>Names a file that contains a list of hosts that are
@@ -1114,6 +1168,24 @@
   <cdh_val></cdh_val>
   <label></label>
 
+</property>
+
+<property>
+  <name>dfs.image.compression.codec</name>
+  <value>
+    org.apache.hadoop.io.compress.GzipCodec,
+    org.apache.hadoop.io.compress.DefaultCodec,
+    com.hadoop.compression.lzo.LzoCodec,
+    org.apache.hadoop.io.compress.SnappyCodec
+  </value>
+  <description>A list of the compression codec classes that can be used for compression/decompression.
+  </description>
+  <cn_description>
+    参考：Enable GZipCodec as the default compression codec
+    https://docs.cloudera.com/cdp-private-cloud-base/7.1.6/scaling-namespaces/topics/hdfs-enablegzipcodec-as-the-default-compression-codec.html
+  </cn_description>
+  <cdh_val></cdh_val>
+  <label></label>
 </property>
 
 <property>
