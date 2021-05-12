@@ -780,7 +780,7 @@
    </description>
     <name>yarn.nodemanager.local-dirs</name>
     <value>${hadoop.tmp.dir}/nm-local-dir</value>
-    <cn_description>application计算过程的中间数据存储，建议分为多个盘来存储</cn_description>
+    <cn_description>application计算过程的中间数据存储，建议分为多个盘来存储，可以和datanode的数据目录共用一个盘</cn_description>
     <cdh_val></cdh_val>
     <label></label>
   </property>
