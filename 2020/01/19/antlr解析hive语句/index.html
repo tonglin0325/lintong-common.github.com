@@ -128,11 +128,22 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <!--
 <div id="toc">
   
 </div>
-
+-->
+        <!--Table of Contents begin-->
+        
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">目录</strong>
+            <a class="js-toggle-toc" href="javascript:void(0)"></a>
+            <div class="toc-content">
+              
+            </div>
+          </div>
+        
+        <!--Table of Contents end -->
         <p>hive是使用antlr来解析的</p>
 <p>parser要做的事情，是从无结构的字符串里面，解码产生有结构的数据结构（a <a href="https://en.wikipedia.org/wiki/Parser" target="_blank" rel="noopener">parser</a> is a function accepting strings as input and returning some structure as output），参考 <a href="https://en.wikipedia.org/wiki/Parser_combinator" target="_blank" rel="noopener">Parser_combinator wiki</a></p>
 <p>parser分成两种，一种是<strong>parser combinator</strong>，一种是<strong>parser generator</strong>，区别可以参考 <a href="https://www.yinwang.org/blog-cn/2015/09/19/parser" target="_blank" rel="noopener">王垠的文章&mdash;&mdash;对 Parser 的误解</a></p>

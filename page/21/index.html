@@ -596,11 +596,14 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <!--
 <div id="toc">
   <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-text">1 去掉取值变化小的特征 Removing features with low variance</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-text">2 单变量特征选择 Univariate feature selection</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-text">2.1 Pearson相关系数 Pearson Correlation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-text">2.2 互信息和最大信息系数 Mutual information and maximal information coefficient (MIC)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-text">2.3 距离相关系数 (Distance correlation)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-text">2.4 基于学习模型的特征排序 (Model based ranking)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-text">3 线性模型和正则化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-text">3.1 正则化模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-text">3.2 L1正则化&#x2F;Lasso</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-text">3.3 L2正则化&#x2F;Ridge regression</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-text">4 随机森林</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-text">4.1 平均不纯度减少 mean decrease impurity</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-text">4.2 平均精确率减少 Mean decrease accuracy</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-text">5 两种顶层特征选择算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-text">5.1 稳定性选择 Stability selection</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-text">5.2 递归特征消除 Recursive feature elimination (RFE)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-text">6 一个完整的例子</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#"><span class="toc-text">Tips</span></a></li></ol>
 </div>
-
+-->
+        <!--Table of Contents begin-->
+        
+        <!--Table of Contents end -->
         <p>作者：<a href="http://www.chaoslog.com/author/edwin-jarvis.html" target="_blank" rel="noopener">Edwin Jarvis</a></p>
 <p>特征选择(排序)对于数据科学家、<a href="http://lib.csdn.net/base/2" target="_blank" rel="noopener">机器学习</a>从业者来说非常重要。好的特征选择能够提升模型的性能，更能帮助我们理解数据的特点、底层结构，这对进一步改善模型、<a href="http://lib.csdn.net/base/31" target="_blank" rel="noopener">算法</a>都有着重要作用。</p>
 <p>特征选择主要有两个功能：</p>

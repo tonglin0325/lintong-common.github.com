@@ -133,11 +133,22 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <!--
 <div id="toc">
   
 </div>
-
+-->
+        <!--Table of Contents begin-->
+        
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">目录</strong>
+            <a class="js-toggle-toc" href="javascript:void(0)"></a>
+            <div class="toc-content">
+              
+            </div>
+          </div>
+        
+        <!--Table of Contents end -->
         <p><strong>1.实现文件上传首先需要导入Apache的包，commons-fileupload-1.2.2.jar和commons-io-2.1.jar</strong></p>
 <p>　　实现上传就在<strong>add.jsp文件中修改表单</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">enctype&#x3D;&quot;multipart&#x2F;form-data&quot;</span><br><span class="line">和</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">　　|附件:|&lt;input type&#x3D;&quot;file&quot; name&#x3D;&quot;attach&quot;&#x2F;&gt;</span><br><span class="line">&lt;&#x2F;tr&gt;</span><br></pre></td></tr></table></figure>

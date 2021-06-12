@@ -128,11 +128,22 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <!--
 <div id="toc">
   
 </div>
-
+-->
+        <!--Table of Contents begin-->
+        
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">目录</strong>
+            <a class="js-toggle-toc" href="javascript:void(0)"></a>
+            <div class="toc-content">
+              
+            </div>
+          </div>
+        
+        <!--Table of Contents end -->
         <p><strong>常用函数</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tb_emp</span><br><span class="line">ADD diredate VARCHAR(20);</span><br><span class="line"></span><br><span class="line">#插入数据</span><br><span class="line">INSERT INTO tb_dept()</span><br><span class="line">VALUE(4,&#39;市场部&#39;,&#39;负责市场工作&#39;);</span><br><span class="line"></span><br><span class="line"># concat 连接</span><br><span class="line">SELECT CONCAT(NAME,sex) FROM tb_emp;</span><br><span class="line"></span><br><span class="line"># UPPER 转换大写</span><br><span class="line">SELECT UPPER(NAME) FROM tb_emp WHERE dept_id&#x3D;1;</span><br><span class="line"></span><br><span class="line"># 返回字符串长度</span><br><span class="line">SELECT LENGTH(NAME) FROM tb_emp WHERE dept_id&#x3D;1;</span><br><span class="line"></span><br><span class="line"># 返回部分字符</span><br><span class="line">SELECT SUBSTR(NAME,2,2) FROM tb_emp WHERE dept_id&#x3D;1;</span><br><span class="line"></span><br><span class="line"># 返回当前</span><br><span class="line">SELECT NOW();</span><br><span class="line"></span><br><span class="line"># 查询时间是1981年</span><br><span class="line">SELECT * FROM tb_emp</span><br><span class="line">WHERE YEAR(diredate) &#x3D; 1981</span><br><span class="line">AND MONTH(diredate) &#x3D; 1982;</span><br><span class="line"></span><br><span class="line">#插入时间</span><br><span class="line">INSERT INTO tb_emp(NAME,sex,age,address,email,dept_id,diredate)</span><br><span class="line">VALUES(&#39;ZHOU&#39;,&#39;男&#39;,33,&#39;香港&#39;,&#39;ZHOU@163.com&#39;,2,&#39;1988-09-09&#39;);</span><br><span class="line"></span><br><span class="line">INSERT INTO tb_emp(NAME,sex,age,address,email,dept_id,diredate)</span><br><span class="line">VALUES(&#39;CAI&#39;,&#39;女&#39;,30,&#39;香港&#39;,&#39;CAI@163.com&#39;,2,NOW());</span><br><span class="line"></span><br><span class="line"># 条件判断语句</span><br><span class="line">SELECT NAME,sex,age &#39;原来年龄&#39;</span><br><span class="line">    CASE </span><br><span class="line">    WHEN age IS NULL THEN 100</span><br><span class="line">    ELSE age</span><br><span class="line">    END AS &#39;年龄&#39;</span><br><span class="line">FROM tb_emp;</span><br><span class="line"></span><br><span class="line"># IFNULL函数    如果字段不为NULL，则取第二个值，如果为空，择取第三个值</span><br><span class="line">SELECT NAME,IFNULL(age,age+100,100) AS age2 FROM tb_emp;</span><br><span class="line"></span><br><span class="line"># IFNULL函数    如果字段不为NULL，则直接去该值，如果为空，择取第二个值</span><br><span class="line">SELECT NAME,IFNULL(age,100) AS age2 FROM tb_emp;</span><br></pre></td></tr></table></figure>
 

@@ -131,11 +131,22 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <!--
 <div id="toc">
   
 </div>
-
+-->
+        <!--Table of Contents begin-->
+        
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">目录</strong>
+            <a class="js-toggle-toc" href="javascript:void(0)"></a>
+            <div class="toc-content">
+              
+            </div>
+          </div>
+        
+        <!--Table of Contents end -->
         <p>对于<strong>线性不可分</strong>的数据集，可以利用<strong>核函数（kernel）</strong>将数据转换成易于分类器理解的形式。</p>
 <p>　　如下图，如果在x轴和y轴构成的坐标系中插入直线进行分类的话， 不能得到理想的结果，或许我们可以对圆中的数据进行某种形式的转换，从而得到某些新的变量来表示数据。在这种表示情况下，我们就更容易得到大于0或者小于0的测试结果。在这个例子中，我们将数据从一个特征空间转换到另一个特征空间，在新的空间下，我们可以很容易利用已有的工具对数据进行处理，将这个过程称之为<strong>从一个特征空间到另一个特征空间的映射</strong>。在通常情况下，这种映射会<strong>将低维特征空间映射到高维空间</strong>。</p>
 <img src="/images/517519-20161127190536393-290442956.png" alt>

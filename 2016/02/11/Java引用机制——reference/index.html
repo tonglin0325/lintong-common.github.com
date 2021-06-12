@@ -132,11 +132,22 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <!--
 <div id="toc">
   
 </div>
-
+-->
+        <!--Table of Contents begin-->
+        
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">目录</strong>
+            <a class="js-toggle-toc" href="javascript:void(0)"></a>
+            <div class="toc-content">
+              
+            </div>
+          </div>
+        
+        <!--Table of Contents end -->
         <p>所谓<strong>引用传递</strong>就是指将<strong>堆内存空间</strong>的使用权交给多个<strong>栈内存空间</strong>。</p>
 <p>例子&lt;1&gt;</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class Aliasing &#123;</span><br><span class="line">	int temp &#x3D; 30;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">		Aliasing d1 &#x3D; new Aliasing();</span><br><span class="line">		d1.temp &#x3D; 50;</span><br><span class="line">		System.out.println(d1.temp);</span><br><span class="line">		fun(d1);</span><br><span class="line">		System.out.println(d1.temp);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public static void fun (Aliasing d2)&#123;</span><br><span class="line">		d2.temp &#x3D; 1000;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

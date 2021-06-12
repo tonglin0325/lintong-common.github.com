@@ -131,11 +131,22 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <!--
 <div id="toc">
   
 </div>
-
+-->
+        <!--Table of Contents begin-->
+        
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">目录</strong>
+            <a class="js-toggle-toc" href="javascript:void(0)"></a>
+            <div class="toc-content">
+              
+            </div>
+          </div>
+        
+        <!--Table of Contents end -->
         <p><strong>1.在user-servlet.xml中加入以下代码，才能使得对静态文件的请求不被Controller捕获，而映射到一个固定的地址</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 将静态文件指定到某个特殊的文件夹中统一处理 --&gt;</span><br><span class="line">&lt;mvc:resources location&#x3D;&quot;&#x2F;resources&#x2F;&quot; mapping&#x3D;&quot;&#x2F;resources&#x2F;**&quot;&gt;&lt;&#x2F;mvc:resources&gt;</span><br></pre></td></tr></table></figure>
 

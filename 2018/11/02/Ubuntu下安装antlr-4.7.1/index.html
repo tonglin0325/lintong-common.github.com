@@ -136,11 +136,22 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <!--
 <div id="toc">
   
 </div>
-
+-->
+        <!--Table of Contents begin-->
+        
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">目录</strong>
+            <a class="js-toggle-toc" href="javascript:void(0)"></a>
+            <div class="toc-content">
+              
+            </div>
+          </div>
+        
+        <!--Table of Contents end -->
         <p>简介:antlr工具将语法文件转换成可以识别该语法文件所描述的语言的程序.</p>
 <p>例如:给定一个识别json的语法,antlr工具将会根据该语法生成一个程序,该程序可以通过antlr运行库来识别输入的json.</p>
 <a id="more"></a>

@@ -140,11 +140,22 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <!--
 <div id="toc">
   
 </div>
-
+-->
+        <!--Table of Contents begin-->
+        
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">目录</strong>
+            <a class="js-toggle-toc" href="javascript:void(0)"></a>
+            <div class="toc-content">
+              
+            </div>
+          </div>
+        
+        <!--Table of Contents end -->
         <p>在Ubuntu下安装open-falcon和Centos下安装的方法有点区别，因为Ubuntu使用的包管理器是apt-get，而Centos下使用的是Yum，建议不要再Ubuntu下使用yum</p>
 <p>建议自己下载源码打包二进制包来安装，因为官方给出的二进制包应该是再centos下打包的，再Ubuntu下运行可能会出现问题</p>
 <p>1.安装Go，首先去官网下载，需要fq</p>

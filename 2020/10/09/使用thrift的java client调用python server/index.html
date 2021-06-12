@@ -130,11 +130,22 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <!--
 <div id="toc">
   
 </div>
-
+-->
+        <!--Table of Contents begin-->
+        
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">目录</strong>
+            <a class="js-toggle-toc" href="javascript:void(0)"></a>
+            <div class="toc-content">
+              
+            </div>
+          </div>
+        
+        <!--Table of Contents end -->
         <p>参考：<a href="http://www.ciphermagic.cn/thrift-python-java.html" target="_blank" rel="noopener">Thrift 连接 Java 与 Python，附 Java 通用工厂方法</a></p>
 <p>上面这篇文章的例子是使用java client调用python server中的helloString方法来打印client传输过去的字符串</p>
 <p>thrift文件，hello.thrift</p>

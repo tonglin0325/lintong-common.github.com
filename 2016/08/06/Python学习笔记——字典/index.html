@@ -128,11 +128,22 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <!--
 <div id="toc">
   
 </div>
-
+-->
+        <!--Table of Contents begin-->
+        
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">目录</strong>
+            <a class="js-toggle-toc" href="javascript:void(0)"></a>
+            <div class="toc-content">
+              
+            </div>
+          </div>
+        
+        <!--Table of Contents end -->
         <p><strong>1.创建字典和给字典赋值</strong>，可以使用<strong>工厂方法dict()</strong>来创建字典，也可以使用<strong>fromkeys()</strong>来创建一个<strong>元素具有相同值</strong>的字典</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; dict &#x3D; &#123;&#39;name&#39;:&#39;XiaoMing&#39;,&#39;age&#39;:20&#125;</span><br><span class="line">&gt;&gt;&gt; dict</span><br><span class="line">&#123;&#39;age&#39;: 20, &#39;name&#39;: &#39;XiaoMing&#39;&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; dict2 &#x3D; dict(([&#39;x&#39;,1],[&#39;y&#39;,2]))</span><br><span class="line">&gt;&gt;&gt; dict2</span><br><span class="line">&#123;&#39;y&#39;: 2, &#39;x&#39;: 1&#125;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; dict2 &#x3D; &#123;&#125;.fromkeys((&#39;x&#39;,&#39;y&#39;),1)</span><br><span class="line">&gt;&gt;&gt; dict2</span><br><span class="line">&#123;&#39;y&#39;: 1, &#39;x&#39;: 1</span><br></pre></td></tr></table></figure>
 

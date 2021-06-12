@@ -134,11 +134,22 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <!--
 <div id="toc">
   
 </div>
-
+-->
+        <!--Table of Contents begin-->
+        
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">目录</strong>
+            <a class="js-toggle-toc" href="javascript:void(0)"></a>
+            <div class="toc-content">
+              
+            </div>
+          </div>
+        
+        <!--Table of Contents end -->
         <p>在程序中所有的数据都是以流的方式进行传输或保存的，程序需要数据时要使用输入流读取数据，而当程序需要将一些数据保存起来时，就要使用输出流。</p>
 <p>在java.io包中流的操作主要有字节流、字符流两大类，两类都有输入和输出操作。</p>
 <p>在字节流中输出数据主要使用OutStream类完成，输入使用的是InputStream类。</p>

@@ -128,11 +128,22 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <!--
 <div id="toc">
   
 </div>
-
+-->
+        <!--Table of Contents begin-->
+        
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">目录</strong>
+            <a class="js-toggle-toc" href="javascript:void(0)"></a>
+            <div class="toc-content">
+              
+            </div>
+          </div>
+        
+        <!--Table of Contents end -->
         <p><strong>1.文件写入</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#coding:utf-8</span><br><span class="line">#!&#x2F;usr&#x2F;bin&#x2F;env python</span><br><span class="line">&#39;makeTextPyhton.py -- create text file&#39;</span><br><span class="line"></span><br><span class="line">import os</span><br><span class="line">ls &#x3D; os.linesep</span><br><span class="line"></span><br><span class="line">#输入文件名</span><br><span class="line">fname &#x3D; raw_input(&#39;Enter file name:&#39;)</span><br><span class="line"></span><br><span class="line"># 判断输入的文件名是否存在</span><br><span class="line">while True:</span><br><span class="line"></span><br><span class="line">	if os.path.exists(fname):</span><br><span class="line">		print &quot;错误：&#39;%s&#39; 已经存在&quot; % fname</span><br><span class="line">	else:</span><br><span class="line">		break</span><br><span class="line"></span><br><span class="line">#按行输入文件的内容，以.为结束每一行，以单个.结束整个输入</span><br><span class="line">all &#x3D; []</span><br><span class="line">print &quot;\n请以.结束每一行内容\n&quot;</span><br><span class="line"></span><br><span class="line">#循环</span><br><span class="line">while True:</span><br><span class="line">	entry &#x3D; raw_input(&quot;输入每一行： &quot;)</span><br><span class="line">	if entry &#x3D;&#x3D; &quot;.&quot;:</span><br><span class="line">		break</span><br><span class="line">	else:</span><br><span class="line">		all.append(entry)</span><br><span class="line"></span><br><span class="line">#把所有的内容写入到文件中</span><br><span class="line">fobj &#x3D; open(fname,&#39;w&#39;)</span><br><span class="line">fobj.writelines([&quot;%s%s&quot; % (x,ls) for x in all])</span><br><span class="line">fobj.close()</span><br><span class="line">print &quot;完成！&quot;</span><br></pre></td></tr></table></figure>
 

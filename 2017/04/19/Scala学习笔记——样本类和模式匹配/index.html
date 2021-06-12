@@ -128,11 +128,22 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <!--
 <div id="toc">
   
 </div>
-
+-->
+        <!--Table of Contents begin-->
+        
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">目录</strong>
+            <a class="js-toggle-toc" href="javascript:void(0)"></a>
+            <div class="toc-content">
+              
+            </div>
+          </div>
+        
+        <!--Table of Contents end -->
         <p><strong>1.样本类</strong></p>
 <p>在申明的类前面加上一个<strong>case修饰符</strong>，带有这种修饰符的类被称为<strong>样本类（case class）。</strong></p>
 <p>被申明为样本类的类的<strong>特点</strong>：1.会添加和类名一致的工厂方法；2.样本类参数列表中的所有参数隐式获得了val前缀，因此它被当做字段维护；3.编译器被这个样本类添加了toString、hashcode、equals方法的实现；4.支持了模式匹配</p>

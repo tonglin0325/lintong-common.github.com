@@ -135,11 +135,22 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <!--
 <div id="toc">
   
 </div>
-
+-->
+        <!--Table of Contents begin-->
+        
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">目录</strong>
+            <a class="js-toggle-toc" href="javascript:void(0)"></a>
+            <div class="toc-content">
+              
+            </div>
+          </div>
+        
+        <!--Table of Contents end -->
         <p>（转自<a href="http://blog.csdn.net/x1247600186/article/details/24670775）" target="_blank" rel="noopener">http://blog.csdn.net/x1247600186/article/details/24670775）</a></p>
 <p>说到存储结构,我们就会想到常用的两种存储方式:顺序存储和链式存储两种。</p>
 <p>先来看看顺序存储，用一段地址连续的存储单元依次存储线性表中数据元素，这对于线性表来说是很自然的，但是对于树这种一对多的结构而言是否适合呢？</p>
