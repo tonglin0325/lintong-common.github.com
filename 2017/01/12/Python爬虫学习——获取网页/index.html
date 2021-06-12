@@ -85,6 +85,9 @@ ga('send', 'pageview');
           <li><a class=""
                  href="https://github.com/tonglin0325">Github</a></li>
         
+          <li><a class=""
+                 href="https://www.linkedin.com/in/tonglin0325/">LinkedIn</a></li>
+        
       </ul>
 
       <!--
@@ -132,22 +135,11 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <!--
+        
 <div id="toc">
   
 </div>
--->
-        <!--Table of Contents begin-->
-        
-          <div id="toc" class="toc-article">
-            <strong class="toc-title">目录</strong>
-            <a class="js-toggle-toc" href="javascript:void(0)"></a>
-            <div class="toc-content">
-              
-            </div>
-          </div>
-        
-        <!--Table of Contents end -->
+
         <p>通过<strong>GET请</strong>求获取返回的网页，其中加入了<strong>User-agent信息</strong>，不然会抛出”HTTP Error 403: Forbidden”异常，</p>
 <p>因为有些网站为了防止这种没有User-agent信息的访问，会<strong>验证请求信息中的UserAgent</strong>(它的<a href="http://baike.baidu.com/view/1654236.htm" target="_blank" rel="noopener">信息包</a>括硬件平台、系统<a href="http://baike.baidu.com/view/37.htm" target="_blank" rel="noopener">软件</a>、<a href="http://baike.baidu.com/view/7886.htm" target="_blank" rel="noopener">应用软件</a>和用户个人偏好)，如果UserAgent存在异常或者是不存在,那么这次请求将会被拒绝。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#coding&#x3D;utf-8</span><br><span class="line">import urllib2</span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line">#使用Python2.7</span><br><span class="line">def getHtml(url,user_agent&#x3D;&quot;wswp&quot;,num_retries&#x3D;2):		#下载网页，如果下载失败重新下载两次</span><br><span class="line">	print &#39;开始下载网页：&#39;,url</span><br><span class="line">	headers &#x3D; &#123;&quot;User-agent&quot;:user_agent&#125;</span><br><span class="line">#	headers &#x3D; &#123;</span><br><span class="line">#   &#39;User-Agent&#39;: &#39;Mozilla&#x2F;5.0 (Windows NT 6.1; rv:24.0) Gecko&#x2F;20100101 Firefox&#x2F;24.0&#39;,</span><br><span class="line">#   &#39;cookie&#39;: cookie</span><br><span class="line">#	&#125;</span><br><span class="line">	request &#x3D; urllib2.Request(url,headers&#x3D;headers)</span><br><span class="line">	try:</span><br><span class="line">	    html &#x3D; urllib2.urlopen(request).read()			#GET请求</span><br><span class="line">	except urllib2.URLError as e:</span><br><span class="line">		print &quot;下载失败：&quot;,e.reason</span><br><span class="line">		html &#x3D; None</span><br><span class="line">		if num_retries &gt; 0:</span><br><span class="line">			if hasattr(e,&#39;code&#39;) and 500 &lt;&#x3D; e.code &lt; 600:</span><br><span class="line">				return getHtml(url,num_retries-1)</span><br><span class="line">	return html</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">	html &#x3D; getHtml(&quot;http:&#x2F;&#x2F;www.baidu.com&quot;)</span><br><span class="line">	print html</span><br><span class="line">	print &quot;结束&quot;</span><br></pre></td></tr></table></figure>

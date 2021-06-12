@@ -81,6 +81,9 @@ ga('send', 'pageview');
           <li><a class=""
                  href="https://github.com/tonglin0325">Github</a></li>
         
+          <li><a class=""
+                 href="https://www.linkedin.com/in/tonglin0325/">LinkedIn</a></li>
+        
       </ul>
 
       <!--
@@ -128,22 +131,11 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <!--
+        
 <div id="toc">
   
 </div>
--->
-        <!--Table of Contents begin-->
-        
-          <div id="toc" class="toc-article">
-            <strong class="toc-title">目录</strong>
-            <a class="js-toggle-toc" href="javascript:void(0)"></a>
-            <div class="toc-content">
-              
-            </div>
-          </div>
-        
-        <!--Table of Contents end -->
+
         <p>在类Outer的内部再定义一个类Inner，此时类inner就称为内部类，而类outer则称为外部类。</p>
 <p>内部类的唯一好处就是可以方便的访问外部类中的私有属性</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class outer&#123;</span><br><span class="line">	private String info &#x3D; &quot;Hello World!&quot;;</span><br><span class="line">	class inner&#123;</span><br><span class="line">		public void print()&#123;</span><br><span class="line">			System.out.println(info);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">	</span><br><span class="line">	public void fun()&#123;</span><br><span class="line">		new inner().print();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">public class inner_test &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">		new outer().fun();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

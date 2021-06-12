@@ -83,6 +83,9 @@ ga('send', 'pageview');
           <li><a class=""
                  href="https://github.com/tonglin0325">Github</a></li>
         
+          <li><a class=""
+                 href="https://www.linkedin.com/in/tonglin0325/">LinkedIn</a></li>
+        
       </ul>
 
       <!--
@@ -130,22 +133,11 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <!--
+        
 <div id="toc">
   
 </div>
--->
-        <!--Table of Contents begin-->
-        
-          <div id="toc" class="toc-article">
-            <strong class="toc-title">目录</strong>
-            <a class="js-toggle-toc" href="javascript:void(0)"></a>
-            <div class="toc-content">
-              
-            </div>
-          </div>
-        
-        <!--Table of Contents end -->
+
         <p>Runtime类表示运行时的操作类，是一个封装了JVM进程的类，每一个JVM都对应着一个Runtime类的实例，此实例由JVM运行时为其实例化。<img src="/images/517519-20160310222953475-174399599.png" alt></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">&#x2F;&#x2F; File Name       :	StringBuffer_demo</span><br><span class="line">&#x2F;&#x2F;------------------------------------------------------------------------------</span><br><span class="line">&#x2F;&#x2F; Author          :	Common</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;主类</span><br><span class="line">&#x2F;&#x2F;Function        : 	StringBuffer_demo</span><br><span class="line">public class Runtime_demo &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">		</span><br><span class="line">		Runtime run &#x3D; Runtime.getRuntime();</span><br><span class="line">		</span><br><span class="line">		System.out.println(&quot;JVM最大内存：&quot;+run.maxMemory());</span><br><span class="line">		System.out.println(&quot;JVM空闲内存量：&quot;+run.freeMemory());</span><br><span class="line">		String str &#x3D; &quot;HELLO&quot;;</span><br><span class="line">		for (int i&#x3D;0;i&lt;1000;i++)&#123;</span><br><span class="line">			System.out.println(str +&#x3D; i);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(&quot;JVM空闲内存量：&quot;+run.freeMemory());</span><br><span class="line">		run.gc();					&#x2F;&#x2F;进行垃圾收集，释放空间</span><br><span class="line">		System.out.println(&quot;JVM空闲内存量：&quot;+run.freeMemory());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 

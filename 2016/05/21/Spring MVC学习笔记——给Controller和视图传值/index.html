@@ -86,6 +86,9 @@ ga('send', 'pageview');
           <li><a class=""
                  href="https://github.com/tonglin0325">Github</a></li>
         
+          <li><a class=""
+                 href="https://www.linkedin.com/in/tonglin0325/">LinkedIn</a></li>
+        
       </ul>
 
       <!--
@@ -133,22 +136,11 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <!--
+        
 <div id="toc">
   
 </div>
--->
-        <!--Table of Contents begin-->
-        
-          <div id="toc" class="toc-article">
-            <strong class="toc-title">目录</strong>
-            <a class="js-toggle-toc" href="javascript:void(0)"></a>
-            <div class="toc-content">
-              
-            </div>
-          </div>
-        
-        <!--Table of Contents end -->
+
         <p>**　　一、给Controller传值，值将显示在控制台**</p>
 <p>　　<strong>1.第一种：使用@RequestParam，改HelloController.java</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;RequestMapping表示用哪一个url来对应</span><br><span class="line">	@RequestMapping(&#123;&quot;&#x2F;hello&quot;,&quot;&#x2F;&quot;&#125;)</span><br><span class="line">	public String hello(@RequestParam(&quot;username&quot;) String username)&#123;</span><br><span class="line">		System.out.println(&quot;hello&quot;);</span><br><span class="line">		System.out.println(username);</span><br><span class="line">		return &quot;hello&quot;;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>

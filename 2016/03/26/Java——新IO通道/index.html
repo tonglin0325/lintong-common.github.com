@@ -85,6 +85,9 @@ ga('send', 'pageview');
           <li><a class=""
                  href="https://github.com/tonglin0325">Github</a></li>
         
+          <li><a class=""
+                 href="https://www.linkedin.com/in/tonglin0325/">LinkedIn</a></li>
+        
       </ul>
 
       <!--
@@ -132,22 +135,11 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <!--
+        
 <div id="toc">
   
 </div>
--->
-        <!--Table of Contents begin-->
-        
-          <div id="toc" class="toc-article">
-            <strong class="toc-title">目录</strong>
-            <a class="js-toggle-toc" href="javascript:void(0)"></a>
-            <div class="toc-content">
-              
-            </div>
-          </div>
-        
-        <!--Table of Contents end -->
+
         <img src="/images/517519-20160326224905276-1782427384.png" alt>
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">import java.io.File;</span><br><span class="line">import java.io.FileOutputStream;</span><br><span class="line">import java.nio.ByteBuffer;</span><br><span class="line">import java.nio.channels.FileChannel;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">&#x2F;&#x2F; File Name       :	FileChannel_demo</span><br><span class="line">&#x2F;&#x2F;------------------------------------------------------------------------------</span><br><span class="line">&#x2F;&#x2F; Author          :	Common</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;主类</span><br><span class="line">&#x2F;&#x2F;Function        : 	FileChannel_demo</span><br><span class="line">public class FileChannel_demo &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) throws Exception&#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">		String info[] &#x3D; &#123;&quot;123&quot;,&quot;456&quot;,&quot;789&quot;&#125;;</span><br><span class="line">		File f &#x3D; new File(&quot;&#x2F;home&#x2F;common&#x2F;software&#x2F;coding&#x2F;HelloWord&#x2F;HelloWord&#x2F;out.txt&quot;);&#x2F;&#x2F;路径</span><br><span class="line">		FileOutputStream output &#x3D; null;</span><br><span class="line">		output &#x3D; new FileOutputStream(f);	</span><br><span class="line">		FileChannel fout &#x3D; null;							&#x2F;&#x2F;声明输出的通道</span><br><span class="line">		fout &#x3D; output.getChannel();						&#x2F;&#x2F;得到输出的文件通道</span><br><span class="line">		ByteBuffer buf &#x3D; ByteBuffer.allocate(1024);		&#x2F;&#x2F;开辟缓冲</span><br><span class="line">		for(int i&#x3D;0;i&lt;info.length;i++)&#123;</span><br><span class="line">			buf.put(info[i].getBytes());</span><br><span class="line">		&#125;</span><br><span class="line">		buf.flip();				&#x2F;&#x2F;重设缓冲区，准备输出</span><br><span class="line">		fout.write(buf);	&#x2F;&#x2F;输出</span><br><span class="line">		fout.close();</span><br><span class="line">		output.close();</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

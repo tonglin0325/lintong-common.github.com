@@ -86,6 +86,9 @@ ga('send', 'pageview');
           <li><a class=""
                  href="https://github.com/tonglin0325">Github</a></li>
         
+          <li><a class=""
+                 href="https://www.linkedin.com/in/tonglin0325/">LinkedIn</a></li>
+        
       </ul>
 
       <!--
@@ -133,22 +136,11 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <!--
+        
 <div id="toc">
   
 </div>
--->
-        <!--Table of Contents begin-->
-        
-          <div id="toc" class="toc-article">
-            <strong class="toc-title">目录</strong>
-            <a class="js-toggle-toc" href="javascript:void(0)"></a>
-            <div class="toc-content">
-              
-            </div>
-          </div>
-        
-        <!--Table of Contents end -->
+
         <p><strong>多个线程访问共享对象和数据的方式</strong> </p>
 <p>　　<strong>1.如果每个线程执行的代码相同</strong>，可以使用同一个Runnable对象，这个Runnable对象中有那个共享数据，例如，买票系统就可以这么做。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">package java_thread;</span><br><span class="line">&#x2F;&#x2F;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">&#x2F;&#x2F; File Name       :	Runnable_demo2</span><br><span class="line">&#x2F;&#x2F;------------------------------------------------------------------------------</span><br><span class="line">&#x2F;&#x2F; Author          :	Common</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class MyThread_2 implements Runnable&#123;</span><br><span class="line">	private int ticket &#x3D; 5;	</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	public void run() &#123;								&#x2F;&#x2F;覆写Thread类中的run()方法</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">		for (int i&#x3D;0;i&lt;10;i++)&#123;</span><br><span class="line">			synchronized (this) &#123;					&#x2F;&#x2F;设置需要同步的操作</span><br><span class="line">				if(ticket&gt;0)&#123;</span><br><span class="line">					try&#123;</span><br><span class="line">						Thread.sleep(300);</span><br><span class="line">					&#125;catch(InterruptedException e)&#123;</span><br><span class="line">						e.printStackTrace();</span><br><span class="line">					&#125;</span><br><span class="line">					System.out.println(&quot;卖票：ticket&#x3D;&quot;+ticket--);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">&#x2F;&#x2F;			this.sale();												&#x2F;&#x2F;调用同步方法</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#x2F;&#x2F;	public synchronized void sale()&#123;			&#x2F;&#x2F;声明同步方法</span><br><span class="line">&#x2F;&#x2F;		if(ticket&gt;0)&#123;</span><br><span class="line">&#x2F;&#x2F;			try&#123;</span><br><span class="line">&#x2F;&#x2F;				Thread.sleep(300);</span><br><span class="line">&#x2F;&#x2F;			&#125;catch(InterruptedException e)&#123;</span><br><span class="line">&#x2F;&#x2F;				e.printStackTrace();</span><br><span class="line">&#x2F;&#x2F;			&#125;</span><br><span class="line">&#x2F;&#x2F;			System.out.println(&quot;卖票：ticket&#x3D;&quot;+ticket--);</span><br><span class="line">&#x2F;&#x2F;		&#125;</span><br><span class="line">&#x2F;&#x2F;	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;主类</span><br><span class="line">&#x2F;&#x2F;Function        : 	Thread_demo2</span><br><span class="line">public class Runnable_demo2 &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">		MyThread_2 mt &#x3D; new MyThread_2();	&#x2F;&#x2F;实例化Runnable子类对象</span><br><span class="line">		Thread t1 &#x3D; new Thread(mt);							&#x2F;&#x2F;实例化Thread类对象</span><br><span class="line">		Thread t2 &#x3D; new Thread(mt);							&#x2F;&#x2F;实例化Thread类对象</span><br><span class="line">		Thread t3 &#x3D; new Thread(mt);							&#x2F;&#x2F;实例化Thread类对象</span><br><span class="line">		t1.start();																	&#x2F;&#x2F;启动线程</span><br><span class="line">		t2.start();																	&#x2F;&#x2F;启动线程</span><br><span class="line">		t3.start();																	&#x2F;&#x2F;启动线程</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

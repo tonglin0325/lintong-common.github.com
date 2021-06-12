@@ -85,6 +85,9 @@ ga('send', 'pageview');
           <li><a class=""
                  href="https://github.com/tonglin0325">Github</a></li>
         
+          <li><a class=""
+                 href="https://www.linkedin.com/in/tonglin0325/">LinkedIn</a></li>
+        
       </ul>
 
       <!--
@@ -132,22 +135,11 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <!--
+        
 <div id="toc">
   
 </div>
--->
-        <!--Table of Contents begin-->
-        
-          <div id="toc" class="toc-article">
-            <strong class="toc-title">目录</strong>
-            <a class="js-toggle-toc" href="javascript:void(0)"></a>
-            <div class="toc-content">
-              
-            </div>
-          </div>
-        
-        <!--Table of Contents end -->
+
         <p><strong>线程池的概念与Executors类的应用</strong></p>
 <p>**　　1.创建固定大小的线程池**</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">package java_thread;</span><br><span class="line"></span><br><span class="line">import java.util.concurrent.ExecutorService;</span><br><span class="line">import java.util.concurrent.Executors;</span><br><span class="line">import java.util.concurrent.TimeUnit;</span><br><span class="line"></span><br><span class="line">public class ThreadPoolTest &#123;</span><br><span class="line"></span><br><span class="line">	&#x2F;**</span><br><span class="line">	 * @param args</span><br><span class="line">	 *&#x2F;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		ExecutorService threadPool &#x3D; Executors.newFixedThreadPool(3);</span><br><span class="line">&#x2F;&#x2F;		ExecutorService threadPool &#x3D; Executors.newCachedThreadPool();</span><br><span class="line">&#x2F;&#x2F;		ExecutorService threadPool &#x3D; Executors.newSingleThreadExecutor();</span><br><span class="line">		for(int i&#x3D;1;i&lt;&#x3D;10;i++)&#123;</span><br><span class="line">			final int task &#x3D; i;</span><br><span class="line">			threadPool.execute(new Runnable()&#123;</span><br><span class="line">				@Override</span><br><span class="line">				public void run() &#123;</span><br><span class="line">					for(int j&#x3D;1;j&lt;&#x3D;4;j++)&#123;</span><br><span class="line">						try &#123;</span><br><span class="line">							Thread.sleep(20);</span><br><span class="line">						&#125; catch (InterruptedException e) &#123;</span><br><span class="line">							&#x2F;&#x2F; TODO Auto-generated catch block</span><br><span class="line">							e.printStackTrace();</span><br><span class="line">						&#125;</span><br><span class="line">						System.out.println(Thread.currentThread().getName() + &quot; is looping of &quot; + j + &quot; for  task of &quot; + task);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(&quot;all of 10 tasks have committed! &quot;);</span><br><span class="line">		&#x2F;&#x2F;threadPool.shutdownNow();</span><br><span class="line">		</span><br><span class="line">&#x2F;&#x2F;		Executors.newScheduledThreadPool(3).scheduleAtFixedRate(</span><br><span class="line">&#x2F;&#x2F;				new Runnable()&#123;</span><br><span class="line">&#x2F;&#x2F;					@Override</span><br><span class="line">&#x2F;&#x2F;				public void run() &#123;</span><br><span class="line">&#x2F;&#x2F;					System.out.println(&quot;bombing!&quot;);</span><br><span class="line">&#x2F;&#x2F;					</span><br><span class="line">&#x2F;&#x2F;				&#125;&#125;,</span><br><span class="line">&#x2F;&#x2F;				6,</span><br><span class="line">&#x2F;&#x2F;				2,</span><br><span class="line">&#x2F;&#x2F;				TimeUnit.SECONDS);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

@@ -82,6 +82,9 @@ ga('send', 'pageview');
           <li><a class=""
                  href="https://github.com/tonglin0325">Github</a></li>
         
+          <li><a class=""
+                 href="https://www.linkedin.com/in/tonglin0325/">LinkedIn</a></li>
+        
       </ul>
 
       <!--
@@ -129,22 +132,11 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <!--
+        
 <div id="toc">
   
 </div>
--->
-        <!--Table of Contents begin-->
-        
-          <div id="toc" class="toc-article">
-            <strong class="toc-title">目录</strong>
-            <a class="js-toggle-toc" href="javascript:void(0)"></a>
-            <div class="toc-content">
-              
-            </div>
-          </div>
-        
-        <!--Table of Contents end -->
+
         <p>1.配置filebeat_nginx.yml</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">filebeat.modules:</span><br><span class="line">- module: nginx</span><br><span class="line">  access:</span><br><span class="line">    enabled: true</span><br><span class="line">    var.paths: [&quot;&#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log*&quot;]</span><br><span class="line">  error:</span><br><span class="line">    enabled: true</span><br><span class="line">    var.paths: [&quot;&#x2F;var&#x2F;log&#x2F;nginx&#x2F;error.log*&quot;]</span><br><span class="line"></span><br><span class="line">#----------------------------------Kafka output--------------------------------#</span><br><span class="line">output.kafka:</span><br><span class="line">  version: &quot;1.0.1&quot;</span><br><span class="line">  enabled: true</span><br><span class="line">  hosts: [&#39;xxx:9092&#39;, &#39;xxx:9092&#39;, &#39;xxx:9092&#39;]</span><br><span class="line">  topic: &#39;temp&#39;</span><br><span class="line">  required_acks: 1  #default</span><br><span class="line">  compression: gzip #default</span><br><span class="line">  max_message_bytes: 1000000 #default</span><br><span class="line">  codec.format:</span><br><span class="line">    string: &#39;%&#123;[message]&#125;&#39;</span><br></pre></td></tr></table></figure>
 

@@ -81,6 +81,9 @@ ga('send', 'pageview');
           <li><a class=""
                  href="https://github.com/tonglin0325">Github</a></li>
         
+          <li><a class=""
+                 href="https://www.linkedin.com/in/tonglin0325/">LinkedIn</a></li>
+        
       </ul>
 
       <!--
@@ -128,22 +131,11 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <!--
+        
 <div id="toc">
   
 </div>
--->
-        <!--Table of Contents begin-->
-        
-          <div id="toc" class="toc-article">
-            <strong class="toc-title">目录</strong>
-            <a class="js-toggle-toc" href="javascript:void(0)"></a>
-            <div class="toc-content">
-              
-            </div>
-          </div>
-        
-        <!--Table of Contents end -->
+
         <p>使用Python解析百度API返回的JSON格式的数据</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"># coding:utf-8</span><br><span class="line"># !&#x2F;usr&#x2F;bin&#x2F;env python</span><br><span class="line"></span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from numpy import *</span><br><span class="line">import sys, urllib, urllib2, json</span><br><span class="line">import fun</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">	dataMat,labelMat &#x3D; fun.loadDataSet(&quot;code.txt&quot;)</span><br><span class="line">	print dataMat[0]</span><br><span class="line">	url &#x3D; &#39;http:&#x2F;&#x2F;apis.baidu.com&#x2F;apistore&#x2F;stockservice&#x2F;usastock?stockid&#x3D;CFC-B&amp;list&#x3D;1&#39;</span><br><span class="line">	req &#x3D; urllib2.Request(url)</span><br><span class="line">	</span><br><span class="line">	req.add_header(&quot;apikey&quot;, &quot;你自己的apikey&quot;)</span><br><span class="line">	resp &#x3D; urllib2.urlopen(req)</span><br><span class="line">	content &#x3D; resp.read()</span><br><span class="line">	s &#x3D; json.loads(content)</span><br><span class="line"></span><br><span class="line">	for i in s.keys():</span><br><span class="line">		if i &#x3D;&#x3D; &#39;errNum&#39;:</span><br><span class="line">			print &#39;错误码：&#39;,s[i]</span><br><span class="line">		elif i &#x3D;&#x3D; &#39;errMsg&#39;:</span><br><span class="line">			print &#39;错误信息：&#39;,s[i]</span><br><span class="line">		else:</span><br><span class="line">			for j in s[i].keys():</span><br><span class="line">				if j &#x3D;&#x3D; &#39;stockinfo&#39;:</span><br><span class="line">					print &quot;返回数据:&quot;,j,&quot;:&quot;,str(s[i][j]).replace(&#39;u\&#39;&#39;,&#39;\&#39;&#39;).decode(&quot;unicode-escape&quot;)+&#39;\n&#39;</span><br><span class="line">				elif j &#x3D;&#x3D; &#39;market&#39;:</span><br><span class="line">					for k in s[i][j].keys():</span><br><span class="line">						print k,&quot;:&quot;,str(s[i][j][k]).replace(&#39;u\&#39;&#39;,&#39;\&#39;&#39;).decode(&quot;unicode-escape&quot;)+&#39;\n&#39;</span><br><span class="line">				#print &quot;返回数据:&quot;,j,&quot;:&quot;,str(s[i][j]).replace(&#39;u\&#39;&#39;,&#39;\&#39;&#39;).decode(&quot;unicode-escape&quot;)</span><br></pre></td></tr></table></figure>
 

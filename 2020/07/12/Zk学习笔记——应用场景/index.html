@@ -81,6 +81,9 @@ ga('send', 'pageview');
           <li><a class=""
                  href="https://github.com/tonglin0325">Github</a></li>
         
+          <li><a class=""
+                 href="https://www.linkedin.com/in/tonglin0325/">LinkedIn</a></li>
+        
       </ul>
 
       <!--
@@ -128,22 +131,11 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <!--
+        
 <div id="toc">
   
 </div>
--->
-        <!--Table of Contents begin-->
-        
-          <div id="toc" class="toc-article">
-            <strong class="toc-title">目录</strong>
-            <a class="js-toggle-toc" href="javascript:void(0)"></a>
-            <div class="toc-content">
-              
-            </div>
-          </div>
-        
-        <!--Table of Contents end -->
+
         <p><strong>1.Master选举</strong></p>
 <p>在分布式系统中，需要选举一台机器作为master或者leader。</p>
 <p>这时候，可以选择一个跟节点，比如/master，然后多台机器同时像这个节点创建一个子节点/master/lock，利用zookeeper的特性，最终只有一台机器能否创建成功，成功的那台机器就是Master；</p>

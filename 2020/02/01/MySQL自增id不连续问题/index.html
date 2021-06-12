@@ -81,6 +81,9 @@ ga('send', 'pageview');
           <li><a class=""
                  href="https://github.com/tonglin0325">Github</a></li>
         
+          <li><a class=""
+                 href="https://www.linkedin.com/in/tonglin0325/">LinkedIn</a></li>
+        
       </ul>
 
       <!--
@@ -128,22 +131,11 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <!--
+        
 <div id="toc">
   
 </div>
--->
-        <!--Table of Contents begin-->
-        
-          <div id="toc" class="toc-article">
-            <strong class="toc-title">目录</strong>
-            <a class="js-toggle-toc" href="javascript:void(0)"></a>
-            <div class="toc-content">
-              
-            </div>
-          </div>
-        
-        <!--Table of Contents end -->
+
         <p>项目中有一张表是记录人员，在每个新用户调用接口认证通过了之后，会有一个往该表插入这个新用户信息的操作。</p>
 <p>但是在线上环境中，发现该表的自增id不连续，且间隔都是差了2，比如上一个人的id是10，下一个人的id就是12，而在前端页面中，一个用户认证通过后，会调用3个接口，初步排查是MySQL并发操作导致了自增id不连续的情况</p>
 <p>在这篇文章中，列举了导致自增id不连续的几个原因，这次遇到的就是第一种情况，因为个人的信息中我设置了唯一索引：</p>

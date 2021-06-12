@@ -81,6 +81,9 @@ ga('send', 'pageview');
           <li><a class=""
                  href="https://github.com/tonglin0325">Github</a></li>
         
+          <li><a class=""
+                 href="https://www.linkedin.com/in/tonglin0325/">LinkedIn</a></li>
+        
       </ul>
 
       <!--
@@ -128,22 +131,11 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <!--
+        
 <div id="toc">
   
 </div>
--->
-        <!--Table of Contents begin-->
-        
-          <div id="toc" class="toc-article">
-            <strong class="toc-title">目录</strong>
-            <a class="js-toggle-toc" href="javascript:void(0)"></a>
-            <div class="toc-content">
-              
-            </div>
-          </div>
-        
-        <!--Table of Contents end -->
+
         <p><strong>javascript数据类型强制转换</strong></p>
 <p><strong>一、转换为数值类型</strong><br>    <strong>Number(参数)</strong> 把<strong>任何的类型</strong>转换为<strong>数值类型</strong></p>
 <pre><code>　　A.如果是**布尔值**，false为0，true为1&lt;br /&gt;    　　B.如果是**数字**，转换成为本身。将无意义的后导0去掉。&lt;br /&gt;    　　C.如果**Null**转换为0&lt;br /&gt;    　　D.如果是**undefined** 转换为NaN  not a number&lt;br /&gt;    　　E.如果**对象**则会先调用对象的 valueOf(),如果valueOf()返回的是NaN,然后再调用对象的                   toString()&lt;br /&gt;    　　F.如果是**字符串**&lt;br /&gt;       　　　　1.如果字符串当中只有数字，转换为10进制(忽略前导0和后导0)&lt;br /&gt;       　　　　2.如果是有效的规范的浮点型，转换为浮点值(忽略前导0和后导0)&lt;br /&gt;       　　　　3.如果是空字符串，则转换为0&lt;br /&gt;       　　　　4.如果是其他的值，返回NaN&lt;br /&gt;   &lt;br /&gt;    **parseInt(参数1，参数2)**  将**字符串**转换为**整数**&lt;br /&gt;      　　A.如果一个字符串**只包含数字**，则以10进制的方式转换为整型。&lt;br /&gt;      　　B.他会自动忽略字符串前面的空格，直到找到**第一个非空的数值字符串**，直到解析到**第一个非数值的字符串**结束。&lt;br /&gt;      　　C.如果字符串的第一个字符不是空格、数字、-，那么返回**NaN**&lt;br /&gt;      　　D.**参数1**&lt;br /&gt;        　　　　八进制                 十进制           十六进制&lt;br /&gt;        　　　　**0** 后面的数字不能超过7                **0x**   0-9   a-f&lt;br /&gt;         　　　**参数2**&lt;br /&gt;        　　　　控制解析模式  2-32&lt;br /&gt;      &lt;br /&gt;    **parseFloat()** 将**字符串**转换为**浮点数**&lt;br /&gt;     　　A.字符串当中的.**只有第一个有效**，其他的都是无效的。&lt;br /&gt;     　　B.如果字符串是一个**有效的整数**，他返回的是整数，不会返回浮点数。</code></pre><a id="more"></a>

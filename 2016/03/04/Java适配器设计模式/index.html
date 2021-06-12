@@ -81,6 +81,9 @@ ga('send', 'pageview');
           <li><a class=""
                  href="https://github.com/tonglin0325">Github</a></li>
         
+          <li><a class=""
+                 href="https://www.linkedin.com/in/tonglin0325/">LinkedIn</a></li>
+        
       </ul>
 
       <!--
@@ -128,22 +131,11 @@ ga('send', 'pageview');
 
     <div class="article-entry" itemprop="articleBody">
       
-        <!--
+        
 <div id="toc">
   
 </div>
--->
-        <!--Table of Contents begin-->
-        
-          <div id="toc" class="toc-article">
-            <strong class="toc-title">目录</strong>
-            <a class="js-toggle-toc" href="javascript:void(0)"></a>
-            <div class="toc-content">
-              
-            </div>
-          </div>
-        
-        <!--Table of Contents end -->
+
         <p>适配器设计模式，一个接口首先被一个抽象类先实现（此抽象类通常称为<strong>适配器类</strong>，比如下面的<strong>WindowAdapter</strong>），并在此抽象类中实现若干方法（但是这个抽象类中的方法体是空的），则以后的子类直接继承此抽象类，就可以有选择地覆写所需要的方法。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">&#x2F;&#x2F; File Name       :	factory</span><br><span class="line">&#x2F;&#x2F;------------------------------------------------------------------------------</span><br><span class="line">&#x2F;&#x2F; Author          :	Common</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 接口名：Window</span><br><span class="line">&#x2F;&#x2F; 属性：</span><br><span class="line">&#x2F;&#x2F; 方法：</span><br><span class="line">interface Window&#123;					&#x2F;&#x2F;定义Window接口，表示窗口操作</span><br><span class="line">	public void open();				&#x2F;&#x2F;窗口打开</span><br><span class="line">	public void close();				&#x2F;&#x2F;窗口关闭</span><br><span class="line">	public void activated();		&#x2F;&#x2F;窗口活动</span><br><span class="line">	public void iconified();		&#x2F;&#x2F;窗口最小化</span><br><span class="line">	public void deiconified();	&#x2F;&#x2F;窗口恢复大小</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;抽象类名：WindowAdapter</span><br><span class="line">&#x2F;&#x2F;属性：</span><br><span class="line">&#x2F;&#x2F;方法：</span><br><span class="line">abstract class WindowAdapter implements Window&#123;	&#x2F;&#x2F;定义抽象类实现接口，在此类中覆写方法，但是所有的方法体为空</span><br><span class="line">	public void open() &#123;&#125;				&#x2F;&#x2F;窗口打开</span><br><span class="line">	public void close() &#123;&#125;;				&#x2F;&#x2F;窗口关闭</span><br><span class="line">	public void activated() &#123;&#125;;		&#x2F;&#x2F;窗口活动</span><br><span class="line">	public void iconified() &#123;&#125;;		&#x2F;&#x2F;窗口最小化</span><br><span class="line">	public void deiconified() &#123;&#125;;	&#x2F;&#x2F;窗口恢复大小</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;类名：WindowImp1</span><br><span class="line">&#x2F;&#x2F;属性：</span><br><span class="line">&#x2F;&#x2F;方法：</span><br><span class="line">class WindowImp1 extends WindowAdapter&#123;	&#x2F;&#x2F;子类直接继承WindowAdapter类，有选择地实现需要的方法</span><br><span class="line">	public void open() &#123;			&#x2F;&#x2F;窗口打开</span><br><span class="line">		System.out.println(&quot;窗口打开&quot;);</span><br><span class="line">	&#125;		</span><br><span class="line">	</span><br><span class="line">	public void close() &#123;			&#x2F;&#x2F;窗口关闭</span><br><span class="line">		System.out.println(&quot;窗口关闭&quot;);</span><br><span class="line">	&#125;		</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;主类</span><br><span class="line">&#x2F;&#x2F;Function        : 	适配器设计模式</span><br><span class="line">public class Adapter_demo &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		&#x2F;&#x2F; TODO 自动生成的方法存根</span><br><span class="line">		Window win &#x3D; new WindowImp1();	&#x2F;&#x2F;实现接口对象</span><br><span class="line">		win.open();</span><br><span class="line">		win.close();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
